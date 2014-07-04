@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EXPApplicationContext.h"
+#import "EXPLoginViewController.h"
 
 @interface EXPLoadViewController : UIViewController
 

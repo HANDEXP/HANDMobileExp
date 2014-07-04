@@ -10,5 +10,7 @@
 
 @interface LMRequestModel : LMModel
 
-
+- (void)requestDidStartLoad ;
+- (void)requestDidFinishLoad;
+- (void) requestdidFailLoadWithError:(NSError*)error;
 @end

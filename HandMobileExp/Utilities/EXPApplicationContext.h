@@ -10,9 +10,14 @@
 #import "HDSingletonObject.h"
 #import "HDXMLParser.h"
 
-@interface EXPApplicationContext : HDSingletonObject
+@interface EXPApplicationContext : HDSingletonObject{
+    
+    
+}
 
 NSString* TTPathForDocumentsResource(NSString* relativePath);
-@property(strong) NSMutableDictionary * UrlPatterns;
+
 -(BOOL)configWithXmlPath:(NSString *) xmlPath;
+-(NSMutableArray *)getUrlPatterns;
+-(NSString*)keyforUrl:(NSString *)key;
 @end

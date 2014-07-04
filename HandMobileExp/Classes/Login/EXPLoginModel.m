@@ -20,11 +20,16 @@
     
     return self;
 }
+-(BOOL)autoLoaded{
+    return false;
+    
+}
 
--(void)load{
-    [self request:@"POST" param:nil url:@"modules/mobile_um/client/commons/function_center/function_query.svc"];
+- (void)load:(NSDictionary *)param{
     
-    
+
+                                   
+    [self request:@"GET" param:param url:[[EXPApplicationContext shareObject] keyforUrl:@"login_submit_url" ]];
 }
 
 

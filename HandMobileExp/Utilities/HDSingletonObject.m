@@ -18,10 +18,11 @@ static NSMutableDictionary *_gSingletonMap;
     };
     NSString * className = [NSString stringWithUTF8String:object_getClassName(self)];
      @synchronized(self){
+     if ([_gSingletonMap valueForKey:className] == nil){
          id object = [ NSAllocateObject ([super class], 0, NULL) init] ;
          [_gSingletonMap setObject:object forKey:className];
          
-
+     }
      }
     return [_gSingletonMap valueForKey:className];
         

@@ -10,7 +10,8 @@
 #import "EXPAFNetWorkingUtil.h"
 
 @interface AFNetRequestModel : LMRequestModel
-@property(strong) NSMutableArray * item;
+@property(strong) NSMutableArray * Json;
+@property(strong) NSError   *error;
 
 
 -(void)request:(NSString *)method

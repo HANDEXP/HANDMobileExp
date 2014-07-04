@@ -42,14 +42,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)refresh{
+    NSLog(@"in refresh");
+    [self.model load:0 more:false];
+}
 
+- (id<TTModel>)model {
+    if (!_model) {
+        
+    }
+    return _model;
+}
 
 - (void)setModel:(id<TTModel>)model {
     if (_model != model) {
+        _model = model;
         [_model.delegates removeObject:self];
         [_model.delegates addObject:self];
-        NSLog(@"set Model");
+        if([_model autoLoaded]){
+            
+            [self refresh];
+        }
     }
+    
 }
 
 @end

@@ -40,7 +40,8 @@
 		B298E34C19640FAD00EB4850 /* EXPAFNetWorkingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B298E34B19640FAD00EB4850 /* EXPAFNetWorkingUtil.m */; };
 		B298E35A1964510600EB4850 /* EXPApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B298E3591964510600EB4850 /* EXPApplicationContext.m */; };
 		B298E35D196452BA00EB4850 /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B298E35C196452BA00EB4850 /* HDXMLParser.m */; };
-		B2A2D93519651EC300B2C935 /* EXPModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D93419651EC300B2C935 /* EXPModelViewController.m */; };
+		B29D95BD196595EB0017A9B7 /* EXPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D95BB196595EB0017A9B7 /* EXPLoginViewController.m */; };
+		B29D95BE196595EB0017A9B7 /* EXPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29D95BC196595EB0017A9B7 /* EXPLoginViewController.xib */; };
 		B2A2D93B19652A2900B2C935 /* LMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D93A19652A2900B2C935 /* LMModel.m */; };
 		B2A2D9411965352700B2C935 /* NSArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D9401965352700B2C935 /* NSArrayAdditions.m */; };
 		B2A2D9441965376700B2C935 /* EXPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D9431965376700B2C935 /* EXPLoginModel.m */; };
@@ -130,9 +131,9 @@
 		B298E3591964510600EB4850 /* EXPApplicationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPApplicationContext.m; path = Utilities/EXPApplicationContext.m; sourceTree = "<group>"; };
 		B298E35B196452BA00EB4850 /* HDXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDXMLParser.h; path = Utilities/HDXMLParser.h; sourceTree = "<group>"; };
 		B298E35C196452BA00EB4850 /* HDXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDXMLParser.m; path = Utilities/HDXMLParser.m; sourceTree = "<group>"; };
-		B2A2D93319651EC300B2C935 /* EXPModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPModelViewController.h; path = HandMobileExp/Classes/Model/EXPModelViewController.h; sourceTree = "<group>"; };
-		B2A2D93419651EC300B2C935 /* EXPModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPModelViewController.m; path = HandMobileExp/Classes/Model/EXPModelViewController.m; sourceTree = "<group>"; };
-		B2A2D93619651F1100B2C935 /* EXPModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EXPModelDelegate.h; path = HandMobileExp/Classes/Model/EXPModelDelegate.h; sourceTree = "<group>"; };
+		B29D95BA196595EB0017A9B7 /* EXPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLoginViewController.h; path = HandMobileExp/Classes/Login/EXPLoginViewController.h; sourceTree = "<group>"; };
+		B29D95BB196595EB0017A9B7 /* EXPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLoginViewController.m; path = HandMobileExp/Classes/Login/EXPLoginViewController.m; sourceTree = "<group>"; };
+		B29D95BC196595EB0017A9B7 /* EXPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EXPLoginViewController.xib; path = HandMobileExp/Classes/Login/EXPLoginViewController.xib; sourceTree = "<group>"; };
 		B2A2D93919652A2900B2C935 /* LMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMModel.h; path = Frameworks/LittleMvc/LMModel.h; sourceTree = "<group>"; };
 		B2A2D93A19652A2900B2C935 /* LMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMModel.m; path = Frameworks/LittleMvc/LMModel.m; sourceTree = "<group>"; };
 		B2A2D93D196534EC00B2C935 /* NSArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArrayAdditions.h; path = Frameworks/LittleMvc/NSArrayAdditions.h; sourceTree = "<group>"; };
@@ -273,7 +274,6 @@
 			children = (
 				B2A2D937196529B400B2C935 /* LittleMvc */,
 				B26B0DBC1964ED1900824622 /* Login */,
-				B298E34D196438C000EB4850 /* Model */,
 				B26AD30C1962DF7E0081152F /* Loading */,
 				B26AD3011962DD620081152F /* Utilities */,
 			);
@@ -329,6 +329,9 @@
 		B26B0DBC1964ED1900824622 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B29D95BA196595EB0017A9B7 /* EXPLoginViewController.h */,
+				B29D95BB196595EB0017A9B7 /* EXPLoginViewController.m */,
+				B29D95BC196595EB0017A9B7 /* EXPLoginViewController.xib */,
 				B2A2D9421965376700B2C935 /* EXPLoginModel.h */,
 				B2A2D9431965376700B2C935 /* EXPLoginModel.m */,
 			);
@@ -386,16 +389,6 @@
 				B298E34B19640FAD00EB4850 /* EXPAFNetWorkingUtil.m */,
 			);
 			name = AFNetWorkingUtil;
-			sourceTree = "<group>";
-		};
-		B298E34D196438C000EB4850 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B2A2D93319651EC300B2C935 /* EXPModelViewController.h */,
-				B2A2D93419651EC300B2C935 /* EXPModelViewController.m */,
-				B2A2D93619651F1100B2C935 /* EXPModelDelegate.h */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		B298E35619644DD600EB4850 /* HDGodXMLParser */ = {
@@ -576,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29D95BE196595EB0017A9B7 /* EXPLoginViewController.xib in Resources */,
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
 				B298E29419639C7300EB4850 /* Settings.bundle in Resources */,
 				B26AD26D1962D2200081152F /* InfoPlist.strings in Resources */,
@@ -605,6 +599,7 @@
 				B2A2D96D1965889300B2C935 /* MMProgressHUDWindow.m in Sources */,
 				B2A2D9441965376700B2C935 /* EXPLoginModel.m in Sources */,
 				B2A2D96B1965889300B2C935 /* MMProgressHUDOverlayView.m in Sources */,
+				B29D95BD196595EB0017A9B7 /* EXPLoginViewController.m in Sources */,
 				B298E2B21963A05500EB4850 /* AFURLSessionManager.m in Sources */,
 				B298E2AF1963A05500EB4850 /* AFURLConnectionOperation.m in Sources */,
 				B2A2D9681965889300B2C935 /* MMProgressHUD+Animations.m in Sources */,
@@ -614,7 +609,6 @@
 				B298E34C19640FAD00EB4850 /* EXPAFNetWorkingUtil.m in Sources */,
 				B2A2D93B19652A2900B2C935 /* LMModel.m in Sources */,
 				B298E2AD1963A05500EB4850 /* AFNetworkReachabilityManager.m in Sources */,
-				B2A2D93519651EC300B2C935 /* EXPModelViewController.m in Sources */,
 				B298E35A1964510600EB4850 /* EXPApplicationContext.m in Sources */,
 				B2A2D9411965352700B2C935 /* NSArrayAdditions.m in Sources */,
 				B26AD26F1962D2200081152F /* main.m in Sources */,

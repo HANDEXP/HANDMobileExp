@@ -13,5 +13,6 @@
     
     id<TTModel> _model;
 }
+- (void)setModel:(id<TTModel>)model ;
 
 @end

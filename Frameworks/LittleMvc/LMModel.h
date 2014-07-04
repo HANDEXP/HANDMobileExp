@@ -13,7 +13,13 @@
  * An array of objects that conform to the TTModelDelegate protocol.
  */
 - (NSMutableArray*)delegates;
+/**
+ * Indicates that the data wheather load by set model.
+ *
+ * Default implementation returns YES.
+ */
 
+-(BOOL)autoLoaded;
 /**
  * Indicates that the data has been loaded.
  *
@@ -48,11 +54,15 @@
  * Default implementation does nothing.
  */
 
+- (void)load:(int)cachePolicy more:(BOOL)more;
+
+
 @end
 
 @interface LMModel : NSObject <TTModel>{
     NSMutableArray* _delegates;
 }
+
 - (NSMutableArray*)delegates;
 /**
  * Notifies delegates that the model started to load.

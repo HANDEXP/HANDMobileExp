@@ -33,6 +33,20 @@
     [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
+- (void)didFailLoadWithError:(NSError*)error {
+    [_delegates perform:@selector(model:didFailLoadWithError:) withObject:self
+             withObject:error];
+}
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)load:(int)cachePolicy more:(BOOL)more {
+    
+}
+
+-(BOOL)autoLoaded{
+    return YES;
+    
+}
 
 @end

@@ -17,12 +17,15 @@
 
 
 
-- (void)requestDidFinishLoad:(id)Json {
-
+- (void)requestDidFinishLoad {
+    
 }
 
 
 
+- (void) requestdidFailLoadWithError:(NSError*)error {
+    [self didFailLoadWithError:error];
+}
 
 
 

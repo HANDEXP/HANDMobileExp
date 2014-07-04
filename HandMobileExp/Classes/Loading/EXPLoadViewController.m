@@ -103,11 +103,11 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
 }
 -(void)showLoginView{
     NSLog(@"shhowloginview");
-//    LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    EXPLoginViewController *loginViewController = [[EXPLoginViewController alloc] initWithNibName:@"EXPLoginViewController" bundle:nil];
 //
 ////           UIWindow *window = [UIApplication sharedApplication].keyWindow;
 ////    window.rootViewController =loginViewController;
-//        [self presentModalViewController:loginViewController animated:NO];
+        [self presentModalViewController:loginViewController animated:YES];
 
 }
 

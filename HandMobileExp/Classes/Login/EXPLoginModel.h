@@ -7,7 +7,9 @@
 //
 
 #import "AFNetRequestModel.h"
+#import "EXPApplicationContext.h"
 
 @interface EXPLoginModel :AFNetRequestModel
--(void)load;
+- (void)load:(int)cachePolicy more:(BOOL)more;
+- (void)load:(NSDictionary *)param;
 @end

@@ -9,6 +9,7 @@
 #import "EXPApplicationContext.h"
 
 @implementation EXPApplicationContext
+static NSMutableDictionary * UrlPatterns;
 
 NSString* TTPathForDocumentsResource(NSString* relativePath) {
     static NSString* documentsPath = nil;
@@ -29,16 +30,21 @@ NSString* TTPathForDocumentsResource(NSString* relativePath) {
 {
     self = [super init];
     if (self) {
-        self.UrlPatterns = [[NSMutableDictionary alloc] init];
+        UrlPatterns = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
+-(NSMutableDictionary *)getUrlPatterns{
+    
+    return UrlPatterns;
+}
+
 -(void) setPattern:(NSString *) pattern forIdentifier:(NSString *)identifier
 {
-    if (nil == self.UrlPatterns) {
-        self.UrlPatterns = [[NSMutableDictionary alloc]init];
+    if (nil == UrlPatterns) {
+        UrlPatterns = [[NSMutableDictionary alloc]init];
     }
-    [self.UrlPatterns setObject:pattern forKey:identifier];
+    [UrlPatterns setObject:pattern forKey:identifier];
 }
 
 -(BOOL)configWithXmlPath:(NSString *) xmlPath{
@@ -47,6 +53,7 @@ NSString* TTPathForDocumentsResource(NSString* relativePath) {
     [configParser parse];
     if(configParser.patternes !=nil){
         for(NSString * name in configParser.patternes.keyEnumerator){
+            NSLog(@"%@",name);
             [self setPattern:[configParser.patternes objectForKey:name] forIdentifier:name];
         }
         return true;
@@ -58,6 +65,9 @@ NSString* TTPathForDocumentsResource(NSString* relativePath) {
     
 }
 
-
+-(NSString*)keyforUrl:(NSString *)key{
+    
+    return [UrlPatterns valueForKey:key];
+}
 
 @end

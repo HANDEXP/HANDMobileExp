@@ -12,7 +12,6 @@
 -(id)init{
     self=[super init];
     if(self){
-        self.item = [[NSMutableArray alloc] init];
         
     }
     return self;
@@ -28,21 +27,21 @@
     
     if(![method compare: @"GET"]){
         [afUtl getsuccess:^(id Json){
-            NSLog(@"%@",[NSString stringWithUTF8String:object_getClassName(Json)]);
-            NSDictionary * ns =  [ Json  valueForKey:@"error"];
-            NSLog(@"%@",[ns  valueForKey:@"message"]);
+            self.Json = Json;
             [self didFinishLoad];
         }geterror:^(NSError *error){
-            
+            self.error = error;
             [self didFailLoadWithError:error];
         }param:param url:url];
         
     }else if (![method compare: @"POST"]){
          
         [afUtl postsuccess:^(id Json) {
+            self.Json = Json;
             [self didFinishLoad];
         
         }posterror:^(NSError *error){
+             self.error = error;
              [self didFailLoadWithError:error];
         
         }param:param url:url];
