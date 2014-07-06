@@ -12,9 +12,12 @@
 @interface AFNetRequestModel : LMRequestModel
 @property(strong) NSMutableArray * Json;
 @property(strong) NSError   *error;
+@property(nonatomic,retain) EXPAFNetWorkingUtil * utl;
 
 
 -(void)request:(NSString *)method
          param:(NSDictionary *)param
            url:(NSString *)url;
+-(void)setValue:(NSString *)value
+forHTTPHeaderField:(NSString *)field;
 @end

@@ -14,6 +14,8 @@
 
 @implementation LMModelViewController
 
+@synthesize model       = _model;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,16 +49,17 @@
     [self.model load:0 more:false];
 }
 
-- (id<TTModel>)model {
-    if (!_model) {
-        
-    }
-    return _model;
-}
 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Public
 - (void)setModel:(id<TTModel>)model {
+    
     if (_model != model) {
-        _model = model;
+        _model= model;
         [_model.delegates removeObject:self];
         [_model.delegates addObject:self];
         if([_model autoLoaded]){
@@ -66,5 +69,44 @@
     }
     
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)showModel:(BOOL)show {
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didLoadModel:(BOOL)firstTime {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)updateView {
+    // Ensure the model is created
+    [self model];
+    // Ensure the view is created
+    [self view];
+    [self didLoadModel:true];
+    [self showModel:true];
+
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)invalidateView {
+        [self updateView];
+
+}
+
+
+
+#pragma mark -
+#pragma mark TTModelDelegate
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)modelDidFinishLoad:(id<TTModel>)model {
+    if (model == _model) {
+         [self invalidateView];
+    }
+}
+
 
 @end

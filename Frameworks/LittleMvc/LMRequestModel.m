@@ -18,7 +18,7 @@
 
 
 - (void)requestDidFinishLoad {
-    
+    [self didFinishLoad];
 }
 
 

@@ -13,36 +13,39 @@
     self=[super init];
     if(self){
         
+        self.utl= [EXPAFNetWorkingUtil shareObject];
+        
+
     }
     return self;
+}
+-(void)setValue:(NSString *)value
+       forHTTPHeaderField:(NSString *)field{
+    [self.utl setValue:value forHTTPHeaderField:field];
+
 }
 
 -(void)request:(NSString *)method
          param:(NSDictionary *)param
            url:(NSString *)url{
-    
-    EXPAFNetWorkingUtil * afUtl = [EXPAFNetWorkingUtil shareObject];
-    
-    [self didStartLoad];
-    
+        [self didStartLoad];
     if(![method compare: @"GET"]){
-        [afUtl getsuccess:^(id Json){
+        [self.utl getsuccess:^(id Json){
             self.Json = Json;
-            [self didFinishLoad];
+            [self requestDidFinishLoad];
         }geterror:^(NSError *error){
             self.error = error;
-            [self didFailLoadWithError:error];
+            [self requestdidFailLoadWithError:error];
         }param:param url:url];
         
     }else if (![method compare: @"POST"]){
          
-        [afUtl postsuccess:^(id Json) {
+        [self.utl postsuccess:^(id Json) {
             self.Json = Json;
-            [self didFinishLoad];
-        
+            [self requestDidFinishLoad];
         }posterror:^(NSError *error){
              self.error = error;
-             [self didFailLoadWithError:error];
+            [self requestdidFailLoadWithError:error];
         
         }param:param url:url];
         

@@ -20,7 +20,9 @@
     return self;
 }
 - (NSMutableArray*)delegates{
-    
+    if (nil == _delegates) {
+        _delegates = [[NSMutableArray alloc] init];
+    }
     return _delegates;
 }
 

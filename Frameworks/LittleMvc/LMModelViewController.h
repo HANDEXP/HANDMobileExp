@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LMModelDelegate.h"
 #import "LMModel.h"
+#import "RESideMenu.h"
 @interface LMModelViewController : UIViewController<LMModelDelegate>{
+      id<TTModel> _model;
     
-    id<TTModel> _model;
+ 
 }
-- (void)setModel:(id<TTModel>)model ;
+@property (nonatomic, retain) id<TTModel> model;
 
+- (void)didLoadModel:(BOOL)firstTime;
 @end

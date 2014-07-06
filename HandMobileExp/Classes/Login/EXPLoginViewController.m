@@ -12,7 +12,10 @@
 
 
 
-@interface EXPLoginViewController ()<UITextFieldDelegate>
+@interface EXPLoginViewController ()<UITextFieldDelegate>{
+    
+  
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
@@ -26,7 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+       
     }
     return self;
 }
@@ -71,14 +74,23 @@
     
 }
 
+
 - (void)modelDidFinishLoad:(AFNetRequestModel *)model{
     
     NSDictionary * head = [model.Json valueForKey:@"head"];
     NSString *result =  [head valueForKey:@"code"];
-    
+    NSLog(@"%@",result);
     if([result isEqualToString:@"ok"]){
     
-    [MMProgressHUD dismissWithSuccess:@"登录成功"];
+    [MMProgressHUD dismissWithSuccess:nil title:@"登录成功" afterDelay:1];
+
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC);
+               dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                     [self functionListShow];
+               });
+    
+
+        
         
     }else{
         
@@ -124,6 +136,18 @@
     [loginmodel load:param];
 }
 
+-(void)functionListShow{
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[DEMOFirstViewController alloc] init]];
+    EXPFunctionListViewController *leftMenuViewController = [[EXPFunctionListViewController alloc] init];
+    DEMORightMenuViewController *rightMenuViewController = [[DEMORightMenuViewController alloc] init];
+    
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController
+                                                                    leftMenuViewController: leftMenuViewController
+                                                                   rightMenuViewController:rightMenuViewController];
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+    [self presentModalViewController:sideMenuViewController animated:YES];
+}
+
 -(void)lockAnimationForView:(UIView*)view
 {
     CALayer *lbl = [view layer];
@@ -141,14 +165,48 @@
     [lbl addAnimation:animation forKey:nil];
 }
 
+//开始编辑输入框的时候，软键盘出现，执行此事件
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
 
+    CGRect frame = textField.frame;
+    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 150.0)+180;//键盘高度216
+    
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    
+    //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
+
+    if(offset > 0 )
+        self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
+        NSLog(@"%f",self.view.frame.origin.y);
+    [UIView commitAnimations];
+        
+
+}
+
+//当用户按下return键或者按回车键，keyboard消失
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return 1;
+}
+
+//输入框编辑完成以后，将视图恢复到原始状态
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+//    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[self.view.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
 		if ([obj isKindOfClass:[UITextField class]]) {
+            self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 			[obj resignFirstResponder];
 		}
 	}];
+
 }
 @end
