@@ -27,9 +27,9 @@
 
 - (void)load:(NSDictionary *)param{
     
-   
                                    
     [self request:@"GET" param:param url:[[EXPApplicationContext shareObject] keyforUrl:@"login_submit_url" ]];
+
     
     NSMutableDictionary * result =  self.Json;
     NSString * token = [[result valueForKey:@"body"] valueForKey:@"token"];

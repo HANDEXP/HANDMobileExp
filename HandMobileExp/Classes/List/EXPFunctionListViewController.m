@@ -34,6 +34,13 @@
     self.dataSource =datasource;
     
     
+    UILabel *handLabel = [[UILabel alloc]initWithFrame:CGRectMake(20.0, self.view.bounds.size.height*0.95, 300.0, 20.0)];
+    handLabel.text = @"汉得移动商务/Better Experience";
+    handLabel.font = [UIFont systemFontOfSize:11.0f];
+    handLabel.textColor = [UIColor whiteColor];
+    
+    [self.view addSubview:handLabel];
+    
     [self.view addSubview:self.tableview];
     
     
@@ -42,7 +49,7 @@
 -(UITableView *)tableView{
     
     _tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 3.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.5f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.opaque = NO;
         tableView.backgroundColor = [UIColor clearColor];

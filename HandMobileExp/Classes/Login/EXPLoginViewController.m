@@ -16,10 +16,11 @@
     
   
 }
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
-
+@property (strong, nonatomic)IBOutlet UIImageView *bgImageView;
 
 @end
 
@@ -40,12 +41,21 @@
     // Do any additional setup after loading the view from its nib.
     
     [@[_passwordTF,_userNameTF] enumerateObjectsUsingBlock:^(UITextField *obj, NSUInteger idx, BOOL *stop) {
-        [obj.layer setBorderWidth:2];
-        [obj.layer setBorderColor:[UIColor colorWithRed:0.235 green:0.627 blue:0.275 alpha:1.000].CGColor];
+
+        obj.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.090];
         obj.delegate = self;
     }];
     
-
+    
+    UIImage *bgImage = [UIImage imageNamed:@"loginBg"];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.bgImageView.image = bgImage;
+    self.bgImageView.center = self.view.center;
+    [self.view insertSubview:self.bgImageView atIndex:0];
+    
+    [self.loginButton.layer setCornerRadius:6.0f];
+    
+ //   [self.view addSubview:self.bgImageView];
     
     
 }
@@ -59,15 +69,7 @@
 
 #pragma TTMODEL
 - (void)modelDidStartLoad:(id<TTModel>)model{
-    CGFloat red =  arc4random_uniform(255)/255.f;
-    CGFloat blue = arc4random_uniform(256)/255.f;
-    CGFloat green = arc4random_uniform(256)/255.f;
-    
-    CGColorRef color = CGColorRetain([UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor);
-    
-    [[[MMProgressHUD sharedHUD] overlayView] setOverlayColor:color];
-    
-    CGColorRelease(color);
+
     
     [MMProgressHUD showWithTitle:@"Waiting" status:@"Loading"];
     
@@ -121,8 +123,7 @@
 
 //    BOOL autodismiss = YES;
     
-
-    
+ 
 //    if (autodismiss == YES) {
 //        double delayInSeconds = 2.5;
 //        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -137,14 +138,17 @@
 }
 
 -(void)functionListShow{
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[DEMOFirstViewController alloc] init]];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[EXPHomeViewController alloc] init]];
+    
     EXPFunctionListViewController *leftMenuViewController = [[EXPFunctionListViewController alloc] init];
-    DEMORightMenuViewController *rightMenuViewController = [[DEMORightMenuViewController alloc] init];
+   // DEMORightMenuViewController *rightMenuViewController = [[DEMORightMenuViewController alloc] init];
     
     RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController
                                                                     leftMenuViewController: leftMenuViewController
-                                                                   rightMenuViewController:rightMenuViewController];
-    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+                                                                   rightMenuViewController:nil];
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"homeBg"];
+    
+   // sideMenuViewController.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.923 blue:0.409 alpha:0.340];
     [self presentModalViewController:sideMenuViewController animated:YES];
 }
 

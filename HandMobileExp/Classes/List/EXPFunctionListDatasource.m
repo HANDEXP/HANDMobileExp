@@ -7,6 +7,7 @@
 //
 
 #import "EXPFunctionListDatasource.h"
+#import "EXPHomeViewController.h"
 
 @implementation EXPFunctionListDatasource
 
@@ -56,6 +57,9 @@
 }
 
 -(void)addBasicItems{
+//    LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"首页" imageURL:@"Home"];
+//    imageItem.userInfo = @"HomeGuider";
+//    [self.items insertObject:imageItem atIndex:0];
     LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"主页" imageURL:@"IconHome" delegate:self
                                                         selector:@selector(openURLForItem:)];
     imageItem.userInfo = @"HomeGuider";
@@ -65,14 +69,15 @@
 
 -(void)openURLForItem:(LMTableItem *) item
 {
+    
     if([item.userInfo hasPrefix:@"http://"]){
-    LMTableImageItem * _item = item;
-    [self.ViewController.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[EXPWebViewController alloc] initWithUrl:_item.userInfo title:_item.text]]
-                                                 animated:YES];
-    [self.ViewController.sideMenuViewController hideMenuViewController];
+        LMTableImageItem * _item = item;
+        [self.ViewController.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[EXPWebViewController alloc] initWithUrl:_item.userInfo title:_item.text]]
+                                                                    animated:YES];
+        [self.ViewController.sideMenuViewController hideMenuViewController];
         
     }else if ([item.userInfo isEqualToString:@"HomeGuider"] ){
-        [self.ViewController.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[DEMOFirstViewController alloc] initWithNibName:nil bundle:nil]]
+        [self.ViewController.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[EXPHomeViewController alloc] initWithNibName:nil bundle:nil]]
                                                                     animated:YES];
         [self.ViewController.sideMenuViewController hideMenuViewController];
         

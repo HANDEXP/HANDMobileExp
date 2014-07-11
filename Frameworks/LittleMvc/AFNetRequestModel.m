@@ -28,6 +28,7 @@
 -(void)request:(NSString *)method
          param:(NSDictionary *)param
            url:(NSString *)url{
+    NSLog(@"%@",url);
         [self didStartLoad];
     if(![method compare: @"GET"]){
         [self.utl getsuccess:^(id Json){

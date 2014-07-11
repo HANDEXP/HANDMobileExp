@@ -51,10 +51,6 @@
 		B29D960E196649F40017A9B7 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D9609196649F40017A9B7 /* RECommonFunctions.m */; };
 		B29D960F196649F40017A9B7 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D960B196649F40017A9B7 /* RESideMenu.m */; };
 		B29D9610196649F40017A9B7 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D960D196649F40017A9B7 /* UIViewController+RESideMenu.m */; };
-		B29D963519664C0A0017A9B7 /* DEMOFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D962E19664C0A0017A9B7 /* DEMOFirstViewController.m */; };
-		B29D963619664C0A0017A9B7 /* DEMOLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D963019664C0A0017A9B7 /* DEMOLeftMenuViewController.m */; };
-		B29D963719664C0A0017A9B7 /* DEMORightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D963219664C0A0017A9B7 /* DEMORightMenuViewController.m */; };
-		B29D963819664C0A0017A9B7 /* DEMOSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D963419664C0A0017A9B7 /* DEMOSecondViewController.m */; };
 		B29D968B196692990017A9B7 /* LMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D968A196692990017A9B7 /* LMTableViewController.m */; };
 		B29D9691196695EF0017A9B7 /* EXPFunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D9690196695EF0017A9B7 /* EXPFunctionListViewController.m */; };
 		B29D969419669E0B0017A9B7 /* EXPFunctionListDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D969319669E0B0017A9B7 /* EXPFunctionListDatasource.m */; };
@@ -90,6 +86,44 @@
 		B2EB414319683BA200E6085F /* LMTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB414219683BA200E6085F /* LMTableItem.m */; };
 		B2F53A93196D5AA800525AE0 /* LMTableDateInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F53A92196D5AA800525AE0 /* LMTableDateInputCell.xib */; };
 		B2F864A8196D1EBF0017D110 /* LMTableDateInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F864A7196D1EBF0017D110 /* LMTableDateInputCell.m */; };
+		DADD23AA196F8D6F00854C4D /* EXPHomeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23A3196F8D6F00854C4D /* EXPHomeTable.m */; };
+		DADD23AB196F8D6F00854C4D /* EXPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23A5196F8D6F00854C4D /* EXPHomeViewController.m */; };
+		DADD23AC196F8D6F00854C4D /* EXPPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23A7196F8D6F00854C4D /* EXPPageControl.m */; };
+		DADD23AD196F8D6F00854C4D /* EXPScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23A9196F8D6F00854C4D /* EXPScrollview.m */; };
+		DADD23D0196F8DFB00854C4D /* EXPHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23CC196F8DFB00854C4D /* EXPHeaderViewController.m */; };
+		DADD23D1196F8DFB00854C4D /* EXPLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23CE196F8DFB00854C4D /* EXPLineCell.m */; };
+		DADD23D2196F8DFB00854C4D /* EXPLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADD23CF196F8DFB00854C4D /* EXPLineCell.xib */; };
+		DADD23D7196F8EB300854C4D /* EXPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD23D5196F8EB300854C4D /* EXPDetailViewController.m */; };
+		DADD23D8196F8EB300854C4D /* EXPDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADD23D6196F8EB300854C4D /* EXPDetailViewController.xib */; };
+		DADD240D196FB53900854C4D /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F0196FB53900854C4D /* 1.png */; };
+		DADD240E196FB53900854C4D /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F1196FB53900854C4D /* 2.png */; };
+		DADD240F196FB53900854C4D /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F2196FB53900854C4D /* 3.png */; };
+		DADD2410196FB53900854C4D /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F3196FB53900854C4D /* 4.png */; };
+		DADD2411196FB53900854C4D /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F4196FB53900854C4D /* 5.png */; };
+		DADD2412196FB53900854C4D /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F5196FB53900854C4D /* 6.png */; };
+		DADD2413196FB53900854C4D /* doneEXP.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F6196FB53900854C4D /* doneEXP.png */; };
+		DADD2414196FB53900854C4D /* doneEXP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F7196FB53900854C4D /* doneEXP@2x.png */; };
+		DADD2415196FB53900854C4D /* homeBg.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F8196FB53900854C4D /* homeBg.png */; };
+		DADD2416196FB53900854C4D /* homeBg3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23F9196FB53900854C4D /* homeBg3@2x.png */; };
+		DADD2417196FB53A00854C4D /* homeBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23FA196FB53900854C4D /* homeBg@2x.png */; };
+		DADD2418196FB53A00854C4D /* loginBg.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23FB196FB53900854C4D /* loginBg.png */; };
+		DADD2419196FB53A00854C4D /* loginBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23FC196FB53900854C4D /* loginBg@2x.png */; };
+		DADD241A196FB53A00854C4D /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23FD196FB53900854C4D /* menu.png */; };
+		DADD241B196FB53A00854C4D /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23FE196FB53900854C4D /* menu@2x.png */; };
+		DADD241C196FB53A00854C4D /* navigationBg.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD23FF196FB53900854C4D /* navigationBg.png */; };
+		DADD241D196FB53A00854C4D /* navigationBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2400196FB53900854C4D /* navigationBg@2x.png */; };
+		DADD241E196FB53A00854C4D /* newEXP.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2401196FB53900854C4D /* newEXP.png */; };
+		DADD241F196FB53A00854C4D /* newEXP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2402196FB53900854C4D /* newEXP@2x.png */; };
+		DADD2420196FB53A00854C4D /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2403196FB53900854C4D /* note.png */; };
+		DADD2421196FB53A00854C4D /* note@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2404196FB53900854C4D /* note@2x.png */; };
+		DADD2422196FB53A00854C4D /* searchUser.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2405196FB53900854C4D /* searchUser.png */; };
+		DADD2423196FB53A00854C4D /* searchUser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2406196FB53900854C4D /* searchUser@2x.png */; };
+		DADD2424196FB53A00854C4D /* timeSheetFill.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2407196FB53900854C4D /* timeSheetFill.png */; };
+		DADD2425196FB53A00854C4D /* timeSheetFill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2408196FB53900854C4D /* timeSheetFill@2x.png */; };
+		DADD2426196FB53A00854C4D /* toDoEXP.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD2409196FB53900854C4D /* toDoEXP.png */; };
+		DADD2427196FB53A00854C4D /* toDoEXP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD240A196FB53900854C4D /* toDoEXP@2x.png */; };
+		DADD2428196FB53A00854C4D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD240B196FB53900854C4D /* user.png */; };
+		DADD2429196FB53A00854C4D /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADD240C196FB53900854C4D /* user@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,14 +217,6 @@
 		B29D960B196649F40017A9B7 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		B29D960C196649F40017A9B7 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		B29D960D196649F40017A9B7 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
-		B29D962D19664C0A0017A9B7 /* DEMOFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMOFirstViewController.h; path = HandMobileExp/Classes/List/DEMOFirstViewController.h; sourceTree = "<group>"; };
-		B29D962E19664C0A0017A9B7 /* DEMOFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMOFirstViewController.m; path = HandMobileExp/Classes/List/DEMOFirstViewController.m; sourceTree = "<group>"; };
-		B29D962F19664C0A0017A9B7 /* DEMOLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMOLeftMenuViewController.h; path = HandMobileExp/Classes/List/DEMOLeftMenuViewController.h; sourceTree = "<group>"; };
-		B29D963019664C0A0017A9B7 /* DEMOLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMOLeftMenuViewController.m; path = HandMobileExp/Classes/List/DEMOLeftMenuViewController.m; sourceTree = "<group>"; };
-		B29D963119664C0A0017A9B7 /* DEMORightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMORightMenuViewController.h; path = HandMobileExp/Classes/List/DEMORightMenuViewController.h; sourceTree = "<group>"; };
-		B29D963219664C0A0017A9B7 /* DEMORightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMORightMenuViewController.m; path = HandMobileExp/Classes/List/DEMORightMenuViewController.m; sourceTree = "<group>"; };
-		B29D963319664C0A0017A9B7 /* DEMOSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMOSecondViewController.h; path = HandMobileExp/Classes/List/DEMOSecondViewController.h; sourceTree = "<group>"; };
-		B29D963419664C0A0017A9B7 /* DEMOSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMOSecondViewController.m; path = HandMobileExp/Classes/List/DEMOSecondViewController.m; sourceTree = "<group>"; };
 		B29D9689196692990017A9B7 /* LMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableViewController.h; path = Frameworks/LittleMvc/LMTableViewController.h; sourceTree = "<group>"; };
 		B29D968A196692990017A9B7 /* LMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableViewController.m; path = Frameworks/LittleMvc/LMTableViewController.m; sourceTree = "<group>"; };
 		B29D968F196695EF0017A9B7 /* EXPFunctionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPFunctionListViewController.h; path = HandMobileExp/Classes/List/EXPFunctionListViewController.h; sourceTree = "<group>"; };
@@ -257,6 +283,51 @@
 		B2F53A92196D5AA800525AE0 /* LMTableDateInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableDateInputCell.xib; sourceTree = "<group>"; };
 		B2F864A6196D1EBF0017D110 /* LMTableDateInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableDateInputCell.h; path = Frameworks/LittleMvc/LMTableDateInputCell.h; sourceTree = "<group>"; };
 		B2F864A7196D1EBF0017D110 /* LMTableDateInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableDateInputCell.m; path = Frameworks/LittleMvc/LMTableDateInputCell.m; sourceTree = "<group>"; };
+		DADD23A2196F8D6F00854C4D /* EXPHomeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPHomeTable.h; sourceTree = "<group>"; };
+		DADD23A3196F8D6F00854C4D /* EXPHomeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPHomeTable.m; sourceTree = "<group>"; };
+		DADD23A4196F8D6F00854C4D /* EXPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPHomeViewController.h; sourceTree = "<group>"; };
+		DADD23A5196F8D6F00854C4D /* EXPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPHomeViewController.m; sourceTree = "<group>"; };
+		DADD23A6196F8D6F00854C4D /* EXPPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPPageControl.h; sourceTree = "<group>"; };
+		DADD23A7196F8D6F00854C4D /* EXPPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPPageControl.m; sourceTree = "<group>"; };
+		DADD23A8196F8D6F00854C4D /* EXPScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPScrollview.h; sourceTree = "<group>"; };
+		DADD23A9196F8D6F00854C4D /* EXPScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPScrollview.m; sourceTree = "<group>"; };
+		DADD23CB196F8DFB00854C4D /* EXPHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPHeaderViewController.h; sourceTree = "<group>"; };
+		DADD23CC196F8DFB00854C4D /* EXPHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPHeaderViewController.m; sourceTree = "<group>"; };
+		DADD23CD196F8DFB00854C4D /* EXPLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineCell.h; path = ../EXPHeader/EXPLineCell.h; sourceTree = "<group>"; };
+		DADD23CE196F8DFB00854C4D /* EXPLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineCell.m; path = ../EXPHeader/EXPLineCell.m; sourceTree = "<group>"; };
+		DADD23CF196F8DFB00854C4D /* EXPLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EXPLineCell.xib; path = ../EXPHeader/EXPLineCell.xib; sourceTree = "<group>"; };
+		DADD23D4196F8EB300854C4D /* EXPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDetailViewController.h; sourceTree = "<group>"; };
+		DADD23D5196F8EB300854C4D /* EXPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDetailViewController.m; sourceTree = "<group>"; };
+		DADD23D6196F8EB300854C4D /* EXPDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXPDetailViewController.xib; sourceTree = "<group>"; };
+		DADD23F0196FB53900854C4D /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		DADD23F1196FB53900854C4D /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		DADD23F2196FB53900854C4D /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		DADD23F3196FB53900854C4D /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		DADD23F4196FB53900854C4D /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		DADD23F5196FB53900854C4D /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		DADD23F6196FB53900854C4D /* doneEXP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneEXP.png; sourceTree = "<group>"; };
+		DADD23F7196FB53900854C4D /* doneEXP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doneEXP@2x.png"; sourceTree = "<group>"; };
+		DADD23F8196FB53900854C4D /* homeBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBg.png; sourceTree = "<group>"; };
+		DADD23F9196FB53900854C4D /* homeBg3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeBg3@2x.png"; sourceTree = "<group>"; };
+		DADD23FA196FB53900854C4D /* homeBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeBg@2x.png"; sourceTree = "<group>"; };
+		DADD23FB196FB53900854C4D /* loginBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBg.png; sourceTree = "<group>"; };
+		DADD23FC196FB53900854C4D /* loginBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBg@2x.png"; sourceTree = "<group>"; };
+		DADD23FD196FB53900854C4D /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		DADD23FE196FB53900854C4D /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		DADD23FF196FB53900854C4D /* navigationBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBg.png; sourceTree = "<group>"; };
+		DADD2400196FB53900854C4D /* navigationBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBg@2x.png"; sourceTree = "<group>"; };
+		DADD2401196FB53900854C4D /* newEXP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newEXP.png; sourceTree = "<group>"; };
+		DADD2402196FB53900854C4D /* newEXP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newEXP@2x.png"; sourceTree = "<group>"; };
+		DADD2403196FB53900854C4D /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
+		DADD2404196FB53900854C4D /* note@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "note@2x.png"; sourceTree = "<group>"; };
+		DADD2405196FB53900854C4D /* searchUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchUser.png; sourceTree = "<group>"; };
+		DADD2406196FB53900854C4D /* searchUser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchUser@2x.png"; sourceTree = "<group>"; };
+		DADD2407196FB53900854C4D /* timeSheetFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeSheetFill.png; sourceTree = "<group>"; };
+		DADD2408196FB53900854C4D /* timeSheetFill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeSheetFill@2x.png"; sourceTree = "<group>"; };
+		DADD2409196FB53900854C4D /* toDoEXP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toDoEXP.png; sourceTree = "<group>"; };
+		DADD240A196FB53900854C4D /* toDoEXP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toDoEXP@2x.png"; sourceTree = "<group>"; };
+		DADD240B196FB53900854C4D /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		DADD240C196FB53900854C4D /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +369,8 @@
 		B20D10AA196BE345004871F4 /* EXP */ = {
 			isa = PBXGroup;
 			children = (
+				DADD23D3196F8EB300854C4D /* EXPDetail */,
+				DADD23CA196F8DFB00854C4D /* EXPHeader */,
 				B20D10AB196BE352004871F4 /* EXPLine */,
 			);
 			name = EXP;
@@ -392,6 +465,8 @@
 		B26AD2AF1962D88E0081152F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DADD23EF196FB53900854C4D /* Image */,
+				DADD23A1196F8D6F00854C4D /* Home */,
 				B2A2D937196529B400B2C935 /* LittleMvc */,
 				B20D10AA196BE345004871F4 /* EXP */,
 				B28FA8EC196901BD004E6333 /* Detail */,
@@ -561,14 +636,6 @@
 		B29D961119664A690017A9B7 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				B29D962D19664C0A0017A9B7 /* DEMOFirstViewController.h */,
-				B29D962E19664C0A0017A9B7 /* DEMOFirstViewController.m */,
-				B29D962F19664C0A0017A9B7 /* DEMOLeftMenuViewController.h */,
-				B29D963019664C0A0017A9B7 /* DEMOLeftMenuViewController.m */,
-				B29D963119664C0A0017A9B7 /* DEMORightMenuViewController.h */,
-				B29D963219664C0A0017A9B7 /* DEMORightMenuViewController.m */,
-				B29D963319664C0A0017A9B7 /* DEMOSecondViewController.h */,
-				B29D963419664C0A0017A9B7 /* DEMOSecondViewController.m */,
 				B29D968F196695EF0017A9B7 /* EXPFunctionListViewController.h */,
 				B29D9690196695EF0017A9B7 /* EXPFunctionListViewController.m */,
 				B29D969219669E0B0017A9B7 /* EXPFunctionListDatasource.h */,
@@ -754,6 +821,83 @@
 			name = "Static Cells";
 			sourceTree = "<group>";
 		};
+		DADD23A1196F8D6F00854C4D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DADD23A2196F8D6F00854C4D /* EXPHomeTable.h */,
+				DADD23A3196F8D6F00854C4D /* EXPHomeTable.m */,
+				DADD23A4196F8D6F00854C4D /* EXPHomeViewController.h */,
+				DADD23A5196F8D6F00854C4D /* EXPHomeViewController.m */,
+				DADD23A6196F8D6F00854C4D /* EXPPageControl.h */,
+				DADD23A7196F8D6F00854C4D /* EXPPageControl.m */,
+				DADD23A8196F8D6F00854C4D /* EXPScrollview.h */,
+				DADD23A9196F8D6F00854C4D /* EXPScrollview.m */,
+			);
+			name = Home;
+			path = HandMobileExp/Classes/Home;
+			sourceTree = "<group>";
+		};
+		DADD23CA196F8DFB00854C4D /* EXPHeader */ = {
+			isa = PBXGroup;
+			children = (
+				DADD23CB196F8DFB00854C4D /* EXPHeaderViewController.h */,
+				DADD23CC196F8DFB00854C4D /* EXPHeaderViewController.m */,
+			);
+			name = EXPHeader;
+			path = HandMobileExp/Classes/EXP/EXPHeader;
+			sourceTree = "<group>";
+		};
+		DADD23D3196F8EB300854C4D /* EXPDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DADD23D4196F8EB300854C4D /* EXPDetailViewController.h */,
+				DADD23D5196F8EB300854C4D /* EXPDetailViewController.m */,
+				DADD23D6196F8EB300854C4D /* EXPDetailViewController.xib */,
+				DADD23CD196F8DFB00854C4D /* EXPLineCell.h */,
+				DADD23CE196F8DFB00854C4D /* EXPLineCell.m */,
+				DADD23CF196F8DFB00854C4D /* EXPLineCell.xib */,
+			);
+			name = EXPDetail;
+			path = HandMobileExp/Classes/EXP/EXPDetail;
+			sourceTree = "<group>";
+		};
+		DADD23EF196FB53900854C4D /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				DADD23F0196FB53900854C4D /* 1.png */,
+				DADD23F1196FB53900854C4D /* 2.png */,
+				DADD23F2196FB53900854C4D /* 3.png */,
+				DADD23F3196FB53900854C4D /* 4.png */,
+				DADD23F4196FB53900854C4D /* 5.png */,
+				DADD23F5196FB53900854C4D /* 6.png */,
+				DADD23F6196FB53900854C4D /* doneEXP.png */,
+				DADD23F7196FB53900854C4D /* doneEXP@2x.png */,
+				DADD23F8196FB53900854C4D /* homeBg.png */,
+				DADD23F9196FB53900854C4D /* homeBg3@2x.png */,
+				DADD23FA196FB53900854C4D /* homeBg@2x.png */,
+				DADD23FB196FB53900854C4D /* loginBg.png */,
+				DADD23FC196FB53900854C4D /* loginBg@2x.png */,
+				DADD23FD196FB53900854C4D /* menu.png */,
+				DADD23FE196FB53900854C4D /* menu@2x.png */,
+				DADD23FF196FB53900854C4D /* navigationBg.png */,
+				DADD2400196FB53900854C4D /* navigationBg@2x.png */,
+				DADD2401196FB53900854C4D /* newEXP.png */,
+				DADD2402196FB53900854C4D /* newEXP@2x.png */,
+				DADD2403196FB53900854C4D /* note.png */,
+				DADD2404196FB53900854C4D /* note@2x.png */,
+				DADD2405196FB53900854C4D /* searchUser.png */,
+				DADD2406196FB53900854C4D /* searchUser@2x.png */,
+				DADD2407196FB53900854C4D /* timeSheetFill.png */,
+				DADD2408196FB53900854C4D /* timeSheetFill@2x.png */,
+				DADD2409196FB53900854C4D /* toDoEXP.png */,
+				DADD240A196FB53900854C4D /* toDoEXP@2x.png */,
+				DADD240B196FB53900854C4D /* user.png */,
+				DADD240C196FB53900854C4D /* user@2x.png */,
+			);
+			name = Image;
+			path = HandMobileExp/Classes/Image;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -831,13 +975,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADD2414196FB53900854C4D /* doneEXP@2x.png in Resources */,
+				DADD240E196FB53900854C4D /* 2.png in Resources */,
+				DADD241A196FB53A00854C4D /* menu.png in Resources */,
+				DADD2423196FB53A00854C4D /* searchUser@2x.png in Resources */,
+				DADD2425196FB53A00854C4D /* timeSheetFill@2x.png in Resources */,
+				DADD2413196FB53900854C4D /* doneEXP.png in Resources */,
+				DADD2427196FB53A00854C4D /* toDoEXP@2x.png in Resources */,
 				B2F53A93196D5AA800525AE0 /* LMTableDateInputCell.xib in Resources */,
+				DADD2416196FB53900854C4D /* homeBg3@2x.png in Resources */,
+				DADD2420196FB53A00854C4D /* note.png in Resources */,
 				B29D95BE196595EB0017A9B7 /* EXPLoginViewController.xib in Resources */,
+				DADD2410196FB53900854C4D /* 4.png in Resources */,
+				DADD240F196FB53900854C4D /* 3.png in Resources */,
+				DADD2422196FB53A00854C4D /* searchUser.png in Resources */,
+				DADD241F196FB53A00854C4D /* newEXP@2x.png in Resources */,
+				DADD2426196FB53A00854C4D /* toDoEXP.png in Resources */,
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
 				B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */,
+				DADD2415196FB53900854C4D /* homeBg.png in Resources */,
+				DADD2429196FB53A00854C4D /* user@2x.png in Resources */,
 				B298E29419639C7300EB4850 /* Settings.bundle in Resources */,
+				DADD241B196FB53A00854C4D /* menu@2x.png in Resources */,
+				DADD2421196FB53A00854C4D /* note@2x.png in Resources */,
+				DADD2417196FB53A00854C4D /* homeBg@2x.png in Resources */,
+				DADD2419196FB53A00854C4D /* loginBg@2x.png in Resources */,
+				DADD241C196FB53A00854C4D /* navigationBg.png in Resources */,
+				DADD2418196FB53A00854C4D /* loginBg.png in Resources */,
+				DADD2428196FB53A00854C4D /* user.png in Resources */,
+				DADD241E196FB53A00854C4D /* newEXP.png in Resources */,
+				DADD23D2196F8DFB00854C4D /* EXPLineCell.xib in Resources */,
+				DADD2412196FB53900854C4D /* 6.png in Resources */,
 				B2C41C56196EB614007C62BB /* LMTableAmountInputCell.xib in Resources */,
 				B26AD26D1962D2200081152F /* InfoPlist.strings in Resources */,
+				DADD2411196FB53900854C4D /* 5.png in Resources */,
+				DADD241D196FB53A00854C4D /* navigationBg@2x.png in Resources */,
+				DADD23D8196F8EB300854C4D /* EXPDetailViewController.xib in Resources */,
+				DADD240D196FB53900854C4D /* 1.png in Resources */,
+				DADD2424196FB53A00854C4D /* timeSheetFill.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,7 +1031,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29D963619664C0A0017A9B7 /* DEMOLeftMenuViewController.m in Sources */,
 				B298E2AA1963A05500EB4850 /* AFHTTPRequestOperation.m in Sources */,
 				B26AD2731962D2200081152F /* EXPAppDelegate.m in Sources */,
 				B2A2D96F1965889300B2C935 /* MMVectorImage.m in Sources */,
@@ -873,6 +1047,7 @@
 				B298E2B21963A05500EB4850 /* AFURLSessionManager.m in Sources */,
 				B298E2AF1963A05500EB4850 /* AFURLConnectionOperation.m in Sources */,
 				B2A2D9681965889300B2C935 /* MMProgressHUD+Animations.m in Sources */,
+				DADD23D0196F8DFB00854C4D /* EXPHeaderViewController.m in Sources */,
 				B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */,
 				B298E2AB1963A05500EB4850 /* AFHTTPRequestOperationManager.m in Sources */,
 				B2EB414319683BA200E6085F /* LMTableItem.m in Sources */,
@@ -894,11 +1069,14 @@
 				B2A2D953196585A300B2C935 /* LMModelViewController.m in Sources */,
 				B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */,
 				B298E2AE1963A05500EB4850 /* AFSecurityPolicy.m in Sources */,
-				B29D963819664C0A0017A9B7 /* DEMOSecondViewController.m in Sources */,
+				DADD23AC196F8D6F00854C4D /* EXPPageControl.m in Sources */,
+				DADD23D7196F8EB300854C4D /* EXPDetailViewController.m in Sources */,
+				DADD23AB196F8D6F00854C4D /* EXPHomeViewController.m in Sources */,
 				B298E2B01963A05500EB4850 /* AFURLRequestSerialization.m in Sources */,
 				B20D10A9196BE121004871F4 /* FMDataBaseModel.m in Sources */,
 				B26AD3611962EBBA0081152F /* HDSingletonObject.m in Sources */,
 				B298E2B11963A05500EB4850 /* AFURLResponseSerialization.m in Sources */,
+				DADD23AA196F8D6F00854C4D /* EXPHomeTable.m in Sources */,
 				B29D969419669E0B0017A9B7 /* EXPFunctionListDatasource.m in Sources */,
 				B26AD35A1962E7B10081152F /* FMDatabaseQueue.m in Sources */,
 				B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */,
@@ -906,6 +1084,7 @@
 				B26AD3571962E7B10081152F /* FMDatabase.m in Sources */,
 				B29D960E196649F40017A9B7 /* RECommonFunctions.m in Sources */,
 				B2A2D94A19654A7D00B2C935 /* LMRequestModel.m in Sources */,
+				DADD23AD196F8D6F00854C4D /* EXPScrollview.m in Sources */,
 				B2A2D96C1965889300B2C935 /* MMProgressHUDViewController.m in Sources */,
 				B2A2D9691965889300B2C935 /* MMProgressHUD+Class.m in Sources */,
 				B298E2AC1963A05500EB4850 /* AFHTTPSessionManager.m in Sources */,
@@ -914,15 +1093,14 @@
 				B2C556701967D8BC00B14460 /* LMTableViewDataSource.m in Sources */,
 				B2A2D9671965889300B2C935 /* MMHud.m in Sources */,
 				B2C556771968054300B14460 /* LMSectioneDataSource.m in Sources */,
+				DADD23D1196F8DFB00854C4D /* EXPLineCell.m in Sources */,
 				B28FA8E81968E85D004E6333 /* LMListDataSource.m in Sources */,
 				B2C41C37196E7434007C62BB /* LMTableAmountInputCell.m in Sources */,
 				B26AD35B1962E7B10081152F /* FMResultSet.m in Sources */,
-				B29D963519664C0A0017A9B7 /* DEMOFirstViewController.m in Sources */,
 				B2A2D97619658E4C00B2C935 /* EXPLoadViewController.m in Sources */,
 				B2C556811968288E00B14460 /* LMTableImageItemCellTableViewCell.m in Sources */,
 				B26AD3581962E7B10081152F /* FMDatabaseAdditions.m in Sources */,
 				B2C41C52196EB182007C62BB /* LMTablePickerInputCell.m in Sources */,
-				B29D963719664C0A0017A9B7 /* DEMORightMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

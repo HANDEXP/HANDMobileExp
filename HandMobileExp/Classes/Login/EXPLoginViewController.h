@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LMModelViewController.h"
 #import "EXPLoginModel.h"
-#import "DEMOFirstViewController.h"
-#import "DEMOLeftMenuViewController.h"
-#import "DEMORightMenuViewController.h"
-#import "DEMOFirstViewController.h"
 #import "EXPFunctionListViewController.h"
+#import "EXPHomeViewController.h"
 
 @interface EXPLoginViewController : LMModelViewController
 

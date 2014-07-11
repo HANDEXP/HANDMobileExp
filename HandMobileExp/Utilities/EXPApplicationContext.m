@@ -54,7 +54,7 @@ NSString* TTPathForDocumentsResource(NSString* relativePath) {
     [configParser parse];
     if(configParser.patternes !=nil){
         for(NSString * name in configParser.patternes.keyEnumerator){
-            NSLog(@"%@",name);
+            NSLog(@"%@hello",name);
             [self setPattern:[configParser.patternes objectForKey:name] forIdentifier:name];
         }
         return true;

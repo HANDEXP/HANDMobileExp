@@ -8,6 +8,7 @@
 
 #import "EXPAppDelegate.h"
 #import  "EXPLineModelDetailViewController.h"
+#import "EXPLoadViewController.h"
 
         @implementation EXPAppDelegate
 
@@ -19,8 +20,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[EXPLineModelDetailViewController alloc] initWithNibName:nil bundle:nil];
-   
+//    self.window.rootViewController = [[EXPLineModelDetailViewController alloc] initWithNibName:nil bundle:nil];
+    self.window.rootViewController = [[EXPLoadViewController alloc]initWithNibName:nil bundle:nil];
     [self.window makeKeyAndVisible];
     
     return YES;
