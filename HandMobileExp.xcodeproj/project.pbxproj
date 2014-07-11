@@ -71,6 +71,7 @@
 		B2A2D96F1965889300B2C935 /* MMVectorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D9661965889300B2C935 /* MMVectorImage.m */; };
 		B2A2D97619658E4C00B2C935 /* EXPLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D97519658E4C00B2C935 /* EXPLoadViewController.m */; };
 		B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */; };
+		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
 		B2C41C37196E7434007C62BB /* LMTableAmountInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */; };
 		B2C41C52196EB182007C62BB /* LMTablePickerInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C41C51196EB182007C62BB /* LMTablePickerInputCell.m */; };
 		B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C41C53196EB5DC007C62BB /* LMTablePickerInputCell.xib */; };
@@ -256,6 +257,8 @@
 		B2A2D97519658E4C00B2C935 /* EXPLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPLoadViewController.m; sourceTree = "<group>"; };
 		B2B6A8BB196EECBD00B7005C /* EXPLineDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.h; sourceTree = "<group>"; };
 		B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.m; sourceTree = "<group>"; };
+		B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailHtppModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.h; sourceTree = "<group>"; };
+		B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailHtppModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.m; sourceTree = "<group>"; };
 		B2C41C35196E7434007C62BB /* LMTableAmountInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableAmountInputCell.h; path = Frameworks/LittleMvc/LMTableAmountInputCell.h; sourceTree = "<group>"; };
 		B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableAmountInputCell.m; path = Frameworks/LittleMvc/LMTableAmountInputCell.m; sourceTree = "<group>"; };
 		B2C41C50196EB182007C62BB /* LMTablePickerInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTablePickerInputCell.h; path = Frameworks/LittleMvc/LMTablePickerInputCell.h; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 				B20D10AD196BE3CE004871F4 /* EXPLineModelDetailViewController.m */,
 				B2B6A8BB196EECBD00B7005C /* EXPLineDetailModel.h */,
 				B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */,
+				B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */,
+				B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */,
 			);
 			name = EXPLine;
 			sourceTree = "<group>";
@@ -465,8 +470,12 @@
 		B26AD2AF1962D88E0081152F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				DADD23EF196FB53900854C4D /* Image */,
 				DADD23A1196F8D6F00854C4D /* Home */,
+=======
+				B2B6A8C1196FA7E400B7005C /* img */,
+>>>>>>> Stashed changes
 				B2A2D937196529B400B2C935 /* LittleMvc */,
 				B20D10AA196BE345004871F4 /* EXP */,
 				B28FA8EC196901BD004E6333 /* Detail */,
@@ -738,6 +747,13 @@
 			);
 			name = MMProgressHUD;
 			path = Frameworks/MMProgressHUD;
+			sourceTree = "<group>";
+		};
+		B2B6A8C1196FA7E400B7005C /* img */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = img;
 			sourceTree = "<group>";
 		};
 		B2C5566B1967D7AE00B14460 /* Table */ = {
@@ -1051,6 +1067,7 @@
 				B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */,
 				B298E2AB1963A05500EB4850 /* AFHTTPRequestOperationManager.m in Sources */,
 				B2EB414319683BA200E6085F /* LMTableItem.m in Sources */,
+				B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */,
 				B28FA8EF19690212004E6333 /* EXPWebViewController.m in Sources */,
 				B2A2D96A1965889300B2C935 /* MMProgressHUD.m in Sources */,
 				B26AD3591962E7B10081152F /* FMDatabasePool.m in Sources */,

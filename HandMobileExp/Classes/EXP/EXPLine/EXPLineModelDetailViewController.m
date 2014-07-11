@@ -8,6 +8,7 @@
 
 #import "EXPLineModelDetailViewController.h"
 #import "EXPLineDetailModel.h"
+#import "EXPLineDetailHtppModel.h"
 
 
 @interface EXPLineModelDetailViewController (){
@@ -15,6 +16,7 @@
     NSArray *provinces;
     NSArray	*cities;
     EXPLineDetailModel * model;
+    EXPLineDetailHtppModel * httpmdel;
     
     LMTableDateInputCell *dateCell;
     LMTableAmountInputCell *amountCell;
@@ -62,7 +64,17 @@
        forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.btn];
     
+    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.bounds.size.width, 100)];
+    
+    [self.upload setBackgroundColor:[UIColor blackColor]];
+    [self.btn setTitle:@"upload" forState:UIControlStateNormal];
+    [self.btn addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:self.upload];
+    
+    
+    
     model = [[EXPLineDetailModel alloc] init];
+    httpmdel = [[EXPLineDetailHtppModel alloc] init];
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -92,6 +104,29 @@
     NSArray * recordlist = @[record];
     
     [model save:recordlist];
+    
+}
+
+-(void)upload:(UIButton *)paramSender{
+    
+    NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
+    NSLog(@"data length is %d",data.length);
+    
+    
+    NSNumber * type_id = [NSNumber numberWithInt:1];
+    NSNumber * total_amount = [NSNumber numberWithInteger:amountCell.numberValue];
+    NSLog(@"%d",amountCell.numberValue );
+    NSLog(@"%@",dateCell.dateValue);
+    //?line_type=13&line_description=wangjunxiaojiebao&amount=100
+    NSDictionary * record = @{
+                              @"line_type" : type_id,
+                              @"amount" : total_amount,
+                              @"line_description" : @"插入图片1",
+                              @"img_data"   :data
+                              };
+    
+    [httpmdel load:record];
+    
     
 }
 

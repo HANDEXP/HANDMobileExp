@@ -30,6 +30,7 @@
            url:(NSString *)url{
     NSLog(@"%@",url);
         [self didStartLoad];
+    NSLog(@"%@",url);
     if(![method compare: @"GET"]){
         [self.utl getsuccess:^(id Json){
             self.Json = Json;

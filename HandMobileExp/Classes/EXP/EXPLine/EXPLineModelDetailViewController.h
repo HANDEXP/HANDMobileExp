@@ -19,6 +19,7 @@ UIPickerViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate>
 @property(nonatomic,strong) UITableView * tv;
 @property(nonatomic,strong) UIButton *btn;
 @property(nonatomic,strong)  UITextView * tx ;
+@property(nonatomic,strong) UIButton * upload;
 
 
 
