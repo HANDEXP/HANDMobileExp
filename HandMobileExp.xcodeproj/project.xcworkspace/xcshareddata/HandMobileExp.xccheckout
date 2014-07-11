@@ -5,46 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E261C9BC-7D48-44C7-A2E4-1A8E3DA3A57F</string>
+	<string>5539353C-14A3-4833-8FD8-EC955A0FD778</string>
 	<key>IDESourceControlProjectName</key>
 	<string>HandMobileExp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>031335FC-C181-4EAB-8440-73EE20593906</key>
-		<string>ssh://github.com/HAND-MAS/HANDMobileExp.git</string>
-		<key>B89AF18C-9B07-416A-8077-32830ACA4E11</key>
-		<string>ssh://github.com/ccgus/fmdb.git</string>
+		<key>E62356F8-6B6C-4752-8057-450CBA9D095F</key>
+		<string>ssh://github.com/HANDEXP/HANDMobileExp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HandMobileExp.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>031335FC-C181-4EAB-8440-73EE20593906</key>
+		<key>E62356F8-6B6C-4752-8057-450CBA9D095F</key>
 		<string>../..</string>
-		<key>B89AF18C-9B07-416A-8077-32830ACA4E11</key>
-		<string>../../Frameworks/fmdb</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/HAND-MAS/HANDMobileExp.git</string>
+	<string>ssh://github.com/HANDEXP/HANDMobileExp.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>031335FC-C181-4EAB-8440-73EE20593906</string>
+	<string>E62356F8-6B6C-4752-8057-450CBA9D095F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B89AF18C-9B07-416A-8077-32830ACA4E11</string>
-			<key>IDESourceControlWCCName</key>
-			<string>fmdb</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>031335FC-C181-4EAB-8440-73EE20593906</string>
+			<string>E62356F8-6B6C-4752-8057-450CBA9D095F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HANDMobileExp</string>
 		</dict>

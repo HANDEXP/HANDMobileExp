@@ -30,6 +30,8 @@
         DatabasePool = [[FMDatabasePool alloc] initWithPath:TTPathForDocumentsResource(@"HDMobileBusiness.db")];
         DatabasePool.maximumNumberOfDatabasesToCreate = 3;
         sqlCenter = [[HDSQLCenter alloc]init];
+        
+        
     }
     return self;
 }

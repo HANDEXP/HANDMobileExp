@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import  "HDCoreStorage.h"
-#import "EXPLoadViewController.h"
+#import "EXPLineModelDetailViewController.h"
 
 @interface EXPAppDelegate : UIResponder <UIApplicationDelegate>
 

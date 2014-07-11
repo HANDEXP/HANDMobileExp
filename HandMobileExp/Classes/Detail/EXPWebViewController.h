@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMProgressHUD.h"
+#import "MMProgressHUDOverlayView.h"
 
 @interface EXPWebViewController : UIViewController <UIWebViewDelegate>{
     
     UIWebView*        _webView;
     NSString *        _url;
     NSString *        _text;
+    NSString *        _resourceBundleName;
 }
 
 

@@ -17,6 +17,7 @@ NSString* TTPathForDocumentsResource(NSString* relativePath) {
         NSArray* dirs = NSSearchPathForDirectoriesInDomains(
                                                             NSDocumentDirectory, NSUserDomainMask, YES);
         documentsPath = [dirs objectAtIndex:0];
+               NSLog(@"%@",documentsPath);
     }
     return [documentsPath stringByAppendingPathComponent:relativePath];
 }
