@@ -8,6 +8,7 @@
 
 #import "EXPLineDetailHtppModel.h"
 #import "EXPApplicationContext.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @implementation EXPLineDetailHtppModel
 
@@ -20,7 +21,7 @@
     
     NSData *data  = [param valueForKey:@"img_data"];
     
-    
+//    
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
 //    
@@ -36,27 +37,49 @@
 //        }
 //    }];
 //    [uploadTask resume];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http://10.211.130.139:8397/mobile_app/atm_upload.svc" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileURL:[NSURL fileURLWithPath:TTPathForDocumentsResource(@"currentImage.png")] name:@"file" fileName:@"filename.jpg" mimeType:@"image/jpeg" error:nil];
-    } error:nil];
-    [request setValue:@"897118" forHTTPHeaderField:@"Content-Length"];
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSProgress *progress = nil;
-    
-    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        } else {
-            NSLog(@"%@ %@", response, responseObject);
-        }
+    NSDictionary *parameters = @{@"source_type" :@"wangjun",
+                                 @"pkvalue" :@"13333"
+                                 };
+    NSURL *filePath = [NSURL fileURLWithPath:TTPathForDocumentsResource(@"currentImage.png")];
+    [manager POST:@"http://10.211.130.139:8397/mobile_app/atm_upload.svc" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileURL:filePath name:@"image" error:nil];
+//        [formData appendPartWithFormData:[@"testdata" dataUsingEncoding:NSUTF8StringEncoding] name:@"source_type"];
+//        [formData appendPartWithFormData:[@"1222" dataUsingEncoding:NSUTF8StringEncoding] name:@"pkvalue"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
     
-    [uploadTask resume];
+
     
+//    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http://10.211.130.139:8397/mobile_app/atm_upload.svc" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        [formData appendPartWithInputStream:[NSInputStream inputStreamWithFileAtPath:TTPathForDocumentsResource(@"currentImage.png")]
+//                                       name:@"currentImage.png" fileName:@"currentImage.png" length:1000 mimeType:@"image/png"];
+//
+//        
+//        
+//    } error:nil];
+//
+//   
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//    NSProgress *progress = nil;
+//    
+//        [request setValue:@"1000" forHTTPHeaderField:@"Content-Length"];
+//    
+//    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//       if (error) {
+//            NSLog(@"Error: %@", error);
+//      } else {
+//            NSLog(@"%@ %@", response, responseObject);
+//       }
+//    }];
+//   
+//    [uploadTask resume];
     
+   
     
     
     

@@ -11,6 +11,7 @@
 #import "EXPScrollview.h"
 #import "EXPHeaderViewController.h"
 #import "EXPDetailViewController.h"
+#import  "EXPLineModelDetailViewController.h"
 
 
 @interface EXPHomeViewController ()
@@ -162,9 +163,9 @@
     
     UIButton *pushViewButton = sender;
     
-    EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
+    EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
     
-    self.headerVIewController =   [[EXPHeaderViewController alloc] initWithNibName:Nil bundle:nil];
+//    self.headerVIewController =   [[EXPHeaderViewController alloc] initWithNibName:Nil bundle:nil];
 //UINavigationController *navigationController = [[UINavigationController alloc]init];
         switch (pushViewButton.tag) {
         case 0:

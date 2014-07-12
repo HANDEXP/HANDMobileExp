@@ -46,7 +46,7 @@
 {
     [super viewDidLoad];
     self.tv = [[UITableView alloc] initWithFrame:self.view.bounds];
-     self.tv.dataSource = self;
+    self.tv.dataSource = self;
     self.tv.delegate = self;
     
     self.tv.tableFooterView = [[UIView alloc]init];
@@ -57,19 +57,19 @@
     [self.view addSubview:self.tx];
     
     self.btn=  [[UIButton alloc] initWithFrame:CGRectMake(0, 400, self.view.bounds.size.width, 100)];
-    [self.btn setBackgroundColor:[UIColor blackColor]];
-    [self.btn setTitle:@"press me " forState:UIControlStateNormal];
+    [self.btn setBackgroundColor:[UIColor whiteColor]];
+    [self.btn setTitle:@"保存" forState:UIControlStateNormal];
     [self.btn addTarget:self
                  action:@selector(save:)
        forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.btn];
     
-    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.bounds.size.width, 100)];
-    
-    [self.upload setBackgroundColor:[UIColor blackColor]];
-    [self.btn setTitle:@"upload" forState:UIControlStateNormal];
-    [self.btn addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:self.upload];
+//    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(0, 300, self.view.bounds.size.width, 100)];
+//    
+//    [self.upload setBackgroundColor:[UIColor blackColor]];
+//    [self.upload setTitle:@"upload" forState:UIControlStateNormal];
+//    [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
+//    [self.view addSubview:self.upload];
     
     
     

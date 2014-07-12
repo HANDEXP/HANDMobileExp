@@ -7,12 +7,8 @@
 //
 
 #import "EXPAppDelegate.h"
-<<<<<<< Updated upstream
 #import  "EXPLineModelDetailViewController.h"
 #import "EXPLoadViewController.h"
-=======
-#import  "EXPLoadViewController.h"
->>>>>>> Stashed changes
 
         @implementation EXPAppDelegate
 
@@ -24,9 +20,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-
-    self.window.rootViewController = [[EXPLoadViewController alloc]initWithNibName:nil bundle:nil];
-
+    self.window.rootViewController = [[EXPLoadViewController alloc] initWithNibName:nil bundle:nil];
+   
     [self.window makeKeyAndVisible];
     
     return YES;

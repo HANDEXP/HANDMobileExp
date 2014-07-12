@@ -139,12 +139,9 @@
 }
 
 -(void)functionListShow{
-<<<<<<< Updated upstream
+
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[EXPHomeViewController alloc] init]];
-    
-=======
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[EXPLineModelDetailViewController alloc] init]];
->>>>>>> Stashed changes
+
     EXPFunctionListViewController *leftMenuViewController = [[EXPFunctionListViewController alloc] init];
    // DEMORightMenuViewController *rightMenuViewController = [[DEMORightMenuViewController alloc] init];
     

@@ -30,7 +30,5 @@
 -(void)EXPscrollViewDidEndDecelerating;
 @end
 
-@interface UIImageView (CopyImageview)<NSCoding>
-@end
 
 

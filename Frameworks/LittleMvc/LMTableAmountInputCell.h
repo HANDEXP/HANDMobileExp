@@ -41,9 +41,11 @@
 @property(nonatomic) UIReturnKeyType returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property(nonatomic) UITextSpellCheckingType spellCheckingType;
-
 @property (strong, nonatomic) IBOutlet UILabel *amount;
+
 @property (strong, nonatomic) IBOutlet UIImageView *img;
+
+
 @property (strong, nonatomic) UIViewController *tv;
 
 
