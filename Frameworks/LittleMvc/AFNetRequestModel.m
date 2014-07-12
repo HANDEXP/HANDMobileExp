@@ -62,4 +62,28 @@
     
 }
 
+-(void) uploadparam:(NSMutableDictionary *)param
+filedata:(NSData *)data
+filename:(NSString *)filename
+mimeType:(NSString *)mimeType
+url:(NSString *)url
+
+{
+    self.requestType = @"upload";
+    [self didStartLoad];
+    [self.utl success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.Json = responseObject;
+        [self requestDidFinishLoad];
+    }error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        self.error = error;
+        [self requestdidFailLoadWithError:error];
+    } param:param
+             filedata:data
+             filename:filename
+             mimeType:mimeType
+                  url:url
+     ];
+    
+    
+}
 @end

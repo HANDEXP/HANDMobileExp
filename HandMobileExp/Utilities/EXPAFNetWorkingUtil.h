@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HDSingletonObject.h"
 #import "AFHTTPSessionManager.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface EXPAFNetWorkingUtil : HDSingletonObject
 @property (strong) AFHTTPSessionManager * AFAppDotNetAPIClient;
@@ -31,5 +32,11 @@ forHTTPHeaderField :(NSString *)field;
                                 param:(NSMutableDictionary * )param
                                  url :(NSString *)url;
 
-
+-(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+         error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error
+          param:(NSMutableDictionary *)param
+       filedata:(NSData *)data
+       filename:(NSString *)filename
+       mimeType:(NSString *)mimeType
+            url:(NSString *)url;
 @end

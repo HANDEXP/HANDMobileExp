@@ -13,7 +13,7 @@
 @property(strong) NSMutableArray * Json;
 @property(strong) NSError   *error;
 @property(nonatomic,retain) EXPAFNetWorkingUtil * utl;
-
+@property(nonatomic,retain)  NSString * requestType;
 
 -(void)request:(NSString *)method
          param:(NSDictionary *)param

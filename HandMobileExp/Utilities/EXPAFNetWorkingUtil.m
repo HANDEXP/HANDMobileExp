@@ -86,5 +86,20 @@
     }];
 }
 
--(void)
+-(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+         error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error
+          param:(NSMutableDictionary *)param
+       filedata:(NSData *)data
+       filename:(NSString *)filename
+       mimeType:(NSString *)mimeType
+            url:(NSString *)url{
+    NSString * fullPath = [self.baseUrl  stringByAppendingString:url];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:fullPath parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:data name:filename  fileName:filename mimeType:mimeType];
+        
+    } success:success
+          failure:error];
+    
+}
 @end
