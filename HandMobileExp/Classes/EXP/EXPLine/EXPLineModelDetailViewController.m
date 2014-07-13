@@ -32,6 +32,8 @@
     NSString * expense_item2;
     NSString * expense_tyep_desc;
     
+    BOOL  shouldUploadImg;
+    
     
     
     
@@ -64,6 +66,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         updateFlag = NO;
         insertFlag = YES;
+        shouldUploadImg = YES;
     }
     return self;
 }
@@ -89,6 +92,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     model = [[EXPLineDetailModel alloc] init];
     [model.delegates addObject:self];
     httpmdel = [[EXPLineDetailHtppModel alloc] init];
+    [httpmdel.delegates addObject:self];
     
     //对线进行处理
     UIView *div1 = [UIView new];
@@ -156,10 +160,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.view addSubview:self.saveAdd];
     
     
-    //键盘相关处理
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
+        
 }
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
@@ -226,9 +227,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 -(void)upload:(UIButton *)paramSender{
 
+    
+    
 
     NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
-    NSLog(@"data length is %d",data.length);
+    
+    updateFlag = YES;
     
     
     NSNumber * type_id = [NSNumber numberWithInt:1];
@@ -242,19 +246,17 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSDictionary * record = @{
                               @"exp_expense_type_id" : type_id,
-                              @"exp_expense_type_desc" :expense_tyep_desc,
-                              @"total_amount" : total_amount,
-                              @"time"    : time ,
-                              @"place"    : placeCell.place_desc,
+                              @"expense_type_desc" :expense_tyep_desc,
+                              @"amount" : total_amount,
+                              @"expense_date"    : time ,
+                              @"expense_place"    : placeCell.place_desc,
                               @"status"    :@"new",
-                              @"line_description" : self.descTx.text,
-                              @"creatdate" : [NSDate date],
-                              @"create_by" : @"1",
-                              @"item1" : data,
-                              @"id" : self.keyId
+                              @"description" : self.descTx.text,
+                              @"currency" : @"CNY",
+                              @"mobile_client_id" : self.keyId
                               };
     
-    [httpmdel load:record];
+    [httpmdel postLine:record];
     
     
 }
@@ -440,6 +442,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 #pragma  modeldelegate
 -(void)modelDidFinishLoad:(id)model{
     NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
+    NSLog(@"%@,",className);
     if([className isEqualToString:@"EXPLineDetailModel"]){
         EXPLineDetailModel *_model = model;
         
@@ -459,6 +462,36 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         }else if([_model.method isEqualToString:@"update"]){
             
         }
+        
+    }else if ([className isEqualToString:@"EXPLineDetailHtppModel"]){
+        EXPLineDetailHtppModel *_model = model;
+        NSLog(@"%@",_model.Json);
+        NSDictionary * head = [_model.Json valueForKey:@"head"];
+        NSDictionary * body = [_model.Json valueForKey:@"body"];
+        NSString * result = [head valueForKey:@"code"];
+
+        if([result isEqualToString:@"success"]){
+            //如何需要上传照片
+            if(shouldUploadImg){
+                shouldUploadImg = NO;
+                NSNumber * pkvalue = [body valueForKey:@"expense_detail_id"];
+                NSString * source_type = @"mobile_exp_report";
+                NSDictionary * param = @{@"pkvalue" : pkvalue,
+                                         @"source_type" : source_type
+                                         
+                                         };
+                
+                NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
+                
+                
+                [_model upload:param fileName:@"upload" data:data];
+                
+            
+           
+            }
+            
+        }
+
         
     }
 }

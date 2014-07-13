@@ -20,4 +20,10 @@
            url:(NSString *)url;
 -(void)setValue:(NSString *)value
 forHTTPHeaderField:(NSString *)field;
+
+-(void) uploadparam:(NSDictionary *)param
+           filedata:(NSData *)data
+           filename:(NSString *)filename
+           mimeType:(NSString *)mimeType
+                url:(NSString *)url;
 @end

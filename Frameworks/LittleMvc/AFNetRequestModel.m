@@ -62,7 +62,7 @@
     
 }
 
--(void) uploadparam:(NSMutableDictionary *)param
+-(void) uploadparam:(NSDictionary *)param
 filedata:(NSData *)data
 filename:(NSString *)filename
 mimeType:(NSString *)mimeType
@@ -76,6 +76,7 @@ url:(NSString *)url
         [self requestDidFinishLoad];
     }error:^(AFHTTPRequestOperation *operation, NSError *error) {
         self.error = error;
+        NSLog(@"%@",error);
         [self requestdidFailLoadWithError:error];
     } param:param
              filedata:data
