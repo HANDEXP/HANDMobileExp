@@ -14,6 +14,9 @@
 
 @interface EXPLineModelDetailViewController : LMModelViewController
 <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
+{
+  UIToolbar *   inputAccessoryView;
+}
 
 @property(nonatomic,strong) UITableView * tv;
 @property(nonatomic,strong)  UITextView * descTx ;

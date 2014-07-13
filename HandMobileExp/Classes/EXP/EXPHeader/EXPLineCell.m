@@ -18,7 +18,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"EXPCell" owner:self options:nil];
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"EXPLineCell" owner:self options:nil];
         self = [nibArray objectAtIndex:0];
     }
     return self;

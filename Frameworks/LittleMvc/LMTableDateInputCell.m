@@ -73,7 +73,7 @@
 	} else {
 		if (!inputAccessoryView) {
 			inputAccessoryView = [[UIToolbar alloc] init];
-			inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
+			inputAccessoryView.barStyle = UIBarStyleDefault;
 			inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 			[inputAccessoryView sizeToFit];
 			CGRect frame = inputAccessoryView.frame;

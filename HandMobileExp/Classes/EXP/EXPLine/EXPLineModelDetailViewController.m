@@ -81,13 +81,21 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
-    self.tv = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
     
     self.tv.tableFooterView = [[UIView alloc]init];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.tv.scrollEnabled = NO;
     self.tv.separatorStyle = nil;
+    
+    
+
+    self.tv.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
+    self.tv.backgroundView.backgroundColor = nil;
+    
     [self.view addSubview:self.tv];
     
     
@@ -136,13 +144,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     div5_2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div5_2];
     
-    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 220.0f, 20, 20)];
+    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 222.0f, 20, 20)];
     lb3.text = @"备注";
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
     self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(0, 240, self.view.bounds.size.width, 100)];
-    
     self.descTx.delegate = self;
     [self.view addSubview:self.descTx];
     
@@ -150,16 +157,19 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
     //添加按键
-    self.save = [[UIButton alloc] initWithFrame:CGRectMake(0, 340, self.view.bounds.size.width/2, 30)];
+    self.save = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.63, 100, 50)];
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
-    [self.save setBackgroundColor:[UIColor blackColor]];
+    [self.save setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
+    [self.save.layer setCornerRadius:6.0f];
+
     [self.view addSubview:self.save];
     
     
-    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, 340, self.view.bounds.size.width/2, 30)];
+    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(170, self.view.bounds.size.height*0.63, 100, 50)];
     [self.saveAdd setTitle:@"保存再记" forState:UIControlStateNormal];
-    [self.saveAdd setBackgroundColor:[UIColor blackColor]];
+    [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
+    [self.saveAdd.layer setCornerRadius:6.0f];
     [self.view addSubview:self.saveAdd];
     
     
@@ -275,6 +285,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
+    
     
     if(indexPath.section ==0){
         amountCell= (LMTableAmountInputCell *)[tableView dequeueReusableCellWithIdentifier:@"LMTableAmountInputCell"];
@@ -454,7 +465,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             updateFlag = YES;
             self.keyId =  [_model getPrimaryKey:@"MOBILE_EXP_REPORT_LINE"];
             
-            self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, 390, self.view.bounds.size.width - 100, 30)];
+            self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.85, self.view.bounds.size.width - 100, 40)];
+            [self.upload.layer setCornerRadius:6.0f];
+
             [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
             [self.upload setBackgroundColor:[UIColor orangeColor]];
             [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
@@ -494,6 +507,82 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
         
     }
+}
+
+
+- (UIView *)inputAccessoryView {
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		return nil;
+	} else {
+		if (!inputAccessoryView) {
+			inputAccessoryView = [[UIToolbar alloc] init];
+			inputAccessoryView.barStyle = UIBarStyleDefault;
+			inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+			[inputAccessoryView sizeToFit];
+			CGRect frame = inputAccessoryView.frame;
+			frame.size.height = 44.0f;
+			inputAccessoryView.frame = frame;
+			
+			UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+			UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+			
+			NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
+			[inputAccessoryView setItems:array];
+		}
+		return inputAccessoryView;
+	}
+}
+
+- (void)done:(id)sender {
+//    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+//        self.edgesForExtendedLayout=UIRectEdgeNone;
+//    }
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    
+    self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+	[self resignFirstResponder];
+}
+
+- (BOOL)resignFirstResponder {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+	//UITableView *tableView = (UITableView *)self.superview;
+    //	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
+	return [super resignFirstResponder];
+}
+
+
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    
+    CGRect frame = textView.frame;
+    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 150.0)+180;//键盘高度216
+    
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    
+    //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
+    
+    if(offset > 0 )
+        self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
+    NSLog(@"%f",self.view.frame.origin.y);
+    [UIView commitAnimations];
+    
+    
+}
+
+//当用户按下return键或者按回车键，keyboard消失
+//-(BOOL)textViewShouldReturn:(UITextField *)textField
+//{
+//    [textField resignFirstResponder];
+//    return 1;
+//}
+
+//输入框编辑完成以后，将视图恢复到原始状态
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 @end

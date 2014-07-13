@@ -132,6 +132,8 @@
 		DA28C4A419729D5200A29412 /* paper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C49E19729D5200A29412 /* paper@2x.png */; };
 		DA28C4A519729D5200A29412 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C49F19729D5200A29412 /* settings.png */; };
 		DA28C4A619729D5200A29412 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A019729D5200A29412 /* settings@2x.png */; };
+		DA28C4A91972C4CD00A29412 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A71972C4CD00A29412 /* photo.png */; };
+		DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A81972C4CD00A29412 /* photo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +346,8 @@
 		DA28C49E19729D5200A29412 /* paper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper@2x.png"; sourceTree = "<group>"; };
 		DA28C49F19729D5200A29412 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		DA28C4A019729D5200A29412 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		DA28C4A71972C4CD00A29412 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		DA28C4A81972C4CD00A29412 /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -883,6 +887,8 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				DA28C4A71972C4CD00A29412 /* photo.png */,
+				DA28C4A81972C4CD00A29412 /* photo@2x.png */,
 				DA28C49B19729D5200A29412 /* camera.png */,
 				DA28C49C19729D5200A29412 /* camera@2x.png */,
 				DA28C49D19729D5200A29412 /* paper.png */,
@@ -1030,10 +1036,12 @@
 				B2BE44951972358600114B1B /* expense.plist in Resources */,
 				DA28C48C19729BBC00A29412 /* menu@2x.png in Resources */,
 				DA28C49419729BBC00A29412 /* searchUser@2x.png in Resources */,
+				DA28C4A91972C4CD00A29412 /* photo.png in Resources */,
 				B24068D119702B090062AA65 /* EXPLineCell.xib in Resources */,
 				B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */,
 				B298E29419639C7300EB4850 /* Settings.bundle in Resources */,
 				DA28C49319729BBC00A29412 /* searchUser.png in Resources */,
+				DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */,
 				DA28C49719729BBC00A29412 /* toDoEXP.png in Resources */,
 				DA28C48919729BBC00A29412 /* loginBg.png in Resources */,
 				DA28C47E19729BBC00A29412 /* 1.png in Resources */,
