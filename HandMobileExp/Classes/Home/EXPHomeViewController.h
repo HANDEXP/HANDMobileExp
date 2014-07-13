@@ -9,7 +9,7 @@
 #import "LMTableViewController.h"
 #import "EXPHeaderViewController.h"
 
-@interface EXPHomeViewController : UIViewController<UIScrollViewDelegate>
+@interface EXPHomeViewController : UIViewController<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic)EXPHeaderViewController *headerVIewController;
 @end

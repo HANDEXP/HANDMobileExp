@@ -7,7 +7,7 @@
 //
 
 #import "EXPHomeViewController.h"
-#import "EXPHomeTable.h"
+//#import "EXPHomeTable.h"
 #import "EXPScrollview.h"
 #import "EXPHeaderViewController.h"
 #import "EXPDetailViewController.h"
@@ -21,6 +21,9 @@
     int TimeNum;
 }
 @end
+
+
+static NSString *tableViewCellIdentifier = @"MyCells";
 
 @implementation EXPHomeViewController
 
@@ -120,11 +123,20 @@
     
     
     //TableView with 3 cells
-    EXPHomeTable *expHomeTable = [[EXPHomeTable alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.3, self.view.bounds.size.width, self.view.bounds.size.height*0.45)];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.3, self.view.bounds.size.width, self.view.bounds.size.height*0.45) style:UITableViewStylePlain];
     
-    expHomeTable.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:expHomeTable];
+    tableView.backgroundColor = [UIColor whiteColor];
+    tableView.backgroundView = nil;
+    tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height);
     
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:tableViewCellIdentifier];
+    
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    
+    tableView.scrollEnabled = NO;
+    
+    [self.view addSubview:tableView];
     
     //3 Buttons
     UIButton *expCreateButton = [[UIButton alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
@@ -163,7 +175,7 @@
     
     UIButton *pushViewButton = sender;
     
-    EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+    EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
     
 //    self.headerVIewController =   [[EXPHeaderViewController alloc] initWithNibName:Nil bundle:nil];
 //UINavigationController *navigationController = [[UINavigationController alloc]init];
@@ -181,6 +193,63 @@
         default:
             break;
     }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = nil;
+    
+    cell = [tableView
+            dequeueReusableCellWithIdentifier:tableViewCellIdentifier
+            forIndexPath:indexPath];
+    
+    
+    cell.backgroundView.backgroundColor = [UIColor clearColor];
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:1.000 green:0.978 blue:0.904 alpha:1.000];
+    cell.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
+    cell.textLabel.textAlignment = NSTextAlignmentRight;
+    
+    if (indexPath.section ==0 && indexPath.row == 0) {
+        cell.textLabel.text = @"记一笔";
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+        [cell.imageView setImage:[UIImage imageNamed:@"note"]];
+    }
+    if (indexPath.section ==0 && indexPath.row == 1) {
+        cell.textLabel.text = @"待定";
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+        [cell.imageView setImage:[UIImage imageNamed:@"paper"]];
+    }
+    if (indexPath.section ==0 && indexPath.row == 2) {
+        cell.textLabel.text = @"待定";
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+        [cell.imageView setImage:[UIImage imageNamed:@"settings"]];
+    }
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.view.bounds.size.height*0.175;
+}
+
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"记一笔");
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        
+    }
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender

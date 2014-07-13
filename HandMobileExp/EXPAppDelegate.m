@@ -22,6 +22,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[EXPLoadViewController alloc] initWithNibName:nil bundle:nil];
    
+//    self.window.rootViewController = [[EXPLineModelDetailViewController alloc] initWithNibName:nil bundle:nil];
+
     [self.window makeKeyAndVisible];
     
     return YES;

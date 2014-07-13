@@ -78,6 +78,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     //初始化tableview
     [super viewDidLoad];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
     self.tv = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.tv.dataSource = self;
     self.tv.delegate = self;
@@ -160,7 +163,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.view addSubview:self.saveAdd];
     
     
-        
 }
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
@@ -484,9 +486,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                 NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
                 
                 
-                [_model upload:param fileName:@"upload" data:data];
-                
-            
+                [_model upload:param fileName:@"upload.jpg" data:data];            
            
             }
             
