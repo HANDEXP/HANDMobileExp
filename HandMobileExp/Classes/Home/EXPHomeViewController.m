@@ -9,7 +9,6 @@
 #import "EXPHomeViewController.h"
 //#import "EXPHomeTable.h"
 #import "EXPScrollview.h"
-#import "EXPHeaderViewController.h"
 #import "EXPDetailViewController.h"
 #import  "EXPLineModelDetailViewController.h"
 

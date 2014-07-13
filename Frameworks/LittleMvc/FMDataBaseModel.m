@@ -71,7 +71,7 @@
         
     }else if([method isEqualToString:@"query"]){
         
-        self.result = [self.hd query:@selector(QUERY_MOBILE_EXP_REPORT_HEADER:)
+        self.result = [self.hd query:handler
                                                      conditions:param];
         
         [self dataBaseDidFinishLoad];

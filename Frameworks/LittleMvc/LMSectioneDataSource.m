@@ -36,7 +36,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (_sections) {
         NSArray* items = [_items objectAtIndex:section];
-        NSLog(@" line is %d",items.count);
         return items.count;
             
     } else {
@@ -95,6 +94,10 @@
 #pragma mark Public
 
 
+#pragma delegate
 
+- (NSMutableArray *)getSections{
+    return  _sections;
+}
 
 @end

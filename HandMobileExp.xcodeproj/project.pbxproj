@@ -13,12 +13,13 @@
 		B24068BA1970248A0062AA65 /* EXPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068B41970248A0062AA65 /* EXPHomeViewController.m */; };
 		B24068BB1970248A0062AA65 /* EXPPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068B61970248A0062AA65 /* EXPPageControl.m */; };
 		B24068BC1970248A0062AA65 /* EXPScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068B81970248A0062AA65 /* EXPScrollview.m */; };
-		B24068C31970252E0062AA65 /* EXPHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068BF1970252E0062AA65 /* EXPHeaderViewController.m */; };
-		B24068C41970252E0062AA65 /* EXPLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068C11970252E0062AA65 /* EXPLineCell.m */; };
 		B24068CA197025530062AA65 /* EXPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068C8197025530062AA65 /* EXPDetailViewController.m */; };
 		B24068CF19702AFF0062AA65 /* EXPDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */; };
-		B24068D119702B090062AA65 /* EXPLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068D019702B090062AA65 /* EXPLineCell.xib */; };
 		B24068D319702D4A0062AA65 /* LMTableAmountInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */; };
+		B269E5141972E6C3001313DD /* TableDisplaySection.m in Sources */ = {isa = PBXBuildFile; fileRef = B269E5131972E6C3001313DD /* TableDisplaySection.m */; };
+		B269E5181972F209001313DD /* LMCellStype.m in Sources */ = {isa = PBXBuildFile; fileRef = B269E5161972F209001313DD /* LMCellStype.m */; };
+		B269E5191972F20A001313DD /* LMCellStype.xib in Resources */ = {isa = PBXBuildFile; fileRef = B269E5171972F209001313DD /* LMCellStype.xib */; };
+		B269E51C1972F2DB001313DD /* LMCellStypeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B269E51B1972F2DB001313DD /* LMCellStypeItem.m */; };
 		B26AD2631962D2200081152F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AD2621962D2200081152F /* Foundation.framework */; };
 		B26AD2651962D2200081152F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AD2641962D2200081152F /* CoreGraphics.framework */; };
 		B26AD2671962D2200081152F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AD2661962D2200081152F /* UIKit.framework */; };
@@ -94,6 +95,7 @@
 		B2C6649C1962FB04008B3579 /* HDSQLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6649B1962FB04008B3579 /* HDSQLCenter.m */; };
 		B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB413F19683A8500E6085F /* LMTableImageItem.m */; };
 		B2EB414319683BA200E6085F /* LMTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB414219683BA200E6085F /* LMTableItem.m */; };
+		B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */; };
 		B2F53A93196D5AA800525AE0 /* LMTableDateInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F53A92196D5AA800525AE0 /* LMTableDateInputCell.xib */; };
 		B2F864A8196D1EBF0017D110 /* LMTableDateInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F864A7196D1EBF0017D110 /* LMTableDateInputCell.m */; };
 		DA28C45F1972995A00A29412 /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA28C45E1972995A00A29412 /* ProvincesAndCities.plist */; };
@@ -159,15 +161,17 @@
 		B24068B61970248A0062AA65 /* EXPPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPPageControl.m; sourceTree = "<group>"; };
 		B24068B71970248A0062AA65 /* EXPScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPScrollview.h; sourceTree = "<group>"; };
 		B24068B81970248A0062AA65 /* EXPScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPScrollview.m; sourceTree = "<group>"; };
-		B24068BE1970252E0062AA65 /* EXPHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPHeaderViewController.h; sourceTree = "<group>"; };
-		B24068BF1970252E0062AA65 /* EXPHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPHeaderViewController.m; sourceTree = "<group>"; };
-		B24068C01970252E0062AA65 /* EXPLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPLineCell.h; sourceTree = "<group>"; };
-		B24068C11970252E0062AA65 /* EXPLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPLineCell.m; sourceTree = "<group>"; };
 		B24068C7197025530062AA65 /* EXPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDetailViewController.h; sourceTree = "<group>"; };
 		B24068C8197025530062AA65 /* EXPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDetailViewController.m; sourceTree = "<group>"; };
 		B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXPDetailViewController.xib; sourceTree = "<group>"; };
-		B24068D019702B090062AA65 /* EXPLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXPLineCell.xib; sourceTree = "<group>"; };
 		B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableAmountInputCell.xib; sourceTree = "<group>"; };
+		B269E5121972E6C3001313DD /* TableDisplaySection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableDisplaySection.h; path = Frameworks/LittleMvc/TableDisplaySection.h; sourceTree = "<group>"; };
+		B269E5131972E6C3001313DD /* TableDisplaySection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableDisplaySection.m; path = Frameworks/LittleMvc/TableDisplaySection.m; sourceTree = "<group>"; };
+		B269E5151972F209001313DD /* LMCellStype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCellStype.h; path = Frameworks/LittleMvc/LMCellStype.h; sourceTree = "<group>"; };
+		B269E5161972F209001313DD /* LMCellStype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMCellStype.m; path = Frameworks/LittleMvc/LMCellStype.m; sourceTree = "<group>"; };
+		B269E5171972F209001313DD /* LMCellStype.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMCellStype.xib; path = Frameworks/LittleMvc/LMCellStype.xib; sourceTree = "<group>"; };
+		B269E51A1972F2DB001313DD /* LMCellStypeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCellStypeItem.h; path = Frameworks/LittleMvc/LMCellStypeItem.h; sourceTree = "<group>"; };
+		B269E51B1972F2DB001313DD /* LMCellStypeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMCellStypeItem.m; path = Frameworks/LittleMvc/LMCellStypeItem.m; sourceTree = "<group>"; };
 		B26AD25F1962D2200081152F /* HandMobileExp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandMobileExp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AD2621962D2200081152F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B26AD2641962D2200081152F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -307,6 +311,8 @@
 		B2EB413F19683A8500E6085F /* LMTableImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableImageItem.m; path = Frameworks/LittleMvc/LMTableImageItem.m; sourceTree = "<group>"; };
 		B2EB414119683BA200E6085F /* LMTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableItem.h; path = Frameworks/LittleMvc/LMTableItem.h; sourceTree = "<group>"; };
 		B2EB414219683BA200E6085F /* LMTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableItem.m; path = Frameworks/LittleMvc/LMTableItem.m; sourceTree = "<group>"; };
+		B2EF36201972DE5E00C80DAA /* EXPDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDetailModel.h; sourceTree = "<group>"; };
+		B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDetailModel.m; sourceTree = "<group>"; };
 		B2F53A92196D5AA800525AE0 /* LMTableDateInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableDateInputCell.xib; sourceTree = "<group>"; };
 		B2F864A6196D1EBF0017D110 /* LMTableDateInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableDateInputCell.h; path = Frameworks/LittleMvc/LMTableDateInputCell.h; sourceTree = "<group>"; };
 		B2F864A7196D1EBF0017D110 /* LMTableDateInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableDateInputCell.m; path = Frameworks/LittleMvc/LMTableDateInputCell.m; sourceTree = "<group>"; };
@@ -390,13 +396,12 @@
 			isa = PBXGroup;
 			children = (
 				B24068C6197025530062AA65 /* EXPDetail */,
-				B24068BD1970252E0062AA65 /* EXPHeader */,
-				B20D10AB196BE352004871F4 /* EXPLine */,
+				B20D10AB196BE352004871F4 /* EXPDetailLine */,
 			);
 			name = EXP;
 			sourceTree = "<group>";
 		};
-		B20D10AB196BE352004871F4 /* EXPLine */ = {
+		B20D10AB196BE352004871F4 /* EXPDetailLine */ = {
 			isa = PBXGroup;
 			children = (
 				B20D10AC196BE3CE004871F4 /* EXPLineModelDetailViewController.h */,
@@ -406,7 +411,7 @@
 				B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */,
 				B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */,
 			);
-			name = EXPLine;
+			name = EXPDetailLine;
 			sourceTree = "<group>";
 		};
 		B24068B01970248A0062AA65 /* Home */ = {
@@ -423,28 +428,26 @@
 			path = HandMobileExp/Classes/Home;
 			sourceTree = "<group>";
 		};
-		B24068BD1970252E0062AA65 /* EXPHeader */ = {
-			isa = PBXGroup;
-			children = (
-				B24068D019702B090062AA65 /* EXPLineCell.xib */,
-				B24068BE1970252E0062AA65 /* EXPHeaderViewController.h */,
-				B24068BF1970252E0062AA65 /* EXPHeaderViewController.m */,
-				B24068C01970252E0062AA65 /* EXPLineCell.h */,
-				B24068C11970252E0062AA65 /* EXPLineCell.m */,
-			);
-			name = EXPHeader;
-			path = HandMobileExp/Classes/EXP/EXPHeader;
-			sourceTree = "<group>";
-		};
 		B24068C6197025530062AA65 /* EXPDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B2EF36201972DE5E00C80DAA /* EXPDetailModel.h */,
+				B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */,
 				B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */,
 				B24068C7197025530062AA65 /* EXPDetailViewController.h */,
 				B24068C8197025530062AA65 /* EXPDetailViewController.m */,
 			);
 			name = EXPDetail;
 			path = HandMobileExp/Classes/EXP/EXPDetail;
+			sourceTree = "<group>";
+		};
+		B269E50F1972E5D7001313DD /* Table Sections */ = {
+			isa = PBXGroup;
+			children = (
+				B269E5121972E6C3001313DD /* TableDisplaySection.h */,
+				B269E5131972E6C3001313DD /* TableDisplaySection.m */,
+			);
+			name = "Table Sections";
 			sourceTree = "<group>";
 		};
 		B26AD2561962D2200081152F = {
@@ -806,6 +809,7 @@
 		B2C5566B1967D7AE00B14460 /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				B269E50F1972E5D7001313DD /* Table Sections */,
 				B2F864A5196D1E770017D110 /* Static Cells */,
 				B2C5568219682CB800B14460 /* Table Cells */,
 				B2C5567E1968281200B14460 /* Table Items */,
@@ -855,6 +859,8 @@
 				B2EB413F19683A8500E6085F /* LMTableImageItem.m */,
 				B28FA8E91968F26C004E6333 /* LMTableLinkedItem.h */,
 				B28FA8EA1968F26C004E6333 /* LMTableLinkedItem.m */,
+				B269E51A1972F2DB001313DD /* LMCellStypeItem.h */,
+				B269E51B1972F2DB001313DD /* LMCellStypeItem.m */,
 			);
 			name = "Table Items";
 			sourceTree = "<group>";
@@ -862,6 +868,9 @@
 		B2C5568219682CB800B14460 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B269E5151972F209001313DD /* LMCellStype.h */,
+				B269E5161972F209001313DD /* LMCellStype.m */,
+				B269E5171972F209001313DD /* LMCellStype.xib */,
 				B2C556801968288E00B14460 /* LMTableImageItemCellTableViewCell.m */,
 				B2C5567F1968288E00B14460 /* LMTableImageItemCellTableViewCell.h */,
 			);
@@ -1020,6 +1029,7 @@
 				DA28C48119729BBC00A29412 /* 4.png in Resources */,
 				DA28C4A219729D5200A29412 /* camera@2x.png in Resources */,
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
+				B269E5191972F20A001313DD /* LMCellStype.xib in Resources */,
 				DA28C4A419729D5200A29412 /* paper@2x.png in Resources */,
 				DA28C49919729BBC00A29412 /* user.png in Resources */,
 				B24068D319702D4A0062AA65 /* LMTableAmountInputCell.xib in Resources */,
@@ -1037,7 +1047,6 @@
 				DA28C48C19729BBC00A29412 /* menu@2x.png in Resources */,
 				DA28C49419729BBC00A29412 /* searchUser@2x.png in Resources */,
 				DA28C4A91972C4CD00A29412 /* photo.png in Resources */,
-				B24068D119702B090062AA65 /* EXPLineCell.xib in Resources */,
 				B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */,
 				B298E29419639C7300EB4850 /* Settings.bundle in Resources */,
 				DA28C49319729BBC00A29412 /* searchUser.png in Resources */,
@@ -1083,6 +1092,7 @@
 				B24068CA197025530062AA65 /* EXPDetailViewController.m in Sources */,
 				B29D9610196649F40017A9B7 /* UIViewController+RESideMenu.m in Sources */,
 				B2A2D96D1965889300B2C935 /* MMProgressHUDWindow.m in Sources */,
+				B269E5141972E6C3001313DD /* TableDisplaySection.m in Sources */,
 				B2A2D9441965376700B2C935 /* EXPLoginModel.m in Sources */,
 				B2A2D96B1965889300B2C935 /* MMProgressHUDOverlayView.m in Sources */,
 				B29D968B196692990017A9B7 /* LMTableViewController.m in Sources */,
@@ -1102,11 +1112,10 @@
 				B298E2AD1963A05500EB4850 /* AFNetworkReachabilityManager.m in Sources */,
 				B298E35A1964510600EB4850 /* EXPApplicationContext.m in Sources */,
 				B2C5567D1968215C00B14460 /* NSString+HDAddtions.m in Sources */,
-				B24068C31970252E0062AA65 /* EXPHeaderViewController.m in Sources */,
+				B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */,
 				B2A2D9411965352700B2C935 /* NSArrayAdditions.m in Sources */,
 				B26AD26F1962D2200081152F /* main.m in Sources */,
 				B29D9691196695EF0017A9B7 /* EXPFunctionListViewController.m in Sources */,
-				B24068C41970252E0062AA65 /* EXPLineCell.m in Sources */,
 				B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */,
 				B2A2D96E1965889300B2C935 /* MMRadialProgressView.m in Sources */,
 				B2A2D94E196550B600B2C935 /* AFNetRequestModel.m in Sources */,
@@ -1121,8 +1130,10 @@
 				B29D969419669E0B0017A9B7 /* EXPFunctionListDatasource.m in Sources */,
 				B26AD35A1962E7B10081152F /* FMDatabaseQueue.m in Sources */,
 				B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */,
+				B269E51C1972F2DB001313DD /* LMCellStypeItem.m in Sources */,
 				B29D960F196649F40017A9B7 /* RESideMenu.m in Sources */,
 				B26AD3571962E7B10081152F /* FMDatabase.m in Sources */,
+				B269E5181972F209001313DD /* LMCellStype.m in Sources */,
 				B29D960E196649F40017A9B7 /* RECommonFunctions.m in Sources */,
 				B2A2D94A19654A7D00B2C935 /* LMRequestModel.m in Sources */,
 				B2A2D96C1965889300B2C935 /* MMProgressHUDViewController.m in Sources */,

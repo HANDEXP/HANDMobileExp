@@ -8,9 +8,12 @@
 
 #import "LMTableViewDataSource.h"
 #import "LMTableImageItemCellTableViewCell.h"
+#import "LMCellStypeItem.h"
+#import "LMCellStype.h"
 
 
 @implementation LMTableViewDataSource
+
 
 #pragma mark -
 #pragma mark TTTableViewDataSource
@@ -21,7 +24,10 @@
       if ([object isKindOfClass:[LMTableImageItem class]]) {
             return [LMTableImageItemCellTableViewCell class];
             
-        }
+      }else if([object isKindOfClass:[LMCellStypeItem class]]){
+         // NSLog(@"%@",[LMCellStypeItem class]);
+          return [LMCellStype class];
+      }
     
     }
     
@@ -69,7 +75,11 @@ willAppearAtIndexPath:(NSIndexPath*)indexPath {
         cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault
                                  reuseIdentifier:identifier] ;
     }
-     [(LMTableImageItemCellTableViewCell*)cell setObject:object];
+      if ([cell isKindOfClass:[LMTableImageItemCellTableViewCell class]]) {
+          [(LMTableImageItemCellTableViewCell*)cell setObject:object];
+      }else if([cell isKindOfClass:[LMCellStype class]]){
+          [(LMCellStype*)cell setObject:object];
+      }
     [self tableView:tableView cell:cell willAppearAtIndexPath:indexPath];
     
     return  cell;

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LMTableViewController.h"
 
-@interface EXPDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface EXPDetailViewController : LMTableViewController<UITableViewDataSource,UITableViewDelegate>
 
 //@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic)UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *sumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sumMoneyLabel;
 
