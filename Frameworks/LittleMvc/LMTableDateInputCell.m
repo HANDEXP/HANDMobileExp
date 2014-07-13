@@ -92,7 +92,7 @@
 }
 
 - (void)done:(id)sender {
-//	[self resignFirstResponder];
+	[self resignFirstResponder];
 }
 
 - (BOOL)becomeFirstResponder {

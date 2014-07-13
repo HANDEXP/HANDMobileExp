@@ -10,6 +10,10 @@
 
 @implementation EXPLineDetailModel
 
+-(void)update:(NSArray *)param{
+    [self loadMethod:@"update" param:param excute:@selector(UPDATE_MOBILE_EXP_REPORT_LINE:recordList:)];
+
+}
 
 -(void)save:(NSArray *)param{
     [self loadMethod:@"insert" param:param excute:@selector(MOBILE_EXP_REPORT_LINE:recordList:)];
@@ -19,4 +23,6 @@
 -(void)query:(NSDictionary *)condition{
     [self loadMethod:@"query" param:condition excute:@selector(QUERY_MOBILE_EXP_REPORT_LINE:)];
 }
+
+
 @end

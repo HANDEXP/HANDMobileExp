@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>first_class</key>
+		<string>食品酒水</string>
+		<key>second_class</key>
+		<array>
+			<string>水果零食</string>
+			<string>酒烟茶</string>
+			<string>早午晚餐</string>
+		</array>
+	</dict>
+</array>
+</plist>

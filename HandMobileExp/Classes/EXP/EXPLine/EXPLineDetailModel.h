@@ -10,4 +10,5 @@
 
 @interface EXPLineDetailModel : FMDataBaseModel
 -(void)save:(NSDictionary *)param;
+-(void)update:(NSArray *)param;
 @end

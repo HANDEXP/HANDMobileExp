@@ -12,15 +12,16 @@
 #import "LMTablePickerInputCell.h"
 
 
-@interface EXPLineModelDetailViewController : UIViewController
-<UITableViewDataSource,DateInputTableViewCellDelegate,UITableViewDelegate,UIPickerViewDelegate,
-UIPickerViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate>
+@interface EXPLineModelDetailViewController : LMModelViewController
+<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong) UITableView * tv;
-@property(nonatomic,strong) UIButton *btn;
-@property(nonatomic,strong)  UITextView * tx ;
+@property(nonatomic,strong)  UITextView * descTx ;
+@property(nonatomic,strong) UIButton *save;
+@property(nonatomic,strong) UIButton * saveAdd;
 @property(nonatomic,strong) UIButton * upload;
 
-
-
+@property BOOL insertFlag;
+@property BOOL updateFlag;
+@property (strong) NSNumber * keyId;
 @end

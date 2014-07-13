@@ -12,7 +12,7 @@
 //数据库初始化
 -(BOOL)SQLCreatTable:(FMDatabase *)db{
     NSArray *sqlAry= [NSArray arrayWithObjects:@"CREATE TABLE IF NOT EXISTS DataPool ( id INTEGER PRIMARY KEY AUTOINCREMENT, localId INTEGER, sourceSystemName TEXT, item1 TEXT, item2 TEXT, item3 TEXT, item4 TEXT,	status TEXT, comment TEXT, submitAction TEXT,submitActionType TEXT,serverMessage TEXT,deliveree TEXT,screenName TEXT);",@"CREATE TABLE IF NOT EXISTS ACTION ( id INTEGER PRIMARY KEY AUTOINCREMENT,localId TEXT,sourceSystemName TEXT,action TEXT,actionTitle TEXT,actionType TEXT);",
-        @"create table if not EXISTS MOBILE_EXP_REPORT_LINE (id INTEGER PRIMARY KEY AUTOINCREMENT ,exp_expense_type_id INTEGER,total_amount INTEGER,time TEXT,place Text ,line_description TEXT,status TEXT, creatdate  TEXT ,create_by INTEGER,item1 BLOB, item2 BLOB, item3 BLOB, item4 BLOB, item5 BLOB, item6      BLOB )",
+        @"create table if not EXISTS MOBILE_EXP_REPORT_LINE (id INTEGER PRIMARY KEY AUTOINCREMENT ,exp_expense_type_id INTEGER,exp_expense_type_desc TEXT,total_amount INTEGER,time TEXT,place Text ,line_description TEXT,status TEXT, creatdate  TEXT ,create_by INTEGER,item1 BLOB, item2 BLOB, item3 BLOB, item4 BLOB, item5 BLOB, item6      BLOB )",
                       
         nil];
     BOOL state = YES;
@@ -229,7 +229,7 @@
 -(BOOL)MOBILE_EXP_REPORT_LINE:(FMDatabase * )db recordList:(NSArray *) recordList{
     if(!recordList)
         return  NO;
-    NSString *currentSql = @"INSERT INTO MOBILE_EXP_REPORT_LINE (exp_expense_type_id, total_amount,time, place, line_description,status, creatdate,create_by,item1) VALUES (:exp_expense_type_id, :total_amount, :time, :place, :line_description, :status,:creatdate, :create_by,:item1)";
+    NSString *currentSql = @"INSERT INTO MOBILE_EXP_REPORT_LINE (exp_expense_type_id, exp_expense_type_desc,total_amount,time, place, line_description,status, creatdate,create_by,item1) VALUES (:exp_expense_type_id,:exp_expense_type_desc, :total_amount, :time, :place, :line_description, :status,:creatdate, :create_by,:item1)";
     BOOL state = YES;
     state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return  state;
@@ -238,10 +238,25 @@
 //查询MOBILE_EXP_REPORT_HEADER
 -(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db{
     
-    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_HEADER";// WHERE STATUS != 'WAITING'
+    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE";// WHERE STATUS != 'WAITING'
     
     return [db executeQuery:currentSql];
 }
+
+//更新MOBILE_EXP_REPORT_HEADER
+-(BOOL)UPDATE_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db recordList:(NSArray *) recordList{
+    if (!recordList) return NO;
+    NSString * tableName = @"MOBILE_EXP_REPORT_LINE";
+    NSArray * params = [NSArray arrayWithObjects:@"exp_expense_type_id",@"exp_expense_type_desc",@"total_amount",@"time",@"place",@"line_description",@"item1",nil];
+    NSArray * keys = [NSArray arrayWithObjects:@"id",nil];
+    
+    NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:keys action:@"UPDATE"];
+    
+    BOOL state = YES;
+    state = [self execLineInTransaction:db params:[params arrayByAddingObjectsFromArray:keys] recordList:recordList currentSql:currentSql];
+    return state;
+}
+
 
 
 @end

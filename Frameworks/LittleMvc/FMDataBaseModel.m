@@ -18,7 +18,31 @@
     return  self;
 }
 
+-(NSNumber *)getPrimaryKey:(NSString *)tableName
+{
+    FMDatabasePool *DatabasePool = self.hd.DatabasePool;
+    NSString * sql =[@"SELECT max(id) as id from  " stringByAppendingString:tableName];
+    
 
+
+     NSMutableArray  *  DATA = [[NSMutableArray alloc]init];
+    void (^doDabase)(FMDatabase *db)=^(FMDatabase *db){
+        
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]){
+            [DATA addObject:[rs resultDictionary]];
+
+      
+        }
+        
+    };
+    [DatabasePool inDatabase:doDabase];
+    NSNumber * num = [[DATA objectAtIndex:0]valueForKey:@"id"];
+    NSLog(@"%d",[num intValue]);
+    return num;
+
+    
+}
 
 -(void)loadMethod:(NSString *)method
             param:(id)param
@@ -28,8 +52,11 @@
         [self dataBaseDidStartLoad];
     if([method isEqualToString:@"insert"]){
         
-        [self.hd excute:handler recordList:param];
-        [self dataBaseDidFinishLoad];
+        if([self.hd excute:handler recordList:param]){
+            [self dataBaseDidFinishLoad];
+        }else{
+            [self dataBaseDidFailLoadWithError];
+        }
         
     }else if([method isEqualToString:@"update"] ){
         
@@ -44,7 +71,7 @@
         
     }else if([method isEqualToString:@"query"]){
         
-        self.result = [[HDCoreStorage shareStorage] query:@selector(QUERY_MOBILE_EXP_REPORT_HEADER:)
+        self.result = [self.hd query:@selector(QUERY_MOBILE_EXP_REPORT_HEADER:)
                                                      conditions:param];
         
         [self dataBaseDidFinishLoad];

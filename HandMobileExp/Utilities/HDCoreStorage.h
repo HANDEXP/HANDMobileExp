@@ -12,6 +12,7 @@
 #import "EXPApplicationContext.h"
 @interface HDCoreStorage : HDSingletonObject
 
+@property FMDatabasePool *DatabasePool;
 +(id)shareStorage;
 
 -(NSArray*)query:(SEL) handler conditions:(NSDictionary *) conditions;

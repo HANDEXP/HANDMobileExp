@@ -82,6 +82,7 @@
 		B2A2D97619658E4C00B2C935 /* EXPLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2D97519658E4C00B2C935 /* EXPLoadViewController.m */; };
 		B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */; };
 		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
+		B2BE44951972358600114B1B /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2BE44941972358600114B1B /* expense.plist */; };
 		B2C41C37196E7434007C62BB /* LMTableAmountInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */; };
 		B2C41C52196EB182007C62BB /* LMTablePickerInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C41C51196EB182007C62BB /* LMTablePickerInputCell.m */; };
 		B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C41C53196EB5DC007C62BB /* LMTablePickerInputCell.xib */; };
@@ -247,6 +248,7 @@
 		B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.m; sourceTree = "<group>"; };
 		B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailHtppModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.h; sourceTree = "<group>"; };
 		B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailHtppModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.m; sourceTree = "<group>"; };
+		B2BE44941972358600114B1B /* expense.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expense.plist; sourceTree = "<group>"; };
 		B2C41C35196E7434007C62BB /* LMTableAmountInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableAmountInputCell.h; path = Frameworks/LittleMvc/LMTableAmountInputCell.h; sourceTree = "<group>"; };
 		B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableAmountInputCell.m; path = Frameworks/LittleMvc/LMTableAmountInputCell.m; sourceTree = "<group>"; };
 		B2C41C50196EB182007C62BB /* LMTablePickerInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTablePickerInputCell.h; path = Frameworks/LittleMvc/LMTablePickerInputCell.h; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 		B26AD2561962D2200081152F = {
 			isa = PBXGroup;
 			children = (
+				B2BE44941972358600114B1B /* expense.plist */,
 				B26AD2AF1962D88E0081152F /* Classes */,
 				B26AD2681962D2200081152F /* HandMobileExp */,
 				B26AD2871962D2200081152F /* HandMobileExpTests */,
@@ -898,6 +901,7 @@
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
 				B24068D319702D4A0062AA65 /* LMTableAmountInputCell.xib in Resources */,
 				B24068CF19702AFF0062AA65 /* EXPDetailViewController.xib in Resources */,
+				B2BE44951972358600114B1B /* expense.plist in Resources */,
 				B24068D119702B090062AA65 /* EXPLineCell.xib in Resources */,
 				B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */,
 				B298E29419639C7300EB4850 /* Settings.bundle in Resources */,

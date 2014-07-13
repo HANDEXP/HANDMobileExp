@@ -10,11 +10,10 @@
 #import "FMDatabase.h"
 
 @implementation HDCoreStorage{
-    FMDatabasePool *DatabasePool;
     HDSQLCenter *sqlCenter;
 
 }
-
+@synthesize  DatabasePool;
 
 +(id)shareStorage
 {

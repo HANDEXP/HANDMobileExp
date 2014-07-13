@@ -12,7 +12,7 @@
 #import "EXPFunctionListViewController.h"
 #import "EXPHomeViewController.h"
 
-@interface EXPLoginViewController : LMModelViewController
+@interface EXPLoginViewController : LMModelViewController<UITextFieldDelegate>
 
 
 - (IBAction)loginAction:(id)sender;

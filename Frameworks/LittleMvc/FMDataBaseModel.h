@@ -13,8 +13,9 @@
 
 @property(strong) HDCoreStorage * hd;
 @property(strong) NSArray *result;
-
 -(void)loadMethod:(NSString *)method
             param:(NSDictionary *)param
            excute:(SEL) handler;
+
+-(NSNumber *)getPrimaryKey:(NSString *)tableName;
 @end
