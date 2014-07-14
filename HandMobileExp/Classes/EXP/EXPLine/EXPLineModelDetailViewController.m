@@ -34,7 +34,7 @@
     
     BOOL  shouldUploadImg;
     
-    
+    NSDictionary * record;
     
     
     
@@ -327,6 +327,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             amountCell = [[LMTableAmountInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableAmountInputCell"];
             amountCell.tv = self;
         }
+        if(record != nil){
+            amountCell.amount.text = [NSString  stringWithFormat:@"%@",[record valueForKey:@"total_amount"]];
+            NSNumber * amount = [record valueForKey:@"total_amount"];
+            amountCell.numberValue =[amount integerValue];
+
+        }
+        
         return amountCell;
     }else if(indexPath.section == 1){
         expenseTypeCell= (LMTablePickerInputCell *)[tableView dequeueReusableCellWithIdentifier:@"LMTablePickerInputCell"];
@@ -506,7 +513,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             
         }else if ([_model.method isEqualToString:@"query"]){
             
-            
+            record = [_model.result objectAtIndex:0];
 
             
         }
