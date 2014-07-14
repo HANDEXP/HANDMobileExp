@@ -14,8 +14,9 @@
 @property (nonatomic, assign) id        delegate;
 @property (nonatomic, assign) SEL       selector;
 @property (nonatomic) NSInteger  amount;
-@property (nonatomic) NSString * expense_type_desc;
-@property (nonatomic) NSString * line_desc;
+@property (nonatomic,strong) NSString * expense_type_desc;
+@property (nonatomic,strong) NSString * line_desc;
+@property (nonatomic,strong) NSNumber *  primary_id;
 
 + (id)itemWithText:(id)delegate selector :(SEL)selector;
 @end

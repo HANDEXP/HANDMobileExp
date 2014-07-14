@@ -14,5 +14,6 @@
 @end
 
 @interface EXPDetailDataSource :LMSectioneDataSource
+@property (nonatomic,strong)UIViewController * DetailTvC;
 
 @end

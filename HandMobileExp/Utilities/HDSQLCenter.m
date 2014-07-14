@@ -234,8 +234,13 @@
     state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return  state;
 }
-
-//查询MOBILE_EXP_REPORT_HEADER
+//通过id查询MOBILE_EXP_REPORT_LINE
+-(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db recordList:(NSDictionary *) conditions{
+    NSLog(@"select ,MOBILE_EXP_REPORT_LINE");
+    NSNumber * keyId =[conditions valueForKey:@"id"];
+    return    [db executeQueryWithFormat:@"SELECT * FROM MOBILE_EXP_REPORT_LINE where id =%@", keyId];
+}
+//查询MOBILE_EXP_REPORT_LINE
 -(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db{
     
     NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE";// WHERE STATUS != 'WAITING'
@@ -243,7 +248,7 @@
     return [db executeQuery:currentSql];
 }
 
-//更新MOBILE_EXP_REPORT_HEADER
+//更新MOBILE_EXP_REPORT_LINE
 -(BOOL)UPDATE_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db recordList:(NSArray *) recordList{
     if (!recordList) return NO;
     NSString * tableName = @"MOBILE_EXP_REPORT_LINE";

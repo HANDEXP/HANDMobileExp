@@ -47,6 +47,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView*)tableView cell:(UITableViewCell*)cell
 willAppearAtIndexPath:(NSIndexPath*)indexPath {
+    
 }
 
 ///在加载完必后，调用table 的 didfinish触发的，子类需要重写

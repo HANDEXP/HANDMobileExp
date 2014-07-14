@@ -81,6 +81,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    
     self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
@@ -95,7 +96,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
     self.tv.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
     self.tv.backgroundView.backgroundColor = nil;
-    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
     [self.view addSubview:self.tv];
     
     
@@ -171,7 +174,37 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
     [self.saveAdd.layer setCornerRadius:6.0f];
     [self.view addSubview:self.saveAdd];
+    [self initView];
     
+    //如果是老数据则显示
+    if(!insertFlag && updateFlag){
+        [self  showUpload];
+        [self  reload];
+    }
+    
+    
+}
+-(void)initView{
+    
+    
+}
+
+-(void)reload{
+    
+    NSDictionary * param = @{@"id" : self.keyId};
+    [model load:0 param:param];
+}
+
+-(void) showUpload{
+    
+    [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
+    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.85, self.view.bounds.size.width - 100, 40)];
+    [self.upload.layer setCornerRadius:6.0f];
+    
+    [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
+    [self.upload setBackgroundColor:[UIColor orangeColor]];
+    [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:self.upload];
     
 }
 #pragma btn delegate
@@ -460,21 +493,21 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         EXPLineDetailModel *_model = model;
         
         if([_model.method isEqualToString:@"insert"]){
-            [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
+            
+            [self showUpload];
+            
+
             insertFlag = NO;
             updateFlag = YES;
             self.keyId =  [_model getPrimaryKey:@"MOBILE_EXP_REPORT_LINE"];
             
-            self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.85, self.view.bounds.size.width - 100, 40)];
-            [self.upload.layer setCornerRadius:6.0f];
-
-            [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
-            [self.upload setBackgroundColor:[UIColor orangeColor]];
-            [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
-            [self.view addSubview:self.upload];
-            
             
         }else if([_model.method isEqualToString:@"update"]){
+            
+        }else if ([_model.method isEqualToString:@"query"]){
+            
+            
+
             
         }
         
@@ -500,7 +533,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                 
                 
                 [_model upload:param fileName:@"upload.jpg" data:data];            
-           
+                [self.navigationController popViewControllerAnimated:YES];
+            }else if (!shouldUploadImg){
+                NSLog(@"hello popopo");
+                [self.navigationController popViewControllerAnimated:YES];
+                
             }
             
         }

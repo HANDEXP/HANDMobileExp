@@ -23,7 +23,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         //手动塞入依赖关系，以后会使用ioc
-        self.dataSource  =  [[EXPDetailDataSource alloc] init];
+        EXPDetailDataSource * tv =  [[EXPDetailDataSource alloc] init];
+        tv.DetailTvC = self;
+        self.dataSource  = tv;
     }
     return self;
 }
@@ -31,9 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //手动塞入依赖关系，以后会使用ioc
-    self.dataSource  =  [[EXPDetailDataSource alloc] init];
-    
+
+
     
     
 
@@ -125,16 +126,16 @@
 -(UITableView *)tableView{
     
     _tableView = ({
-       UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 150.0, self.view.bounds.size.width, self.view.bounds.size.height-150.0)];
+       UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-150.0)];
         
-        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
+        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.00];
         tableView.backgroundView = nil;
         tableView.tableFooterView = [[UIView alloc]init];
         tableView.tableHeaderView = [[UIView alloc]init];
         tableView;
     });
     [self.view addSubview:_tableView];
-    return nil;
+    return _tableView;
 }
 
 
@@ -142,7 +143,7 @@
 -(void)modelDidFinishLoad:(FMDataBaseModel *)model{
     NSLog(@"hello");
      [super modelDidFinishLoad:model];
-//     NSArray * result = model.result;
+
     
     
 }

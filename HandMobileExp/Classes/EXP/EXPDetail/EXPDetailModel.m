@@ -9,6 +9,7 @@
 #import "EXPDetailModel.h"
 #import "TableDisplaySection.h"
 #import "LMCellStypeItem.h"
+#import "EXPLineModelDetailViewController.h"
 
 @implementation EXPDetailModel
 -(id)init{
@@ -70,10 +71,14 @@
             if([time isEqualToString:[record valueForKey:@"time"]]){
                 LMCellStypeItem * cellitem = [LMCellStypeItem itemWithText:self selector:@selector(openURLForItem:)];
                 cellitem.amount = [record valueForKey:@"total_amount"];
+                cellitem.primary_id =  [record valueForKey:@"id"];
+
+                
                 cellitem.expense_type_desc = [record valueForKey:@"exp_expense_type_desc"];
                 cellitem.line_desc =[record valueForKey:@"line_description"];
-                                          
+                cellitem.userInfo = @"EXPDetailLineGuider";
                 [item addObject:cellitem];
+                
                                           
             }
             
@@ -86,13 +91,24 @@
     self.sections = sections;
     self.items = items;
 
-    
+}
 
-    
-    
-    
-    
-    
+
+-(void)openURLForItem:(LMCellStypeItem *) item
+{
+
+    if ([item.userInfo isEqualToString:@"EXPDetailLineGuider"] ){
+
+       EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+        NSLog(@"%@",item.primary_id);
+        detailViewController.insertFlag = NO;
+        detailViewController.updateFlag = YES;
+        detailViewController.keyId = item.primary_id;
+     [self.DetailTvC.navigationController pushViewController:detailViewController animated:YES];
+        
+    }
+        
+
 }
 
 @end

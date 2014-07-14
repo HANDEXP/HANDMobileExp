@@ -10,6 +10,16 @@
 
 @implementation EXPLineDetailModel
 
+
+- (void)load:(int)cachePolicy param:(NSDictionary *) param{
+    NSLog(@"param");
+    [self loadMethod:@"query" param:param excute:@selector(QUERY_MOBILE_EXP_REPORT_LINE:recordList:)];
+    
+    
+    
+}
+
+
 -(void)update:(NSArray *)param{
     [self loadMethod:@"update" param:param excute:@selector(UPDATE_MOBILE_EXP_REPORT_LINE:recordList:)];
 
