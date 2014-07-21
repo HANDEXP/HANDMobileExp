@@ -10,6 +10,8 @@
 #import "LMTableDateInputCell.h"
 #import "LMTableAmountInputCell.h"
 #import "LMTablePickerInputCell.h"
+#import "EXPExpenseTypePicker.h"
+#import "EXPLocationPicker.h"
 
 
 @interface EXPLineModelDetailViewController : LMModelViewController
@@ -20,6 +22,8 @@
 
 @property(nonatomic,strong) UITableView * tv;
 @property(nonatomic,strong)  UITextView * descTx ;
+
+
 @property(nonatomic,strong) UIButton *save;
 @property(nonatomic,strong) UIButton * saveAdd;
 @property(nonatomic,strong) UIButton * upload;
@@ -27,4 +31,7 @@
 @property BOOL insertFlag;
 @property BOOL updateFlag;
 @property (strong) NSNumber * keyId;
+
+//列表
+@property (nonatomic,strong) LMModelViewController  * detailList;
 @end

@@ -9,10 +9,7 @@
 #import "LMTableViewController.h"
 #import "LMTableViewDelegate.h"
 
-@interface LMTableViewController (){
-
-    
-}
+@interface LMTableViewController ()
 
 @end
 

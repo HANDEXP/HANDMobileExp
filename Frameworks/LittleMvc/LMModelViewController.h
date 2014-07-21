@@ -17,5 +17,12 @@
 }
 @property (nonatomic, retain) id<TTModel> model;
 
+
+
+/**
+ * Reloads data from the model.
+ */
+- (void)reload;
+
 - (void)didLoadModel:(BOOL)firstTime;
 @end

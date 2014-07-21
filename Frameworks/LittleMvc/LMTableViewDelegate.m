@@ -49,11 +49,11 @@
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    if(Sections == nil){
+
         if ([tableView.dataSource respondsToSelector:@selector(getSections)]) {
             Sections =  [tableView.dataSource performSelector:@selector(getSections)];
         }
-    }
+    
     if([[Sections objectAtIndex:section] isKindOfClass : [TableDisplaySection class]]){
         TableDisplaySection * view =[Sections objectAtIndex:section];
             return  [view getView];

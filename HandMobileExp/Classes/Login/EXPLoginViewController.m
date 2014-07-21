@@ -56,7 +56,8 @@
     
     [self.loginButton.layer setCornerRadius:6.0f];
     
- //   [self.view addSubview:self.bgImageView];
+    //初始化缓存账户
+    self.userNameTF.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     
     
 }
@@ -114,6 +115,9 @@
         [self lockAnimationForView:self.passwordTF];
         return;
     }
+    [[NSUserDefaults standardUserDefaults] setValue:self.userNameTF.text forKey:@"username"];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSDictionary *param = @{@"user_name" : self.userNameTF.text,
                             @"user_password" : self.passwordTF.text,
@@ -122,16 +126,7 @@
                             @"device_Id" : @"-1"
                             };
 
-//    BOOL autodismiss = YES;
-    
- 
-//    if (autodismiss == YES) {
-//        double delayInSeconds = 2.5;
-//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//            [MMProgressHUD dismissWithSuccess:@"Success!"];
-//        });
-//    }
+
     //初始化model
     EXPLoginModel *loginmodel = [[EXPLoginModel alloc] init];
     [self setModel:loginmodel];

@@ -11,4 +11,6 @@
 
 @interface EXPFunctionListModel : AFNetRequestModel
 
+
+-(void)loadExpenseClass;
 @end

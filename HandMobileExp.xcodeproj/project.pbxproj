@@ -93,6 +93,10 @@
 		B2C5567D1968215C00B14460 /* NSString+HDAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C5567C1968215C00B14460 /* NSString+HDAddtions.m */; };
 		B2C556811968288E00B14460 /* LMTableImageItemCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C556801968288E00B14460 /* LMTableImageItemCellTableViewCell.m */; };
 		B2C6649C1962FB04008B3579 /* HDSQLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6649B1962FB04008B3579 /* HDSQLCenter.m */; };
+		B2D6D681197CD4BC00FE234C /* EXPExpenseTypePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D6D680197CD4BC00FE234C /* EXPExpenseTypePicker.m */; };
+		B2D6D684197CDB2600FE234C /* EXPLocationPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D6D683197CDB2600FE234C /* EXPLocationPicker.m */; };
+		B2D6D68A197CE9A400FE234C /* EXPLocationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D6D687197CE9A400FE234C /* EXPLocationAPI.m */; };
+		B2D6D68B197CE9A400FE234C /* EXPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D6D689197CE9A400FE234C /* EXPLocationManager.m */; };
 		B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB413F19683A8500E6085F /* LMTableImageItem.m */; };
 		B2EB414319683BA200E6085F /* LMTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB414219683BA200E6085F /* LMTableItem.m */; };
 		B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */; };
@@ -307,6 +311,14 @@
 		B2C556801968288E00B14460 /* LMTableImageItemCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableImageItemCellTableViewCell.m; path = Frameworks/LittleMvc/LMTableImageItemCellTableViewCell.m; sourceTree = "<group>"; };
 		B2C6649A1962FB04008B3579 /* HDSQLCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSQLCenter.h; path = HandMobileExp/Utilities/HDSQLCenter.h; sourceTree = SOURCE_ROOT; };
 		B2C6649B1962FB04008B3579 /* HDSQLCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSQLCenter.m; path = HandMobileExp/Utilities/HDSQLCenter.m; sourceTree = SOURCE_ROOT; };
+		B2D6D67F197CD4BC00FE234C /* EXPExpenseTypePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPExpenseTypePicker.h; path = HandMobileExp/Classes/EXP/EXPDetail/EXPExpenseTypePicker.h; sourceTree = "<group>"; };
+		B2D6D680197CD4BC00FE234C /* EXPExpenseTypePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPExpenseTypePicker.m; path = HandMobileExp/Classes/EXP/EXPDetail/EXPExpenseTypePicker.m; sourceTree = "<group>"; };
+		B2D6D682197CDB2600FE234C /* EXPLocationPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLocationPicker.h; path = HandMobileExp/Classes/EXP/EXPDetail/EXPLocationPicker.h; sourceTree = "<group>"; };
+		B2D6D683197CDB2600FE234C /* EXPLocationPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLocationPicker.m; path = HandMobileExp/Classes/EXP/EXPDetail/EXPLocationPicker.m; sourceTree = "<group>"; };
+		B2D6D686197CE9A400FE234C /* EXPLocationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLocationAPI.h; path = Utilities/EXPLocationAPI.h; sourceTree = "<group>"; };
+		B2D6D687197CE9A400FE234C /* EXPLocationAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLocationAPI.m; path = Utilities/EXPLocationAPI.m; sourceTree = "<group>"; };
+		B2D6D688197CE9A400FE234C /* EXPLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLocationManager.h; path = Utilities/EXPLocationManager.h; sourceTree = "<group>"; };
+		B2D6D689197CE9A400FE234C /* EXPLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLocationManager.m; path = Utilities/EXPLocationManager.m; sourceTree = "<group>"; };
 		B2EB413E19683A8500E6085F /* LMTableImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableImageItem.h; path = Frameworks/LittleMvc/LMTableImageItem.h; sourceTree = "<group>"; };
 		B2EB413F19683A8500E6085F /* LMTableImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableImageItem.m; path = Frameworks/LittleMvc/LMTableImageItem.m; sourceTree = "<group>"; };
 		B2EB414119683BA200E6085F /* LMTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableItem.h; path = Frameworks/LittleMvc/LMTableItem.h; sourceTree = "<group>"; };
@@ -410,6 +422,10 @@
 				B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */,
 				B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */,
 				B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */,
+				B2D6D67F197CD4BC00FE234C /* EXPExpenseTypePicker.h */,
+				B2D6D680197CD4BC00FE234C /* EXPExpenseTypePicker.m */,
+				B2D6D682197CDB2600FE234C /* EXPLocationPicker.h */,
+				B2D6D683197CDB2600FE234C /* EXPLocationPicker.m */,
 			);
 			name = EXPDetailLine;
 			sourceTree = "<group>";
@@ -531,8 +547,8 @@
 		B26AD2AF1962D88E0081152F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DA28C46019729BBC00A29412 /* Image */,
 				B24068B01970248A0062AA65 /* Home */,
+				DA28C46019729BBC00A29412 /* Image */,
 				B2A2D937196529B400B2C935 /* LittleMvc */,
 				B20D10AA196BE345004871F4 /* EXP */,
 				B28FA8EC196901BD004E6333 /* Detail */,
@@ -558,6 +574,7 @@
 		B26AD3011962DD620081152F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B2D6D685197CE97400FE234C /* LocationUtil */,
 				B298E357196450D600EB4850 /* ApplicationContext */,
 				B298E35619644DD600EB4850 /* HDGodXMLParser */,
 				B298E34919640F7500EB4850 /* AFNetWorkingUtil */,
@@ -877,6 +894,17 @@
 			name = "Table Cells";
 			sourceTree = "<group>";
 		};
+		B2D6D685197CE97400FE234C /* LocationUtil */ = {
+			isa = PBXGroup;
+			children = (
+				B2D6D686197CE9A400FE234C /* EXPLocationAPI.h */,
+				B2D6D687197CE9A400FE234C /* EXPLocationAPI.m */,
+				B2D6D688197CE9A400FE234C /* EXPLocationManager.h */,
+				B2D6D689197CE9A400FE234C /* EXPLocationManager.m */,
+			);
+			name = LocationUtil;
+			sourceTree = "<group>";
+		};
 		B2F864A5196D1E770017D110 /* Static Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1091,6 +1119,7 @@
 				B2C6649C1962FB04008B3579 /* HDSQLCenter.m in Sources */,
 				B24068CA197025530062AA65 /* EXPDetailViewController.m in Sources */,
 				B29D9610196649F40017A9B7 /* UIViewController+RESideMenu.m in Sources */,
+				B2D6D681197CD4BC00FE234C /* EXPExpenseTypePicker.m in Sources */,
 				B2A2D96D1965889300B2C935 /* MMProgressHUDWindow.m in Sources */,
 				B269E5141972E6C3001313DD /* TableDisplaySection.m in Sources */,
 				B2A2D9441965376700B2C935 /* EXPLoginModel.m in Sources */,
@@ -1132,6 +1161,8 @@
 				B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */,
 				B269E51C1972F2DB001313DD /* LMCellStypeItem.m in Sources */,
 				B29D960F196649F40017A9B7 /* RESideMenu.m in Sources */,
+				B2D6D68B197CE9A400FE234C /* EXPLocationManager.m in Sources */,
+				B2D6D68A197CE9A400FE234C /* EXPLocationAPI.m in Sources */,
 				B26AD3571962E7B10081152F /* FMDatabase.m in Sources */,
 				B269E5181972F209001313DD /* LMCellStype.m in Sources */,
 				B29D960E196649F40017A9B7 /* RECommonFunctions.m in Sources */,
@@ -1150,6 +1181,7 @@
 				B2C41C37196E7434007C62BB /* LMTableAmountInputCell.m in Sources */,
 				B26AD35B1962E7B10081152F /* FMResultSet.m in Sources */,
 				B2A2D97619658E4C00B2C935 /* EXPLoadViewController.m in Sources */,
+				B2D6D684197CDB2600FE234C /* EXPLocationPicker.m in Sources */,
 				B2C556811968288E00B14460 /* LMTableImageItemCellTableViewCell.m in Sources */,
 				B26AD3581962E7B10081152F /* FMDatabaseAdditions.m in Sources */,
 				B2C41C52196EB182007C62BB /* LMTablePickerInputCell.m in Sources */,
@@ -1211,6 +1243,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1226,7 +1259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1249,6 +1282,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1258,7 +1292,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

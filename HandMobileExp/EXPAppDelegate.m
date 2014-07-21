@@ -9,7 +9,7 @@
 #import "EXPAppDelegate.h"
 #import  "EXPLineModelDetailViewController.h"
 #import "EXPLoadViewController.h"
-#import "EXPDetailViewController.h"
+#import "EXPLineModelDetailViewController.h"
 
         @implementation EXPAppDelegate
 

@@ -59,7 +59,7 @@
     
     for (  NSDictionary * record in  model.result){
 
-        [timeset addObject:[record valueForKey:@"time"]];
+        [timeset addObject:[record valueForKey:@"expense_date"]];
     }
 
     for(NSString * time in timeset){
@@ -68,14 +68,18 @@
          NSMutableArray * item = [NSMutableArray array];
         for(NSDictionary * record in  model.result){
            
-            if([time isEqualToString:[record valueForKey:@"time"]]){
+            if([time isEqualToString:[record valueForKey:@"expense_date"]]){
                 LMCellStypeItem * cellitem = [LMCellStypeItem itemWithText:self selector:@selector(openURLForItem:)];
-                cellitem.amount = [record valueForKey:@"total_amount"];
+                cellitem.amount = [record valueForKey:@"expense_amount"];
                 cellitem.primary_id =  [record valueForKey:@"id"];
 
                 
-                cellitem.expense_type_desc = [record valueForKey:@"exp_expense_type_desc"];
-                cellitem.line_desc =[record valueForKey:@"line_description"];
+                NSString * exp_expense_type_desc = [record valueForKey:@"expense_type_desc"];
+                NSString *  expense_class_desc = [record  valueForKey:@"expense_class_desc"];
+                cellitem.expense_type_desc =  [[expense_class_desc stringByAppendingString:@">"] stringByAppendingString:exp_expense_type_desc];
+                
+                cellitem.line_desc =[record valueForKey:@"description"];
+                
                 cellitem.userInfo = @"EXPDetailLineGuider";
                 [item addObject:cellitem];
                 
@@ -100,11 +104,12 @@
     if ([item.userInfo isEqualToString:@"EXPDetailLineGuider"] ){
 
        EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
-        NSLog(@"%@",item.primary_id);
+
         detailViewController.insertFlag = NO;
         detailViewController.updateFlag = YES;
         detailViewController.keyId = item.primary_id;
-     [self.DetailTvC.navigationController pushViewController:detailViewController animated:YES];
+        detailViewController.detailList = self.DetailTvC;
+        [self.DetailTvC.navigationController pushViewController:detailViewController animated:YES];
         
     }
         

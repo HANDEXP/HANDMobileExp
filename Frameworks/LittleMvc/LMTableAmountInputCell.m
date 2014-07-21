@@ -11,13 +11,7 @@
 
 
 @implementation LMTableAmountInputCell{
-    struct {
-        unsigned int start:1;
-        unsigned int end:1;
-        unsigned int  decimal;
-        unsigned  int decimalstart:1;
 
-    } _flags;
     
 }
 
@@ -40,8 +34,8 @@
 - (void)initalizeInputView {
 	// Initialization code
 	self.keyboardType = UIKeyboardTypeDecimalPad;
-	self.lowerLimit = 0;
-	self.upperLimit = UINT32_MAX;
+	self.lowerLimit = 0;//最小为0
+	self.upperLimit = 1000000000; //最大允许9位
 	
 	if (!self.numberFormatter) {
 		self.numberFormatter = [[NSNumberFormatter alloc] init];
@@ -101,7 +95,7 @@
             
             switch (buttonIndex) {
                 case 0:
-                    // 取消
+                    [self.img setImage:nil];//当按取消的时候移除上次选择的图片
                     return;
                 case 1:
                     // 相机
@@ -116,7 +110,7 @@
         }
         else {
             if (buttonIndex == 0) {
-                
+                [self.img setImage:nil];//当按取消的时候移除上次选择的图片
                 return;
             } else {
                 sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
@@ -210,7 +204,10 @@
 	if ([sc scanInteger:NULL]) {
 		if ([sc isAtEnd]) {
 			NSUInteger addedValues = [theText integerValue];
-			
+            if(  upperLimit <=  self.numberValue *(10*theText.length)){
+                
+                return;
+            }
 			self.numberValue *= (10 * theText.length);
 			self.numberValue += addedValues;
 			if (self.numberValue < self.lowerLimit) {
@@ -219,6 +216,7 @@
 				self.numberValue = self.upperLimit;
 			}
 			self.amount.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:self.numberValue]];
+//            NSLog(@"text is %@,value is %d text length is %d",self.amount.text,self.numberValue,self.amount.text.length);
 			valueChanged = YES;
 		}
 	}
@@ -233,7 +231,7 @@
 		self.numberValue = self.upperLimit;
 	}
 	self.amount.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:self.numberValue]];
-    
+
 	valueChanged = YES;
 }
 @end

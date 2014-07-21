@@ -10,21 +10,15 @@
 
 @implementation LMTablePickerInputCell{
     
-    NSString * province ;
-    NSString *  city;
-    NSString * place_desc;
+
     
 }
-@synthesize item1;
-@synthesize item2;
-@synthesize place_desc;
+
 
 - (void)initalizeInputView {
 	self.picker = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.picker.showsSelectionIndicator = YES;
 	self.picker.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    self.picker.delegate =self;
-    self.picker.dataSource = self;
 	
 
 }
@@ -151,74 +145,6 @@
 	[self resignFirstResponder];
 }
 
-#pragma UIPickerViewDataSource
 
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 2;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    switch (component) {
-        case 0:
-            return [item1 count];
-            break;
-        case 1:
-            return [item2 count];
-            break;
-        default:
-            return 0;
-            break;
-    }
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    switch (component) {
-        case 0:
-
-            return [[item1 objectAtIndex:row] objectForKey:@"State"];
-            break;
-        case 1:
-
-            return [[item2 objectAtIndex:row] objectForKey:@"city"];
-            break;
-        default:
-            return nil;
-            break;
-    }
-}
-#pragma UIPickerViewDelegate
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    switch (component) {
-        case 0:
-            province = [[item1 objectAtIndex:row] objectForKey:@"State"];
-            if(province != nil && city != nil){
-                place_desc = [[province stringByAppendingString:@">"]stringByAppendingString:city];
-                
-                self.detailTextLabel.text =place_desc;
-            }
-            
-            item2 = [[item1 objectAtIndex:row] objectForKey:@"Cities"];
-            
-
-//            [pickerView selectRow:0 inComponent:1 animated:NO];
-            [pickerView reloadComponent:1];
-            [self pickerView:pickerView didSelectRow:0 inComponent:1];
-            break;
-        case 1:
-            city = [[item2 objectAtIndex:row] objectForKey:@"city"];
-            if(province != nil && city != nil){
-                place_desc = [[province stringByAppendingString:@">"]stringByAppendingString:city];
-                
-                self.detailTextLabel.text =place_desc;
-            }
-            break;
-        default:
-            break;
-    }
-}
 
 @end

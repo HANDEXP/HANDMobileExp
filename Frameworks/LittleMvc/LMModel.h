@@ -61,7 +61,9 @@
 
 @interface LMModel : NSObject <TTModel>{
     NSMutableArray* _delegates;
+    
 }
+
 
 - (NSMutableArray*)delegates;
 /**

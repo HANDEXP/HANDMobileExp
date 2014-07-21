@@ -65,17 +65,30 @@
 
 #pragma mark LLMODEL Delegate
 - (void)modelDidFinishLoad:(AFNetRequestModel *)model{
+    EXPFunctionListModel * Expmodel = model;
+    if([Expmodel.tag isEqualToString:@"SyncGuider"]){
+                                           
+        NSMutableDictionary * result = (NSMutableDictionary *)model.Json;
+        NSArray  * arr = [[result valueForKey:@"body"]valueForKey:@"list"];
+
+        [[NSUserDefaults standardUserDefaults] setValue:arr forKey:@"expense_classes"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else{
+    
+    
     //必须调用父类的完成事件
     [super modelDidFinishLoad:model];
+    
     NSMutableDictionary * result = model.Json;
 
     NSArray *list = [[result valueForKey:@"body"]valueForKey:@"list"];
     NSArray *items  = [list[0] valueForKey:@"items"];
-    NSLog(@"%d",[items  count]);
+
     for(int i =0;i< [items count];i++){
         NSLog(@"%@",[items[i] valueForKey:@"url"]);
     }
-//    NSLog(@"%@",url);
+    
+    }
 }
 
 @end

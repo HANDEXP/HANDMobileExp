@@ -57,7 +57,9 @@
 #pragma button delegate
 - (void)addDetailPage:(id *)sender
 {
-    [self.navigationController pushViewController:[[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil] animated:YES];
+   EXPLineModelDetailViewController *detail =  [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+    detail.detailList = self;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
@@ -68,72 +70,21 @@
 }
 
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    // Return the number of sections.
-//    return 3;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    // Return the number of rows in the section.
-//    
-//    return 2;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //  EXPLineCell *cell = [tableView registerNib:[UINib nibWithNibName:@"EXPLineCell" bundle:Nil] forCellReuseIdentifier:CellIdentifier];
-//    
-//    
-//    EXPLineCell *cell = (EXPLineCell *)[tableView dequeueReusableCellWithIdentifier:@"EXPLineCell"];
-//    
-//    if (cell == nil) {
-//        
-//        
-//        cell = [[EXPLineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EXPLineCell"];
-//        
-//        cell.backgroundColor = [UIColor clearColor];
-//        cell.backgroundView.backgroundColor = [UIColor clearColor];
-//        
-//        
-//    }
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-////    
-////    if (indexPath.section == 0 && indexPath.row == 0) {
-////        cell.firstLabel.text = @"总金额";
-////        cell.secondLabel.text = @"$100,000,000";
-////    }
-//    cell.firstLabel.text = @"餐饮";
-//    cell.secondLabel.text = @"$100";
-//    cell.thirdLabel.text = @"备注 | 无";
-//    return cell;
-//    
-//    
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-//
-
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 46;
-//}
 
 -(UITableView *)tableView{
-    
+
+    if(_tableView == nil){
     _tableView = ({
        UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-150.0)];
         
-        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.00];
+        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
         tableView.backgroundView = nil;
         tableView.tableFooterView = [[UIView alloc]init];
         tableView.tableHeaderView = [[UIView alloc]init];
         tableView;
     });
+    }
+    
     [self.view addSubview:_tableView];
     return _tableView;
 }
@@ -141,7 +92,7 @@
 
 #pragma LMModelDelegate
 -(void)modelDidFinishLoad:(FMDataBaseModel *)model{
-    NSLog(@"hello");
+
      [super modelDidFinishLoad:model];
 
     

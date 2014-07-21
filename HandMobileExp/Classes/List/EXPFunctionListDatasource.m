@@ -60,10 +60,17 @@
 //    LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"首页" imageURL:@"Home"];
 //    imageItem.userInfo = @"HomeGuider";
 //    [self.items insertObject:imageItem atIndex:0];
+
     LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"主页" imageURL:@"IconHome" delegate:self
                                                         selector:@selector(openURLForItem:)];
     imageItem.userInfo = @"HomeGuider";
     [self.items insertObject:imageItem atIndex:0];
+    
+    
+     imageItem =[LMTableImageItem itemWithText:@"同步网络数据" imageURL:@"IconHome" delegate:self
+                                                        selector:@selector(openURLForItem:)];
+    imageItem.userInfo = @"SyncGuider";
+    [self.items addObject:imageItem];
     
 }
 
@@ -81,6 +88,11 @@
                                                                     animated:YES];
         [self.ViewController.sideMenuViewController hideMenuViewController];
         
+    }else if ([item.userInfo isEqualToString:@"SyncGuider"]){
+        EXPFunctionListModel * arModel =  (AFNetRequestModel *)self.model;
+        arModel.tag = @"SyncGuider";
+        [arModel loadExpenseClass];
+         
     }
 }
 

@@ -9,34 +9,32 @@
 #import "EXPLineModelDetailViewController.h"
 #import "EXPLineDetailModel.h"
 #import "EXPLineDetailHtppModel.h"
+#import "EXPLocationAPI.h"
 
 
 @interface EXPLineModelDetailViewController (){
     
-    NSArray *provinces;
-    NSArray	*cities;
-    
-    NSArray *expenseFClass;
-    NSArray *expenseSClass;
-    
+
+    //model
     EXPLineDetailModel * model;
     EXPLineDetailHtppModel * httpmdel;
     
+    //cell
     LMTableDateInputCell *dateCell;
     LMTableAmountInputCell *amountCell;
     LMTablePickerInputCell *expenseTypeCell;
     LMTablePickerInputCell *placeCell;
     
     
-    NSString * expense_item1;
-    NSString * expense_item2;
-    NSString * expense_tyep_desc;
     
+    //flag
     BOOL  shouldUploadImg;
     
     NSDictionary * record;
     
     
+    EXPExpenseTypePicker * ExpenseTypePicker;
+    EXPLocationPicker  *  LocationPicker;
     
 }
 
@@ -52,17 +50,16 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //给造一些假数据
-        provinces = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ProvincesAndCities.plist" ofType:nil]];
+        //初始化选项呆代理和数据
+        LocationPicker = [[EXPLocationPicker alloc] init];
+        LocationPicker.provinces =[[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ProvincesAndCities.plist" ofType:nil]];
+        LocationPicker.citys =[[LocationPicker.provinces objectAtIndex:0] objectForKey:@"Cities"];
         
-        cities = [[provinces objectAtIndex:0] objectForKey:@"Cities"];
-        
-        
-        expenseFClass = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"expense.plist" ofType:nil]];
-        
-        expenseSClass = [[expenseFClass objectAtIndex:0] objectForKey:@"second_class"];
-        
-        // Custom initialization
+        NSArray * expense_classes =  [[NSUserDefaults standardUserDefaults] valueForKey:@"expense_classes"];
+        ExpenseTypePicker = [[EXPExpenseTypePicker alloc] init];
+        ExpenseTypePicker.expense_classes =expense_classes;
+
+ 
         
         updateFlag = NO;
         insertFlag = YES;
@@ -81,7 +78,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"报销单创建" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     
+                                             
     self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
@@ -152,7 +151,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
-    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(0, 240, self.view.bounds.size.width, 100)];
+    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(0, 240, self.view.bounds.size.width, 50)];
     self.descTx.delegate = self;
     [self.view addSubview:self.descTx];
     
@@ -174,17 +173,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
     [self.saveAdd.layer setCornerRadius:6.0f];
     [self.view addSubview:self.saveAdd];
-    [self initView];
+
     
     //如果是老数据则显示
     if(!insertFlag && updateFlag){
         [self  showUpload];
-        [self  reload];
+        [self reload];
     }
-    
-    
-}
--(void)initView{
     
     
 }
@@ -195,10 +190,20 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [model load:0 param:param];
 }
 
+
+-(void)back{
+    if(self.detailList != nil){
+        [self.detailList reload];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
 -(void) showUpload{
     
     [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
-    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.85, self.view.bounds.size.width - 100, 40)];
+    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, 414*0.87, self.view.bounds.size.width - 100, 40)];
     [self.upload.layer setCornerRadius:6.0f];
     
     [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
@@ -210,59 +215,66 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
     
-    NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
-    NSLog(@"data length is %d",data.length);
+    //获取数据
+    NSNumber * expense_class_id = ExpenseTypePicker.expense_class_id;
+    NSString * expense_class_desc = ExpenseTypePicker.expense_class_desc;
     
+    NSNumber * expense_type_id =  ExpenseTypePicker.expense_type_id;
+    NSString * expense_type_desc = ExpenseTypePicker.expense_type_desc;
     
-    NSNumber * type_id = [NSNumber numberWithInt:1];
-    NSNumber * total_amount = [NSNumber numberWithInteger:amountCell.numberValue];
+    NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    NSString *time = [formatter stringFromDate:dateCell.dateValue];
     
+    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
+    
+    NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
+    
+    NSString * description = self.descTx.text;
+    
+    NSString * local_status = @"new";
+    NSString * CREATION_DATE =[formatter stringFromDate:[NSDate date]];
+    
+    NSString * CREATED_BY = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+    
+    NSData *data;
+    //判断是否有照片，没有照片则插入nil
+    if([amountCell.img image] !=nil){
+        data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
+    
+    }else{
+        
+        data = nil;
+    }
+    NSMutableDictionary * formdata = [[NSMutableDictionary alloc] init];
+
+    [formdata setValue:expense_class_id forKey:@"expense_class_id"];
+    [formdata setValue:expense_class_desc forKey:@"expense_class_desc"];
+    [formdata setValue:expense_type_id forKey:@"expense_type_id"];
+    [formdata setValue:expense_type_desc forKey:@"expense_type_desc"];
+    [formdata setValue:expense_amount forKey:@"expense_amount"];
+    [formdata setValue:expense_date forKey:@"expense_date"];
+    [formdata setValue:expense_place forKey:@"expense_place"];
+    [formdata setValue:description forKey:@"description"];
+    [formdata setValue:local_status forKey:@"local_status"];
+    [formdata setValue:CREATION_DATE forKey:@"CREATION_DATE"];
+    [formdata setValue:CREATED_BY forKey:@"CREATED_BY"];
     
 
-    NSLog(@"%d",amountCell.numberValue );
-    NSLog(@"%@",dateCell.dateValue);
-    NSLog(@"%@,",placeCell.place_desc);
-    NSLog(@"%@",expense_tyep_desc);
-    NSLog(@"%@",self.descTx.text);
     
-    
-    
+    if(data != nil){
+        [formdata setValue: data forKey:@"item1"];
+    }else{
+        
+        [formdata setValue: @"" forKey:@"item1"];
+    }
+    NSArray * recordlist =@[formdata];
+
     if(insertFlag && !updateFlag){
-        NSDictionary * record = @{
-                                         @"exp_expense_type_id" : type_id,
-                                         @"exp_expense_type_desc" :expense_tyep_desc,
-                                         @"total_amount" : total_amount,
-                                         @"time"    : time ,
-                                         @"place"    : placeCell.place_desc,
-                                         @"status"    :@"new",
-                                         @"line_description" : self.descTx.text,
-                                         @"creatdate" : [NSDate date],
-                                         @"create_by" : @"1",
-                                         @"item1" : data
-                                         };
-        NSArray * recordlist = @[record];
         [model save:recordlist];
     }else{
-        NSDictionary * record = @{
-                                         @"exp_expense_type_id" : type_id,
-                                         @"exp_expense_type_desc" :expense_tyep_desc,
-                                         @"total_amount" : total_amount,
-                                         @"time"    : time ,
-                                         @"place"    : placeCell.place_desc,
-                                         @"status"    :@"new",
-                                         @"line_description" : self.descTx.text,
-                                         @"creatdate" : [NSDate date],
-                                         @"create_by" : @"1",
-                                         @"item1" : data,
-                                         @"id" : self.keyId
-                                         };
-        
-        NSArray * recordlist = @[record];
+        [formdata setValue:self.keyId forKey:@"id"];
         [model update:recordlist];
     }
     
@@ -273,11 +285,15 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 -(void)upload:(UIButton *)paramSender{
 
     
+    //提交之前先保存
+    [self save:nil];
     
-
-    NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
-    
-    updateFlag = YES;
+    if([amountCell.img image] !=nil){
+        shouldUploadImg = YES;
+    }else{
+        
+        shouldUploadImg = NO;
+    }
     
     
     NSNumber * type_id = [NSNumber numberWithInt:1];
@@ -288,13 +304,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString *time = [formatter stringFromDate:dateCell.dateValue];
     
-    
+//    NSString *unicodeStr = [NSString stringWithCString:[expense_tyep_desc UTF8String] encoding:NSUnicodeStringEncoding];
     NSDictionary * record = @{
                               @"exp_expense_type_id" : type_id,
-                              @"expense_type_desc" :expense_tyep_desc,
+                              @"expense_type_desc" :@"tt",
                               @"amount" : total_amount,
                               @"expense_date"    : time ,
-                              @"expense_place"    : placeCell.place_desc,
+                              @"expense_place"    : @"tt",
                               @"status"    :@"new",
                               @"description" : self.descTx.text,
                               @"currency" : @"CNY",
@@ -305,8 +321,106 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
 }
+-(int)getArrayIndex:(int )keyId
+           class_index:(int) index
+                   type:(NSString *)type
+{
+    if([type isEqualToString:@"expense_class_id"]){
+        NSArray * classes =      ExpenseTypePicker.expense_classes;
+        
+        for(int i =0;i<classes.count;i++){
+            NSDictionary * temp = [classes objectAtIndex:i];
+            NSNumber * class_id  = [temp valueForKey:@"expense_class_id"];
 
+            if(keyId == [class_id integerValue]){
+                return  i;
+            }
+            
+        }
+    }else if ([type isEqualToString:@"expense_type_id"]){
+        
+        NSArray * classes =      ExpenseTypePicker.expense_classes;
+        NSDictionary * temp = [classes objectAtIndex:index];
+        NSArray * types = [temp valueForKey:@"expense_types"];
+        for(int i =0;i<types.count;i++){
+            NSDictionary * temp = [types objectAtIndex:i];
+            NSNumber * type_id  = [temp valueForKey:@"expense_type_id"];
+            
+            if(keyId == [type_id integerValue]){
+                return  i;
+            }
+            
+        }
+        
+    }
+    return 0;
+}
 
+#pragma  viewcontroller life
+-(void)viewWillAppear:(BOOL)animated{
+    //赋值
+    if(record != nil && !insertFlag && updateFlag){
+        //金额
+        amountCell.amount.text = [NSString  stringWithFormat:@"%@",[record valueForKey:@"expense_amount"]];
+        NSNumber * amount = [record valueForKey:@"expense_amount"];
+        amountCell.numberValue =[amount integerValue];
+        
+        
+        //初始化费用类型
+        NSNumber * class_id = [record valueForKey:@"expense_class_id"];
+        NSNumber * type_id  =  [record valueForKey:@"expense_type_id"];
+        
+        int classArrId= [self getArrayIndex:[class_id integerValue] class_index:nil type:@"expense_class_id"];
+        int typeArrId = [self getArrayIndex:[type_id integerValue]  class_index:classArrId type:@"expense_type_id"];
+        
+        [expenseTypeCell.picker selectRow:classArrId inComponent:0 animated:YES];
+        [expenseTypeCell.picker selectRow:typeArrId inComponent:1 animated:YES];
+        
+        [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:classArrId inComponent:0];
+        [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:typeArrId inComponent:1];
+
+        
+        [ expenseTypeCell.picker reloadComponent:0];
+        [ expenseTypeCell.picker reloadComponent:1];
+        
+        //初始化日期
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        NSDate *expense_date =[formatter dateFromString:[record valueForKey:@"expense_date"]];
+        dateCell.dateValue  =expense_date;
+        
+       formatter = [[NSDateFormatter alloc] init];
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        formatter.dateStyle = NSDateFormatterMediumStyle;
+        
+        dateCell.detailTextLabel.text = [formatter stringFromDate:dateCell.dateValue];
+
+        
+        //初始化描述
+        
+        self.descTx.text =[record valueForKey:@"description"];
+        
+        
+        //初始化相片
+        if([record valueForKey:@"item1"] !=nil){
+  
+            [amountCell.img setImage:[UIImage imageWithData:[record valueForKey:@"item1"]]];
+             }
+    
+    }else {
+        
+        
+        [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:0];
+        [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:1];
+        
+        
+        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
+        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
+        
+    }
+    
+}
 
 #pragma tableview datasource
 - (void)tableViewCell:(LMTableDateInputCell *)cell didEndEditingWithDate:(NSDate *)value
@@ -327,12 +441,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             amountCell = [[LMTableAmountInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableAmountInputCell"];
             amountCell.tv = self;
         }
-        if(record != nil){
-            amountCell.amount.text = [NSString  stringWithFormat:@"%@",[record valueForKey:@"total_amount"]];
-            NSNumber * amount = [record valueForKey:@"total_amount"];
-            amountCell.numberValue =[amount integerValue];
-
-        }
+        
         
         return amountCell;
     }else if(indexPath.section == 1){
@@ -343,12 +452,15 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             
             
         }
-        expenseTypeCell.picker.delegate = self;
-        expenseTypeCell.picker.dataSource = self;
+
+        ExpenseTypePicker.cell =expenseTypeCell;
+        
+        expenseTypeCell.picker.delegate = ExpenseTypePicker;
+        expenseTypeCell.picker.dataSource = ExpenseTypePicker;
+    
         
         expenseTypeCell.textLabel.text = @"费用";
-        [self pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:0];
-        [self pickerView:expenseTypeCell.picker didSelectRow:1 inComponent:1];
+
         return expenseTypeCell;
         
     }else if(indexPath.section == 2){
@@ -367,11 +479,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             
             
         }
-        placeCell.item1 = provinces;
-        placeCell.item2 = cities;
         
-        [placeCell pickerView:placeCell.picker didSelectRow:0 inComponent:0];
-        [placeCell pickerView:placeCell.picker didSelectRow:1 inComponent:1];
+        LocationPicker.cell =placeCell;
+        placeCell.picker.delegate =LocationPicker;
+        placeCell.picker.dataSource = LocationPicker;
+        
         
         placeCell.textLabel.text = @"地点";
         return placeCell;
@@ -417,85 +529,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 
-
-
-
-
-
-
-
-#pragma UIPickerViewDataSource
-
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 2;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    switch (component) {
-        case 0:
-            return [expenseFClass count];
-            break;
-        case 1:
-            return [expenseSClass count];
-            break;
-        default:
-            return 0;
-            break;
-    }
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    switch (component) {
-        case 0:
-            
-            return [[expenseFClass objectAtIndex:row] objectForKey:@"first_class"];
-            break;
-        case 1:
-            
-            return [expenseSClass objectAtIndex:row] ;
-            break;
-        default:
-            return nil;
-            break;
-    }
-}
-#pragma UIPickerViewDelegate
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    switch (component) {
-        case 0:
-            expense_item1 = [[expenseFClass objectAtIndex:row] objectForKey:@"first_class"] ;
-            if(expense_item1 != nil && expense_item2 != nil){
-                expense_tyep_desc = [[expense_item1 stringByAppendingString:@">"]stringByAppendingString:expense_item2];
-                
-                expenseTypeCell.detailTextLabel.text =expense_tyep_desc;
-            }
-            [pickerView selectRow:0 inComponent:1 animated:NO];
-            [pickerView reloadComponent:1];
-            
-            break;
-        case 1:
-            expense_item2 = [expenseSClass objectAtIndex:row] ;
-            
-            if(expense_item1 != nil && expense_item2 != nil){
-                expense_tyep_desc = [[expense_item1 stringByAppendingString:@">"]stringByAppendingString:expense_item2];
-                
-                expenseTypeCell.detailTextLabel.text =expense_tyep_desc;
-            }
-            break;
-        default:
-            break;
-    }
-}
-
-
 #pragma  modeldelegate
 -(void)modelDidFinishLoad:(id)model{
     NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
-    NSLog(@"%@,",className);
+
     if([className isEqualToString:@"EXPLineDetailModel"]){
         EXPLineDetailModel *_model = model;
         
@@ -511,6 +548,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             
         }else if([_model.method isEqualToString:@"update"]){
             
+            
+            
         }else if ([_model.method isEqualToString:@"query"]){
             
             record = [_model.result objectAtIndex:0];
@@ -520,7 +559,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     }else if ([className isEqualToString:@"EXPLineDetailHtppModel"]){
         EXPLineDetailHtppModel *_model = model;
-        NSLog(@"%@",_model.Json);
+        
         NSDictionary * head = [_model.Json valueForKey:@"head"];
         NSDictionary * body = [_model.Json valueForKey:@"body"];
         NSString * result = [head valueForKey:@"code"];
@@ -547,12 +586,16 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                 
             }
             
+        }else if([result isEqualToString:@"faild"]){
+            
+        
         }
 
         
     }
 }
 
+#pragma keyboradDelegate
 
 - (UIView *)inputAccessoryView {
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -578,9 +621,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 
 - (void)done:(id)sender {
-//    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
-//        self.edgesForExtendedLayout=UIRectEdgeNone;
-//    }
+
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
     self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
@@ -589,8 +630,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 - (BOOL)resignFirstResponder {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-	//UITableView *tableView = (UITableView *)self.superview;
-    //	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
+
 	return [super resignFirstResponder];
 }
 
@@ -616,12 +656,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
 }
 
-//当用户按下return键或者按回车键，keyboard消失
-//-(BOOL)textViewShouldReturn:(UITextField *)textField
-//{
-//    [textField resignFirstResponder];
-//    return 1;
-//}
+
 
 //输入框编辑完成以后，将视图恢复到原始状态
 - (void)textViewDidEndEditing:(UITextView *)textView

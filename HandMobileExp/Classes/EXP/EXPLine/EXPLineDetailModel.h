@@ -9,7 +9,7 @@
 #import "FMDataBaseModel.h"
 
 @interface EXPLineDetailModel : FMDataBaseModel
--(void)save:(NSDictionary *)param;
+-(void)save:(NSArray *)param;
 -(void)update:(NSArray *)param;
 - (void)load:(int)cachePolicy param:(NSDictionary *) param;
 @end

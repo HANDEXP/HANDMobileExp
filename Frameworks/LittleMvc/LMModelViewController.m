@@ -44,6 +44,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)refresh{
     NSLog(@"in refresh");
     [self.model load:0 more:false];
@@ -56,6 +57,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark Public
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)reload {
+    [self.model load:nil more:NO];
+}
+
+
+
 - (void)setModel:(id<TTModel>)model {
     
     if (_model != model) {
