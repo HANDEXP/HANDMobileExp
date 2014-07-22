@@ -46,7 +46,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (_sections.count) {
-        
+        return @"DefaultHeaderHeight";
     }
     return nil;
 

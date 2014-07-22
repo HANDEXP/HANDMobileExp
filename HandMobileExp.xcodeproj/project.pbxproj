@@ -16,6 +16,9 @@
 		B24068CA197025530062AA65 /* EXPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068C8197025530062AA65 /* EXPDetailViewController.m */; };
 		B24068CF19702AFF0062AA65 /* EXPDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */; };
 		B24068D319702D4A0062AA65 /* LMTableAmountInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */; };
+		B2676E4C197DF38A00F58C07 /* EXPSubmitDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2676E48197DF38A00F58C07 /* EXPSubmitDetailModel.m */; };
+		B2676E4D197DF38A00F58C07 /* EXPSubmitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2676E4A197DF38A00F58C07 /* EXPSubmitDetailViewController.m */; };
+		B2676E4E197DF38A00F58C07 /* EXPSubmitDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2676E4B197DF38A00F58C07 /* EXPSubmitDetailViewController.xib */; };
 		B269E5141972E6C3001313DD /* TableDisplaySection.m in Sources */ = {isa = PBXBuildFile; fileRef = B269E5131972E6C3001313DD /* TableDisplaySection.m */; };
 		B269E5181972F209001313DD /* LMCellStype.m in Sources */ = {isa = PBXBuildFile; fileRef = B269E5161972F209001313DD /* LMCellStype.m */; };
 		B269E5191972F20A001313DD /* LMCellStype.xib in Resources */ = {isa = PBXBuildFile; fileRef = B269E5171972F209001313DD /* LMCellStype.xib */; };
@@ -169,6 +172,11 @@
 		B24068C8197025530062AA65 /* EXPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDetailViewController.m; sourceTree = "<group>"; };
 		B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXPDetailViewController.xib; sourceTree = "<group>"; };
 		B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableAmountInputCell.xib; sourceTree = "<group>"; };
+		B2676E47197DF38A00F58C07 /* EXPSubmitDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPSubmitDetailModel.h; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDetailModel.h; sourceTree = "<group>"; };
+		B2676E48197DF38A00F58C07 /* EXPSubmitDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPSubmitDetailModel.m; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDetailModel.m; sourceTree = "<group>"; };
+		B2676E49197DF38A00F58C07 /* EXPSubmitDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPSubmitDetailViewController.h; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDetailViewController.h; sourceTree = "<group>"; };
+		B2676E4A197DF38A00F58C07 /* EXPSubmitDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPSubmitDetailViewController.m; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDetailViewController.m; sourceTree = "<group>"; };
+		B2676E4B197DF38A00F58C07 /* EXPSubmitDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EXPSubmitDetailViewController.xib; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDetailViewController.xib; sourceTree = "<group>"; };
 		B269E5121972E6C3001313DD /* TableDisplaySection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableDisplaySection.h; path = Frameworks/LittleMvc/TableDisplaySection.h; sourceTree = "<group>"; };
 		B269E5131972E6C3001313DD /* TableDisplaySection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableDisplaySection.m; path = Frameworks/LittleMvc/TableDisplaySection.m; sourceTree = "<group>"; };
 		B269E5151972F209001313DD /* LMCellStype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCellStype.h; path = Frameworks/LittleMvc/LMCellStype.h; sourceTree = "<group>"; };
@@ -407,6 +415,7 @@
 		B20D10AA196BE345004871F4 /* EXP */ = {
 			isa = PBXGroup;
 			children = (
+				B2676E3E197DF31700F58C07 /* EXPBatchSubmit */,
 				B24068C6197025530062AA65 /* EXPDetail */,
 				B20D10AB196BE352004871F4 /* EXPDetailLine */,
 			);
@@ -455,6 +464,18 @@
 			);
 			name = EXPDetail;
 			path = HandMobileExp/Classes/EXP/EXPDetail;
+			sourceTree = "<group>";
+		};
+		B2676E3E197DF31700F58C07 /* EXPBatchSubmit */ = {
+			isa = PBXGroup;
+			children = (
+				B2676E47197DF38A00F58C07 /* EXPSubmitDetailModel.h */,
+				B2676E48197DF38A00F58C07 /* EXPSubmitDetailModel.m */,
+				B2676E49197DF38A00F58C07 /* EXPSubmitDetailViewController.h */,
+				B2676E4A197DF38A00F58C07 /* EXPSubmitDetailViewController.m */,
+				B2676E4B197DF38A00F58C07 /* EXPSubmitDetailViewController.xib */,
+			);
+			name = EXPBatchSubmit;
 			sourceTree = "<group>";
 		};
 		B269E50F1972E5D7001313DD /* Table Sections */ = {
@@ -1072,6 +1093,7 @@
 				DA28C4A619729D5200A29412 /* settings@2x.png in Resources */,
 				DA28C49019729BBC00A29412 /* newEXP@2x.png in Resources */,
 				B2BE44951972358600114B1B /* expense.plist in Resources */,
+				B2676E4E197DF38A00F58C07 /* EXPSubmitDetailViewController.xib in Resources */,
 				DA28C48C19729BBC00A29412 /* menu@2x.png in Resources */,
 				DA28C49419729BBC00A29412 /* searchUser@2x.png in Resources */,
 				DA28C4A91972C4CD00A29412 /* photo.png in Resources */,
@@ -1130,6 +1152,7 @@
 				B298E2AF1963A05500EB4850 /* AFURLConnectionOperation.m in Sources */,
 				B2A2D9681965889300B2C935 /* MMProgressHUD+Animations.m in Sources */,
 				B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */,
+				B2676E4D197DF38A00F58C07 /* EXPSubmitDetailViewController.m in Sources */,
 				B298E2AB1963A05500EB4850 /* AFHTTPRequestOperationManager.m in Sources */,
 				B2EB414319683BA200E6085F /* LMTableItem.m in Sources */,
 				B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */,
@@ -1143,6 +1166,7 @@
 				B2C5567D1968215C00B14460 /* NSString+HDAddtions.m in Sources */,
 				B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */,
 				B2A2D9411965352700B2C935 /* NSArrayAdditions.m in Sources */,
+				B2676E4C197DF38A00F58C07 /* EXPSubmitDetailModel.m in Sources */,
 				B26AD26F1962D2200081152F /* main.m in Sources */,
 				B29D9691196695EF0017A9B7 /* EXPFunctionListViewController.m in Sources */,
 				B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */,

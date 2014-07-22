@@ -61,4 +61,20 @@
             return  nil;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section {
+    if ([tableView.dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) {
+        NSString* title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+        if(title == nil){
+            return  0;
+        }else if([title isEqualToString:@"DefaultHeaderHeight"]){
+            
+            return 20;
+        }
+        
+        
+    }
+    return  0;
+}
 @end

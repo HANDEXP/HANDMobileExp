@@ -295,26 +295,35 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         shouldUploadImg = NO;
     }
     
-    
-    NSNumber * type_id = [NSNumber numberWithInt:1];
-    NSNumber * total_amount = [NSNumber numberWithInteger:amountCell.numberValue];
+    NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    NSString *time = [formatter stringFromDate:dateCell.dateValue];
     
-//    NSString *unicodeStr = [NSString stringWithCString:[expense_tyep_desc UTF8String] encoding:NSUnicodeStringEncoding];
+    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
+    NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
+    
+    NSString * description = self.descTx.text;
+    
+    NSNumber * expense_class_id = ExpenseTypePicker.expense_class_id;
+    
+    NSNumber * expense_type_id =  ExpenseTypePicker.expense_type_id;
+    
+    
+    
+//    UIDevice *device = [UIDevice currentDevice];
+//   NSUUID *uniqueIdentifier = device.identifierForVendor;
+//    NSLog(@"%@",[uniqueIdentifier  UUIDString]);
+    
+ 
     NSDictionary * record = @{
-                              @"exp_expense_type_id" : type_id,
-                              @"expense_type_desc" :@"tt",
-                              @"amount" : total_amount,
-                              @"expense_date"    : time ,
-                              @"expense_place"    : @"tt",
-                              @"status"    :@"new",
-                              @"description" : self.descTx.text,
-                              @"currency" : @"CNY",
-                              @"mobile_client_id" : self.keyId
+                              @"expense_amount" : expense_amount,
+                              @"expense_place" :expense_place,
+                              @"expense_class_id" : expense_class_id,
+                              @"expense_type_id"    : expense_type_id ,
+                              @"expense_date"    : expense_date,
+                              @"description" : description,
+                              @"local_id" : self.keyId
                               };
     
     [httpmdel postLine:record];
@@ -563,13 +572,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         NSDictionary * head = [_model.Json valueForKey:@"head"];
         NSDictionary * body = [_model.Json valueForKey:@"body"];
         NSString * result = [head valueForKey:@"code"];
-
+        //插入成功
         if([result isEqualToString:@"success"]){
             //如何需要上传照片
             if(shouldUploadImg){
                 shouldUploadImg = NO;
                 NSNumber * pkvalue = [body valueForKey:@"expense_detail_id"];
-                NSString * source_type = @"mobile_exp_report";
+                NSString * source_type = @"hmb_expense_detail";
                 NSDictionary * param = @{@"pkvalue" : pkvalue,
                                          @"source_type" : source_type
                                          
@@ -650,7 +659,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     if(offset > 0 )
         self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
-    NSLog(@"%f",self.view.frame.origin.y);
+
     [UIView commitAnimations];
     
     

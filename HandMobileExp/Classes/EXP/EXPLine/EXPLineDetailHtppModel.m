@@ -17,7 +17,8 @@
     
 }
 -(void)postLine:(NSDictionary *)parm{
-    [self request:@"GET" param:parm url:[[EXPApplicationContext shareObject] keyforUrl:@"mobile_report_insert_url" ]];
+
+    [self request:@"GET" param:parm url:[[EXPApplicationContext shareObject] keyforUrl:@"hmb_expense_detail_insert" ]];
     
 }
 

@@ -11,6 +11,7 @@
 #import "EXPScrollview.h"
 #import "EXPDetailViewController.h"
 #import  "EXPLineModelDetailViewController.h"
+#import  "EXPSubmitDetailViewController.h"
 
 
 @interface EXPHomeViewController ()
@@ -175,16 +176,9 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     UIButton *pushViewButton = sender;
     
     EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
-    
-//    self.headerVIewController =   [[EXPHeaderViewController alloc] initWithNibName:Nil bundle:nil];
-//UINavigationController *navigationController = [[UINavigationController alloc]init];
+
         switch (pushViewButton.tag) {
         case 0:
-//                navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0.235 green:0.627 blue:0.275 alpha:0.250];
-//            
-//           //     [navigationController pushViewController:self.headerVIewController animated:NO];
-//                [navigationController pushViewController:detailViewController animated:NO];
-//                [self presentViewController:navigationController animated:YES completion:NULL];
                 
                 [self.navigationController pushViewController:detailViewController animated:YES];
             break;
@@ -219,7 +213,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         [cell.imageView setImage:[UIImage imageNamed:@"note"]];
     }
     if (indexPath.section ==0 && indexPath.row == 1) {
-        cell.textLabel.text = @"待定";
+        cell.textLabel.text = @"批量提交";
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
         [cell.imageView setImage:[UIImage imageNamed:@"paper"]];
     }
@@ -247,6 +241,10 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:detailViewController animated:YES];
         
+    }else if(indexPath.section == 0 && indexPath.row == 1){
+        EXPSubmitDetailViewController * submitController =
+             [[EXPSubmitDetailViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:submitController animated:YES];
     }
     
 }
