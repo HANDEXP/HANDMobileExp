@@ -27,8 +27,14 @@
     return self;
 }
 
+
 #pragma mark -
 #pragma mark UITableViewDelegate
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+}
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
       id<LMTableViewDataSource> dataSource = (id<LMTableViewDataSource>)tableView.dataSource;

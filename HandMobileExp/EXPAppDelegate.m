@@ -10,6 +10,7 @@
 #import  "EXPLineModelDetailViewController.h"
 #import "EXPLoadViewController.h"
 #import "EXPLineModelDetailViewController.h"
+#import "EXPChartViewController.h"
 
         @implementation EXPAppDelegate
 

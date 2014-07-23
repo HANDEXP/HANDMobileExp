@@ -35,7 +35,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.backgroundView.backgroundColor = [UIColor clearColor];
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        self.detailTextLabel.text = [NSString stringWithFormat:@"%@",_item.amount];
+        self.detailTextLabel.text = [NSString stringWithFormat:@"¥%@",_item.amount];
         self.textLabel.text = _item.expense_type_desc;
         
     }

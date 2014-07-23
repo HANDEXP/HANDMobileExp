@@ -12,7 +12,5 @@
 @interface EXPDetailViewController : LMTableViewController<UITableViewDataSource,UITableViewDelegate>
 
 //@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *sumLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sumMoneyLabel;
 
 @end

@@ -22,9 +22,25 @@
 
 
 -(UIView *) getView{
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+//    NSString *blankString = @"  ";
+//    NSString *string =[blankString stringByAppendingString:self.item1];
+//    label.text = string;
+//    label.textColor = [UIColor colorWithWhite:0.000 alpha:0.410];
+//    label.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+//    label.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.140];
+//    [label sizeToFit];
+//    return label;
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     NSString *blankString = @"  ";
     NSString *string =[blankString stringByAppendingString:self.item1];
+    
+    
+    string = [string stringByAppendingString:@"                                                 累计：¥"];
+    string = [string stringByAppendingString:self.item2];
+    
+    
     label.text = string;
     label.textColor = [UIColor colorWithWhite:0.000 alpha:0.410];
     label.font = [UIFont fontWithName:@"Helvetica" size:12.0f];

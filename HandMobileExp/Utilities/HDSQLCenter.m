@@ -243,7 +243,7 @@
 //查询MOBILE_EXP_REPORT_LINE
 -(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db{
     
-    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE ";// WHERE STATUS != 'WAITING'
+    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE ORDER BY expense_date DESC";// WHERE STATUS != 'WAITING'
     
     return [db executeQuery:currentSql];
 }
@@ -262,6 +262,12 @@
     return state;
 }
 
+-(FMResultSet *)QUERY_MOBILE_EXP_SUM:(FMDatabase *)db{
+    
+    NSString *currentSql = @"SELECT sum(expense_amount) sum,expense_class_desc FROM MOBILE_EXP_REPORT_LINE   group by expense_class_desc";// WHERE STATUS != 'WAITING'
+    
+    return [db executeQuery:currentSql];
+}
 
 
 @end

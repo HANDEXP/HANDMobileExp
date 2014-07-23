@@ -13,6 +13,10 @@
 #import "AFNetRequestModel.h"
 
 @interface EXPDetailViewController ()
+@property NSInteger amount;
+@property (nonatomic, strong)UILabel *sumLabel;
+@property (strong, nonatomic)UILabel *sumMoneyLabel;
+
 
 @end
 
@@ -36,7 +40,9 @@
 
 
     
-    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
 
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
@@ -48,9 +54,9 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.400 green:0.297 blue:0.199 alpha:0.840];
     
-    
+    self.sumMoneyLabel = [[UILabel alloc]initWithFrame:CGRectMake(240.0, self.view.bounds.size.height * 0.10, 100.0, 50.0)];
 
-
+    self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(30.0, self.view.bounds.size.height * 0.10, 100.0, 50.0)];
 
 }
 
@@ -72,10 +78,10 @@
 
 
 -(UITableView *)tableView{
-
+    
     if(_tableView == nil){
     _tableView = ({
-       UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-150.0)];
+       UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-100.0-64.0)];
         
         tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
         tableView.backgroundView = nil;
@@ -94,7 +100,24 @@
 -(void)modelDidFinishLoad:(FMDataBaseModel *)model{
 
      [super modelDidFinishLoad:model];
-
+    NSInteger sumMoneyInt = 0;
+    for (  NSDictionary * record in  model.result){
+        
+        
+        
+        sumMoneyInt = sumMoneyInt + [[record objectForKey:@"expense_amount"]intValue];
+    }
+    
+    NSString *sumMoney = [NSString stringWithFormat:@"¥%d",sumMoneyInt];
+    
+    
+    self.sumLabel.text = @"总计：";
+    
+    
+    self.sumMoneyLabel.text = sumMoney;
+    
+    [self.view addSubview:self.sumLabel];
+    [self.view addSubview:self.sumMoneyLabel];
     
     
 }

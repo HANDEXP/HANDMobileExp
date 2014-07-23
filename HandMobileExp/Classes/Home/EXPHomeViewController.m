@@ -12,6 +12,7 @@
 #import "EXPDetailViewController.h"
 #import  "EXPLineModelDetailViewController.h"
 #import  "EXPSubmitDetailViewController.h"
+#import "EXPChartViewController.h"
 
 
 @interface EXPHomeViewController ()
@@ -142,8 +143,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     UIButton *expCreateButton = [[UIButton alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(100.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(220.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
-    NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"toDoEXP"],[UIImage imageNamed:@"doneEXP"]];
-    NSArray *titleButtonArray = @[@"报销创建",@"审批待办",@"审批完成"];
+    NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"]];
+    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"审批完成"];
     
     [@[expCreateButton, expToDoButton, expDoneButton] enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL *stop) {
         
@@ -176,13 +177,15 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     UIButton *pushViewButton = sender;
     
     EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
-
+    EXPChartViewController *chartViewController = [[EXPChartViewController alloc]initWithNibName:nil bundle:nil];
         switch (pushViewButton.tag) {
         case 0:
                 
                 [self.navigationController pushViewController:detailViewController animated:YES];
             break;
-            
+            case 1 :
+                [self.navigationController pushViewController:chartViewController animated:YES];
+                break;
         default:
             break;
     }

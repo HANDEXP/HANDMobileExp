@@ -57,13 +57,40 @@
     NSMutableArray* sections = [NSMutableArray array];
     NSMutableArray* items = [NSMutableArray array];
     
+    NSMutableArray *sectionSumMoeny = [[NSMutableArray alloc]init];
+    NSString *sumMoney = [[NSString alloc]init];
+    int count = 0;
+    NSInteger sumMoneyInt = 0;
+    
     for (  NSDictionary * record in  model.result){
 
         [timeset addObject:[record valueForKey:@"expense_date"]];
     }
+    
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:nil ascending:NO]];
+    NSArray *sortSetArray = [timeset sortedArrayUsingDescriptors:sortDesc];
+    for(NSString * time in sortSetArray){
+        
+        sumMoneyInt = 0;
+        for (  NSDictionary * record in  model.result){
+            
+            if ([time isEqualToString:[record objectForKey:@"expense_date"]]) {
+                
+                sumMoneyInt = sumMoneyInt + [[record objectForKey:@"expense_amount"]intValue];
+            }
+        }
+        sumMoney = [NSString stringWithFormat:@"%d",sumMoneyInt];
+        
+        [sectionSumMoeny addObject:sumMoney];
+        
+    }
 
-    for(NSString * time in timeset){
-        TableDisplaySection * section =  [TableDisplaySection initwith:time item2:time];
+    
+    for(NSString * time in sortSetArray){
+        NSString *sumtempMoney = [NSString stringWithString:[sectionSumMoeny objectAtIndex:count]];
+        count ++;
+        
+        TableDisplaySection * section =  [TableDisplaySection initwith:time item2:sumtempMoney];
         [sections addObject: section];
          NSMutableArray * item = [NSMutableArray array];
         for(NSDictionary * record in  model.result){

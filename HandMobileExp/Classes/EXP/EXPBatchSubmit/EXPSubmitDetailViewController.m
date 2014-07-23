@@ -9,7 +9,7 @@
 #import "EXPSubmitDetailViewController.h"
 #import "LMCellStype.h"
 #import "EXPLineModelDetailViewController.h"
-#import "EXPDetailModel.h"
+#import "EXPSubmitDetailModel.h"
 #import "AFNetRequestModel.h"
 
 @interface EXPSubmitDetailViewController ()
@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         //手动塞入依赖关系，以后会使用ioc
-        EXPDetailDataSource * tv =  [[EXPDetailDataSource alloc] init];
+        EXPSubmitDetailDataSource * tv =  [[EXPSubmitDetailDataSource alloc] init];
         tv.DetailTvC = self;
         self.dataSource  = tv;
     }
@@ -37,7 +37,7 @@
 
     
     
-
+    [_tableView setEditing:YES];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
     self.title = @"报销批量提交";

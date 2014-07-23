@@ -78,9 +78,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"报销单创建" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
+ //   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"报销单创建" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(back)];
     
-                                             
+    self.navigationItem.title = @"新建报销单";
     self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
@@ -159,7 +160,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
     //添加按键
-    self.save = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.63, 100, 50)];
+    self.save = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.63, 220, 50)];
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
     [self.save setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
@@ -168,11 +169,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.view addSubview:self.save];
     
     
-    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(170, self.view.bounds.size.height*0.63, 100, 50)];
-    [self.saveAdd setTitle:@"保存再记" forState:UIControlStateNormal];
-    [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
-    [self.saveAdd.layer setCornerRadius:6.0f];
-    [self.view addSubview:self.saveAdd];
+//    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(170, self.view.bounds.size.height*0.63, 100, 50)];
+//    [self.saveAdd setTitle:@"保存再记" forState:UIControlStateNormal];
+//    [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
+//    [self.saveAdd.layer setCornerRadius:6.0f];
+//    [self.view addSubview:self.saveAdd];
 
     
     //如果是老数据则显示
@@ -391,7 +392,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         [ expenseTypeCell.picker reloadComponent:0];
         [ expenseTypeCell.picker reloadComponent:1];
+        //初始化地址
+        NSArray *locationInfo = [[record valueForKey:@"expense_place"] componentsSeparatedByString:@">"];
+        LocationPicker.province_desc = [locationInfo objectAtIndex:0];
+        LocationPicker.city_desc = [locationInfo objectAtIndex:1];
+        placeCell.detailTextLabel.text = [record valueForKey:@"expense_place"];
         
+        NSLog(@"%@",[record valueForKey:@"expense_place"]);
         //初始化日期
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         
@@ -423,9 +430,19 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:0];
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:1];
         
+        NSString *province = [[EXPLocationAPI shareInstance]getProvince];
+        NSString *city = [[EXPLocationAPI shareInstance]getCity];
+ 
+            LocationPicker.province_desc = province;
+            LocationPicker.city_desc = city;
+            
+            NSString *location = [NSString stringWithFormat:@"%@>%@",province,city];
+            placeCell.detailTextLabel.text = location;
+            placeCell.textLabel.text = @"地点";
         
-        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
-        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
+        
+//        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
+//        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
         
     }
     
@@ -494,7 +511,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         placeCell.picker.dataSource = LocationPicker;
         
         
-        placeCell.textLabel.text = @"地点";
+    
         return placeCell;
     }
     
