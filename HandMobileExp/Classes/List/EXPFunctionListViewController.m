@@ -18,7 +18,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        //暂时不是用ioc反转
+        EXPFunctionListDatasource * datasource = [[EXPFunctionListDatasource alloc] init];
+        datasource.ViewController = self;
+        self.dataSource =datasource;
     }
     return self;
 }
@@ -26,12 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
-    //暂时不是用ioc反转
-    EXPFunctionListDatasource * datasource = [[EXPFunctionListDatasource alloc] init];
-    datasource.ViewController = self;
-    self.dataSource =datasource;
+    
+
     
     
     UILabel *handLabel = [[UILabel alloc]initWithFrame:CGRectMake(20.0, self.view.bounds.size.height*0.95, 300.0, 20.0)];
@@ -67,27 +67,27 @@
 - (void)modelDidFinishLoad:(AFNetRequestModel *)model{
     EXPFunctionListModel * Expmodel = model;
     if([Expmodel.tag isEqualToString:@"SyncGuider"]){
-                                           
+        
         NSMutableDictionary * result = (NSMutableDictionary *)model.Json;
         NSArray  * arr = [[result valueForKey:@"body"]valueForKey:@"list"];
-
+        
         [[NSUserDefaults standardUserDefaults] setValue:arr forKey:@"expense_classes"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }else{
-    
-    
-    //必须调用父类的完成事件
-    [super modelDidFinishLoad:model];
-    
-    NSMutableDictionary * result = model.Json;
-
-    NSArray *list = [[result valueForKey:@"body"]valueForKey:@"list"];
-    NSArray *items  = [list[0] valueForKey:@"items"];
-
-    for(int i =0;i< [items count];i++){
-        NSLog(@"%@",[items[i] valueForKey:@"url"]);
-    }
-    
+        
+        
+        //必须调用父类的完成事件
+        [super modelDidFinishLoad:model];
+        
+        NSMutableDictionary * result = model.Json;
+        
+        NSArray *list = [[result valueForKey:@"body"]valueForKey:@"list"];
+        NSArray *items  = [list[0] valueForKey:@"items"];
+        
+        for(int i =0;i< [items count];i++){
+            NSLog(@"%@",[items[i] valueForKey:@"url"]);
+        }
+        
     }
 }
 

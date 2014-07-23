@@ -12,4 +12,7 @@
 @interface EXPLoginModel :AFNetRequestModel
 - (void)load:(int)cachePolicy more:(BOOL)more;
 - (void)load:(NSDictionary *)param;
+
+
+-(void)loadExpenseType;
 @end

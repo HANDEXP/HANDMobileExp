@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "NSArrayAdditions.h"
 @protocol TTModel <NSObject>
+
+@property(nonatomic,strong) NSString * tag;
 /**
  * An array of objects that conform to the TTModelDelegate protocol.
  */
@@ -63,6 +65,8 @@
     NSMutableArray* _delegates;
     
 }
+
+@property(nonatomic,strong) NSString * tag;
 
 
 - (NSMutableArray*)delegates;

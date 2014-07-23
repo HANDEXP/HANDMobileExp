@@ -14,7 +14,7 @@
 @property(strong) NSError   *error;
 @property(nonatomic,retain) EXPAFNetWorkingUtil * utl;
 @property(nonatomic,retain)  NSString * requestType;
-@property(nonatomic,strong) NSString * tag;
+
 
 
 -(void)request:(NSString *)method

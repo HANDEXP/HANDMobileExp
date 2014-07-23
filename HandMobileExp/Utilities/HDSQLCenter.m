@@ -243,7 +243,7 @@
 //查询MOBILE_EXP_REPORT_LINE
 -(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db{
     
-    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE ORDER BY expense_date DESC";// WHERE STATUS != 'WAITING'
+    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE  WHERE local_status = 'new' ";// WHERE STATUS != 'WAITING'
     
     return [db executeQuery:currentSql];
 }

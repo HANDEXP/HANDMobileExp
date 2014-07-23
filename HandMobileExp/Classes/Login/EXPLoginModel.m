@@ -37,5 +37,9 @@
     
 }
 
+-(void)loadExpenseType{
+    
+    [self request:@"GET" param:nil url:[[EXPApplicationContext shareObject] keyforUrl:@"synchronization_url" ]];
 
+}
 @end

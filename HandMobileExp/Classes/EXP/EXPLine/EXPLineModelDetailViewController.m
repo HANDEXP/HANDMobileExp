@@ -52,7 +52,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //初始化选项呆代理和数据
+        //初始代理
         LocationPicker = [[EXPLocationPicker alloc] init];
         LocationPicker.provinces =[[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ProvincesAndCities.plist" ofType:nil]];
         LocationPicker.citys =[[LocationPicker.provinces objectAtIndex:0] objectForKey:@"Cities"];
@@ -187,11 +187,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
 }
--(void)updateStatus{
-    
-    
-}
 
+#pragma private
 -(void)reload{
     
     NSDictionary * param = @{@"id" : self.keyId};
@@ -220,8 +217,25 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.view addSubview:self.upload];
     
 }
+
+//对数据进行校验
+-(BOOL)checkDataVaild{
+    //检查金额
+
+    if(amountCell.numberValue == 0 ){
+        [LMAlertViewTool showAlertView:@"提示" message:@"请输入正确金额" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        return NO;
+    }
+    
+    return YES;
+    
+}
+
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
+    if(![self checkDataVaild]){
+        return;
+    }
     
     //获取数据
     NSNumber * expense_class_id = ExpenseTypePicker.expense_class_id;
@@ -257,6 +271,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     }
     NSMutableDictionary * formdata = [[NSMutableDictionary alloc] init];
 
+
+    
+    
     [formdata setValue:expense_class_id forKey:@"expense_class_id"];
     [formdata setValue:expense_class_desc forKey:@"expense_class_desc"];
     [formdata setValue:expense_type_id forKey:@"expense_type_id"];
@@ -296,7 +313,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 -(void)upload:(UIButton *)paramSender{
 
-    
+    if(![self checkDataVaild]){
+        return;
+    }
     //提交之前先保存
     [self save:nil];
     
@@ -342,6 +361,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
 }
+
+
 -(int)getArrayIndex:(int )keyId
            class_index:(int) index
                    type:(NSString *)type
@@ -377,7 +398,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     return 0;
 }
 
+
+
 #pragma  viewcontroller life
+//对数据进行初始化
 -(void)viewWillAppear:(BOOL)animated{
     //赋值
     if(record != nil && !insertFlag && updateFlag){
@@ -443,6 +467,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         NSString *province = [[EXPLocationAPI shareInstance]getProvince];
         NSString *city = [[EXPLocationAPI shareInstance]getCity];
+        
+        if(![province  isEqualToString:@""] && ![city isEqualToString:@""] ){
  
             LocationPicker.province_desc = province;
             LocationPicker.city_desc = city;
@@ -450,12 +476,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             NSString *location = [NSString stringWithFormat:@"%@>%@",province,city];
             placeCell.detailTextLabel.text = location;
             placeCell.textLabel.text = @"地点";
+        }else{
         
+        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
+        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
         
-//        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
-//        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
-        
-    }
+        }
+}
     
 }
 
