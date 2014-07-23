@@ -33,12 +33,36 @@
 
 @end
 
+@implementation EXPSubmitHttpModel
+
+-(void)postLine:(NSDictionary *)parm{
+    
+    [self request:@"GET" param:parm url:[[EXPApplicationContext shareObject] keyforUrl:@"hmb_expense_detail_insert" ]];
+    
+}
+
+- (void)upload:(NSDictionary *)param
+      fileName:(NSString *)fileName
+          data:(NSData *)data{
+    
+    
+    [self uploadparam:param filedata:data filename:fileName mimeType:@"image/jpeg"
+                  url:[[EXPApplicationContext shareObject] keyforUrl:@"upload" ]];
+    
+    
+    
+    
+}
+
+@end
+
 @implementation EXPSubmitDetailDataSource
 
 -(id)init{
     
     self=[super init];
     if(self){
+    
         //以后将改为由依赖注入
         EXPSubmitDetailModel * detailModel = [[EXPSubmitDetailModel alloc] init];
         self.model =detailModel;
@@ -125,12 +149,5 @@
 }
 
 
--(void)openURLForItem:(LMCellStypeItem *) item
-{
-
-
-        
-
-}
 
 @end

@@ -10,9 +10,9 @@
 
 @interface LMCellStype : UITableViewCell
 
-
-
+@property BOOL  m_checked;
+@property (nonatomic,strong)UIImageView*	m_checkImageView;
 
 - (void)setObject:(id)object;
-
+- (void) setChecked:(BOOL)checked;
 @end

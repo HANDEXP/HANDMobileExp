@@ -12,9 +12,11 @@
 @implementation LMCellStype{
     
     LMCellStypeItem * _item;
+    
+    UIImageView*	m_checkImageView;
 }
 
-
+@synthesize m_checkImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,6 +25,7 @@
         // Initialization code
         NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"LMCellStype" owner:self options:nil];
         self = [nibArray objectAtIndex:0];
+        self.clipsToBounds =YES;
     }
     return self;
 }
@@ -44,9 +47,12 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
+    
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
+
+
 
 @end

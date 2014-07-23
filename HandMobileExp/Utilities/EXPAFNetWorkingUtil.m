@@ -94,7 +94,10 @@
        mimeType:(NSString *)mimeType
             url:(NSString *)url{
     NSString * fullPath = [self.baseUrl  stringByAppendingString:url];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+
     [manager POST:fullPath parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:data name:filename  fileName:filename mimeType:mimeType];
         

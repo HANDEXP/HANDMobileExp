@@ -39,7 +39,7 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
       id<LMTableViewDataSource> dataSource = (id<LMTableViewDataSource>)tableView.dataSource;
      id object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
-    
+
     if([object isKindOfClass:[LMTableLinkedItem class]]){
         LMTableLinkedItem *item = object;
         if(item.delegate && item.selector){
@@ -49,9 +49,11 @@
         
         
         
-}
+    }
     
 }
+
+
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
@@ -83,4 +85,9 @@
     }
     return  0;
 }
+
+
+
+
+
 @end

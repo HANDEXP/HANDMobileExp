@@ -34,6 +34,13 @@
 {
     [super viewDidLoad];
 
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
+    
+    [_tableView setEditing:YES animated:YES];
+    //使能选中
+    
 
     
     

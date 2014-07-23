@@ -252,7 +252,7 @@
 -(BOOL)UPDATE_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db recordList:(NSArray *) recordList{
     if (!recordList) return NO;
     NSString * tableName = @"MOBILE_EXP_REPORT_LINE";
-    NSArray * params = [NSArray arrayWithObjects:@"expense_class_id",@"expense_class_desc",@"expense_type_id",@"expense_type_desc",@"expense_amount",@"expense_date",@"expense_place",@"description",@"item1",nil];
+    NSArray * params = [NSArray arrayWithObjects:@"expense_class_id",@"expense_class_desc",@"expense_type_id",@"expense_type_desc",@"expense_amount",@"expense_date",@"expense_place",@"description",@"local_status",@"item1",nil];
     NSArray * keys = [NSArray arrayWithObjects:@"id",nil];
     
     NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:keys action:@"UPDATE"];
@@ -268,6 +268,7 @@
     
     return [db executeQuery:currentSql];
 }
+
 
 
 @end

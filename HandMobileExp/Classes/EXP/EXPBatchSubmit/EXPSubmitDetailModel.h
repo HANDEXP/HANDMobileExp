@@ -8,9 +8,19 @@
 
 #import "FMDataBaseModel.h"
 #import "LMSectioneDataSource.h"
+#import  "AFNetRequestModel.h"
 
 @interface EXPSubmitDetailModel : FMDataBaseModel
 
+@end
+
+@interface EXPSubmitHttpModel :AFNetRequestModel
+
+-(void)postLine:(NSDictionary *)parm;
+
+- (void)upload:(NSDictionary *)param
+      fileName:(NSString *)fileName
+          data:(NSData *)data;
 @end
 
 @interface EXPSubmitDetailDataSource :LMSectioneDataSource

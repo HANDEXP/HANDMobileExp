@@ -43,7 +43,9 @@
 {
     [super viewDidLoad];
     
-    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
 
 
 	// Do any additional setup after loading the view.

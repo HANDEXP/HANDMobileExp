@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "LMTableViewController.h"
+#import "EXPSubmitDelegate.h"
 
-@interface EXPSubmitDetailViewController : LMTableViewController<UITableViewDataSource,UITableViewDelegate>
+@interface EXPSubmitDetailViewController : LMTableViewController{
+    
+   
+}
 
 //@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *sumLabel;

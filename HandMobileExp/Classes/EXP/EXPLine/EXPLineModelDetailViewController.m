@@ -36,6 +36,8 @@
     EXPExpenseTypePicker * ExpenseTypePicker;
     EXPLocationPicker  *  LocationPicker;
     
+    
+    BOOL  uploadFlag;
 }
 
 @end
@@ -64,6 +66,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         updateFlag = NO;
         insertFlag = YES;
         shouldUploadImg = YES;
+        uploadFlag = NO;
     }
     return self;
 }
@@ -184,6 +187,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
 }
+-(void)updateStatus{
+    
+    
+}
 
 -(void)reload{
     
@@ -274,8 +281,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
     if(insertFlag && !updateFlag){
         [model save:recordlist];
-    }else{
+    }else if(!insertFlag && updateFlag && !uploadFlag){
         [formdata setValue:self.keyId forKey:@"id"];
+        [model update:recordlist];
+    }else if(uploadFlag){
+        [formdata setValue:self.keyId forKey:@"id"];
+        [formdata setValue:@"upload" forKey:@"local_status"];
         [model update:recordlist];
     }
     
@@ -556,6 +567,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 #pragma  modeldelegate
+
+
 -(void)modelDidFinishLoad:(id)model{
     NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
 
@@ -589,7 +602,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         NSDictionary * head = [_model.Json valueForKey:@"head"];
         NSDictionary * body = [_model.Json valueForKey:@"body"];
         NSString * result = [head valueForKey:@"code"];
-        //插入成功
+        
+
+   
         if([result isEqualToString:@"success"]){
             //如何需要上传照片
             if(shouldUploadImg){
@@ -607,8 +622,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                 [_model upload:param fileName:@"upload.jpg" data:data];            
                 [self.navigationController popViewControllerAnimated:YES];
             }else if (!shouldUploadImg){
-                NSLog(@"hello popopo");
-                [self.navigationController popViewControllerAnimated:YES];
+                //当不需要上传页面的时候，这个为最后的情况
+                uploadFlag = YES;
+                [self  save:nil];
+                [self back];
                 
             }
             
@@ -618,6 +635,18 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         }
 
         
+    }
+}
+-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error{
+    //处理超时异常
+    if(error.code == -1001){
+        [LMAlertViewTool showAlertView:@"提示" message:@"服务器链接超时请重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        
+    }else if(error.code == 3804){
+    //todo 3804为接口返回数据不为json格式错误，现在默认情况认为返回这个错误就是成功
+        
+        [LMAlertViewTool showAlertView:@"提示" message:@"上传成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [self back];
     }
 }
 

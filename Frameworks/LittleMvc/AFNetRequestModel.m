@@ -32,8 +32,8 @@
         [self didStartLoad];
 
     if(![method compare: @"GET"]){
-        [self.utl getsuccess:^(id Json){
-            self.Json = Json;
+        [self.utl getsuccess:^(id JSON){
+            self.Json = JSON;
             [self requestDidFinishLoad];
         }geterror:^(NSError *error){
             self.error = error;
