@@ -121,6 +121,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
     [self.pieChartView reloadChart];
 }
 

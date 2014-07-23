@@ -10,13 +10,15 @@
 #import "MMProgressHUD.h"
 #import "MMProgressHUDOverlayView.h"
 #import "EXPLineModelDetailViewController.h"
-
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface EXPLoginViewController ()<UITextFieldDelegate>{
     EXPLoginModel *loginmodel;
     
-}
+
+        CLLocationManager *locManager;
+    }
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
@@ -34,6 +36,12 @@
         loginmodel = [[EXPLoginModel alloc] init];
         [self setModel:loginmodel];
         
+
+        locManager = [[CLLocationManager alloc] init];
+        locManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        [locManager startUpdatingLocation];
+        locManager.distanceFilter = 1000.0f;
+
     }
     return self;
 }

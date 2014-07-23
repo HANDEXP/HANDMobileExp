@@ -18,7 +18,11 @@
 - (void)initalizeInputView {
 	self.picker = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.picker.showsSelectionIndicator = YES;
-	self.picker.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	self.picker.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    
+    self.picker.frame = CGRectMake(0, 84, 320, 100);
+    
+    self.picker.showsSelectionIndicator = YES;
 	
 
 }

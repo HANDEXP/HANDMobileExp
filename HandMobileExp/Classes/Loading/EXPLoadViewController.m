@@ -7,6 +7,7 @@
 //
 
 #import "EXPLoadViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface EXPLoadViewController ()
 
@@ -23,6 +24,7 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }

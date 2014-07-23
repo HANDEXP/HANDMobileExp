@@ -42,6 +42,13 @@
         
         NSURLRequest *request = [[NSURLRequest alloc]initWithURL:currentUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
         NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        
+///////////////
+        if (received == nil) {
+            city = @"";
+            province = @"";
+        }else{
+        
         NSDictionary *locationInfo = [NSJSONSerialization  JSONObjectWithData:received options:NSJSONReadingMutableLeaves error:Nil];
         
         NSDictionary *result = [locationInfo objectForKey:@"result"];
@@ -51,6 +58,7 @@
         city = [[NSString alloc]initWithFormat:@"%@",[addressComponent objectForKey:@"city"]];
         
         province = [[NSString alloc]initWithFormat:@"%@",[addressComponent objectForKey:@"province"]];
+        }
     }
     
     return self;

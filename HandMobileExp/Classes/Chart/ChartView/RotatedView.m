@@ -89,7 +89,15 @@
     for (int i = 0; i < wedges; ++i) {
         sum += [[mValueArray objectAtIndex:i] floatValue];
     }
-    float frac = 2.0 * M_PI / sum;
+    
+    float frac = 0;
+    
+    if (sum != 0 ) {
+        frac = 2.0 * M_PI / sum;
+    }else{
+        frac = 1;
+    }
+    
     self.fracValue = frac;
     //    int centerX = rect.size.width / 2.0;
     //    int centerY = rect.size.height / 2.0;

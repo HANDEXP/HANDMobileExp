@@ -10,6 +10,7 @@
 #import "EXPLineDetailModel.h"
 #import "EXPLineDetailHtppModel.h"
 #import "EXPLocationAPI.h"
+#import "EXPLocationManager.h"
 
 
 @interface EXPLineModelDetailViewController (){
@@ -465,11 +466,16 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:0];
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:1];
         
-        NSString *province = [[EXPLocationAPI shareInstance]getProvince];
-        NSString *city = [[EXPLocationAPI shareInstance]getCity];
+
+        
+    
+ 
+        NSString *province = [[[EXPLocationManager alloc]init] getProvince];
+        NSString *city = [[[EXPLocationManager alloc]init] getCity];
         
         if(![province  isEqualToString:@""] && ![city isEqualToString:@""] ){
- 
+            
+
             LocationPicker.province_desc = province;
             LocationPicker.city_desc = city;
             
@@ -477,11 +483,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             placeCell.detailTextLabel.text = location;
             placeCell.textLabel.text = @"地点";
         }else{
-        
-        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
-        [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
-        
+            
+            [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
+            [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
+            
         }
+        
 }
     
 }
@@ -722,7 +729,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 {
     
     CGRect frame = textView.frame;
-    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 150.0)+180;//键盘高度216
+    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 150.0)+100;//键盘高度216
     
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
