@@ -10,7 +10,7 @@
 #import "NSArrayAdditions.h"
 @protocol TTModel <NSObject>
 
-@property(nonatomic,strong) NSString * tag;
+
 /**
  * An array of objects that conform to the TTModelDelegate protocol.
  */
@@ -67,7 +67,7 @@
 }
 
 @property(nonatomic,strong) NSString * tag;
-
+@property(nonatomic,strong) id   info;
 
 - (NSMutableArray*)delegates;
 /**

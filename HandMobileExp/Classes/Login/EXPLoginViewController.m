@@ -11,6 +11,8 @@
 #import "MMProgressHUDOverlayView.h"
 #import "EXPLineModelDetailViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "MMProgressHUDWindow.h"
+#import "LMSimpleProgress.h"
 
 
 @interface EXPLoginViewController ()<UITextFieldDelegate>{

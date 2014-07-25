@@ -11,6 +11,8 @@
 #import "EXPLineDetailHtppModel.h"
 #import "EXPLocationAPI.h"
 #import "EXPLocationManager.h"
+#import "LMSimpleProgress.h"
+#import "MMProgressHUDWindow.H"
 
 
 @interface EXPLineModelDetailViewController (){
@@ -38,7 +40,7 @@
     EXPLocationPicker  *  LocationPicker;
     
     
-    BOOL  uploadFlag;
+    BOOL  completeFlag;
 }
 
 @end
@@ -67,7 +69,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         updateFlag = NO;
         insertFlag = YES;
         shouldUploadImg = YES;
-        uploadFlag = NO;
+        completeFlag = NO;
     }
     return self;
 }
@@ -171,7 +173,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.save.layer setCornerRadius:6.0f];
 
     [self.view addSubview:self.save];
-    
+
+    NSLog(@"%f...",self.view.bounds.size.height);
     
 //    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(170, self.view.bounds.size.height*0.63, 100, 50)];
 //    [self.saveAdd setTitle:@"保存再记" forState:UIControlStateNormal];
@@ -191,7 +194,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 #pragma private
 -(void)reload{
-    
     NSDictionary * param = @{@"id" : self.keyId};
     [model load:0 param:param];
 }
@@ -207,7 +209,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 -(void) showUpload{
-    
+
+
     [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
     self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, 414*0.87, self.view.bounds.size.width - 100, 40)];
     [self.upload.layer setCornerRadius:6.0f];
@@ -234,6 +237,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
+
+
+    
     if(![self checkDataVaild]){
         return;
     }
@@ -264,7 +270,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     NSData *data;
     //判断是否有照片，没有照片则插入nil
     if([amountCell.img image] !=nil){
-        data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
+        data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
+        NSLog(@"%d",data.length);
     
     }else{
         
@@ -292,17 +299,17 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if(data != nil){
         [formdata setValue: data forKey:@"item1"];
     }else{
-        
+        //不能直接存放nil，那样会报错
         [formdata setValue: @"" forKey:@"item1"];
     }
     NSArray * recordlist =@[formdata];
 
     if(insertFlag && !updateFlag){
         [model save:recordlist];
-    }else if(!insertFlag && updateFlag && !uploadFlag){
+    }else if(!insertFlag && updateFlag && !completeFlag){
         [formdata setValue:self.keyId forKey:@"id"];
         [model update:recordlist];
-    }else if(uploadFlag){
+    }else if(completeFlag){
         [formdata setValue:self.keyId forKey:@"id"];
         [formdata setValue:@"upload" forKey:@"local_status"];
         [model update:recordlist];
@@ -313,6 +320,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 -(void)upload:(UIButton *)paramSender{
+    
+
+
+
 
     if(![self checkDataVaild]){
         return;
@@ -459,10 +470,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
   
             [amountCell.img setImage:[UIImage imageWithData:[record valueForKey:@"item1"]]];
              }
+        
+        
     
     }else {
-        
-        
+  
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:0];
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:1];
         
@@ -601,7 +613,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 #pragma  modeldelegate
-
+-(void)modelDidStartLoad:(id<TTModel>)model{
+        NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
+    
+        if ([className isEqualToString:@"EXPLineDetailHtppModel"]){
+            MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleDrop;
+            [MMProgressHUD showWithTitle:nil status:@"upload"];
+        }
+}
 
 -(void)modelDidFinishLoad:(id)model{
     NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
@@ -650,15 +669,19 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                                          
                                          };
                 
-                NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],1.0);
-                
+                NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
+                NSLog(@"datalength is %d",data.length);
                 
                 [_model upload:param fileName:@"upload.jpg" data:data];            
-                [self.navigationController popViewControllerAnimated:YES];
+
             }else if (!shouldUploadImg){
                 //当不需要上传页面的时候，这个为最后的情况
-                uploadFlag = YES;
+                if(!completeFlag){
+                    completeFlag = YES;
+                }
                 [self  save:nil];
+                 MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
+                [MMProgressHUD dismiss];
                 [self back];
                 
             }
@@ -673,13 +696,19 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 -(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error{
     //处理超时异常
-    if(error.code == -1001){
+    NSLog(@"%d",error.code);
+    if(error.code == -1001 || error.code == -1004 || error.code == -1009){
+        [MMProgressHUD dismiss];
         [LMAlertViewTool showAlertView:@"提示" message:@"服务器链接超时请重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         
-    }else if(error.code == 3804){
+    }else if(error.code == 3840 || error.code == -1016){
     //todo 3804为接口返回数据不为json格式错误，现在默认情况认为返回这个错误就是成功
-        
-        [LMAlertViewTool showAlertView:@"提示" message:@"上传成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        if(!completeFlag) {
+            completeFlag = YES;
+        }
+        [self  save:nil];
+        MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
+        [MMProgressHUD dismiss];
         [self back];
     }
 }

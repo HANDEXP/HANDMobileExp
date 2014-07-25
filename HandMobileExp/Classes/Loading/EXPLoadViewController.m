@@ -74,12 +74,19 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:Tile
                                                         message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"cancel"
-                                              otherButtonTitles:@"other",nil];
+                                                       delegate:self
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"确定",nil];
     [alertView show];
     
 }
+
+#pragma alertDelegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [self loadGodConfig];
+}
+
+
 -(NSString *)configURL{
      NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
     return  [address stringByAppendingString :loadingUrl];
@@ -176,7 +183,7 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
                 }else{
                     //未知错误，抛出原始错误信息
                     dispatch_async(dispatch_get_main_queue(), ^{
-                         [self Altertitle:@"网络连接失败" Alertmessage:@"未知的错误原因\n错误描述：\n%@"];
+                         [self Altertitle:@"网络连接失败" Alertmessage:@"未知的错误原因"];
                     });
                     
                 }
@@ -185,7 +192,7 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
                 
                 if (responseCode!=200) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self Altertitle:@"网络连接失败" Alertmessage:@"未知的错误原因\n错误描述：\n%@"];
+                        [self Altertitle:@"网络连接失败" Alertmessage:@"未知的错误原因"];
                     });
                 }else {
                     BOOL writeSuccess = [data writeToFile:TTPathForDocumentsResource(@"ios-backend-config-aries.xml") atomically:YES];

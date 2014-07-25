@@ -262,6 +262,21 @@
     return state;
 }
 
+//更新MOBILE_EXP_REPORT_LINE 状态
+-(BOOL)UPDATE_MOBILE_EXP_REPORT_LINE_STATUS:(FMDatabase *)db recordList:(NSArray *) recordList{
+    if (!recordList) return NO;
+    NSString * tableName = @"MOBILE_EXP_REPORT_LINE";
+    NSArray * params = [NSArray arrayWithObjects:@"local_status",nil];
+    NSArray * keys = [NSArray arrayWithObjects:@"id",nil];
+    
+    NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:keys action:@"UPDATE"];
+    
+    BOOL state = YES;
+    state = [self execLineInTransaction:db params:[params arrayByAddingObjectsFromArray:keys] recordList:recordList currentSql:currentSql];
+    return state;
+}
+
+
 -(FMResultSet *)QUERY_MOBILE_EXP_SUM:(FMDatabase *)db{
     
     NSString *currentSql = @"SELECT sum(expense_amount) sum,expense_class_desc FROM MOBILE_EXP_REPORT_LINE   ";// WHERE STATUS != 'WAITING'

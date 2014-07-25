@@ -8,6 +8,7 @@
 
 #import "EXPFunctionListDatasource.h"
 #import "EXPHomeViewController.h"
+#import "LMBasicFunctionItem.h"
 
 @implementation EXPFunctionListDatasource
 
@@ -60,16 +61,17 @@
 //    LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"首页" imageURL:@"Home"];
 //    imageItem.userInfo = @"HomeGuider";
 //    [self.items insertObject:imageItem atIndex:0];
+    LMBasicFunctionItem * imageItem = [LMBasicFunctionItem initWithTitle:@"主页" imageUrl:@"IconHome" delegate:self selector:@selector(openURLForItem:)];
+    
 
-    LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"主页" imageURL:@"IconHome" delegate:self
-                                                        selector:@selector(openURLForItem:)];
     imageItem.userInfo = @"HomeGuider";
     [self.items insertObject:imageItem atIndex:0];
     
     
-     imageItem =[LMTableImageItem itemWithText:@"同步网络数据" imageURL:@"IconHome" delegate:self
-                                                        selector:@selector(openURLForItem:)];
+     imageItem = [LMBasicFunctionItem initWithTitle:@"设置" imageUrl:@"IconHome" delegate:self selector:@selector(openURLForItem:)];
     imageItem.userInfo = @"SyncGuider";
+    
+    
     [self.items addObject:imageItem];
     
 }

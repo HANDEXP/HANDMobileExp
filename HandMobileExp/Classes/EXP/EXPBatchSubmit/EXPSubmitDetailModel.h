@@ -11,7 +11,7 @@
 #import  "AFNetRequestModel.h"
 
 @interface EXPSubmitDetailModel : FMDataBaseModel
-
+-(void)update:(NSArray *)param;
 @end
 
 @interface EXPSubmitHttpModel :AFNetRequestModel

@@ -91,6 +91,8 @@
         count ++;
         
         TableDisplaySection * section =  [TableDisplaySection initwith:time item2:sumtempMoney];
+        
+        
         [sections addObject: section];
          NSMutableArray * item = [NSMutableArray array];
         for(NSDictionary * record in  model.result){

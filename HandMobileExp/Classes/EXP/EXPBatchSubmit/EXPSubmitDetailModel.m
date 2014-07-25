@@ -31,6 +31,11 @@
     
 }
 
+-(void)update:(NSArray *)param{
+    [self loadMethod:@"update" param:param excute:@selector(UPDATE_MOBILE_EXP_REPORT_LINE_STATUS:recordList:)];
+    
+}
+
 @end
 
 @implementation EXPSubmitHttpModel
