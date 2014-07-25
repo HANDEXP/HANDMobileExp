@@ -11,6 +11,7 @@
 #import "EXPLineModelDetailViewController.h"
 #import "EXPDetailModel.h"
 #import "AFNetRequestModel.h"
+#import "YFJLeftSwipeDeleteTableView.h"
 
 @interface EXPDetailViewController ()
 @property NSInteger amount;
@@ -52,12 +53,17 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addDetailPage:)];
     
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.400 green:0.297 blue:0.199 alpha:0.840];
+    self.view.backgroundColor = [UIColor colorWithRed:0.561 green:0.380 blue:0.201 alpha:1.000];
     
-    self.sumMoneyLabel = [[UILabel alloc]initWithFrame:CGRectMake(240.0, self.view.bounds.size.height * 0.10, 100.0, 50.0)];
-
-    self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(30.0, self.view.bounds.size.height * 0.10, 100.0, 50.0)];
-
+    self.sumMoneyLabel = [[UILabel alloc]initWithFrame:CGRectMake(160.0, self.view.bounds.size.height * 0.05, 150.0, 50.0)];
+    
+    self.sumMoneyLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+    self.sumMoneyLabel.textAlignment = NSTextAlignmentRight;
+    
+    self.sumMoneyLabel.textColor = [UIColor whiteColor];
+    self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(30.0, self.view.bounds.size.height * 0.05, 100.0, 50.0)];
+    self.sumLabel.textColor = [UIColor whiteColor];
+    self.sumLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
 }
 
 #pragma button delegate
@@ -81,9 +87,9 @@
     
     if(_tableView == nil){
     _tableView = ({
-       UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-100.0-64.0)];
-        
-        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
+       UITableView * tableView = [[YFJLeftSwipeDeleteTableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-100.0)];
+        tableView.backgroundView.backgroundColor = [UIColor whiteColor];
+        tableView.backgroundColor = [UIColor colorWithRed:0.947 green:0.940 blue:0.831 alpha:1.000];
         tableView.backgroundView = nil;
         tableView.tableFooterView = [[UIView alloc]init];
         tableView.tableHeaderView = [[UIView alloc]init];
@@ -100,7 +106,7 @@
 -(void)modelDidFinishLoad:(FMDataBaseModel *)model{
 
      [super modelDidFinishLoad:model];
-    NSInteger sumMoneyInt = 0;
+    float sumMoneyInt = 0;
     for (  NSDictionary * record in  model.result){
         
         
@@ -108,7 +114,7 @@
         sumMoneyInt = sumMoneyInt + [[record objectForKey:@"expense_amount"]intValue];
     }
     
-    NSString *sumMoney = [NSString stringWithFormat:@"¥%d",sumMoneyInt];
+    NSString *sumMoney = [NSString stringWithFormat:@"¥%2.2f",sumMoneyInt];
     
     
     self.sumLabel.text = @"总计：";

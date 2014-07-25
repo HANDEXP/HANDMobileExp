@@ -13,6 +13,9 @@
 #import  "EXPLineModelDetailViewController.h"
 #import  "EXPSubmitDetailViewController.h"
 #import "EXPChartViewController.h"
+#import "EXPDateManager.h"
+
+#import "EXPHomeModel.h"
 
 
 @interface EXPHomeViewController ()
@@ -21,8 +24,12 @@
     EXPScrollview *_scrollview;
     int TimeNum;
 }
-@end
+@property (nonatomic ,strong) NSString *weekSum;
 
+@property (nonatomic ,strong) NSString *monthSum;
+
+@property (nonatomic ,strong) NSString *todaySum;
+@end
 
 static NSString *tableViewCellIdentifier = @"MyCells";
 
@@ -34,6 +41,10 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     if (self) {
         // Custom initialization
         imageArray=[NSMutableArray arrayWithCapacity:1];
+        
+        
+    //    self.model = [[EXPHomeModel alloc]init];
+        
     }
     return self;
 }
@@ -65,43 +76,48 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     return scaledImage;
 }
 
+- (void) abstractButtonClicked:(id)sender
+{
+    NSLog(@"记一笔");
+        EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = @"首页";
     
-    float systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-    UIImage *backgroundImage = [UIImage imageNamed:@"navigationBg"];  //获取图片
     
-    if(systemVersion>=5.0)
-    {
-        CGSize titleSize = self.navigationController.navigationBar.bounds.size;  //获取Navigation Bar的位置和大小
-        backgroundImage = [self scaleToSize:backgroundImage size:titleSize];//设置图片的大小与Navigation Bar相同
-        [self.navigationController.navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];  //设置背景
-    }
+    
+    
 
+    self.model = [[EXPHomeModel alloc]init];
     
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {        // Load
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.813 green:0.812 blue:0.706 alpha:1.000];
+    }
+    else {
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.813 green:0.812 blue:0.706 alpha:1.000];
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    }
     self.view.backgroundColor = [UIColor colorWithRed:0.875 green:0.871 blue:0.757 alpha:1.000];
     
     
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
     
     UIImage *checkList = [UIImage imageNamed:@"menu"];
     self.navigationItem.leftBarButtonItem =
     [[UIBarButtonItem alloc] initWithImage:checkList style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Right"
-//                                                                              style:UIBarButtonItemStylePlain
-//                                                                             target:self
-//                                                                             action:@selector(presentRightMenuViewController:)];
     
 
     //Scroll views automatic
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
-    CGRect bound=CGRectMake(0, 0, 320, self.view.frame.size.height*0.3);
+    CGRect bound=CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height*0.25);
     NSArray *ImageArr=@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"],[UIImage imageNamed:@"4"],[UIImage imageNamed:@"5"],[UIImage imageNamed:@"6"]];
     for (int i=0; i<ImageArr.count; i++) {
         UIImageView *imageview=[[UIImageView alloc]init];
@@ -122,9 +138,21 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     [self.view addSubview:_scrollview.pagecontrol];
     
+    UIButton *writeButton = [[UIButton alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height * 0.29, self.view.bounds.size.width-16.0, self.view.bounds.size.height * 0.12)];
+    writeButton.backgroundColor = [UIColor colorWithRed:0.834 green:0.054 blue:0.000 alpha:0.420];
+  //  writeButton.backgroundColor = [UIColor colorWithRed:0.026 green:0.398 blue:0.095 alpha:0.780];
+    [writeButton setTitle:@"记一单" forState:UIControlStateNormal];
+    writeButton.titleLabel.textColor = [UIColor whiteColor];
+    writeButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
+    writeButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+   [writeButton.layer setCornerRadius:6.0f];
+    writeButton.showsTouchWhenHighlighted = YES;
+    [writeButton addTarget:self action:@selector(abstractButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:writeButton];
+    
     
     //TableView with 3 cells
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.3, self.view.bounds.size.width, self.view.bounds.size.height*0.45) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height*0.45, self.view.bounds.size.width-16.0, self.view.bounds.size.height*0.3) style:UITableViewStylePlain];
     
     tableView.backgroundColor = [UIColor whiteColor];
     tableView.backgroundView = nil;
@@ -136,6 +164,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     tableView.delegate = self;
     
     tableView.scrollEnabled = NO;
+    tableView.allowsSelection = NO;
     
     [self.view addSubview:tableView];
     
@@ -144,7 +173,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(100.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(220.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
     NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"]];
-    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"审批完成"];
+    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量审批"];
     
     [@[expCreateButton, expToDoButton, expDoneButton] enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL *stop) {
         
@@ -176,19 +205,22 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     UIButton *pushViewButton = sender;
     
-    EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
-    EXPChartViewController *chartViewController = [[EXPChartViewController alloc]initWithNibName:nil bundle:nil];
-        switch (pushViewButton.tag) {
-        case 0:
-                
-                [self.navigationController pushViewController:detailViewController animated:YES];
-            break;
-            case 1 :
-                [self.navigationController pushViewController:chartViewController animated:YES];
-                break;
-        default:
-            break;
+    
+    if (pushViewButton.tag == 0) {
+        EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:detailViewController animated:YES];
     }
+    
+    if (pushViewButton.tag == 1) {
+        EXPChartViewController *chartViewController = [[EXPChartViewController alloc]initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:chartViewController animated:YES];
+    }
+    if (pushViewButton.tag == 2) {
+        EXPSubmitDetailViewController * submitController =
+        [[EXPSubmitDetailViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:submitController animated:YES];
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -197,33 +229,43 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = nil;
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:tableViewCellIdentifier];
     
-    cell = [tableView
-            dequeueReusableCellWithIdentifier:tableViewCellIdentifier
-            forIndexPath:indexPath];
+//    cell = [tableView
+//            dequeueReusableCellWithIdentifier:tableViewCellIdentifier
+//            forIndexPath:indexPath];
     
     
     cell.backgroundView.backgroundColor = [UIColor clearColor];
-    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:1.000 green:0.978 blue:0.904 alpha:1.000];
     cell.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
-    cell.textLabel.textAlignment = NSTextAlignmentRight;
+    cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
     
     if (indexPath.section ==0 && indexPath.row == 0) {
-        cell.textLabel.text = @"记一笔";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
-        [cell.imageView setImage:[UIImage imageNamed:@"note"]];
+        cell.textLabel.text = @"今天：";
+        
+        
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
+        cell.detailTextLabel.text = self.todaySum;
+        [cell.imageView setImage:[UIImage imageNamed:@"today"]];
     }
     if (indexPath.section ==0 && indexPath.row == 1) {
-        cell.textLabel.text = @"批量提交";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
-        [cell.imageView setImage:[UIImage imageNamed:@"paper"]];
+        
+        
+        
+        cell.textLabel.text = @"本周：";
+        
+        
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
+        cell.detailTextLabel.text = self.weekSum;
+        [cell.imageView setImage:[UIImage imageNamed:@"week"]];
     }
-    if (indexPath.section ==0 && indexPath.row == 2) {
-        cell.textLabel.text = @"待定";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
-        [cell.imageView setImage:[UIImage imageNamed:@"settings"]];
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        cell.textLabel.text = @"本月：";
+        
+        
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
+        cell.detailTextLabel.text = self.monthSum;
+        [cell.imageView setImage:[UIImage imageNamed:@"month"]];
     }
     
     return cell;
@@ -231,26 +273,9 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.view.bounds.size.height*0.175;
+    return (self.view.bounds.size.height+64)*0.1;
 }
 
-
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"记一笔");
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        
-    }else if(indexPath.section == 0 && indexPath.row == 1){
-        EXPSubmitDetailViewController * submitController =
-             [[EXPSubmitDetailViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:submitController animated:YES];
-    }
-    
-}
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -265,6 +290,44 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)modelDidFinishLoad:(FMDataBaseModel *)model{
+    
+    [super modelDidFinishLoad:model];
+    NSString *weekDate = [NSString stringWithString:[[[EXPDateManager alloc]init] getFirstDayOfThisWeek]];
+    NSString *monthDate = [NSString stringWithString:[[[EXPDateManager alloc]init] getFirstDayOfThisMonth]];
+    NSString *todayDate = [NSString stringWithString:[[[EXPDateManager alloc]init] getToday]];
+    
+    
+    float weekSumInt = 0;
+    float monthSumInt = 0;
+    float todaySumInt = 0;
+    
+    for (  NSDictionary * record in  model.result){
+        
+        if ([weekDate compare:[record objectForKey:@"expense_date"]] == -1) {
+          //  NSLog(@"%d",[weekDate compare:[record objectForKey:@"expense_date"]]);
+            weekSumInt = weekSumInt +[[record objectForKey:@"expense_amount"]floatValue];
+            
+            
+        }
+        if ([monthDate compare:[record objectForKey:@"expense_date"]] == -1) {
+           // NSLog(@"%d",[monthDate compare:[record objectForKey:@"expense_date"]]);
+            monthSumInt = monthSumInt +[[record objectForKey:@"expense_amount"]floatValue];
+            
+            
+        }
+        if ([todayDate isEqualToString:[record objectForKey:@"expense_date"]]) {
+            todaySumInt = todaySumInt + [[record objectForKey:@"expense_amount"]floatValue];
+        }
+        
+    }
+    self.weekSum = [NSString stringWithFormat:@"%2.2f",weekSumInt];
+    self.monthSum = [NSString stringWithFormat:@"%2.2f",monthSumInt];
+    self.todaySum = [NSString stringWithFormat:@"%2.2f",todaySumInt];
+    
+    
 }
 
 @end

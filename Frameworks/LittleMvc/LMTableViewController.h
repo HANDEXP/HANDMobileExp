@@ -10,7 +10,7 @@
 #import "LMModelViewController.h"
 #import "LMTableViewDataSource.h"
 
-@interface LMTableViewController : LMModelViewController{
+@interface LMTableViewController : LMModelViewController<UIGestureRecognizerDelegate>{
     
        UITableView*  _tableView;
       id<LMTableViewDataSource> _dataSource;

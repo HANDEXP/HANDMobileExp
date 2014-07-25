@@ -59,13 +59,25 @@
         httpmodel = [[EXPSubmitHttpModel alloc] init];
         [httpmodel.delegates addObject:self];
         
+
         //
         _tagArray = [[NSMutableArray alloc] init];
         needUploadRecord = 0;
         selectRecord = 0;
         httpFaild = NO;
         
+
+        UIImage *checkList = [UIImage imageNamed:@"submit"];
+        self.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithImage:checkList style:UIBarButtonItemStylePlain target:self action:@selector(submit:)];
         
+        //按钮
+//        btn  =  [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height *0.7, 220, 50)];
+//        [btn  setTitle:@"批量提交" forState:UIControlStateNormal];
+//        [btn setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
+//        [btn  addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchDown];
+//        [self.view addSubview:btn];
+
     }
     return self;
 }
@@ -184,15 +196,26 @@
 -(UITableView *)tableView{
     
     if(_tableView == nil){
-        _tableView = ({
-            UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height * 0.7)];
-            
-            tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
-            tableView.backgroundView = nil;
-            tableView.tableFooterView = [[UIView alloc]init];
-            tableView.tableHeaderView = [[UIView alloc]init];
-            tableView;
-        });
+//<<<<<<< Updated upstream
+//        _tableView = ({
+//            UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height * 0.7)];
+//            
+//            tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
+//            tableView.backgroundView = nil;
+//            tableView.tableFooterView = [[UIView alloc]init];
+//            tableView.tableHeaderView = [[UIView alloc]init];
+//            tableView;
+//        });
+//=======
+    _tableView = ({
+       UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
+        tableView.backgroundView = nil;
+        tableView.tableFooterView = [[UIView alloc]init];
+        tableView.tableHeaderView = [[UIView alloc]init];
+        tableView;
+    });
     }
     
     [self.view addSubview:_tableView];

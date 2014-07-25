@@ -11,6 +11,14 @@
 #import "LMCellStypeItem.h"
 #import "EXPLineModelDetailViewController.h"
 
+
+
+@interface EXPDetailModel ()
+
+
+
+@end
+
 @implementation EXPDetailModel
 -(id)init{
     self = [super init];
@@ -27,8 +35,11 @@
     NSLog(@"hello");
    [self loadMethod:@"query" param:nil excute:@selector(QUERY_MOBILE_EXP_REPORT_LINE:)];
     
-    
-    
+}
+
+- (void)deleteCell:(NSDictionary *)dictionary
+{
+    [self loadMethod:@"delete" param:dictionary excute:@selector(DELETE_MOBILE_EXP_REPORT_LINE:recordList:)];
 }
 
 @end
@@ -42,14 +53,44 @@
         //以后将改为由依赖注入
         EXPDetailModel * detailModel = [[EXPDetailModel alloc] init];
         self.model =detailModel;
+        
     }
     return self;
 }
 
 
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        
+        LMCellStypeItem *temp = [[LMCellStypeItem alloc]init];
+        temp = [[_items objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
+        
+        
+        NSLog(@"%@",temp.primary_id);
+        
+        NSDictionary *deleteID = [NSDictionary dictionaryWithObject:temp.primary_id forKey:@"id"];
+        NSArray * param = @[deleteID];
+        
+        [[_items objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [(EXPDetailModel *)self.model deleteCell:param];
+        
+        [self.DetailTvC reload];
+        
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+}
+
 #pragma -mark TTTableViewDataSource delegate
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
+    
     
     FMDataBaseModel * model = self.model;
     NSMutableSet * timeset = [[NSMutableSet alloc] init];

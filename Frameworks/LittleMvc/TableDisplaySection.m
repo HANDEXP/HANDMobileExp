@@ -32,20 +32,36 @@
 //    [label sizeToFit];
 //    return label;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    NSString *blankString = @"  ";
-    NSString *string =[blankString stringByAppendingString:self.item1];
+    //UITableViewCell *cell = [[UITableViewCell alloc]initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    
+    //    cell = [tableView
+    //            dequeueReusableCellWithIdentifier:tableViewCellIdentifier
+    //            forIndexPath:indexPath];
     
     
-    string = [string stringByAppendingString:@"                                                 累计：¥"];
+    cell.backgroundView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor colorWithWhite:0.771 alpha:0.150];
+    cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
+    
+    cell.textLabel.text = self.item1;
+    
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+    
+    NSString *string =[@"" stringByAppendingString:@"累计：¥"];
+    
     string = [string stringByAppendingString:self.item2];
     
+    cell.detailTextLabel.text = string;
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
     
-    label.text = string;
-    label.textColor = [UIColor colorWithWhite:0.000 alpha:0.410];
-    label.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
-    label.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.140];
-    [label sizeToFit];
-    return label;
+    
+    [cell.imageView setImage:[UIImage imageNamed:@"today"]];
+    
+    
+
+
+    return cell;
 }
 @end

@@ -10,6 +10,6 @@
 #import "LMModelViewController.h"
 #import "PieChartView.h"
 
-@interface EXPChartViewController : LMModelViewController<PieChartDelegate>
+@interface EXPChartViewController : LMModelViewController<PieChartDelegate,UIAlertViewDelegate>
 
 @end

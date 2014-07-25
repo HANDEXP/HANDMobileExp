@@ -9,6 +9,7 @@
 #import "EXPChartViewController.h"
 #import "PieChartView.h"
 #import "EXPChartModel.h"
+#import "EXPLineModelDetailViewController.h"
 
 #define PIE_HEIGHT 280
 @interface EXPChartViewController ()
@@ -22,6 +23,9 @@
 @property (nonatomic,strong) PieChartView *pieChartView;
 @property (nonatomic,strong) UIView *pieContainer;
 @property (nonatomic,strong) NSMutableArray *sumArray;
+@property (nonatomic) BOOL sumIsNull;
+
+@property (nonatomic, strong) UIAlertView *alertView;
 
 @end
 
@@ -31,12 +35,28 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
          self.model = [[EXPChartModel alloc]init];
     }
     return self;
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *buttonTitle = [self.alertView buttonTitleAtIndex:buttonIndex];
+    if ([buttonTitle isEqualToString:@"Ok"]){
+        NSLog(@"User pressed the Yes button.");
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    else if ([buttonTitle isEqualToString:@"Cancel"]){
+        NSLog(@"User pressed the No button.");
+        
+        
+        
+    }
 }
 
 - (void)viewDidLoad
@@ -49,37 +69,45 @@
 
 
 	// Do any additional setup after loading the view.
-    CGRect pieFrame = CGRectMake((self.view.frame.size.width - PIE_HEIGHT) / 2, 100-0, PIE_HEIGHT, PIE_HEIGHT);
-    
-//    UIImage *shadowImg = [UIImage imageNamed:@"shadow.png"];
-//    UIImageView *shadowImgView = [[UIImageView alloc]initWithImage:shadowImg];
-//    shadowImgView.frame = CGRectMake(0, pieFrame.origin.y + PIE_HEIGHT*0.92, shadowImg.size.width/2, shadowImg.size.height/2);
-//    [self.view addSubview:shadowImgView];
-    
+    CGRect pieFrame = CGRectMake((self.view.frame.size.width - PIE_HEIGHT) / 2, self.view.frame.size.height*0.1, PIE_HEIGHT, PIE_HEIGHT);
     
     self.pieContainer = [[UIView alloc]initWithFrame:pieFrame];
-    self.pieChartView = [[PieChartView alloc]initWithFrame:self.pieContainer.bounds withValue:self.valueArray withColor:self.colorArray];
-    self.pieChartView.delegate = self;
-    [self.pieContainer addSubview:self.pieChartView];
+    if (self.sumIsNull) {
+        self.alertView = [[UIAlertView alloc]
+                                  initWithTitle:@""
+                            
+                                
+                                  message:@"亲，你还没有记录任何数据哦，去记一单吧？"
+                                  delegate:nil
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"Ok", nil];
+        self.alertView.delegate = self;
+        [self.alertView show];
+        
+    }else{
+        self.pieChartView = [[PieChartView alloc]initWithFrame:self.pieContainer.bounds withValue:self.valueArray withColor:self.colorArray];
+        self.pieChartView.delegate = self;
+        [self.pieContainer addSubview:self.pieChartView];
+        
+        
+        [self.pieChartView setAmountText:self.amountCount];
+        [self.view addSubview:self.pieContainer];
+        UIImageView *selView = [[UIImageView alloc]init];
+        selView.image = [UIImage imageNamed:@"select.png"];
+        selView.frame = CGRectMake((self.view.frame.size.width - selView.image.size.width/2)/2, self.pieContainer.frame.origin.y + self.pieContainer.frame.size.height, selView.image.size.width/2, selView.image.size.height/2);
+        [self.view addSubview:selView];
+        
+        self.selLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 24, selView.image.size.width/2, 21)];
+        self.selLabel.backgroundColor = [UIColor clearColor];
+        self.selLabel.textAlignment = NSTextAlignmentCenter;
+        self.selLabel.font = [UIFont systemFontOfSize:17];
+        self.selLabel.textColor = [UIColor whiteColor];
+        [selView addSubview:self.selLabel];
+        [self.pieChartView setTitleText:@"总计"];
+    }
     
     
-    [self.pieChartView setAmountText:self.amountCount];
-    
-    
-    
-    [self.view addSubview:self.pieContainer];
-    UIImageView *selView = [[UIImageView alloc]init];
-    selView.image = [UIImage imageNamed:@"select.png"];
-    selView.frame = CGRectMake((self.view.frame.size.width - selView.image.size.width/2)/2, self.pieContainer.frame.origin.y + self.pieContainer.frame.size.height, selView.image.size.width/2, selView.image.size.height/2);
-    [self.view addSubview:selView];
-    
-    self.selLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 24, selView.image.size.width/2, 21)];
-    self.selLabel.backgroundColor = [UIColor clearColor];
-    self.selLabel.textAlignment = NSTextAlignmentCenter;
-    self.selLabel.font = [UIFont systemFontOfSize:17];
-    self.selLabel.textColor = [UIColor whiteColor];
-    [selView addSubview:self.selLabel];
-    [self.pieChartView setTitleText:@"总计"];
+
     self.title = @"报销图表";
     self.view.backgroundColor = [UIColor colorWithRed:0.800 green:0.812 blue:0.680 alpha:1.000];
     
@@ -134,12 +162,15 @@
     self.colorArray = [[NSMutableArray alloc] init];
     self.classArray = [[NSMutableArray alloc] init];
     self.sumArray = [[NSMutableArray alloc]init];
-    
+    self.sumIsNull = NO;
     
     for (NSDictionary *record in myModel.result) {
         sumAmount =sumAmount + [[record valueForKey:@"sum"]floatValue];
     }
     NSLog(@"%f",sumAmount);
+    if (sumAmount == 0) {
+        self.sumIsNull = YES;
+    }
     
     self.amountCount = [NSString stringWithFormat:@"%2.2f",sumAmount];
     

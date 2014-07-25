@@ -9,7 +9,7 @@
 #import "LMTableViewController.h"
 
 
-@interface EXPHomeViewController : UIViewController<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface EXPHomeViewController : LMModelViewController<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 
 @end

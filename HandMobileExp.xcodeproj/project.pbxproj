@@ -162,6 +162,17 @@
 		DA28C4A619729D5200A29412 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A019729D5200A29412 /* settings@2x.png */; };
 		DA28C4A91972C4CD00A29412 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A71972C4CD00A29412 /* photo.png */; };
 		DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A81972C4CD00A29412 /* photo@2x.png */; };
+		DAEC76421980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */; };
+		DAEC764519813FF1009A3362 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEC764319813FF1009A3362 /* submit.png */; };
+		DAEC764619813FF1009A3362 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEC764419813FF1009A3362 /* submit@2x.png */; };
+		DAF3C21F197FA0D1004145B2 /* EXPDateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C21E197FA0D1004145B2 /* EXPDateManager.m */; };
+		DAF3C224197FD626004145B2 /* EXPHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C223197FD626004145B2 /* EXPHomeModel.m */; };
+		DAF3C41C1980A6EF00EA243B /* week.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF3C41A1980A6EF00EA243B /* week.png */; };
+		DAF3C41D1980A6EF00EA243B /* week@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF3C41B1980A6EF00EA243B /* week@2x.png */; };
+		DAF3C4201980A6F700EA243B /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF3C41E1980A6F700EA243B /* month.png */; };
+		DAF3C4211980A6F700EA243B /* month@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF3C41F1980A6F700EA243B /* month@2x.png */; };
+		DAF3C4241980ABAE00EA243B /* today.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF3C4221980ABAE00EA243B /* today.png */; };
+		DAF3C4251980ABAE00EA243B /* today@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF3C4231980ABAE00EA243B /* today@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -422,6 +433,20 @@
 		DA28C4A019729D5200A29412 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		DA28C4A71972C4CD00A29412 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		DA28C4A81972C4CD00A29412 /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
+		DAEC76401980F58F009A3362 /* YFJLeftSwipeDeleteTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFJLeftSwipeDeleteTableView.h; sourceTree = "<group>"; };
+		DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFJLeftSwipeDeleteTableView.m; sourceTree = "<group>"; };
+		DAEC764319813FF1009A3362 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
+		DAEC764419813FF1009A3362 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
+		DAF3C21D197FA0D1004145B2 /* EXPDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDateManager.h; sourceTree = "<group>"; };
+		DAF3C21E197FA0D1004145B2 /* EXPDateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDateManager.m; sourceTree = "<group>"; };
+		DAF3C222197FD626004145B2 /* EXPHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPHomeModel.h; sourceTree = "<group>"; };
+		DAF3C223197FD626004145B2 /* EXPHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPHomeModel.m; sourceTree = "<group>"; };
+		DAF3C41A1980A6EF00EA243B /* week.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = week.png; sourceTree = "<group>"; };
+		DAF3C41B1980A6EF00EA243B /* week@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "week@2x.png"; sourceTree = "<group>"; };
+		DAF3C41E1980A6F700EA243B /* month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month.png; sourceTree = "<group>"; };
+		DAF3C41F1980A6F700EA243B /* month@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "month@2x.png"; sourceTree = "<group>"; };
+		DAF3C4221980ABAE00EA243B /* today.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = today.png; sourceTree = "<group>"; };
+		DAF3C4231980ABAE00EA243B /* today@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +488,7 @@
 		B20D10AA196BE345004871F4 /* EXP */ = {
 			isa = PBXGroup;
 			children = (
+				DAF3C221197FB324004145B2 /* EXP */,
 				B2676E3E197DF31700F58C07 /* EXPBatchSubmit */,
 				B24068C6197025530062AA65 /* EXPDetail */,
 				B20D10AB196BE352004871F4 /* EXPDetailLine */,
@@ -496,6 +522,10 @@
 				B24068B61970248A0062AA65 /* EXPPageControl.m */,
 				B24068B71970248A0062AA65 /* EXPScrollview.h */,
 				B24068B81970248A0062AA65 /* EXPScrollview.m */,
+				DAF3C21D197FA0D1004145B2 /* EXPDateManager.h */,
+				DAF3C21E197FA0D1004145B2 /* EXPDateManager.m */,
+				DAF3C222197FD626004145B2 /* EXPHomeModel.h */,
+				DAF3C223197FD626004145B2 /* EXPHomeModel.m */,
 			);
 			name = Home;
 			path = HandMobileExp/Classes/Home;
@@ -504,6 +534,8 @@
 		B24068C6197025530062AA65 /* EXPDetail */ = {
 			isa = PBXGroup;
 			children = (
+				DAEC76401980F58F009A3362 /* YFJLeftSwipeDeleteTableView.h */,
+				DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */,
 				B2EF36201972DE5E00C80DAA /* EXPDetailModel.h */,
 				B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */,
 				B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */,
@@ -1040,6 +1072,14 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				DAEC764319813FF1009A3362 /* submit.png */,
+				DAEC764419813FF1009A3362 /* submit@2x.png */,
+				DAF3C4221980ABAE00EA243B /* today.png */,
+				DAF3C4231980ABAE00EA243B /* today@2x.png */,
+				DAF3C41E1980A6F700EA243B /* month.png */,
+				DAF3C41F1980A6F700EA243B /* month@2x.png */,
+				DAF3C41A1980A6EF00EA243B /* week.png */,
+				DAF3C41B1980A6EF00EA243B /* week@2x.png */,
 				B2861F8B197F53A100C7F506 /* center.png */,
 				B2861F8C197F53A100C7F506 /* chart.png */,
 				B2861F8D197F53A100C7F506 /* chart@2x.png */,
@@ -1087,6 +1127,13 @@
 			);
 			name = Image;
 			path = HandMobileExp/Classes/Image;
+			sourceTree = "<group>";
+		};
+		DAF3C221197FB324004145B2 /* EXP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EXP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1181,6 +1228,7 @@
 				DA28C48819729BBC00A29412 /* homeBg@2x.png in Resources */,
 				DA28C48119729BBC00A29412 /* 4.png in Resources */,
 				DA28C4A219729D5200A29412 /* camera@2x.png in Resources */,
+				DAEC764519813FF1009A3362 /* submit.png in Resources */,
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
 				B269E5191972F20A001313DD /* LMCellStype.xib in Resources */,
 				DA28C4A419729D5200A29412 /* paper@2x.png in Resources */,
@@ -1205,24 +1253,31 @@
 				DA28C4A91972C4CD00A29412 /* photo.png in Resources */,
 				B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */,
 				B298E29419639C7300EB4850 /* Settings.bundle in Resources */,
+				DAF3C4241980ABAE00EA243B /* today.png in Resources */,
 				DA28C49319729BBC00A29412 /* searchUser.png in Resources */,
+				DAF3C4251980ABAE00EA243B /* today@2x.png in Resources */,
+				DAF3C4211980A6F700EA243B /* month@2x.png in Resources */,
 				B2861F93197F53A100C7F506 /* select.png in Resources */,
 				DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */,
 				B2BFA5AF198137CB00FD51E8 /* LMWebFunctionItemCell.xib in Resources */,
 				DA28C49719729BBC00A29412 /* toDoEXP.png in Resources */,
 				DA28C48919729BBC00A29412 /* loginBg.png in Resources */,
 				DA28C47E19729BBC00A29412 /* 1.png in Resources */,
+				DAF3C41D1980A6EF00EA243B /* week@2x.png in Resources */,
 				DA28C48219729BBC00A29412 /* 5.png in Resources */,
 				B2861F5E197E75E600C7F506 /* Unselected.png in Resources */,
 				DA28C48B19729BBC00A29412 /* menu.png in Resources */,
 				DA28C4A319729D5200A29412 /* paper.png in Resources */,
 				DA28C48A19729BBC00A29412 /* loginBg@2x.png in Resources */,
+				DAF3C4201980A6F700EA243B /* month.png in Resources */,
 				B26AD26D1962D2200081152F /* InfoPlist.strings in Resources */,
+				DAF3C41C1980A6EF00EA243B /* week.png in Resources */,
 				DA28C49819729BBC00A29412 /* toDoEXP@2x.png in Resources */,
 				B2861F94197F53A100C7F506 /* shadow.png in Resources */,
 				DA28C49219729BBC00A29412 /* note@2x.png in Resources */,
 				DA28C49519729BBC00A29412 /* timeSheetFill.png in Resources */,
 				DA28C45F1972995A00A29412 /* ProvincesAndCities.plist in Resources */,
+				DAEC764619813FF1009A3362 /* submit@2x.png in Resources */,
 				B2861F92197F53A100C7F506 /* chart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1286,6 +1341,7 @@
 				B29D9691196695EF0017A9B7 /* EXPFunctionListViewController.m in Sources */,
 				B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */,
 				B2A2D96E1965889300B2C935 /* MMRadialProgressView.m in Sources */,
+				DAEC76421980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m in Sources */,
 				B2A2D94E196550B600B2C935 /* AFNetRequestModel.m in Sources */,
 				B26AD37C1962F24B0081152F /* HDCoreStorage.m in Sources */,
 				B2A2D953196585A300B2C935 /* LMModelViewController.m in Sources */,
@@ -1314,6 +1370,7 @@
 				B298E2AC1963A05500EB4850 /* AFHTTPSessionManager.m in Sources */,
 				B2C556731967F11600B14460 /* LMTableViewDelegate.m in Sources */,
 				B2861F56197E2D5000C7F506 /* EXPSubmitDelegate.m in Sources */,
+				DAF3C21F197FA0D1004145B2 /* EXPDateManager.m in Sources */,
 				B24068BA1970248A0062AA65 /* EXPHomeViewController.m in Sources */,
 				B24068BC1970248A0062AA65 /* EXPScrollview.m in Sources */,
 				B28FA8EB1968F26C004E6333 /* LMTableLinkedItem.m in Sources */,
@@ -1328,6 +1385,7 @@
 				B2A2D97619658E4C00B2C935 /* EXPLoadViewController.m in Sources */,
 				B2D6D684197CDB2600FE234C /* EXPLocationPicker.m in Sources */,
 				B2C556811968288E00B14460 /* LMTableImageItemCellTableViewCell.m in Sources */,
+				DAF3C224197FD626004145B2 /* EXPHomeModel.m in Sources */,
 				B26AD3581962E7B10081152F /* FMDatabaseAdditions.m in Sources */,
 				B2C41C52196EB182007C62BB /* LMTablePickerInputCell.m in Sources */,
 			);

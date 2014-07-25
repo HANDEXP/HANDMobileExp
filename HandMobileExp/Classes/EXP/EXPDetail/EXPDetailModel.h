@@ -8,12 +8,14 @@
 
 #import "FMDataBaseModel.h"
 #import "LMSectioneDataSource.h"
+#import "EXPDetailViewController.h"
 
 @interface EXPDetailModel : FMDataBaseModel
 
+- (void)deleteCell:(NSDictionary *)dictionary;
 @end
 
 @interface EXPDetailDataSource :LMSectioneDataSource
-@property (nonatomic,strong)UIViewController * DetailTvC;
+@property (nonatomic,strong)EXPDetailViewController * DetailTvC;
 
 @end

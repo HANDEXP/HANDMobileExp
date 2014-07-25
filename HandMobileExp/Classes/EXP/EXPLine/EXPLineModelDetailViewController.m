@@ -11,7 +11,6 @@
 #import "EXPLineDetailHtppModel.h"
 #import "EXPLocationAPI.h"
 #import "EXPLocationManager.h"
-#import "LMSimpleProgress.h"
 #import "MMProgressHUDWindow.H"
 
 
@@ -88,13 +87,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(back)];
     
     self.navigationItem.title = @"新建报销单";
-    self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    self.tv = [[UITableView alloc] initWithFrame:CGRectMake(8.0, 8.0, self.view.bounds.size.width-16, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
     
     self.tv.tableFooterView = [[UIView alloc]init];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.000];
     self.tv.scrollEnabled = NO;
     self.tv.separatorStyle = nil;
     
@@ -158,19 +157,24 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
-    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(0, 240, self.view.bounds.size.width, 50)];
+    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 240, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
     self.descTx.delegate = self;
+    
+    self.descTx.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.843 alpha:1.000];
     [self.view addSubview:self.descTx];
     
     self.descTx.tag = 1;
     
     
     //添加按键
-    self.save = [[UIButton alloc] initWithFrame:CGRectMake(50, self.view.bounds.size.height*0.63, 220, 50)];
+    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.bounds.size.height-240)*0.3+250, 320-16, (self.view.bounds.size.height-240)*0.15)];
+    NSLog(@"%f", self.view.bounds.size.height);
+    NSLog(@"%f", self.navigationController.navigationBar.bounds.size.height);
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
-    [self.save setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
+    [self.save setBackgroundColor:[UIColor colorWithRed:0.731 green:0.751 blue:0.525 alpha:0.830]];
     [self.save.layer setCornerRadius:6.0f];
+    self.save.showsTouchWhenHighlighted = YES;
 
     [self.view addSubview:self.save];
 
@@ -210,14 +214,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 -(void) showUpload{
 
-
     [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
-    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(50, 414*0.87, self.view.bounds.size.width - 100, 40)];
+    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.superview.bounds.size.height-240)*0.45+260, self.view.bounds.size.width - 16, (self.view.superview.bounds.size.height-240)*0.15)];
     [self.upload.layer setCornerRadius:6.0f];
-    
+    NSLog(@"%f",self.view.superview.bounds.size.height);
     [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
     [self.upload setBackgroundColor:[UIColor orangeColor]];
     [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
+    self.upload.showsTouchWhenHighlighted = YES;
     [self.view addSubview:self.upload];
     
 }
@@ -595,7 +599,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     switch (indexPath.section) {
         case 0:
-            return 80;
+            return 72;
             break;
         case 1:
             return 50;
