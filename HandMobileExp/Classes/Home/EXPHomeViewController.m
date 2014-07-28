@@ -29,12 +29,15 @@
 @property (nonatomic ,strong) NSString *monthSum;
 
 @property (nonatomic ,strong) NSString *todaySum;
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 static NSString *tableViewCellIdentifier = @"MyCells";
 
 @implementation EXPHomeViewController
 
+@synthesize tableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -80,6 +83,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 {
     NSLog(@"记一笔");
         EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+    detailViewController.detailList = self;
+    detailViewController.tableView = tableView;
         [self.navigationController pushViewController:detailViewController animated:YES];
 
 }
@@ -89,24 +94,17 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     [super viewDidLoad];
     
     self.title = @"首页";
-    
-    
-    
-    
 
     self.model = [[EXPHomeModel alloc]init];
     
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {        // Load
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.813 green:0.812 blue:0.706 alpha:1.000];
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.914 green:0.924 blue:0.821 alpha:1.000];
     }
     else {
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.813 green:0.812 blue:0.706 alpha:1.000];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.914 green:0.924 blue:0.821 alpha:1.000];
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     }
     self.view.backgroundColor = [UIColor colorWithRed:0.875 green:0.871 blue:0.757 alpha:1.000];
-    
-    
-    
     
     UIImage *checkList = [UIImage imageNamed:@"menu"];
     self.navigationItem.leftBarButtonItem =
@@ -152,7 +150,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     
     //TableView with 3 cells
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height*0.45, self.view.bounds.size.width-16.0, self.view.bounds.size.height*0.3) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height*0.45, self.view.bounds.size.width-16.0, self.view.bounds.size.height*0.3) style:UITableViewStylePlain];
     
     tableView.backgroundColor = [UIColor whiteColor];
     tableView.backgroundView = nil;
@@ -208,6 +206,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     if (pushViewButton.tag == 0) {
         EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
+        detailViewController.homeList = self;
+        detailViewController.tv = self.tableView;
         [self.navigationController pushViewController:detailViewController animated:YES];
     }
     
@@ -306,13 +306,13 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     for (  NSDictionary * record in  model.result){
         
-        if ([weekDate compare:[record objectForKey:@"expense_date"]] == -1) {
+        if ([weekDate compare:[record objectForKey:@"expense_date"]] < 1) {
           //  NSLog(@"%d",[weekDate compare:[record objectForKey:@"expense_date"]]);
             weekSumInt = weekSumInt +[[record objectForKey:@"expense_amount"]floatValue];
             
             
         }
-        if ([monthDate compare:[record objectForKey:@"expense_date"]] == -1) {
+        if ([monthDate compare:[record objectForKey:@"expense_date"]] < 1) {
            // NSLog(@"%d",[monthDate compare:[record objectForKey:@"expense_date"]]);
             monthSumInt = monthSumInt +[[record objectForKey:@"expense_amount"]floatValue];
             

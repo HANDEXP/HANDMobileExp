@@ -35,4 +35,7 @@
 
 //列表
 @property (nonatomic,strong) LMModelViewController  * detailList;
+
+@property (nonatomic, strong) UITableView *tableView;
+
 @end

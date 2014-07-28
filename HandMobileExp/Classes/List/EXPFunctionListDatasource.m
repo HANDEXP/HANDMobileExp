@@ -61,14 +61,14 @@
 //    LMTableImageItem * imageItem =[LMTableImageItem itemWithText:@"首页" imageURL:@"Home"];
 //    imageItem.userInfo = @"HomeGuider";
 //    [self.items insertObject:imageItem atIndex:0];
-    LMBasicFunctionItem * imageItem = [LMBasicFunctionItem initWithTitle:@"主页" imageUrl:@"IconHome" delegate:self selector:@selector(openURLForItem:)];
+    LMBasicFunctionItem * imageItem = [LMBasicFunctionItem initWithTitle:@"主页" imageUrl:@"home" delegate:self selector:@selector(openURLForItem:)];
     
 
     imageItem.userInfo = @"HomeGuider";
     [self.items insertObject:imageItem atIndex:0];
     
     
-     imageItem = [LMBasicFunctionItem initWithTitle:@"设置" imageUrl:@"IconHome" delegate:self selector:@selector(openURLForItem:)];
+     imageItem = [LMBasicFunctionItem initWithTitle:@"设置" imageUrl:@"settings" delegate:self selector:@selector(openURLForItem:)];
     imageItem.userInfo = @"SyncGuider";
     
     

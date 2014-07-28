@@ -47,11 +47,12 @@
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _webView.delegate = self;
      [self setToolbarItems:self.items animated:NO];
+    
+    
      [self.navigationController setToolbarHidden:NO animated:YES];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Left"
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:self
-                                                                            action:@selector(presentLeftMenuViewController:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(presentLeftMenuViewController:)];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 
    
     self.title  = _text;
@@ -85,19 +86,31 @@
     }
     
    UIBarButtonItem *flexibleMargin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
     UIBarButtonItem *margin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
-    UIImage *stopImg = [self imageNamed:@"stopButton" forBundleNamed:_resourceBundleName];
-    UIImage *nextImg = [self imageNamed:@"nextButton" forBundleNamed:_resourceBundleName];
-    UIImage *previousdImg = [self imageNamed:@"previousButton" forBundleNamed:_resourceBundleName];
+
+    UIImage *stopImg = [UIImage imageNamed:@"stopButton"];
+    UIImage *nextImg = [UIImage imageNamed:@"nextButton" ];
+    UIImage *previousdImg = [UIImage imageNamed:@"previousButton"];
     UIImage *refreshImg = [UIImage imageNamed:@"reloadButton"];
     
     _stopButton = [[UIBarButtonItem alloc] initWithImage:stopImg style:UIBarButtonItemStylePlain target:self action:@selector(stopWebView)];
+    
+    
     _previousButton = [[UIBarButtonItem alloc] initWithImage:previousdImg style:UIBarButtonItemStylePlain target:self action:@selector(backWebView)];
+    
+    _previousButton.tintColor = [UIColor blackColor];
+    
+    
     _nextButton = [[UIBarButtonItem alloc] initWithImage:nextImg style:UIBarButtonItemStylePlain target:self action:@selector(forwardWebView)];
     _reloadButton =[[UIBarButtonItem alloc] initWithImage:refreshImg style:UIBarButtonItemStylePlain target:self action:@selector(reloadWebView)];
-
-    NSMutableArray *items =  [NSMutableArray arrayWithObjects:flexibleMargin,_previousButton,flexibleMargin, _nextButton, flexibleMargin, _reloadButton, flexibleMargin, _stopButton, flexibleMargin,nil];
+    
+    _stopButton.tintColor = [UIColor blackColor];
+    _nextButton.tintColor = [UIColor blackColor];
+    _reloadButton.tintColor = [UIColor blackColor];
+    
+    NSMutableArray *items =  [NSMutableArray arrayWithObjects:_previousButton,flexibleMargin, _nextButton, flexibleMargin, _reloadButton, flexibleMargin, _stopButton,nil];
     
     
     return items;

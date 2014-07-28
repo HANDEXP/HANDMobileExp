@@ -19,6 +19,7 @@
 @property (strong, nonatomic)UILabel *sumMoneyLabel;
 
 
+
 @end
 
 @implementation EXPDetailViewController
@@ -49,6 +50,7 @@
     
     self.title = @"报销创建";
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(returnHomePage:)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addDetailPage:)];
     
@@ -77,6 +79,12 @@
 
 - (void)returnHomePage:(id *)sender
 {
+    if(self.homeList != nil){
+        [self.homeList reload];
+    }
+    if (self.tv != nil) {
+        [self.tv reloadData];
+    }
 
     [self.navigationController popViewControllerAnimated:YES];
 }

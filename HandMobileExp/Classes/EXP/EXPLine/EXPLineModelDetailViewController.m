@@ -86,7 +86,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
  //   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"报销单创建" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(back)];
     
-    self.navigationItem.title = @"新建报销单";
+    self.navigationItem.title = @"记一单";
     self.tv = [[UITableView alloc] initWithFrame:CGRectMake(8.0, 8.0, self.view.bounds.size.width-16, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
@@ -180,6 +180,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
     NSLog(@"%f...",self.view.bounds.size.height);
     
+        self.upload = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.bounds.size.height-240)*0.45+260, self.view.bounds.size.width - 16, (self.view.bounds.size.height-240)*0.15)];
+    
 //    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(170, self.view.bounds.size.height*0.63, 100, 50)];
 //    [self.saveAdd setTitle:@"保存再记" forState:UIControlStateNormal];
 //    [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
@@ -207,6 +209,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if(self.detailList != nil){
         [self.detailList reload];
     }
+    
+    if (self.tableView != nil) {
+        [self.tableView reloadData];
+    }
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -215,7 +221,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 -(void) showUpload{
 
     [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
-    self.upload = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.superview.bounds.size.height-240)*0.45+260, self.view.bounds.size.width - 16, (self.view.superview.bounds.size.height-240)*0.15)];
     [self.upload.layer setCornerRadius:6.0f];
     NSLog(@"%f",self.view.superview.bounds.size.height);
     [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
@@ -418,7 +423,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 #pragma  viewcontroller life
 //对数据进行初始化
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
     //赋值
     if(record != nil && !insertFlag && updateFlag){
         //金额
@@ -527,6 +532,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         {
             amountCell = [[LMTableAmountInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableAmountInputCell"];
             amountCell.tv = self;
+            amountCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
         
@@ -537,7 +543,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         {
             expenseTypeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
             
-            
+            expenseTypeCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
 
         ExpenseTypePicker.cell =expenseTypeCell;
@@ -550,20 +556,21 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
         return expenseTypeCell;
         
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 3){
         dateCell  = (LMTableDateInputCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
         if (dateCell == nil)
         {
             dateCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         return dateCell;
         
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 2){
         placeCell= (LMTablePickerInputCell *)[tableView dequeueReusableCellWithIdentifier:@"LMTablePickerInputCell"];
         if (placeCell == nil)
         {
             placeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
-            
+            placeCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
         }
         

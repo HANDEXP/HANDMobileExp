@@ -49,7 +49,7 @@
 -(UITableView *)tableView{
     
     _tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 7) / 2.0f, self.view.frame.size.width, 54 * 7) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, (self.view.frame.size.height - 54 * 7) / 1.5f, self.view.frame.size.width, 54 * 7) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.opaque = NO;
         tableView.backgroundColor = [UIColor clearColor];

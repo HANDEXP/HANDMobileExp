@@ -11,6 +11,6 @@
 
 @interface EXPDetailViewController : LMTableViewController<UITableViewDataSource,UITableViewDelegate>
 
-//@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) UITableView *tv;
+@property (nonatomic, strong) LMModelViewController *homeList;
 @end
