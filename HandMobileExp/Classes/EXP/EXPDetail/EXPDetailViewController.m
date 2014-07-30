@@ -12,13 +12,14 @@
 #import "EXPDetailModel.h"
 #import "AFNetRequestModel.h"
 #import "YFJLeftSwipeDeleteTableView.h"
+#import "EXPdateSwitchView.h"
 
 @interface EXPDetailViewController ()
 @property NSInteger amount;
 @property (nonatomic, strong)UILabel *sumLabel;
 @property (strong, nonatomic)UILabel *sumMoneyLabel;
 
-
+@property (nonatomic, strong)EXPdateSwitchView *dateSwitchView;
 
 @end
 
@@ -66,6 +67,8 @@
     self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(30.0, self.view.bounds.size.height * 0.05, 100.0, 50.0)];
     self.sumLabel.textColor = [UIColor whiteColor];
     self.sumLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+    
+    
 }
 
 #pragma button delegate
@@ -99,6 +102,7 @@
         tableView.backgroundView.backgroundColor = [UIColor whiteColor];
         tableView.backgroundColor = [UIColor colorWithRed:0.947 green:0.940 blue:0.831 alpha:1.000];
         tableView.backgroundView = nil;
+        
         tableView.tableFooterView = [[UIView alloc]init];
         tableView.tableHeaderView = [[UIView alloc]init];
         tableView;
@@ -108,6 +112,8 @@
     [self.view addSubview:_tableView];
     return _tableView;
 }
+
+
 
 
 #pragma LMModelDelegate
@@ -135,4 +141,7 @@
     
     
 }
+
+
+
 @end

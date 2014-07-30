@@ -31,11 +31,16 @@
 
 @property BOOL insertFlag;
 @property BOOL updateFlag;
+
+@property BOOL readOnlyFlag;
+
 @property (strong) NSNumber * keyId;
 
 //列表
 @property (nonatomic,strong) LMModelViewController  * detailList;
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) UIView *coverView;
 
 @end

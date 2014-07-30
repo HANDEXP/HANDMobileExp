@@ -47,6 +47,7 @@
 @implementation EXPLineModelDetailViewController
 @synthesize insertFlag;
 @synthesize updateFlag;
+@synthesize readOnlyFlag;
 
 static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
@@ -69,8 +70,17 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         insertFlag = YES;
         shouldUploadImg = YES;
         completeFlag = NO;
+        readOnlyFlag = NO;
+        
+        
     }
     return self;
+}
+
+-(UIView *)coverView
+{
+    self.coverView = [[UIView alloc]initWithFrame:self.view.bounds];
+    return _coverView;
 }
 
 - (void)viewDidLoad
@@ -195,6 +205,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         [self reload];
     }
     
+    if (readOnlyFlag) {
+        
+        self.upload.hidden = YES;
+        self.save.hidden = YES;
+        
+        [self.view addSubview:self.coverView];
+    }
     
 }
 
@@ -244,6 +261,16 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
 }
 
+- (NSString *)stringFromDate: (NSDate *)date
+{
+    
+    NSString *dateStr = [NSString stringWithFormat:@"%@", date];
+    NSArray *dateArr = [dateStr componentsSeparatedByString:@" "];
+    
+    NSString *expense_date = [dateArr objectAtIndex:0];
+    return expense_date;
+}
+
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
 
@@ -262,15 +289,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
     
-    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
+    NSString *expense_date = [self stringFromDate:dateCell.dateValue];
     
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
     NSString * description = self.descTx.text;
-    
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString * local_status = @"new";
     NSString * CREATION_DATE =[formatter stringFromDate:[NSDate date]];
     

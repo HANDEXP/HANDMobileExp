@@ -17,6 +17,7 @@
 @property (nonatomic,strong) NSString * expense_type_desc;
 @property (nonatomic,strong) NSString * line_desc;
 @property (nonatomic,strong) NSNumber *  primary_id;
+@property (nonatomic, strong) NSString *status;
 
 + (id)itemWithText:(id)delegate selector :(SEL)selector;
 @end

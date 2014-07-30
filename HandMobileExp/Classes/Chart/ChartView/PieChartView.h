@@ -19,6 +19,8 @@
 @property(nonatomic, assign) id<PieChartDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame withValue:(NSMutableArray *)valueArr withColor:(NSMutableArray *)colorArr;
 - (void)reloadChart;
+
+- (void) reloadChartWithValueArr: (NSMutableArray *)valueArr ColorArr: (NSMutableArray *)colorArr;
 - (void)setAmountText:(NSString *)text;
 - (void)setTitleText:(NSString *)text;
 @end

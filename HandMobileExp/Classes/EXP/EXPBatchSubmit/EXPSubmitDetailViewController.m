@@ -97,7 +97,7 @@
     [btn  addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:btn];
     
-    [_tableView setEditing:YES animated:YES];
+    //[_tableView setEditing:YES animated:YES];
     //使能选中
     
     

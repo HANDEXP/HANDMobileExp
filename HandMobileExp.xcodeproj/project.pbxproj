@@ -164,6 +164,8 @@
 		DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C4A81972C4CD00A29412 /* photo@2x.png */; };
 		DA83CB1F1985EDA400BBBEA0 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DA83CB1D1985EDA400BBBEA0 /* home.png */; };
 		DA83CB201985EDA400BBBEA0 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA83CB1E1985EDA400BBBEA0 /* home@2x.png */; };
+		DA83CB281986341400BBBEA0 /* LMDetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA83CB271986341400BBBEA0 /* LMDetailListTableViewCell.xib */; };
+		DA83CB2B198635EE00BBBEA0 /* LMDetailListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83CB2A198635EE00BBBEA0 /* LMDetailListTableViewCell.m */; };
 		DA9F030019824120002E486A /* previousButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F02FE19824120002E486A /* previousButton.png */; };
 		DA9F030119824120002E486A /* previousButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F02FF19824120002E486A /* previousButton@2x.png */; };
 		DA9F0304198243A4002E486A /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F0302198243A4002E486A /* stopButton.png */; };
@@ -172,6 +174,18 @@
 		DA9F0309198243AB002E486A /* nextButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F0307198243AB002E486A /* nextButton@2x.png */; };
 		DA9F030C198243B3002E486A /* reloadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F030A198243B3002E486A /* reloadButton.png */; };
 		DA9F030D198243B3002E486A /* reloadButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F030B198243B3002E486A /* reloadButton@2x.png */; };
+		DA9F32F41987388D008B26C4 /* stamp.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32F21987388D008B26C4 /* stamp.png */; };
+		DA9F32F51987388D008B26C4 /* stamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32F31987388D008B26C4 /* stamp@2x.png */; };
+		DA9F32F819874683008B26C4 /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32F619874683008B26C4 /* new.png */; };
+		DA9F32F919874683008B26C4 /* new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32F719874683008B26C4 /* new@2x.png */; };
+		DA9F32FC19877738008B26C4 /* EXPdetailAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F32FB19877738008B26C4 /* EXPdetailAmount.m */; };
+		DA9F330119889160008B26C4 /* leftDate.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32FD19889160008B26C4 /* leftDate.png */; };
+		DA9F330219889160008B26C4 /* leftDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32FE19889160008B26C4 /* leftDate@2x.png */; };
+		DA9F330319889160008B26C4 /* rightDate.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F32FF19889160008B26C4 /* rightDate.png */; };
+		DA9F330419889160008B26C4 /* rightDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F330019889160008B26C4 /* rightDate@2x.png */; };
+		DA9F3307198892ED008B26C4 /* EXPdateSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F3306198892ED008B26C4 /* EXPdateSwitchView.m */; };
+		DA9F33091988CFDF008B26C4 /* noDate.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F33081988CFDF008B26C4 /* noDate.png */; };
+		DA9F330B1988D007008B26C4 /* noDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F330A1988D007008B26C4 /* noDate@2x.png */; };
 		DAEC76421980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */; };
 		DAEC764519813FF1009A3362 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEC764319813FF1009A3362 /* submit.png */; };
 		DAEC764619813FF1009A3362 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEC764419813FF1009A3362 /* submit@2x.png */; };
@@ -445,6 +459,9 @@
 		DA28C4A81972C4CD00A29412 /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
 		DA83CB1D1985EDA400BBBEA0 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		DA83CB1E1985EDA400BBBEA0 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		DA83CB271986341400BBBEA0 /* LMDetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMDetailListTableViewCell.xib; sourceTree = "<group>"; };
+		DA83CB29198635EE00BBBEA0 /* LMDetailListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDetailListTableViewCell.h; path = Frameworks/LittleMvc/LMDetailListTableViewCell.h; sourceTree = "<group>"; };
+		DA83CB2A198635EE00BBBEA0 /* LMDetailListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDetailListTableViewCell.m; path = Frameworks/LittleMvc/LMDetailListTableViewCell.m; sourceTree = "<group>"; };
 		DA9F02FE19824120002E486A /* previousButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = previousButton.png; sourceTree = "<group>"; };
 		DA9F02FF19824120002E486A /* previousButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "previousButton@2x.png"; sourceTree = "<group>"; };
 		DA9F0302198243A4002E486A /* stopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopButton.png; sourceTree = "<group>"; };
@@ -453,6 +470,20 @@
 		DA9F0307198243AB002E486A /* nextButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nextButton@2x.png"; sourceTree = "<group>"; };
 		DA9F030A198243B3002E486A /* reloadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reloadButton.png; sourceTree = "<group>"; };
 		DA9F030B198243B3002E486A /* reloadButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reloadButton@2x.png"; sourceTree = "<group>"; };
+		DA9F32F21987388D008B26C4 /* stamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp.png; sourceTree = "<group>"; };
+		DA9F32F31987388D008B26C4 /* stamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp@2x.png"; sourceTree = "<group>"; };
+		DA9F32F619874683008B26C4 /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
+		DA9F32F719874683008B26C4 /* new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new@2x.png"; sourceTree = "<group>"; };
+		DA9F32FA19877738008B26C4 /* EXPdetailAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPdetailAmount.h; path = HandMobileExp/Classes/Chart/EXPdetailAmount.h; sourceTree = "<group>"; };
+		DA9F32FB19877738008B26C4 /* EXPdetailAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPdetailAmount.m; path = HandMobileExp/Classes/Chart/EXPdetailAmount.m; sourceTree = "<group>"; };
+		DA9F32FD19889160008B26C4 /* leftDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftDate.png; sourceTree = "<group>"; };
+		DA9F32FE19889160008B26C4 /* leftDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftDate@2x.png"; sourceTree = "<group>"; };
+		DA9F32FF19889160008B26C4 /* rightDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightDate.png; sourceTree = "<group>"; };
+		DA9F330019889160008B26C4 /* rightDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightDate@2x.png"; sourceTree = "<group>"; };
+		DA9F3305198892ED008B26C4 /* EXPdateSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPdateSwitchView.h; path = HandMobileExp/Classes/Chart/EXPdateSwitchView.h; sourceTree = "<group>"; };
+		DA9F3306198892ED008B26C4 /* EXPdateSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPdateSwitchView.m; path = HandMobileExp/Classes/Chart/EXPdateSwitchView.m; sourceTree = "<group>"; };
+		DA9F33081988CFDF008B26C4 /* noDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noDate.png; sourceTree = "<group>"; };
+		DA9F330A1988D007008B26C4 /* noDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noDate@2x.png"; sourceTree = "<group>"; };
 		DAEC76401980F58F009A3362 /* YFJLeftSwipeDeleteTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFJLeftSwipeDeleteTableView.h; sourceTree = "<group>"; };
 		DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFJLeftSwipeDeleteTableView.m; sourceTree = "<group>"; };
 		DAEC764319813FF1009A3362 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
@@ -765,6 +796,10 @@
 				B2861F83197F538000C7F506 /* EXPChartModel.m */,
 				B2861F84197F538000C7F506 /* EXPChartViewController.h */,
 				B2861F85197F538000C7F506 /* EXPChartViewController.m */,
+				DA9F32FA19877738008B26C4 /* EXPdetailAmount.h */,
+				DA9F32FB19877738008B26C4 /* EXPdetailAmount.m */,
+				DA9F3305198892ED008B26C4 /* EXPdateSwitchView.h */,
+				DA9F3306198892ED008B26C4 /* EXPdateSwitchView.m */,
 			);
 			name = Chart;
 			sourceTree = "<group>";
@@ -1049,6 +1084,9 @@
 		B2C5568219682CB800B14460 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DA83CB29198635EE00BBBEA0 /* LMDetailListTableViewCell.h */,
+				DA83CB2A198635EE00BBBEA0 /* LMDetailListTableViewCell.m */,
+				DA83CB271986341400BBBEA0 /* LMDetailListTableViewCell.xib */,
 				B269E5151972F209001313DD /* LMCellStype.h */,
 				B269E5161972F209001313DD /* LMCellStype.m */,
 				B269E5171972F209001313DD /* LMCellStype.xib */,
@@ -1092,6 +1130,16 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				DA9F330A1988D007008B26C4 /* noDate@2x.png */,
+				DA9F33081988CFDF008B26C4 /* noDate.png */,
+				DA9F32FD19889160008B26C4 /* leftDate.png */,
+				DA9F32FE19889160008B26C4 /* leftDate@2x.png */,
+				DA9F32FF19889160008B26C4 /* rightDate.png */,
+				DA9F330019889160008B26C4 /* rightDate@2x.png */,
+				DA9F32F619874683008B26C4 /* new.png */,
+				DA9F32F719874683008B26C4 /* new@2x.png */,
+				DA9F32F21987388D008B26C4 /* stamp.png */,
+				DA9F32F31987388D008B26C4 /* stamp@2x.png */,
 				DA83CB1D1985EDA400BBBEA0 /* home.png */,
 				DA83CB1E1985EDA400BBBEA0 /* home@2x.png */,
 				DA9F030A198243B3002E486A /* reloadButton.png */,
@@ -1243,6 +1291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9F33091988CFDF008B26C4 /* noDate.png in Resources */,
 				DA28C47F19729BBC00A29412 /* 2.png in Resources */,
 				DA28C48419729BBC00A29412 /* doneEXP.png in Resources */,
 				B2861F90197F53A100C7F506 /* center.png in Resources */,
@@ -1251,18 +1300,22 @@
 				DA28C48619729BBC00A29412 /* homeBg.png in Resources */,
 				B29D95BE196595EB0017A9B7 /* EXPLoginViewController.xib in Resources */,
 				DA9F030119824120002E486A /* previousButton@2x.png in Resources */,
+				DA9F330219889160008B26C4 /* leftDate@2x.png in Resources */,
 				DA28C48E19729BBC00A29412 /* navigationBg@2x.png in Resources */,
 				DA9F030019824120002E486A /* previousButton.png in Resources */,
 				DA28C4A519729D5200A29412 /* settings.png in Resources */,
+				DA9F330B1988D007008B26C4 /* noDate@2x.png in Resources */,
 				DA28C49119729BBC00A29412 /* note.png in Resources */,
 				DA28C49A19729BBC00A29412 /* user@2x.png in Resources */,
 				DA28C48719729BBC00A29412 /* homeBg3@2x.png in Resources */,
 				DA28C48819729BBC00A29412 /* homeBg@2x.png in Resources */,
+				DA9F32F919874683008B26C4 /* new@2x.png in Resources */,
 				DA28C48119729BBC00A29412 /* 4.png in Resources */,
 				DA28C4A219729D5200A29412 /* camera@2x.png in Resources */,
 				DAEC764519813FF1009A3362 /* submit.png in Resources */,
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
 				B269E5191972F20A001313DD /* LMCellStype.xib in Resources */,
+				DA9F32F819874683008B26C4 /* new.png in Resources */,
 				DA9F030C198243B3002E486A /* reloadButton.png in Resources */,
 				DA28C4A419729D5200A29412 /* paper@2x.png in Resources */,
 				B2BFA5A719812BCF00FD51E8 /* LMBasicFunctionItemCell.xib in Resources */,
@@ -1280,6 +1333,7 @@
 				DA9F0309198243AB002E486A /* nextButton@2x.png in Resources */,
 				DA28C48D19729BBC00A29412 /* navigationBg.png in Resources */,
 				DA28C4A619729D5200A29412 /* settings@2x.png in Resources */,
+				DA9F32F41987388D008B26C4 /* stamp.png in Resources */,
 				DA28C49019729BBC00A29412 /* newEXP@2x.png in Resources */,
 				B2BE44951972358600114B1B /* expense.plist in Resources */,
 				B2676E4E197DF38A00F58C07 /* EXPSubmitDetailViewController.xib in Resources */,
@@ -1294,6 +1348,7 @@
 				DAF3C4241980ABAE00EA243B /* today.png in Resources */,
 				DA28C49319729BBC00A29412 /* searchUser.png in Resources */,
 				DAF3C4251980ABAE00EA243B /* today@2x.png in Resources */,
+				DA9F330419889160008B26C4 /* rightDate@2x.png in Resources */,
 				DAF3C4211980A6F700EA243B /* month@2x.png in Resources */,
 				B2861F93197F53A100C7F506 /* select.png in Resources */,
 				DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */,
@@ -1303,10 +1358,12 @@
 				DA28C47E19729BBC00A29412 /* 1.png in Resources */,
 				DAF3C41D1980A6EF00EA243B /* week@2x.png in Resources */,
 				DA28C48219729BBC00A29412 /* 5.png in Resources */,
+				DA9F330319889160008B26C4 /* rightDate.png in Resources */,
 				B2861F5E197E75E600C7F506 /* Unselected.png in Resources */,
 				DA28C48B19729BBC00A29412 /* menu.png in Resources */,
 				DA28C4A319729D5200A29412 /* paper.png in Resources */,
 				DA28C48A19729BBC00A29412 /* loginBg@2x.png in Resources */,
+				DA9F32F51987388D008B26C4 /* stamp@2x.png in Resources */,
 				DAF3C4201980A6F700EA243B /* month.png in Resources */,
 				DA9F030D198243B3002E486A /* reloadButton@2x.png in Resources */,
 				B26AD26D1962D2200081152F /* InfoPlist.strings in Resources */,
@@ -1317,7 +1374,9 @@
 				DA28C49519729BBC00A29412 /* timeSheetFill.png in Resources */,
 				DA28C45F1972995A00A29412 /* ProvincesAndCities.plist in Resources */,
 				DAEC764619813FF1009A3362 /* submit@2x.png in Resources */,
+				DA83CB281986341400BBBEA0 /* LMDetailListTableViewCell.xib in Resources */,
 				DA9F0305198243A4002E486A /* stopButton@2x.png in Resources */,
+				DA9F330119889160008B26C4 /* leftDate.png in Resources */,
 				B2861F92197F53A100C7F506 /* chart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1353,11 +1412,13 @@
 				B2D6D681197CD4BC00FE234C /* EXPExpenseTypePicker.m in Sources */,
 				B2A2D96D1965889300B2C935 /* MMProgressHUDWindow.m in Sources */,
 				B269E5141972E6C3001313DD /* TableDisplaySection.m in Sources */,
+				DA9F32FC19877738008B26C4 /* EXPdetailAmount.m in Sources */,
 				B2A2D9441965376700B2C935 /* EXPLoginModel.m in Sources */,
 				B2A2D96B1965889300B2C935 /* MMProgressHUDOverlayView.m in Sources */,
 				B29D968B196692990017A9B7 /* LMTableViewController.m in Sources */,
 				B29D95BD196595EB0017A9B7 /* EXPLoginViewController.m in Sources */,
 				B298E2B21963A05500EB4850 /* AFURLSessionManager.m in Sources */,
+				DA9F3307198892ED008B26C4 /* EXPdateSwitchView.m in Sources */,
 				B298E2AF1963A05500EB4850 /* AFURLConnectionOperation.m in Sources */,
 				B2A2D9681965889300B2C935 /* MMProgressHUD+Animations.m in Sources */,
 				B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */,
@@ -1402,6 +1463,7 @@
 				B2861F8A197F538000C7F506 /* EXPChartViewController.m in Sources */,
 				B26AD3571962E7B10081152F /* FMDatabase.m in Sources */,
 				B2861F88197F538000C7F506 /* RotatedView.m in Sources */,
+				DA83CB2B198635EE00BBBEA0 /* LMDetailListTableViewCell.m in Sources */,
 				B269E5181972F209001313DD /* LMCellStype.m in Sources */,
 				B29D960E196649F40017A9B7 /* RECommonFunctions.m in Sources */,
 				B2A2D94A19654A7D00B2C935 /* LMRequestModel.m in Sources */,

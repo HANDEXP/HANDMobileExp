@@ -141,6 +141,13 @@
     [self.rotatedView reloadPie];
 }
 
+- (void) reloadChartWithValueArr: (NSMutableArray *)valueArr ColorArr: (NSMutableArray *)colorArr
+{
+    self.rotatedView.mValueArray = valueArr;
+    self.rotatedView.mColorArray = colorArr;
+    [self reloadChart];
+}
+
 - (void)selectedFinish:(RotatedView *)rotatedView index:(NSInteger)index percent:(float)per
 {
     [self.delegate selectedFinish:self index:index percent:per];

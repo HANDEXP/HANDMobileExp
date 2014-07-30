@@ -33,7 +33,7 @@
 
 - (void)load:(int)cachePolicy more:(BOOL)more{
     NSLog(@"hello");
-   [self loadMethod:@"query" param:nil excute:@selector(QUERY_MOBILE_EXP_REPORT_LINE:)];
+   [self loadMethod:@"query" param:nil excute:@selector(QUERYALL_MOBILE_EXP_REPORT_LINE:)];
     
 }
 
@@ -86,6 +86,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
 }
+
 
 #pragma -mark TTTableViewDataSource delegate
 -(void)tableViewDidLoadModel:(UITableView *)tableView
@@ -142,6 +143,7 @@
                 LMCellStypeItem * cellitem = [LMCellStypeItem itemWithText:self selector:@selector(openURLForItem:)];
                 cellitem.amount = [record valueForKey:@"expense_amount"];
                 cellitem.primary_id =  [record valueForKey:@"id"];
+                cellitem.status = [record valueForKey:@"local_status"];
 
                 
                 NSString * exp_expense_type_desc = [record valueForKey:@"expense_type_desc"];
@@ -173,8 +175,13 @@
 
     if ([item.userInfo isEqualToString:@"EXPDetailLineGuider"] ){
 
-       EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
-
+       EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];        
+        
+        if ([item.status compare:@"new"] != 0) {
+            detailViewController.readOnlyFlag = YES;
+        }
+        
+        
         detailViewController.insertFlag = NO;
         detailViewController.updateFlag = YES;
         detailViewController.keyId = item.primary_id;
