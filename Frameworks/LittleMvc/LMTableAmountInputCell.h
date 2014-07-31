@@ -15,14 +15,14 @@
 @end
 
 @interface LMTableAmountInputCell : UITableViewCell<UIKeyInput, UITextInputTraits> {
-	NSUInteger numberValue;
+	
 	BOOL valueChanged;
 	NSUInteger lowerLimit;
+	NSUInteger numberValue;
 	NSUInteger upperLimit;
-	
-	UIToolbar *inputAccessoryView;
 	UIEdgeInsets originalContentInsets;
 	UIEdgeInsets originalScrollInsets;
+	UIToolbar *inputAccessoryView;
     
     
 }

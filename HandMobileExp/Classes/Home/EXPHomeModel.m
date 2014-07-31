@@ -22,7 +22,7 @@
 
 - (void)load:(int)cachePolicy more:(BOOL)more{
     NSLog(@"hello");
-    [self loadMethod:@"query" param:nil excute:@selector(QUERY_MOBILE_EXP_REPORT_LINE:)];
+    [self loadMethod:@"query" param:nil excute:@selector(QUERYALL_MOBILE_EXP_REPORT_LINE:)];
     
 }
 

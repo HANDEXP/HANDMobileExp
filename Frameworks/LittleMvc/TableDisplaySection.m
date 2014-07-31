@@ -57,7 +57,7 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
     
     
-    [cell.imageView setImage:[UIImage imageNamed:@"today"]];
+    [cell.imageView setImage:[UIImage imageNamed:@"pin"]];
     
     
 

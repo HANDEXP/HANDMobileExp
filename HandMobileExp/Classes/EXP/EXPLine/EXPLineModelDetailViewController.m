@@ -261,15 +261,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
 }
 
-- (NSString *)stringFromDate: (NSDate *)date
-{
-    
-    NSString *dateStr = [NSString stringWithFormat:@"%@", date];
-    NSArray *dateArr = [dateStr componentsSeparatedByString:@" "];
-    
-    NSString *expense_date = [dateArr objectAtIndex:0];
-    return expense_date;
-}
 
 #pragma btn delegate
 -(void)save:(UIButton *)paramSender{
@@ -290,13 +281,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
     
     
-    NSString *expense_date = [self stringFromDate:dateCell.dateValue];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *expense_date = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateCell.dateValue]];
     
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
     NSString * description = self.descTx.text;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd"];
+
     NSString * local_status = @"new";
     NSString * CREATION_DATE =[formatter stringFromDate:[NSDate date]];
     
@@ -449,7 +441,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 #pragma  viewcontroller life
 //对数据进行初始化
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
     //赋值
     if(record != nil && !insertFlag && updateFlag){
         //金额
@@ -480,7 +472,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         LocationPicker.city_desc = [locationInfo objectAtIndex:1];
         placeCell.detailTextLabel.text = [record valueForKey:@"expense_place"];
         
-        NSLog(@"%@",[record valueForKey:@"expense_place"]);
         //初始化日期
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         

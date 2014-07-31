@@ -191,6 +191,8 @@
 		DA9F3307198892ED008B26C4 /* EXPdateSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9F3306198892ED008B26C4 /* EXPdateSwitchView.m */; };
 		DA9F33091988CFDF008B26C4 /* noDate.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F33081988CFDF008B26C4 /* noDate.png */; };
 		DA9F330B1988D007008B26C4 /* noDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F330A1988D007008B26C4 /* noDate@2x.png */; };
+		DA9F330E1989E8DC008B26C4 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F330C1989E8DC008B26C4 /* pin.png */; };
+		DA9F330F1989E8DC008B26C4 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9F330D1989E8DC008B26C4 /* pin@2x.png */; };
 		DAEC76421980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */; };
 		DAEC764519813FF1009A3362 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEC764319813FF1009A3362 /* submit.png */; };
 		DAEC764619813FF1009A3362 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEC764419813FF1009A3362 /* submit@2x.png */; };
@@ -498,6 +500,8 @@
 		DA9F3306198892ED008B26C4 /* EXPdateSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPdateSwitchView.m; path = HandMobileExp/Classes/Chart/EXPdateSwitchView.m; sourceTree = "<group>"; };
 		DA9F33081988CFDF008B26C4 /* noDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noDate.png; sourceTree = "<group>"; };
 		DA9F330A1988D007008B26C4 /* noDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noDate@2x.png"; sourceTree = "<group>"; };
+		DA9F330C1989E8DC008B26C4 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		DA9F330D1989E8DC008B26C4 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		DAEC76401980F58F009A3362 /* YFJLeftSwipeDeleteTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFJLeftSwipeDeleteTableView.h; sourceTree = "<group>"; };
 		DAEC76411980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFJLeftSwipeDeleteTableView.m; sourceTree = "<group>"; };
 		DAEC764319813FF1009A3362 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
@@ -1168,6 +1172,8 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				DA9F330C1989E8DC008B26C4 /* pin.png */,
+				DA9F330D1989E8DC008B26C4 /* pin@2x.png */,
 				DA9F330A1988D007008B26C4 /* noDate@2x.png */,
 				DA9F33081988CFDF008B26C4 /* noDate.png */,
 				DA9F32FD19889160008B26C4 /* leftDate.png */,
@@ -1391,6 +1397,7 @@
 				DA28C49719729BBC00A29412 /* toDoEXP.png in Resources */,
 				DA28C48919729BBC00A29412 /* loginBg.png in Resources */,
 				DA28C47E19729BBC00A29412 /* 1.png in Resources */,
+				DA9F330F1989E8DC008B26C4 /* pin@2x.png in Resources */,
 				DAF3C41D1980A6EF00EA243B /* week@2x.png in Resources */,
 				DA28C48219729BBC00A29412 /* 5.png in Resources */,
 				DA9F330319889160008B26C4 /* rightDate.png in Resources */,
@@ -1399,6 +1406,7 @@
 				DA28C4A319729D5200A29412 /* paper.png in Resources */,
 				DA28C48A19729BBC00A29412 /* loginBg@2x.png in Resources */,
 				DA9F32F51987388D008B26C4 /* stamp@2x.png in Resources */,
+				DA9F330E1989E8DC008B26C4 /* pin.png in Resources */,
 				DAF3C4201980A6F700EA243B /* month.png in Resources */,
 				DA9F030D198243B3002E486A /* reloadButton@2x.png in Resources */,
 				B26AD26D1962D2200081152F /* InfoPlist.strings in Resources */,

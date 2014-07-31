@@ -4,7 +4,22 @@
 <array>
 	<dict>
 		<key>State</key>
-		<string>直辖市</string>
+		<string>上海市</string>
+		<key>Cities</key>
+		<array>
+			<dict>
+				<key>city</key>
+				<string>上海</string>
+				<key>lat</key>
+				<real>31.22</real>
+				<key>lon</key>
+				<real>121.48</real>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>State</key>
+		<string>北京市</string>
 		<key>Cities</key>
 		<array>
 			<dict>
@@ -15,14 +30,13 @@
 				<key>lon</key>
 				<real>116.46</real>
 			</dict>
-			<dict>
-				<key>city</key>
-				<string>上海</string>
-				<key>lat</key>
-				<real>31.22</real>
-				<key>lon</key>
-				<real>121.48</real>
-			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>State</key>
+		<string>天津市</string>
+		<key>Cities</key>
+		<array>
 			<dict>
 				<key>city</key>
 				<string>天津</string>
@@ -31,6 +45,13 @@
 				<key>lon</key>
 				<real>117.2</real>
 			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>State</key>
+		<string>重庆市</string>
+		<key>Cities</key>
+		<array>
 			<dict>
 				<key>city</key>
 				<string>重庆</string>
@@ -43,7 +64,7 @@
 	</dict>
 	<dict>
 		<key>State</key>
-		<string>特别行政区</string>
+		<string>香港市</string>
 		<key>Cities</key>
 		<array>
 			<dict>
@@ -54,6 +75,13 @@
 				<key>lon</key>
 				<real>114.1</real>
 			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>State</key>
+		<string>澳门市</string>
+		<key>Cities</key>
+		<array>
 			<dict>
 				<key>city</key>
 				<string>澳门</string>

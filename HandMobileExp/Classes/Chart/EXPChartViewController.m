@@ -18,25 +18,25 @@
 @interface EXPChartViewController ()<EXPdateSwitchViewDelegate>
 
 
-@property (nonatomic,strong) NSMutableArray *valueArray;
-@property (nonatomic,strong) NSMutableArray *colorArray;
-@property (nonatomic,strong) NSString *amountCount;
-@property (nonatomic,strong) NSMutableArray *classArray;
-@property (nonatomic,strong) UILabel *selLabel;
-@property (nonatomic,strong) PieChartView *pieChartView;
-@property (nonatomic,strong) UIView *pieContainer;
-@property (nonatomic,strong) NSMutableArray *sumArray;
-@property (nonatomic) BOOL sumIsNull;
 
-@property (nonatomic, strong) UIAlertView *alertView;
+@property (nonatomic) BOOL sumIsNull;
+@property (nonatomic, strong) EXPdateSwitchView *dateSwitchView;
 @property (nonatomic, strong) EXPdetailAmount *detailAmount;
 @property (nonatomic, strong) NSMutableArray *detailAmountArray;
-@property (nonatomic, strong) NSString *year;
 @property (nonatomic, strong) NSString *month;
-@property (nonatomic, strong) UILabel *dateLabel;
-@property (nonatomic, strong) UIImageView *selView;
-@property (nonatomic, strong) EXPdateSwitchView *dateSwitchView;
+@property (nonatomic, strong) NSString *year;
+@property (nonatomic, strong) UIAlertView *alertView;
 @property (nonatomic, strong) UIImageView *noDataImageView;
+@property (nonatomic, strong) UIImageView *selView;
+@property (nonatomic, strong) UILabel *dateLabel;
+@property (nonatomic,strong) NSMutableArray *classArray;
+@property (nonatomic,strong) NSMutableArray *colorArray;
+@property (nonatomic,strong) NSMutableArray *sumArray;
+@property (nonatomic,strong) NSMutableArray *valueArray;
+@property (nonatomic,strong) NSString *amountCount;
+@property (nonatomic,strong) PieChartView *pieChartView;
+@property (nonatomic,strong) UILabel *selLabel;
+@property (nonatomic,strong) UIView *pieContainer;
 
 
 @end
@@ -45,6 +45,8 @@
 @implementation EXPChartViewController
 
 @synthesize selView = selView;
+
+
 
 - (NSString *)year
 {
@@ -112,7 +114,7 @@
     self.pieContainer = [[UIView alloc]initWithFrame:pieFrame];
     if (self.sumIsNull) {
 
-        self.noDataImageView = [[UIImageView alloc]initWithFrame:CGRectMake(73.0, self.view.bounds.size.height/2-85, 174.0, 170.0)];
+        self.noDataImageView = [[UIImageView alloc]initWithFrame:CGRectMake(73.0, (self.view.bounds.size.height-64)/2-85, 174.0, 170.0)];
         [self.noDataImageView setImage:[UIImage imageNamed: @"noDate"]];
         
         [self.view addSubview:self.noDataImageView];
@@ -139,7 +141,7 @@
         [self.pieChartView setTitleText:@"总计"];
     }
     
-    NSString *dateString = [NSString stringWithFormat:@"%@ 年 %@ 月",_year,_month];
+    NSString *dateString = [NSString stringWithFormat:@"%@ 年 %@ 月", self.year ,self.month];
     self.dateSwitchView = [[EXPdateSwitchView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 40.0) Date:dateString Color: [self randomColor]];
     self.dateSwitchView.delegate = self;
     [self.view addSubview:self.dateSwitchView];

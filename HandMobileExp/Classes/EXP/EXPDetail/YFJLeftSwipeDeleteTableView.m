@@ -77,7 +77,7 @@ const static char * kYFJLeftSwipeDeleteTableViewCellIndexPathKey = "YFJLeftSwipe
         _deleteButton.frame = CGRectMake(screenWidth(), 0, kDeleteButtonWidth, kDeleteButtonHeight);
         _deleteButton.backgroundColor = [UIColor colorWithRed:0.917 green:0.000 blue:0.010 alpha:1.000];
         _deleteButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        [_deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
         [_deleteButton addTarget:self action:@selector(deleteItem:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_deleteButton];
 
