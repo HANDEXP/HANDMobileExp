@@ -56,7 +56,7 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
     //数据同步
-    if(indexPath.item  == 2 ){
+    if(indexPath.item  == 4 ){
         [self.model loadExpenseClass];
 
     }
@@ -114,6 +114,8 @@
 
 - (void)modelDidFinishLoad:(id<TTModel>)model{
    
+    
+    
 }
 
 @end

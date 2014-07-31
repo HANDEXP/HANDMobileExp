@@ -33,7 +33,7 @@
                         <sections>
                             <tableViewSection id="fdM-UZ-Th0">
                                 <cells>
-                                    <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="22" id="FTY-7H-HBB">
+                                    <tableViewCell userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="22" id="FTY-7H-HBB">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FTY-7H-HBB" id="Iim-X7-eK3">
@@ -60,7 +60,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96984614160000004" green="0.96778168519999996" blue="0.84132054619999996" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="22" id="xLu-wm-RuN">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="22" id="xLu-wm-RuN">
                                         <rect key="frame" x="0.0" y="66" width="320" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xLu-wm-RuN" id="DfS-gi-WAN">

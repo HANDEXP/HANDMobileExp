@@ -511,15 +511,20 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         NSString *province = [[[EXPLocationManager alloc]init] getProvince];
         NSString *city = [[[EXPLocationManager alloc]init] getCity];
         
-        if(![province  isEqualToString:@""] && ![city isEqualToString:@""] ){
+        if(![province  isEqualToString:@""] && ![city isEqualToString:@""]){
             
-
+            
+            if (province == NULL || city == NULL) {
+                [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
+                [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
+            }else{
             LocationPicker.province_desc = province;
             LocationPicker.city_desc = city;
             
             NSString *location = [NSString stringWithFormat:@"%@>%@",province,city];
             placeCell.detailTextLabel.text = location;
             placeCell.textLabel.text = @"地点";
+            }
         }else{
             
             [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
