@@ -33,7 +33,7 @@
 
 - (void)initalizeInputView {
 	// Initialization code
-	self.keyboardType = UIKeyboardTypeDecimalPad;
+	self.keyboardType = UIKeyboardTypeNumberPad;
 	self.lowerLimit = 0;//最小为0
 	self.upperLimit = 1000000000; //最大允许9位
 	
