@@ -9,6 +9,7 @@
 #import "EXPFunctionListDatasource.h"
 #import "EXPHomeViewController.h"
 #import "LMBasicFunctionItem.h"
+#import "EXPDataSettingViewController.h"
 
 @implementation EXPFunctionListDatasource
 
@@ -72,6 +73,9 @@
     imageItem.userInfo = @"SyncGuider";
     
     
+
+    
+    
     [self.items addObject:imageItem];
     
 }
@@ -91,10 +95,16 @@
         [self.ViewController.sideMenuViewController hideMenuViewController];
         
     }else if ([item.userInfo isEqualToString:@"SyncGuider"]){
-        EXPFunctionListModel * arModel =  (AFNetRequestModel *)self.model;
-        arModel.tag = @"SyncGuider";
-        [arModel loadExpenseClass];
-         
+        UIStoryboard *StoryBoard = [UIStoryboard storyboardWithName:@"SettingStoryboard" bundle:nil];
+        EXPDataSettingViewController * dataSetting = [StoryBoard instantiateViewControllerWithIdentifier:@"EXPDataSettingViewController"];
+        [self.ViewController.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:dataSetting]
+                                                                    animated:YES];
+        [self.ViewController.sideMenuViewController hideMenuViewController];
+        
+//        EXPFunctionListModel * arModel =  (AFNetRequestModel *)self.model;
+//        arModel.tag = @"SyncGuider";
+//        [arModel loadExpenseClass];
+        
     }
 }
 

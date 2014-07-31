@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3FDACE78-6ECA-4A81-91A9-73EB5BDAF0AC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HandMobileExp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E62356F8-6B6C-4752-8057-450CBA9D095F</key>
+		<string>ssh://github.com/HANDEXP/HANDMobileExp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HandMobileExp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E62356F8-6B6C-4752-8057-450CBA9D095F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/HANDEXP/HANDMobileExp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E62356F8-6B6C-4752-8057-450CBA9D095F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E62356F8-6B6C-4752-8057-450CBA9D095F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HANDMobileExp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

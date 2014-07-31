@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2064DA01987CD8200856B30 /* CompositeXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064D9F1987CD8200856B30 /* CompositeXmlParser.m */; };
+		B2064DE71988C3C100856B30 /* EXPDataSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064DE61988C3C100856B30 /* EXPDataSettingViewController.m */; };
+		B2064DE91988C95800856B30 /* SettingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */; };
+		B2064DEC1988E55700856B30 /* EXPDataSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */; };
 		B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10A5196BDFA0004871F4 /* LMDataBaseModel.m */; };
 		B20D10A9196BE121004871F4 /* FMDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10A8196BE121004871F4 /* FMDataBaseModel.m */; };
 		B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10AD196BE3CE004871F4 /* EXPLineModelDetailViewController.m */; };
@@ -105,6 +109,7 @@
 		B2BFA5AA19812CC000FD51E8 /* LMBasicFunctionItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BFA5A919812CC000FD51E8 /* LMBasicFunctionItemCell.m */; };
 		B2BFA5AD19812EB000FD51E8 /* LMBasicFunctionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BFA5AC19812EB000FD51E8 /* LMBasicFunctionItem.m */; };
 		B2BFA5AF198137CB00FD51E8 /* LMWebFunctionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2BFA5AE198137CB00FD51E8 /* LMWebFunctionItemCell.xib */; };
+		B2C0525B1987CA2100D9E5BF /* CompositeDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C0525A1987CA2100D9E5BF /* CompositeDictionary.m */; };
 		B2C41C37196E7434007C62BB /* LMTableAmountInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */; };
 		B2C41C52196EB182007C62BB /* LMTablePickerInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C41C51196EB182007C62BB /* LMTablePickerInputCell.m */; };
 		B2C41C54196EB5DC007C62BB /* LMTablePickerInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C41C53196EB5DC007C62BB /* LMTablePickerInputCell.xib */; };
@@ -210,6 +215,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B2064D9E1987CD8200856B30 /* CompositeXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompositeXmlParser.h; path = Frameworks/LittleMvc/CompositeXmlParser.h; sourceTree = "<group>"; };
+		B2064D9F1987CD8200856B30 /* CompositeXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompositeXmlParser.m; path = Frameworks/LittleMvc/CompositeXmlParser.m; sourceTree = "<group>"; };
+		B2064DE51988C3C100856B30 /* EXPDataSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPDataSettingViewController.h; path = HandMobileExp/Classes/Setting/EXPDataSettingViewController.h; sourceTree = "<group>"; };
+		B2064DE61988C3C100856B30 /* EXPDataSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPDataSettingViewController.m; path = HandMobileExp/Classes/Setting/EXPDataSettingViewController.m; sourceTree = "<group>"; };
+		B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingStoryboard.storyboard; sourceTree = "<group>"; };
+		B2064DEA1988E55700856B30 /* EXPDataSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDataSettingModel.h; sourceTree = "<group>"; };
+		B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDataSettingModel.m; sourceTree = "<group>"; };
 		B20D10A4196BDFA0004871F4 /* LMDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDataBaseModel.h; path = Frameworks/LittleMvc/LMDataBaseModel.h; sourceTree = "<group>"; };
 		B20D10A5196BDFA0004871F4 /* LMDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDataBaseModel.m; path = Frameworks/LittleMvc/LMDataBaseModel.m; sourceTree = "<group>"; };
 		B20D10A7196BE121004871F4 /* FMDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDataBaseModel.h; path = Frameworks/LittleMvc/FMDataBaseModel.h; sourceTree = "<group>"; };
@@ -383,6 +395,8 @@
 		B2BFA5AB19812EB000FD51E8 /* LMBasicFunctionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMBasicFunctionItem.h; path = Frameworks/LittleMvc/LMBasicFunctionItem.h; sourceTree = "<group>"; };
 		B2BFA5AC19812EB000FD51E8 /* LMBasicFunctionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMBasicFunctionItem.m; path = Frameworks/LittleMvc/LMBasicFunctionItem.m; sourceTree = "<group>"; };
 		B2BFA5AE198137CB00FD51E8 /* LMWebFunctionItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMWebFunctionItemCell.xib; sourceTree = "<group>"; };
+		B2C052591987CA2100D9E5BF /* CompositeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompositeDictionary.h; path = Frameworks/LittleMvc/CompositeDictionary.h; sourceTree = "<group>"; };
+		B2C0525A1987CA2100D9E5BF /* CompositeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompositeDictionary.m; path = Frameworks/LittleMvc/CompositeDictionary.m; sourceTree = "<group>"; };
 		B2C41C35196E7434007C62BB /* LMTableAmountInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableAmountInputCell.h; path = Frameworks/LittleMvc/LMTableAmountInputCell.h; sourceTree = "<group>"; };
 		B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableAmountInputCell.m; path = Frameworks/LittleMvc/LMTableAmountInputCell.m; sourceTree = "<group>"; };
 		B2C41C50196EB182007C62BB /* LMTablePickerInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTablePickerInputCell.h; path = Frameworks/LittleMvc/LMTablePickerInputCell.h; sourceTree = "<group>"; };
@@ -525,6 +539,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2064DE21988996100856B30 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */,
+				B2064DE51988C3C100856B30 /* EXPDataSettingViewController.h */,
+				B2064DE61988C3C100856B30 /* EXPDataSettingViewController.m */,
+				B2064DEA1988E55700856B30 /* EXPDataSettingModel.h */,
+				B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		B20D10A3196BDF54004871F4 /* dataBaseModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,7 +565,6 @@
 		B20D10AA196BE345004871F4 /* EXP */ = {
 			isa = PBXGroup;
 			children = (
-				DAF3C221197FB324004145B2 /* EXP */,
 				B2676E3E197DF31700F58C07 /* EXPBatchSubmit */,
 				B24068C6197025530062AA65 /* EXPDetail */,
 				B20D10AB196BE352004871F4 /* EXPDetailLine */,
@@ -704,6 +729,7 @@
 				B2861F7A197F535100C7F506 /* Chart */,
 				B24068B01970248A0062AA65 /* Home */,
 				DA28C46019729BBC00A29412 /* Image */,
+				B2064DE21988996100856B30 /* Setting */,
 				B2A2D937196529B400B2C935 /* LittleMvc */,
 				B20D10AA196BE345004871F4 /* EXP */,
 				B28FA8EC196901BD004E6333 /* Detail */,
@@ -937,6 +963,7 @@
 		B2A2D937196529B400B2C935 /* LittleMvc */ = {
 			isa = PBXGroup;
 			children = (
+				B2C052581987C95700D9E5BF /* XmlParseTool */,
 				B2861F57197E4DC900C7F506 /* UiViewTool */,
 				B2A2D94F1965849A00B2C935 /* view Controllers */,
 				B2A2D93C1965345700B2C935 /* Additions */,
@@ -1018,6 +1045,17 @@
 			);
 			name = MMProgressHUD;
 			path = Frameworks/MMProgressHUD;
+			sourceTree = "<group>";
+		};
+		B2C052581987C95700D9E5BF /* XmlParseTool */ = {
+			isa = PBXGroup;
+			children = (
+				B2C052591987CA2100D9E5BF /* CompositeDictionary.h */,
+				B2C0525A1987CA2100D9E5BF /* CompositeDictionary.m */,
+				B2064D9E1987CD8200856B30 /* CompositeXmlParser.h */,
+				B2064D9F1987CD8200856B30 /* CompositeXmlParser.m */,
+			);
+			name = XmlParseTool;
 			sourceTree = "<group>";
 		};
 		B2C5566B1967D7AE00B14460 /* Table */ = {
@@ -1207,13 +1245,6 @@
 			path = HandMobileExp/Classes/Image;
 			sourceTree = "<group>";
 		};
-		DAF3C221197FB324004145B2 /* EXP */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = EXP;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1262,6 +1293,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = hand;
 				TargetAttributes = {
+					B26AD25E1962D2200081152F = {
+						DevelopmentTeam = 63M9FZGR9Q;
+					};
 					B26AD27F1962D2200081152F = {
 						TestTargetID = B26AD25E1962D2200081152F;
 					};
@@ -1338,6 +1372,7 @@
 				B2BE44951972358600114B1B /* expense.plist in Resources */,
 				B2676E4E197DF38A00F58C07 /* EXPSubmitDetailViewController.xib in Resources */,
 				DA28C48C19729BBC00A29412 /* menu@2x.png in Resources */,
+				B2064DE91988C95800856B30 /* SettingStoryboard.storyboard in Resources */,
 				DA83CB201985EDA400BBBEA0 /* home@2x.png in Resources */,
 				DA83CB1F1985EDA400BBBEA0 /* home.png in Resources */,
 				DA28C49419729BBC00A29412 /* searchUser@2x.png in Resources */,
@@ -1396,6 +1431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2064DEC1988E55700856B30 /* EXPDataSettingModel.m in Sources */,
 				B2BFA5AD19812EB000FD51E8 /* LMBasicFunctionItem.m in Sources */,
 				B298E2AA1963A05500EB4850 /* AFHTTPRequestOperation.m in Sources */,
 				B26AD2731962D2200081152F /* EXPAppDelegate.m in Sources */,
@@ -1427,13 +1463,16 @@
 				B2EB414319683BA200E6085F /* LMTableItem.m in Sources */,
 				B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */,
 				B28FA8EF19690212004E6333 /* EXPWebViewController.m in Sources */,
+				B2C0525B1987CA2100D9E5BF /* CompositeDictionary.m in Sources */,
 				B2A2D96A1965889300B2C935 /* MMProgressHUD.m in Sources */,
 				B26AD3591962E7B10081152F /* FMDatabasePool.m in Sources */,
 				B298E34C19640FAD00EB4850 /* EXPAFNetWorkingUtil.m in Sources */,
+				B2064DE71988C3C100856B30 /* EXPDataSettingViewController.m in Sources */,
 				B2A2D93B19652A2900B2C935 /* LMModel.m in Sources */,
 				B298E2AD1963A05500EB4850 /* AFNetworkReachabilityManager.m in Sources */,
 				B298E35A1964510600EB4850 /* EXPApplicationContext.m in Sources */,
 				B2C5567D1968215C00B14460 /* NSString+HDAddtions.m in Sources */,
+				B2064DA01987CD8200856B30 /* CompositeXmlParser.m in Sources */,
 				B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */,
 				B2A2D9411965352700B2C935 /* NSArrayAdditions.m in Sources */,
 				B2676E4C197DF38A00F58C07 /* EXPSubmitDetailModel.m in Sources */,
@@ -1608,6 +1647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HandMobileExp/HandMobileExp-Prefix.pch";
 				INFOPLIST_FILE = "HandMobileExp/HandMobileExp-Info.plist";
@@ -1623,6 +1663,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HandMobileExp/HandMobileExp-Prefix.pch";
 				INFOPLIST_FILE = "HandMobileExp/HandMobileExp-Info.plist";

@@ -17,5 +17,6 @@
    cancelButtonTitle:(NSString *) cancelButtonTitle
    otherButtonTitles:(NSString *)otherButtonTitles;
 
+void showAlterView(NSString *message ,NSString * title ,id delegate);
 
 @end
