@@ -338,13 +338,7 @@
     //处理超时异常
     NSLog(@"%d",error.code);
      NSLog(@"%@",__model.tag);
-    if(error.code == -1001 || error.code == -1004 || error.code == -1009){
-        if(!httpFaild){
-            httpFaild = YES;
-            [MMProgressHUD dismiss];
-            [LMAlertViewTool showAlertView:@"提示" message:@"服务器链接超时请重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        }
-    }else if(error.code == 3840 || error.code == -1016){
+    if(error.code == 3840 || error.code == -1016){
         //todo 3804为接口返回数据不为json格式错误，现在默认情况认为返回这个错误就是成功
         
         NSDictionary * param = @{
@@ -364,6 +358,12 @@
         }
         
         
+    }else{
+        if(!httpFaild){
+
+            [MMProgressHUD dismiss];
+            [LMAlertViewTool showAlertView:@"提示" message:@"网络出现问题，请检查网络后重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        }
     }
 }
 
