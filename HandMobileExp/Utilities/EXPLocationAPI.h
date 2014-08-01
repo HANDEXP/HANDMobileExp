@@ -10,6 +10,8 @@
 
 @interface EXPLocationAPI : NSObject
 
+@property (nonatomic, strong)NSString *city;
+@property (nonatomic, strong)NSString *province;
 
 + (EXPLocationAPI *)shareInstance;
 

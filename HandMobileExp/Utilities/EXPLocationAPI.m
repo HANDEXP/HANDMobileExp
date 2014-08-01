@@ -18,6 +18,13 @@
 
 @implementation EXPLocationAPI
 
+//- (void)setCity:(NSString *)city
+//{
+//    if (!city) {
+//        city = @"";
+//    }
+//}
+
 + (EXPLocationAPI *)shareInstance
 {
     static EXPLocationAPI *_shareInstance = nil;

@@ -7,8 +7,9 @@
 //
 
 #import "EXPLocationManager.h"
+#import "EXPLocationAPI.h"
 
-@interface EXPLocationManager ()
+@interface EXPLocationManager ()<CLLocationManagerDelegate>
 {
     NSArray *locationInfo;
     CLLocationManager *locManager;
@@ -28,26 +29,38 @@
     
     if (self) {
         locManager = [[CLLocationManager alloc] init];
+        locManager.delegate = self;
         locManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
         [locManager startUpdatingLocation];
         locManager.distanceFilter = 1000.0f;
         
-        currentLatitude = [[NSString alloc]
-                           initWithFormat:@"%g",
-                           locManager.location.coordinate.latitude];
-        currentLongitude = [[NSString alloc]
-                            initWithFormat:@"%g",
-                            locManager.location.coordinate.longitude];
-        currentUrl = [self getUrlWithLatitude:currentLatitude Longitude:currentLongitude];
-        
-        NSURLRequest *request = [[NSURLRequest alloc]initWithURL:currentUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-        NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        
-///////////////
-        if (received == nil) {
-            city = @"";
-            province = @"";
-        }else{
+        }
+    
+    return self;
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+
+    CLLocation *currentLocation = [locations lastObject];
+    
+    currentLatitude = [[NSString alloc]
+                       initWithFormat:@"%g",
+                       currentLocation.coordinate.latitude];
+    currentLongitude = [[NSString alloc]
+                        initWithFormat:@"%g",
+                        currentLocation.coordinate.longitude];
+    
+    currentUrl = [self getUrlWithLatitude:currentLatitude Longitude:currentLongitude];
+    
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:currentUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    ///////////////
+    if (received == nil) {
+        city = @"";
+        province = @"";
+    }else{
         
         NSDictionary *locationInfo = [NSJSONSerialization  JSONObjectWithData:received options:NSJSONReadingMutableLeaves error:Nil];
         
@@ -57,11 +70,13 @@
         
         city = [[NSString alloc]initWithFormat:@"%@",[addressComponent objectForKey:@"city"]];
         
+        [EXPLocationAPI shareInstance].city = city;
+        
         province = [[NSString alloc]initWithFormat:@"%@",[addressComponent objectForKey:@"province"]];
-        }
+        [EXPLocationAPI shareInstance].province = province;
+    //[self.locationManager stopUpdatingLocation];
     }
     
-    return self;
 }
 
 - (NSURL *)getUrlWithLatitude:(NSString *)latitude Longitude:(NSString *)longitude
@@ -85,4 +100,6 @@
 {
     return province;
 }
+
+
 @end

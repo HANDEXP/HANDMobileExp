@@ -65,7 +65,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         ExpenseTypePicker.expense_classes =expense_classes;
 
  
-        
         updateFlag = NO;
         insertFlag = YES;
         shouldUploadImg = YES;
@@ -508,8 +507,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     
  
-        NSString *province = [[[EXPLocationManager alloc]init] getProvince];
-        NSString *city = [[[EXPLocationManager alloc]init] getCity];
+        NSString *province = [EXPLocationAPI shareInstance].province;
+        NSString *city = [EXPLocationAPI shareInstance].city;
         
         if(![province  isEqualToString:@""] && ![city isEqualToString:@""]){
             

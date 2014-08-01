@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MMProgressHUDWindow.h"
 #import "LMSimpleProgress.h"
+#import "EXPLocationAPI.h"
 
 
 @interface EXPLoginViewController ()<UITextFieldDelegate>{
@@ -39,10 +40,9 @@
         [self setModel:loginmodel];
         
 
-        locManager = [[CLLocationManager alloc] init];
-        locManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-        [locManager startUpdatingLocation];
-        locManager.distanceFilter = 1000.0f;
+        [EXPLocationAPI shareInstance].city = @"";
+        [EXPLocationAPI shareInstance].province = @"";
+       NSLog(@"%@",[EXPLocationAPI shareInstance].city);
 
     }
     return self;
