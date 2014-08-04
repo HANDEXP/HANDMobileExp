@@ -154,8 +154,10 @@
 #pragma mark - UIWebViewDelegate
 -(void)showLoad:(BOOL)flag{
     if(flag){
-        
-           [MMProgressHUD  showWithStatus:@"loading"];
+        //[MMProgressHUD showProgressWithStyle:MMProgressHUDProgressStyleLinear title:@"" status:@"loading"];
+        [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleFade];
+
+        [MMProgressHUD  showWithStatus:@"loading"];
     }else{
         
         [MMProgressHUD dismiss];

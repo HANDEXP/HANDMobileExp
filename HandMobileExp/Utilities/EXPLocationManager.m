@@ -86,6 +86,9 @@
     NSString * str3 = @"&output=json&pois=0";
     NSString * string = @"";
     string = [string stringByAppendingFormat:@"%@%@%@%@%@",str1,latitude,str2,longitude,str3];
+    
+    
+    
     NSURL *url = [NSURL URLWithString:string];
     
     return url;

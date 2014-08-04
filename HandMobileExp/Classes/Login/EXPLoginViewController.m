@@ -132,8 +132,8 @@
         NSMutableDictionary * result = (NSMutableDictionary *)model.Json;
         NSArray  * arr = [[result valueForKey:@"body"]valueForKey:@"list"];
         
-        [[NSUserDefaults standardUserDefaults] setValue:arr forKey:@"expense_classes"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+
+        
         
     }
 }

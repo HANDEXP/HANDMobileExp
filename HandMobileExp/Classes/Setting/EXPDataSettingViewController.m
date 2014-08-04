@@ -9,6 +9,7 @@
 #import "EXPDataSettingViewController.h"
 #import "EXPDataSettingModel.h"
 #import  "LMAlertViewTool.h"
+#import "EXPUnlockSettingViewController.h"
 
 @interface EXPDataSettingViewController ()
 
@@ -59,6 +60,12 @@
     if(indexPath.item  == 4 ){
         [self.model loadExpenseClass];
 
+    }
+    
+    if (indexPath.item == 7) {
+        
+        [self.navigationController pushViewController:[[EXPUnlockSettingViewController alloc] initWithNibName:nil bundle:nil] animated:YES];
+        
     }
     
 }

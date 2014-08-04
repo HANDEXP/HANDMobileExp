@@ -9,6 +9,8 @@
 #import "EXPLoadViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import "EXPUnlockViewController.h"
+
 @interface EXPLoadViewController ()
 
 @end
@@ -112,12 +114,20 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
 }
 -(void)showLoginView{
     NSLog(@"shhowloginview");
+    
     EXPLoginViewController *loginViewController = [[EXPLoginViewController alloc] initWithNibName:@"EXPLoginViewController" bundle:nil];
-//
-////           UIWindow *window = [UIApplication sharedApplication].keyWindow;
-////    window.rootViewController =loginViewController;
-        [self presentModalViewController:loginViewController animated:YES];
-
+    [self presentModalViewController:loginViewController animated:YES];
+    NSLog(@"xxxxxxxxxxxxxxxxx%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"password"]);
+    
+//    if (![[[NSUserDefaults standardUserDefaults] valueForKey:@"password"] isEqualToString:@""]) {
+//        
+//        [self presentModalViewController:[[EXPUnlockViewController alloc] initWithNibName:nil bundle:nil] animated:YES];
+//        
+//    }else{
+//    
+//        EXPLoginViewController *loginViewController = [[EXPLoginViewController alloc] initWithNibName:@"EXPLoginViewController" bundle:nil];
+//        [self presentModalViewController:loginViewController animated:YES];
+//    }
 }
 
 -(void)autologin

@@ -209,6 +209,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         self.upload.hidden = YES;
         self.save.hidden = YES;
         
+        UIImageView *submitView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"submitted"]];
+        submitView.frame = CGRectMake(60.0, self.view.bounds.size.height*0.6, self.view.bounds.size.width - 120.0, 100.0);
+        [self.view addSubview:submitView];
+        
         [self.view addSubview:self.coverView];
     }
     
@@ -512,18 +516,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         if(![province  isEqualToString:@""] && ![city isEqualToString:@""]){
             
-            
-            if (province == NULL || city == NULL) {
-                [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];
-                [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
-            }else{
+
             LocationPicker.province_desc = province;
             LocationPicker.city_desc = city;
             
             NSString *location = [NSString stringWithFormat:@"%@>%@",province,city];
             placeCell.detailTextLabel.text = location;
             placeCell.textLabel.text = @"地点";
-            }
+
         }else{
             
             [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:0];

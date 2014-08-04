@@ -12,6 +12,8 @@
 #import "EXPLineModelDetailViewController.h"
 #import "EXPChartViewController.h"
 
+#import "EXPUnlockSettingViewController.h"
+
         @implementation EXPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -24,7 +26,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[EXPLoadViewController alloc] initWithNibName:nil bundle:nil];
    
-//    self.window.rootViewController = [[EXPLineModelDetailViewController alloc] initWithNibName:nil bundle:nil];
+//    self.window.rootViewController = [[EXPUnlockSettingViewController alloc] initWithNibName:nil bundle:nil];
 
     [self.window makeKeyAndVisible];
     

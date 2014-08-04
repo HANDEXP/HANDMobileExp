@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HandMobileExp/Classes/EXP/EXPLine/EXPLineModelDetailViewController.m"
-            timestampString = "428555273.580311"
+            filePath = "HandMobileExp/Classes/Unlock/EXPUnlockViewController.m"
+            timestampString = "428570534.971825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
-            landmarkName = "-upload:"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-passwordView:withPassword:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
