@@ -11,9 +11,13 @@
 @interface EXPLineDetailHtppModel : AFNetRequestModel
 
 
-- (void)load:(NSDictionary *)param;
+
 -(void)postLine:(NSDictionary *)parm;
 - (void)upload:(NSDictionary *)param
       fileName:(NSString *)fileName
           data:(NSData *)data;
+
+-(void)upload:(NSDictionary *)param;
+
+
 @end

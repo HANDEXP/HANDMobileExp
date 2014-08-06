@@ -28,11 +28,15 @@
 
     
     [self uploadparam:param filedata:data filename:fileName mimeType:@"image/jpeg"
-     url:[[EXPApplicationContext shareObject] keyforUrl:@"upload" ]];
+     url:[[EXPApplicationContext shareObject] keyforUrl:@"hmb_expense_detail_insert"  ]];
     
+}
 
+
+-(void)upload:(NSDictionary *)param
+{
+    [self param:param url:[[EXPApplicationContext shareObject] keyforUrl:@"hmb_expense_detail_insert"  ]];
     
-
 }
 
 @end

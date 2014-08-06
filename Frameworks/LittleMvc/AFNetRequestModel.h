@@ -28,4 +28,7 @@ forHTTPHeaderField:(NSString *)field;
            filename:(NSString *)filename
            mimeType:(NSString *)mimeType
                 url:(NSString *)url;
+
+-(void) param:(NSDictionary *)param
+          url:(NSString *)url;
 @end

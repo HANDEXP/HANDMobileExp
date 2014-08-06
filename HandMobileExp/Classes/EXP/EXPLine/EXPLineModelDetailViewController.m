@@ -28,9 +28,7 @@
     LMTablePickerInputCell *placeCell;
     
     
-    
-    //flag
-    BOOL  shouldUploadImg;
+
     
     NSDictionary * record;
     
@@ -67,7 +65,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
  
         updateFlag = NO;
         insertFlag = YES;
-        shouldUploadImg = YES;
+
         completeFlag = NO;
         readOnlyFlag = NO;
         
@@ -76,11 +74,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     return self;
 }
 
--(UIView *)coverView
-{
-    self.coverView = [[UIView alloc]initWithFrame:self.view.bounds];
-    return _coverView;
-}
+
 
 - (void)viewDidLoad
 {
@@ -115,12 +109,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     }
     [self.view addSubview:self.tv];
     
-    
-    
-    model = [[EXPLineDetailModel alloc] init];
-    [model.delegates addObject:self];
-    httpmdel = [[EXPLineDetailHtppModel alloc] init];
-    [httpmdel.delegates addObject:self];
     
     //对线进行处理
     UIView *div1 = [UIView new];
@@ -174,28 +162,31 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     self.descTx.tag = 1;
     
-    
     //添加按键
     self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.bounds.size.height-240)*0.3+250, 320-16, (self.view.bounds.size.height-240)*0.15)];
-    NSLog(@"%f", self.view.bounds.size.height);
-    NSLog(@"%f", self.navigationController.navigationBar.bounds.size.height);
+    
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
     [self.save setBackgroundColor:[UIColor colorWithRed:0.731 green:0.751 blue:0.525 alpha:0.830]];
     [self.save.layer setCornerRadius:6.0f];
     self.save.showsTouchWhenHighlighted = YES;
-
+    
     [self.view addSubview:self.save];
+    
+    //初始化model
+    model = [[EXPLineDetailModel alloc] init];
+    [model.delegates addObject:self];
+    httpmdel = [[EXPLineDetailHtppModel alloc] init];
+    [httpmdel.delegates addObject:self];
+    
 
-    NSLog(@"%f...",self.view.bounds.size.height);
+
+
+
+//    NSLog(@"%f...",self.view.bounds.size.height);
     
         self.upload = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.bounds.size.height-240)*0.45+260, self.view.bounds.size.width - 16, (self.view.bounds.size.height-240)*0.15)];
-    
-//    self.saveAdd = [[UIButton alloc] initWithFrame:CGRectMake(170, self.view.bounds.size.height*0.63, 100, 50)];
-//    [self.saveAdd setTitle:@"保存再记" forState:UIControlStateNormal];
-//    [self.saveAdd setBackgroundColor:[UIColor colorWithRed:0.780 green:0.805 blue:0.555 alpha:0.670]];
-//    [self.saveAdd.layer setCornerRadius:6.0f];
-//    [self.view addSubview:self.saveAdd];
+
 
     
     //如果是老数据则显示
@@ -219,6 +210,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 
 #pragma private
+-(UIView *)coverView
+{
+    self.coverView = [[UIView alloc]initWithFrame:self.view.bounds];
+    return _coverView;
+}
+
 -(void)reload{
     NSDictionary * param = @{@"id" : self.keyId};
     [model load:0 param:param];
@@ -361,12 +358,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     //提交之前先保存
     [self save:nil];
     
-    if([amountCell.img image] !=nil){
-        shouldUploadImg = YES;
-    }else{
-        
-        shouldUploadImg = NO;
-    }
     
     NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
     
@@ -382,14 +373,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSNumber * expense_type_id =  ExpenseTypePicker.expense_type_id;
     
-    
-    
-//    UIDevice *device = [UIDevice currentDevice];
-//   NSUUID *uniqueIdentifier = device.identifierForVendor;
-//    NSLog(@"%@",[uniqueIdentifier  UUIDString]);
-    
  
-    NSDictionary * record = @{
+    NSDictionary * param = @{
                               @"expense_amount" : expense_amount,
                               @"expense_place" :expense_place,
                               @"expense_class_id" : expense_class_id,
@@ -398,8 +383,16 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                               @"description" : description,
                               @"local_id" : self.keyId
                               };
+
     
-    [httpmdel postLine:record];
+    NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
+    
+    if(data !=nil){
+        [httpmdel upload:param fileName:@"upload.jpg" data:data];
+    }else{
+        
+        [httpmdel upload:param];
+    }
     
     
 }
@@ -645,82 +638,67 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 #pragma  modeldelegate
--(void)modelDidStartLoad:(id<TTModel>)model{
-        NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
+-(void)modelDidStartLoad:(id<TTModel>)pmodel{
+        NSString * className = [NSString stringWithUTF8String:object_getClassName(pmodel)];
     
         if ([className isEqualToString:@"EXPLineDetailHtppModel"]){
             MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleDrop;
-            [MMProgressHUD showWithTitle:nil status:@"upload"];
+            [MMProgressHUD showWithTitle:nil status:@"正在处理"];
         }
 }
 
--(void)modelDidFinishLoad:(id)model{
-    NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
+-(void)modelDidFinishLoad:(id<TTModel>)pmodel{
+    NSString * className = [NSString stringWithUTF8String:object_getClassName(pmodel)];
 
     if([className isEqualToString:@"EXPLineDetailModel"]){
-        EXPLineDetailModel *_model = model;
+        EXPLineDetailModel * _pmodel = pmodel;
         
-        if([_model.method isEqualToString:@"insert"]){
+        if([_pmodel.method isEqualToString:@"insert"]){
             
             [self showUpload];
             
 
             insertFlag = NO;
             updateFlag = YES;
-            self.keyId =  [_model getPrimaryKey:@"MOBILE_EXP_REPORT_LINE"];
+            self.keyId =  [_pmodel getPrimaryKey:@"MOBILE_EXP_REPORT_LINE"];
             
             
-        }else if([_model.method isEqualToString:@"update"]){
+        }else if([_pmodel.method isEqualToString:@"update"]){
             
             
             
-        }else if ([_model.method isEqualToString:@"query"]){
+        }else if ([_pmodel.method isEqualToString:@"query"]){
             
-            record = [_model.result objectAtIndex:0];
+            record = [_pmodel.result objectAtIndex:0];
 
             
         }
         
     }else if ([className isEqualToString:@"EXPLineDetailHtppModel"]){
-        EXPLineDetailHtppModel *_model = model;
         
-        NSDictionary * head = [_model.Json valueForKey:@"head"];
-        NSDictionary * body = [_model.Json valueForKey:@"body"];
+        
+        EXPLineDetailHtppModel *_pmodel = pmodel;
+        
+        NSDictionary * head = [_pmodel.Json valueForKey:@"head"];
+
+        
         NSString * result = [head valueForKey:@"code"];
         
 
    
         if([result isEqualToString:@"success"]){
-            //如何需要上传照片
-            if(shouldUploadImg){
-                shouldUploadImg = NO;
-                NSNumber * pkvalue = [body valueForKey:@"expense_detail_id"];
-                NSString * source_type = @"hmb_expense_detail";
-                NSDictionary * param = @{@"pkvalue" : pkvalue,
-                                         @"source_type" : source_type
-                                         
-                                         };
-                
-                NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
-                NSLog(@"datalength is %d",data.length);
-                
-                [_model upload:param fileName:@"upload.jpg" data:data];            
-
-            }else if (!shouldUploadImg){
-                //当不需要上传页面的时候，这个为最后的情况
-                if(!completeFlag){
-                    completeFlag = YES;
-                }
+                completeFlag = true;
                 [self  save:nil];
-                 MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
+                MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
                 [MMProgressHUD dismiss];
                 [self back];
                 
-            }
+
             
         }else if([result isEqualToString:@"faild"]){
+            [MMProgressHUD dismiss];
+            [LMAlertViewTool showAlertView:@"提示" message:@"请求失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             
-        
         }
 
         
@@ -728,21 +706,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 -(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error{
     //处理超时异常
-    NSLog(@"%d",error.code);
-    if(error.code == 3840 || error.code == -1016){
-    //todo 3804为接口返回数据不为json格式错误，现在默认情况认为返回这个错误就是成功
-        if(!completeFlag) {
-            completeFlag = YES;
-        }
-        [self  save:nil];
-        MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
-        [MMProgressHUD dismiss];
-        [self back];
-    } else{
+
         [MMProgressHUD dismiss];
         [LMAlertViewTool showAlertView:@"提示" message:@"网络出现问题，请检查网络后重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         
-    }
+    
 }
 
 #pragma keyboradDelegate

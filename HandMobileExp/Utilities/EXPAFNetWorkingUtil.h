@@ -39,4 +39,9 @@ forHTTPHeaderField :(NSString *)field;
        filename:(NSString *)filename
        mimeType:(NSString *)mimeType
             url:(NSString *)url;
+
+-(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+         error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error
+          param:(NSMutableDictionary *)param
+            url:(NSString *)url;
 @end

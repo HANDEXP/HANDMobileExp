@@ -26,14 +26,7 @@
     //组件
     UIButton  * btn;
     
-    
-    
-    
-    ////
-    NSMutableArray * _tagArray;
-    
     //
-    int needUploadRecord;
     int selectRecord;
     
     //
@@ -59,10 +52,6 @@
         httpmodel = [[EXPSubmitHttpModel alloc] init];
         [httpmodel.delegates addObject:self];
         
-
-        //
-        _tagArray = [[NSMutableArray alloc] init];
-        needUploadRecord = 0;
         selectRecord = 0;
         httpFaild = NO;
         
@@ -131,7 +120,7 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-
+#pragma private
 - (void)returnHomePage:(id *)sender
 {
     
@@ -165,21 +154,20 @@
                                          };
                 
                 
-                NSDictionary * _tag = @{@"local_id" : [record valueForKey:@"id"],
-                                        @"item1"    : [record valueForKey:@"item1"]
-                                        };
                 
                 selectRecord++;
                 
                 NSData * data =    [record valueForKey:@"item1"];
                 if( data.length !=0){
-                    needUploadRecord++;
+                    [httpmodel upload:param fileName:@"upload.jpg" data:data];
+                    
+                }else{
+                    [httpmodel upload:param];
+                    
                 }
                 
+            
                 
-                [_tagArray addObject:_tag];
-                
-                [httpmodel postLine:param];
                 
                 
             }
@@ -196,17 +184,7 @@
 -(UITableView *)tableView{
     
     if(_tableView == nil){
-//<<<<<<< Updated upstream
-//        _tableView = ({
-//            UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height * 0.7)];
-//            
-//            tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
-//            tableView.backgroundView = nil;
-//            tableView.tableFooterView = [[UIView alloc]init];
-//            tableView.tableHeaderView = [[UIView alloc]init];
-//            tableView;
-//        });
-//=======
+
     _tableView = ({
        UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
         
@@ -249,10 +227,12 @@
     
 }
 
+#pragma model delegate
 -(void)modelDidFinishLoad:(id)model{
     NSString * className = [NSString stringWithUTF8String:object_getClassName(model)];
     
     if([className isEqualToString:@"EXPSubmitDetailModel"]){
+        //刷新tableview
         [super modelDidFinishLoad:model];
         
     }else if ([className isEqualToString:@"EXPSubmitHttpModel"]){
@@ -261,61 +241,38 @@
         NSLog(@"%@",__model.Json);
         
         NSDictionary * body = [__model.Json valueForKey:@"body"];
+        NSDictionary * head = [__model.Json valueForKey:@"head"];
+        
+        NSString * result =[head valueForKey:@"code"];
         
         
-        
-        NSNumber * pkvalue = [body valueForKey:@"expense_detail_id"];
         NSNumber * local_id = [body valueForKey:@"local_id"];
-        NSString * source_type = @"hmb_expense_detail";
-        
-        
-        
-        NSDictionary * currentTag;
-        for(NSDictionary * _tag in _tagArray){
-            NSNumber *_local_id = [_tag valueForKey:@"local_id"];
-            if([_local_id integerValue] == [local_id integerValue]){
-                
-                NSData * imgData = [_tag valueForKey:@"item1"];
-                
-                if  (imgData.length !=0){
-                    //进行发送图片
-                    NSDictionary * param = @{@"pkvalue" : pkvalue,
-                                             @"source_type" : source_type
-                                             };
-                    
-                    EXPSubmitHttpModel *  _httpmodel = [[EXPSubmitHttpModel alloc] init];
-                    [_httpmodel.delegates addObject:self];
-                    
-                    _httpmodel.info = _local_id;
 
-                    [_httpmodel upload:param fileName:@"upload.jpg" data:imgData];
-                }else {
+        
+        if([result isEqualToString:@"success"]){
+
                     //不需要上传则直接更新表状态
-                    NSDictionary * param = @{
-                                             @"id": _local_id,
-                                             @"local_status": @"upload"
-                                             };
-                    NSArray * records = @[param];
-                    [datamodel update:records];
-                    
-                    
-                }
+                NSDictionary * param = @{
+                                @"id": local_id,
+                                @"local_status": @"upload"
+                                };
+                NSArray * records = @[param];
+                [datamodel update:records];
+        
+            }else if ([result isEqualToString:@"failure"]){
                 
                 
-                
-                break;
-                
-                
+            
             }
-            
-            
-        }
+
+                    
+
         
         //每次返回成功后都将需要提交的数据标识减少一
         selectRecord --;
         
         
-        if(selectRecord == 0 && needUploadRecord ==0){
+        if(selectRecord == 0 ){
             //认为结束
             MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
             [MMProgressHUD dismiss];
@@ -334,37 +291,14 @@
 }
 
 -(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error{
-    EXPSubmitHttpModel *__model =   model;
-    //处理超时异常
-    NSLog(@"%d",error.code);
-     NSLog(@"%@",__model.tag);
-    if(error.code == 3840 || error.code == -1016){
-        //todo 3804为接口返回数据不为json格式错误，现在默认情况认为返回这个错误就是成功
-        
-        NSDictionary * param = @{
-                                 @"id": __model.info,
-                                 @"local_status": @"upload"
-                                 };
-        NSArray * records = @[param];
-        [datamodel update:records];
-        
-        needUploadRecord--;
-        if(selectRecord == 0 && needUploadRecord ==0){
-            //认为结束
-            MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
-            [MMProgressHUD dismiss];
-            [self reload];
-            
-        }
-        
-        
-    }else{
-        if(!httpFaild){
+        EXPSubmitHttpModel *__model =   model;
+            //错误异常处理
+
 
             [MMProgressHUD dismiss];
             [LMAlertViewTool showAlertView:@"提示" message:@"网络出现问题，请检查网络后重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        }
-    }
+
+    
 }
 
 

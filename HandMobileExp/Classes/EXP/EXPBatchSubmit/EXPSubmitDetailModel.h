@@ -21,6 +21,8 @@
 - (void)upload:(NSDictionary *)param
       fileName:(NSString *)fileName
           data:(NSData *)data;
+
+-(void)upload:(NSDictionary *)param;
 @end
 
 @interface EXPSubmitDetailDataSource :LMSectioneDataSource

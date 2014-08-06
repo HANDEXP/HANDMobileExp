@@ -61,6 +61,25 @@
     
     
 }
+-(void) param:(NSDictionary *)param
+          url:(NSString *)url
+{
+    [self didStartLoad];
+    
+    [self.utl success:^(AFHTTPRequestOperation *operation,id responseObject){
+        self.Json = responseObject;
+        [self requestDidFinishLoad];
+        
+    }error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        self.error = error;
+        NSLog(@"%@",error);
+        [self requestdidFailLoadWithError:error];
+    } param:param url:url
+        
+     ];
+    
+    
+}
 
 -(void) uploadparam:(NSDictionary *)param
 filedata:(NSData *)data
