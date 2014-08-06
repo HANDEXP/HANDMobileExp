@@ -13,4 +13,5 @@
 - (void)requestDidStartLoad ;
 - (void)requestDidFinishLoad;
 - (void) requestdidFailLoadWithError:(NSError*)error;
+
 @end

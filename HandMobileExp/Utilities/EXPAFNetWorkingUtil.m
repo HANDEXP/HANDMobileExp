@@ -20,6 +20,10 @@
         self.baseUrl = [self getBaseUrl];
         self.AFAppDotNetAPIClient =[[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
         self.AFAppDotNetAPIClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        self.manager= [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
+        self.manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+
+;
     }
     return self;
 }
@@ -32,52 +36,107 @@
 -(void)setValue:(NSString *)Value
 forHTTPHeaderField :(NSString *)field
 {
-    [self.AFAppDotNetAPIClient.requestSerializer  setValue:Value forHTTPHeaderField:field];
+    [self.manager.requestSerializer  setValue:Value forHTTPHeaderField:field];
 }
 -(void)setacceptContentTypes:(NSSet *)objects{
-    self.AFAppDotNetAPIClient.responseSerializer.acceptableContentTypes = objects;
+    self.manager.responseSerializer.acceptableContentTypes = objects;
 }
 
--(NSURLSessionDataTask *)getsuccess :(void (^)(id JSON))successBlock
+//-(NSURLSessionDataTask *)getsuccess :(void (^)(id JSON))successBlock
+//                         geterror :(void (^)(NSError *error))errorBlock
+//                         param:(NSMutableDictionary * )param
+//                         url :(NSString *)url
+//{
+//    
+//    NSLog(@"in request");
+//    return [self.AFAppDotNetAPIClient GET:url parameters:param success:^(NSURLSessionDataTask * __unused task, id JSON) {
+//        NSDictionary * test = [JSON  valueForKey:@"head"];
+//        NSLog(@"%@",[test valueForKey:@"code"]);
+//
+//            if (successBlock) {
+//                successBlock(JSON);
+//                
+//            }
+//    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//                if (errorBlock) {
+//                    errorBlock( error);
+//                }
+//    }];
+//}
+
+-(AFHTTPRequestOperation *)getsuccess :(void (^)(id JSON))successBlock
                            geterror :(void (^)(NSError *error))errorBlock
                                param:(NSMutableDictionary * )param
                                 url :(NSString *)url
 {
-    
-    return [self.AFAppDotNetAPIClient GET:url parameters:param success:^(NSURLSessionDataTask * __unused task, id JSON) {
+
+
+    return [self.manager GET:url parameters:param success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSDictionary * test = [JSON  valueForKey:@"head"];
+        NSLog(@"%@",[test valueForKey:@"code"]);
+
+            if (successBlock) {
+                successBlock(JSON);
         
-        if (successBlock) {
-            successBlock(JSON);
-            
-        }
-    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+                    }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
         if (errorBlock) {
             errorBlock( error);
         }
     }];
+
 }
 
-
--(NSURLSessionDataTask *)postsuccess :(void (^)(id JSON))successBlock
+-(AFHTTPRequestOperation *)postsuccess :(void (^)(id JSON))successBlock
                            posterror :(void (^)(NSError *error))errorBlock
                                 param:(NSMutableDictionary * )param
                                  url :(NSString *)url
 {
     
     
-    return [self.AFAppDotNetAPIClient POST:url parameters:param success:^(NSURLSessionDataTask * __unused task, id JSON) {
 
-        
+    return [self.manager POST:url parameters:param success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSDictionary * test = [JSON  valueForKey:@"head"];
+        NSLog(@"%@",[test valueForKey:@"code"]);
+
         if (successBlock) {
             successBlock(JSON);
             
         }
-    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
         if (errorBlock) {
             errorBlock( error);
         }
     }];
 }
+
+
+//-(NSURLSessionDataTask *)postsuccess :(void (^)(id JSON))successBlock
+//                           posterror :(void (^)(NSError *error))errorBlock
+//                               param:(NSMutableDictionary * )param
+//                                url :(NSString *)url
+//{
+//    
+//    
+//    return [self.AFAppDotNetAPIClient POST:url parameters:param success:^(NSURLSessionDataTask * __unused task, id JSON) {
+//        NSDictionary * test = [JSON  valueForKey:@"head"];
+//        NSLog(@"%@",[test valueForKey:@"code"]);
+//        
+//        if (successBlock) {
+//            successBlock(JSON);
+//            
+//        }
+//    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//        if (errorBlock) {
+//            errorBlock( error);
+//        }
+//    }];
+//}
 
 -(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
          error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error

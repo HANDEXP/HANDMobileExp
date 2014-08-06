@@ -116,7 +116,9 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
     NSLog(@"shhowloginview");
     
     EXPLoginViewController *loginViewController = [[EXPLoginViewController alloc] initWithNibName:@"EXPLoginViewController" bundle:nil];
-    [self presentModalViewController:loginViewController animated:YES];
+    [self presentViewController:loginViewController animated:NO completion:nil];
+    
+    //[self presentModalViewController:loginViewController animated:YES];
     NSLog(@"xxxxxxxxxxxxxxxxx%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"password"]);
     
 //    if (![[[NSUserDefaults standardUserDefaults] valueForKey:@"password"] isEqualToString:@""]) {

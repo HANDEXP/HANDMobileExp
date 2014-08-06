@@ -32,6 +32,7 @@
         [self didStartLoad];
 
     if(![method compare: @"GET"]){
+        
         [self.utl getsuccess:^(id JSON){
             self.Json = JSON;
             [self requestDidFinishLoad];

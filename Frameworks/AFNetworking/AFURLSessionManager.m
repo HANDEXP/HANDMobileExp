@@ -345,7 +345,10 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
 - (void)setDelegate:(AFURLSessionManagerTaskDelegate *)delegate
             forTask:(NSURLSessionTask *)task
 {
-    NSParameterAssert(task);
+    if (task != nil) {
+        NSParameterAssert(task);
+
+    }
     NSParameterAssert(delegate);
 
     [task addObserver:self forKeyPath:NSStringFromSelector(@selector(state)) options:NSKeyValueObservingOptionOld |NSKeyValueObservingOptionNew context:AFTaskStateChangedContext];

@@ -150,7 +150,13 @@
 /**
  The dispatch queue for `completionBlock`. If `NULL` (default), the main queue is used.
  */
+//@property (nonatomic, strong) dispatch_queue_t completionQueue;
+
+#if OS_OBJECT_USE_OBJC
 @property (nonatomic, strong) dispatch_queue_t completionQueue;
+#else
+@property (nonatomic, assign) dispatch_queue_t completionQueue;
+#endif
 
 /**
  The dispatch group for `completionBlock`. If `NULL` (default), a private dispatch group is used.

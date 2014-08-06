@@ -14,6 +14,8 @@
 @interface EXPAFNetWorkingUtil : HDSingletonObject
 @property (strong) AFHTTPSessionManager * AFAppDotNetAPIClient;
 @property (strong)NSString *baseUrl;
+@property (strong) AFHTTPRequestOperationManager *manager;
+
 
 
 //设置http头
@@ -21,6 +23,10 @@
 forHTTPHeaderField :(NSString *)field;
 
 -(void)setacceptContentTypes:(NSSet *)objects;
+
+
+
+
 
 -(NSURLSessionDataTask *)getsuccess :(void (^)(id JSON))successBlock
                            geterror :(void (^)(NSError *error))errorBlock
