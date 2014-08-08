@@ -182,6 +182,33 @@
 	}
 }
 
+- (UIView *)inputAccessoryView {
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		return nil;
+	} else {
+		if (!inputAccessoryView) {
+			inputAccessoryView = [[UIToolbar alloc] init];
+			inputAccessoryView.barStyle = UIBarStyleDefault;
+			inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+			[inputAccessoryView sizeToFit];
+			CGRect frame = inputAccessoryView.frame;
+			frame.size.height = 44.0f;
+			inputAccessoryView.frame = frame;
+			
+			UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+			UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+			
+			NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
+			[inputAccessoryView setItems:array];
+		}
+		return inputAccessoryView;
+	}
+}
+
+- (void)done:(id)sender {
+	[self resignFirstResponder];
+}
+
 
 #pragma mark -
 #pragma mark Respond to touch and become first responder.

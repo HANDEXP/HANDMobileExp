@@ -57,7 +57,8 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
     //数据同步
-    if(indexPath.item  == 4 ){
+    if(indexPath.item  == 3 ){
+        self.model.tag = @"3";
         [self.model loadExpenseClass];
 
     }
@@ -119,9 +120,27 @@
     
 }
 
-- (void)modelDidFinishLoad:(id<TTModel>)model{
-   
+- (void)modelDidFinishLoad:(id<TTModel>)pmodel{
+       EXPDataSettingModel * _pmodel =  pmodel;
     
+    if([_pmodel.tag isEqualToString:@"3"]){
+        
+        NSDictionary * head = [_model.Json valueForKey:@"head"];
+        NSString * ressult = [head valueForKey:@"code"];
+        
+        if([ressult isEqualToString:@"success"]){
+        
+        NSArray  * arr = [[_pmodel.Json valueForKey:@"body"] valueForKey:@"list"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:arr forKey:@"expense_classes"];
+    
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        }else{
+            
+            showAlterView(_pmodel.error.debugDescription, @"错误信息", nil);
+        }
+        
+    }
     
 }
 

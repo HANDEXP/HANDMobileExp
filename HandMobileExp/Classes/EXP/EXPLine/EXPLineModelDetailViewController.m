@@ -22,7 +22,9 @@
     EXPLineDetailHtppModel * httpmdel;
     
     //cell
-    LMTableDateInputCell *dateCell;
+    LMTableDateInputCell *dateto;
+    LMTableDateInputCell *datefrom;
+    
     LMTableAmountInputCell *amountCell;
     LMTablePickerInputCell *expenseTypeCell;
     LMTablePickerInputCell *placeCell;
@@ -56,7 +58,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         //初始代理
         LocationPicker = [[EXPLocationPicker alloc] init];
         LocationPicker.provinces =[[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ProvincesAndCities.plist" ofType:nil]];
+        
         LocationPicker.citys =[[LocationPicker.provinces objectAtIndex:0] objectForKey:@"Cities"];
+        
         
         NSArray * expense_classes =  [[NSUserDefaults standardUserDefaults] valueForKey:@"expense_classes"];
         ExpenseTypePicker = [[EXPExpenseTypePicker alloc] init];
@@ -173,6 +177,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     [self.view addSubview:self.save];
     
+
+    
+    
     //初始化model
     model = [[EXPLineDetailModel alloc] init];
     [model.delegates addObject:self];
@@ -206,6 +213,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         [self.view addSubview:self.coverView];
     }
+    
+    //init tableview cell
+    [self buildCellView];
+    [self  initCellView:true];
     
 }
 
@@ -283,7 +294,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *expense_date = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateCell.dateValue]];
+    NSString *expense_date_to = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateto.dateValue]];
+    NSString *expense_date_from = [NSString stringWithFormat:@"%@", [formatter stringFromDate:datefrom.dateValue]];
     
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
@@ -314,7 +326,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [formdata setValue:expense_type_id forKey:@"expense_type_id"];
     [formdata setValue:expense_type_desc forKey:@"expense_type_desc"];
     [formdata setValue:expense_amount forKey:@"expense_amount"];
-    [formdata setValue:expense_date forKey:@"expense_date"];
+    [formdata setValue:expense_date_from forKey:@"expense_date_from"];
+    [formdata setValue:expense_date_to forKey:@"expense_date_to"];
     [formdata setValue:expense_place forKey:@"expense_place"];
     [formdata setValue:description forKey:@"description"];
     [formdata setValue:local_status forKey:@"local_status"];
@@ -364,7 +377,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     
-    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
+    NSString *expense_date_to = [formatter stringFromDate:dateto.dateValue];
+    NSString *expense_date_from = [formatter stringFromDate:datefrom.dateValue];
+    
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
     NSString * description = self.descTx.text;
@@ -379,7 +394,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
                               @"expense_place" :expense_place,
                               @"expense_class_id" : expense_class_id,
                               @"expense_type_id"    : expense_type_id ,
-                              @"expense_date"    : expense_date,
+                              @"expense_date_from"  : expense_date_from,
+                              @"expense_date_to"    : expense_date_to,
                               @"description" : description,
                               @"local_id" : self.keyId
                               };
@@ -435,9 +451,68 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 
-#pragma  viewcontroller life
-//对数据进行初始化
--(void)viewWillAppear:(BOOL)animated{
+#pragma  private
+-(void)buildCellView
+{
+    
+
+        if (amountCell == nil)
+        {
+            amountCell = [[LMTableAmountInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableAmountInputCell"];
+            amountCell.tv = self;
+            amountCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+
+        if (expenseTypeCell == nil)
+        {
+            expenseTypeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
+            
+            expenseTypeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            ExpenseTypePicker.cell =expenseTypeCell;
+            
+            expenseTypeCell.picker.delegate = ExpenseTypePicker;
+            expenseTypeCell.picker.dataSource = ExpenseTypePicker;
+            expenseTypeCell.textLabel.text = @"费用";
+        }
+        
+
+        
+
+    
+        if (datefrom == nil)
+        {
+            datefrom = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            datefrom.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+    
+    
+        if (dateto == nil)
+        {
+            dateto = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            dateto.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+
+        
+
+        if (placeCell == nil)
+        {
+            placeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
+            placeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+        }
+        
+        LocationPicker.cell =placeCell;
+        placeCell.picker.delegate =LocationPicker;
+        placeCell.picker.dataSource = LocationPicker;
+        
+
+    
+    
+}
+
+
+-(void)initCellView:(BOOL)animated{
     //赋值
     if(record != nil && !insertFlag && updateFlag){
         //金额
@@ -473,13 +548,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         [formatter setDateFormat:@"YYYY-MM-dd"];
         NSDate *expense_date =[formatter dateFromString:[record valueForKey:@"expense_date"]];
-        dateCell.dateValue  =expense_date;
+        dateto.dateValue  =expense_date;
         
        formatter = [[NSDateFormatter alloc] init];
         formatter.timeStyle = NSDateFormatterNoStyle;
         formatter.dateStyle = NSDateFormatterMediumStyle;
         
-        dateCell.detailTextLabel.text = [formatter stringFromDate:dateCell.dateValue];
+        dateto.detailTextLabel.text = [formatter stringFromDate:dateto.dateValue];
 
         
         //初始化描述
@@ -523,7 +598,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             [LocationPicker pickerView:placeCell.picker didSelectRow:0 inComponent:1];
             
         }
-        
+
 }
     
 }
@@ -535,13 +610,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
     if(indexPath.section ==0){
-        amountCell= (LMTableAmountInputCell *)[tableView dequeueReusableCellWithIdentifier:@"LMTableAmountInputCell"];
+
         if (amountCell == nil)
         {
             amountCell = [[LMTableAmountInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableAmountInputCell"];
@@ -552,50 +628,61 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         return amountCell;
     }else if(indexPath.section == 1){
-        expenseTypeCell= (LMTablePickerInputCell *)[tableView dequeueReusableCellWithIdentifier:@"LMTablePickerInputCell"];
+
         if (expenseTypeCell == nil)
         {
             expenseTypeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
             
             expenseTypeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            ExpenseTypePicker.cell =expenseTypeCell;
+            
+            expenseTypeCell.picker.delegate = ExpenseTypePicker;
+            expenseTypeCell.picker.dataSource = ExpenseTypePicker;
+            
+            
+            expenseTypeCell.textLabel.text = @"费用";
         }
 
-        ExpenseTypePicker.cell =expenseTypeCell;
-        
-        expenseTypeCell.picker.delegate = ExpenseTypePicker;
-        expenseTypeCell.picker.dataSource = ExpenseTypePicker;
-    
-        
-        expenseTypeCell.textLabel.text = @"费用";
+
 
         return expenseTypeCell;
         
-    }else if(indexPath.section == 3){
-        dateCell  = (LMTableDateInputCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        if (dateCell == nil)
+    }else if(indexPath.section == 4){
+
+        if (dateto == nil)
         {
-            dateCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            dateto = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            dateto.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        return dateCell;
+        
+        return dateto;
         
     }else if(indexPath.section == 2){
-        placeCell= (LMTablePickerInputCell *)[tableView dequeueReusableCellWithIdentifier:@"LMTablePickerInputCell"];
+
         if (placeCell == nil)
         {
             placeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
             placeCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
+            LocationPicker.cell =placeCell;
+            placeCell.picker.delegate =LocationPicker;
+            placeCell.picker.dataSource = LocationPicker;
+            
         }
-        
-        LocationPicker.cell =placeCell;
-        placeCell.picker.delegate =LocationPicker;
-        placeCell.picker.dataSource = LocationPicker;
+
         
         
     
         return placeCell;
+    }else if(indexPath.section == 4){
+        
+        
     }
+    
+
+
+ 
     
     return  nil;
     
@@ -739,10 +826,18 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 
 - (void)done:(id)sender {
-
+    CGFloat y;
+     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+          y = 64;
+     }else{
+         
+          y = 0;
+     }
+    
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
-    self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+    
+    self.view.frame =CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height);
 	[self resignFirstResponder];
 }
 
@@ -779,7 +874,14 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 //输入框编辑完成以后，将视图恢复到原始状态
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+    CGFloat y;
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
+        y = 64;
+    }else{
+        
+        y = 0;
+    }
+    self.view.frame =CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 @end
