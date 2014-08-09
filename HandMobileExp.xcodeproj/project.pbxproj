@@ -102,6 +102,8 @@
 		B2A5085B1990CA6A009DFF36 /* AFNetRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5085A1990CA6A009DFF36 /* AFNetRequestModel.m */; };
 		B2A508601990D365009DFF36 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5085D1990D365009DFF36 /* AFHTTPSessionManager.m */; };
 		B2A508611990D365009DFF36 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5085F1990D365009DFF36 /* AFURLSessionManager.m */; };
+		B2A84A2F19946E8500A3068D /* LMTableTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A84A2E19946E8500A3068D /* LMTableTextInputCell.xib */; };
+		B2A84A3219946F2B00A3068D /* LMTableTextInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A84A3119946F2B00A3068D /* LMTableTextInputCell.m */; };
 		B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */; };
 		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
 		B2BE44951972358600114B1B /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2BE44941972358600114B1B /* expense.plist */; };
@@ -393,6 +395,9 @@
 		B2A5085D1990D365009DFF36 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = Frameworks/AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		B2A5085E1990D365009DFF36 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = Frameworks/AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		B2A5085F1990D365009DFF36 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = Frameworks/AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		B2A84A2E19946E8500A3068D /* LMTableTextInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMTableTextInputCell.xib; path = HandMobileExp/LMTableTextInputCell.xib; sourceTree = "<group>"; };
+		B2A84A3019946F2B00A3068D /* LMTableTextInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableTextInputCell.h; path = Frameworks/LittleMvc/LMTableTextInputCell.h; sourceTree = "<group>"; };
+		B2A84A3119946F2B00A3068D /* LMTableTextInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableTextInputCell.m; path = Frameworks/LittleMvc/LMTableTextInputCell.m; sourceTree = "<group>"; };
 		B2B6A8BB196EECBD00B7005C /* EXPLineDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.h; sourceTree = "<group>"; };
 		B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.m; sourceTree = "<group>"; };
 		B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailHtppModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.h; sourceTree = "<group>"; };
@@ -1185,6 +1190,9 @@
 				B2C41C50196EB182007C62BB /* LMTablePickerInputCell.h */,
 				B2C41C53196EB5DC007C62BB /* LMTablePickerInputCell.xib */,
 				B2C41C51196EB182007C62BB /* LMTablePickerInputCell.m */,
+				B2A84A2E19946E8500A3068D /* LMTableTextInputCell.xib */,
+				B2A84A3019946F2B00A3068D /* LMTableTextInputCell.h */,
+				B2A84A3119946F2B00A3068D /* LMTableTextInputCell.m */,
 			);
 			name = "Static Cells";
 			sourceTree = "<group>";
@@ -1444,6 +1452,7 @@
 				DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */,
 				B2BFA5AF198137CB00FD51E8 /* LMWebFunctionItemCell.xib in Resources */,
 				DA28C49719729BBC00A29412 /* toDoEXP.png in Resources */,
+				B2A84A2F19946E8500A3068D /* LMTableTextInputCell.xib in Resources */,
 				DA28C48919729BBC00A29412 /* loginBg.png in Resources */,
 				DA28C47E19729BBC00A29412 /* 1.png in Resources */,
 				DA9F330F1989E8DC008B26C4 /* pin@2x.png in Resources */,
@@ -1552,6 +1561,7 @@
 				B298E2B01963A05500EB4850 /* AFURLRequestSerialization.m in Sources */,
 				B20D10A9196BE121004871F4 /* FMDataBaseModel.m in Sources */,
 				B26AD3611962EBBA0081152F /* HDSingletonObject.m in Sources */,
+				B2A84A3219946F2B00A3068D /* LMTableTextInputCell.m in Sources */,
 				B298E2B11963A05500EB4850 /* AFURLResponseSerialization.m in Sources */,
 				B29D969419669E0B0017A9B7 /* EXPFunctionListDatasource.m in Sources */,
 				B26AD35A1962E7B10081152F /* FMDatabaseQueue.m in Sources */,

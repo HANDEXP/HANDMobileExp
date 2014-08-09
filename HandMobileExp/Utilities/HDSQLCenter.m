@@ -12,7 +12,7 @@
 //数据库初始化
 -(BOOL)SQLCreatTable:(FMDatabase *)db{
     NSArray *sqlAry= [NSArray arrayWithObjects:@"CREATE TABLE IF NOT EXISTS DataPool ( id INTEGER PRIMARY KEY AUTOINCREMENT, localId INTEGER, sourceSystemName TEXT, item1 TEXT, item2 TEXT, item3 TEXT, item4 TEXT,	status TEXT, comment TEXT, submitAction TEXT,submitActionType TEXT,serverMessage TEXT,deliveree TEXT,screenName TEXT);",@"CREATE TABLE IF NOT EXISTS ACTION ( id INTEGER PRIMARY KEY AUTOINCREMENT,localId TEXT,sourceSystemName TEXT,action TEXT,actionTitle TEXT,actionType TEXT);",
-        @"create table if not EXISTS MOBILE_EXP_REPORT_LINE (id INTEGER PRIMARY KEY AUTOINCREMENT ,expense_class_id INTEGER,expense_class_desc TEXT,expense_type_id INTEGER,expense_type_desc TEXT,expense_amount INTEGER,expense_date TEXT,expense_place Text ,description TEXT,local_status TEXT,service_id INTEGER, CREATION_DATE  TEXT ,CREATED_BY TEXT,item1 BLOB, item2 BLOB, item3 BLOB, item4 BLOB, item5 BLOB, item6   BLOB )",
+        @"create table if not EXISTS MOBILE_EXP_REPORT_LINE (id INTEGER PRIMARY KEY AUTOINCREMENT ,expense_class_id INTEGER,expense_class_desc TEXT,expense_type_id INTEGER,expense_type_desc TEXT,expense_amount INTEGER,expense_number INTEGER,expense_date TEXT,expense_date_to TEXT,expense_place Text ,description TEXT,local_status TEXT,service_id INTEGER, CREATION_DATE  TEXT ,CREATED_BY TEXT,item1 BLOB, item2 BLOB, item3 BLOB, item4 BLOB, item5 BLOB, segment_1 TEXT,segment_2 TEXT, segment_3 TEXT,segment_4 TEXT,segment_5 TEXT,segment_6 TEXT, segment_7 TEXT,segment_8 TEXT ,segment_9 TEXT)",
                       
         nil];
     BOOL state = YES;
@@ -229,7 +229,7 @@
 -(BOOL)MOBILE_EXP_REPORT_LINE:(FMDatabase * )db recordList:(NSArray *) recordList{
     if(!recordList)
         return  NO;
-    NSString *currentSql = @"INSERT INTO MOBILE_EXP_REPORT_LINE (expense_class_id, expense_class_desc,expense_type_id,expense_type_desc, expense_amount, expense_date,expense_place, description,local_status,CREATION_DATE,CREATED_BY,item1) VALUES (:expense_class_id,:expense_class_desc, :expense_type_id, :expense_type_desc, :expense_amount, :expense_date, :expense_place,:description,:local_status, :CREATION_DATE,:CREATED_BY,:item1)";
+    NSString *currentSql = @"INSERT INTO MOBILE_EXP_REPORT_LINE (expense_class_id, expense_class_desc,expense_type_id,expense_type_desc, expense_amount, expense_number,expense_date,expense_date_to,expense_place, description,local_status,CREATION_DATE,CREATED_BY,item1) VALUES (:expense_class_id,:expense_class_desc, :expense_type_id, :expense_type_desc, :expense_amount, :expense_number,:expense_date, :expense_date_to,:expense_place,:description,:local_status, :CREATION_DATE,:CREATED_BY,:item1)";
     BOOL state = YES;
     state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return  state;
@@ -259,7 +259,7 @@
 -(BOOL)UPDATE_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db recordList:(NSArray *) recordList{
     if (!recordList) return NO;
     NSString * tableName = @"MOBILE_EXP_REPORT_LINE";
-    NSArray * params = [NSArray arrayWithObjects:@"expense_class_id",@"expense_class_desc",@"expense_type_id",@"expense_type_desc",@"expense_amount",@"expense_date",@"expense_place",@"description",@"local_status",@"item1",nil];
+    NSArray * params = [NSArray arrayWithObjects:@"expense_class_id",@"expense_class_desc",@"expense_type_id",@"expense_type_desc",@"expense_amount",@"expense_number",@"expense_date",@"expense_date_to",@"expense_place",@"description",@"local_status",@"item1",nil];
     NSArray * keys = [NSArray arrayWithObjects:@"id",nil];
     
     NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:keys action:@"UPDATE"];

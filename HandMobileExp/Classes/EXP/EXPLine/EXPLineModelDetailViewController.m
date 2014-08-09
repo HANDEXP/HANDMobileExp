@@ -12,6 +12,7 @@
 #import "EXPLocationAPI.h"
 #import "EXPLocationManager.h"
 #import "MMProgressHUDWindow.H"
+#import "LMTableTextInputCell.h"
 
 
 @interface EXPLineModelDetailViewController (){
@@ -22,13 +23,12 @@
     EXPLineDetailHtppModel * httpmdel;
     
     //cell
-    LMTableDateInputCell *dateto;
-    LMTableDateInputCell *datefrom;
-    
+    LMTableDateInputCell *dateCell;
     LMTableAmountInputCell *amountCell;
     LMTablePickerInputCell *expenseTypeCell;
     LMTablePickerInputCell *placeCell;
-    
+    LMTableDateInputCell *datetoCell;
+    LMTableTextInputCell *numberCell;
     
 
     
@@ -58,9 +58,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         //初始代理
         LocationPicker = [[EXPLocationPicker alloc] init];
         LocationPicker.provinces =[[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ProvincesAndCities.plist" ofType:nil]];
-        
         LocationPicker.citys =[[LocationPicker.provinces objectAtIndex:0] objectForKey:@"Cities"];
-        
         
         NSArray * expense_classes =  [[NSUserDefaults standardUserDefaults] valueForKey:@"expense_classes"];
         ExpenseTypePicker = [[EXPExpenseTypePicker alloc] init];
@@ -102,7 +100,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     self.view.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.000];
     self.tv.scrollEnabled = NO;
-    self.tv.separatorStyle = nil;
+
     
     
 
@@ -113,52 +111,18 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     }
     [self.view addSubview:self.tv];
     
-    
-    //对线进行处理
-    UIView *div1 = [UIView new];
-    div1.frame = CGRectMake(10.0f, 80.0f ,
-                            self.view.frame.size.width - 2 * 10.0f, 1.0f);
-    div1.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
-    [self.view addSubview:div1];
-    
-    UIView *div2 = [UIView new];
-    div2.frame = CGRectMake(10.0f, 130.0f ,
-                            self.view.frame.size.width - 2 * 10.0f, 1.0f);
+    UIView * div2 =[UIView new];
+    div2.frame = CGRectMake(self.view.frame.size.width/2-10 , 80 ,
+                              1.0f, 40.0f);
     div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div2];
-    
-    
-    
-    UIView *div3 = [UIView new];
-    div3.frame = CGRectMake(10.0f, 180.0f ,
-                            self.view.frame.size.width - 2 * 10.0f, 1.0f);
-    div3.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
-    [self.view addSubview:div3];
-    
-    UIView *div4 = [UIView new];
-    div4.frame = CGRectMake(10.0f, 230.0f ,
-                            self.view.frame.size.width - 2 * 10.0f, 1.0f);
-    div4.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
-    [self.view addSubview:div3];
-    
-    UIView  * div5_1 = [UIView new];
-    div5_1.frame =CGRectMake(10.0f, 230.0f ,
-                             self.view.frame.size.width/2 - 2 * 10.0f, 1.0f);
-    div5_1.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
-    [self.view addSubview:div5_1];
-    
-    UIView * div5_2 =[UIView new];
-    div5_2.frame = CGRectMake(self.view.frame.size.width/2+10 , 230.0f ,
-                              self.view.frame.size.width/2 - 2 * 10.0f, 1.0f);
-    div5_2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
-    [self.view addSubview:div5_2];
-    
-    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 222.0f, 20, 20)];
+
+    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 273.0f, 20, 20)];
     lb3.text = @"备注";
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
-    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 240, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
+    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 290, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
     self.descTx.delegate = self;
     
     self.descTx.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.843 alpha:1.000];
@@ -167,7 +131,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     self.descTx.tag = 1;
     
     //添加按键
-    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.bounds.size.height-240)*0.3+250, 320-16, (self.view.bounds.size.height-240)*0.15)];
+    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, self.descTx.frame.origin.y+(self.view.bounds.size.height-240)*0.3, 320-16, (self.view.bounds.size.height-240)*0.15)];
     
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
@@ -186,14 +150,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     httpmdel = [[EXPLineDetailHtppModel alloc] init];
     [httpmdel.delegates addObject:self];
     
-
-
-
-
-//    NSLog(@"%f...",self.view.bounds.size.height);
-    
-        self.upload = [[UIButton alloc] initWithFrame:CGRectMake(8, (self.view.bounds.size.height-240)*0.45+260, self.view.bounds.size.width - 16, (self.view.bounds.size.height-240)*0.15)];
-
 
     
     //如果是老数据则显示
@@ -247,10 +203,22 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 -(void) showUpload{
+    
+    
+    self.upload = [[UIButton alloc] initWithFrame:CGRectMake((self.save.bounds.size.width/2)+10, self.save.frame.origin.y, self.save.bounds.size.width/2, self.save.bounds.size.height)];
 
     [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
+    
+    [UIView beginAnimations:@"button" context:nil];
+    [UIView setAnimationDuration:0.5f];
+    self.save.frame = CGRectMake(self.save.frame.origin.x,self.save.frame.origin.y, self.save.bounds.size.width/2, self.save.bounds.size.height);
+    
+    
+    [UIView commitAnimations];
+    
+
+    
     [self.upload.layer setCornerRadius:6.0f];
-    NSLog(@"%f",self.view.superview.bounds.size.height);
     [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
     [self.upload setBackgroundColor:[UIColor orangeColor]];
     [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
@@ -290,12 +258,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     NSString * expense_type_desc = ExpenseTypePicker.expense_type_desc;
     
     NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
-    
+    NSNumber * expense_number = [NSNumber numberWithInteger:numberCell.numberValue];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *expense_date_to = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateto.dateValue]];
-    NSString *expense_date_from = [NSString stringWithFormat:@"%@", [formatter stringFromDate:datefrom.dateValue]];
+    NSString *expense_date = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateCell.dateValue]];
+    NSString *expense_date_to = [NSString stringWithFormat:@"%@", [formatter stringFromDate:datetoCell.dateValue]];
     
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
@@ -326,8 +294,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [formdata setValue:expense_type_id forKey:@"expense_type_id"];
     [formdata setValue:expense_type_desc forKey:@"expense_type_desc"];
     [formdata setValue:expense_amount forKey:@"expense_amount"];
-    [formdata setValue:expense_date_from forKey:@"expense_date_from"];
-    [formdata setValue:expense_date_to forKey:@"expense_date_to"];
+    [formdata setValue:expense_number forKey:@"expense_number"];
+    [formdata setValue:expense_date forKey:@"expense_date"];
+    [formdata setValue:expense_date forKey:@"expense_date_to"];
     [formdata setValue:expense_place forKey:@"expense_place"];
     [formdata setValue:description forKey:@"description"];
     [formdata setValue:local_status forKey:@"local_status"];
@@ -373,12 +342,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     
     NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
+    NSNumber * expense_number = [NSNumber numberWithInteger:numberCell.numberValue];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     
-    NSString *expense_date_to = [formatter stringFromDate:dateto.dateValue];
-    NSString *expense_date_from = [formatter stringFromDate:datefrom.dateValue];
+    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
+    NSString *expense_date_to = [formatter stringFromDate:datetoCell.dateValue];
     
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
@@ -391,11 +361,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
  
     NSDictionary * param = @{
                               @"expense_amount" : expense_amount,
+                              @"expense_number" : expense_number,
                               @"expense_place" :expense_place,
                               @"expense_class_id" : expense_class_id,
                               @"expense_type_id"    : expense_type_id ,
-                              @"expense_date_from"  : expense_date_from,
-                              @"expense_date_to"    : expense_date_to,
+                              @"expense_date"    : expense_date,
+                              @"expense_date_to" : expense_date_to,
                               @"description" : description,
                               @"local_id" : self.keyId
                               };
@@ -469,28 +440,21 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             expenseTypeCell = [[LMTablePickerInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTablePickerInputCell"];
             
             expenseTypeCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            ExpenseTypePicker.cell =expenseTypeCell;
-            
-            expenseTypeCell.picker.delegate = ExpenseTypePicker;
-            expenseTypeCell.picker.dataSource = ExpenseTypePicker;
-            expenseTypeCell.textLabel.text = @"费用";
         }
         
-
+        ExpenseTypePicker.cell =expenseTypeCell;
         
+        expenseTypeCell.picker.delegate = ExpenseTypePicker;
+        expenseTypeCell.picker.dataSource = ExpenseTypePicker;
+        
+        
+        expenseTypeCell.textLabel.text = @"费用";
 
-    
-        if (datefrom == nil)
+        if (dateCell == nil)
         {
-            datefrom = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            datefrom.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-    
-    
-        if (dateto == nil)
-        {
-            dateto = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            dateto.selectionStyle = UITableViewCellSelectionStyleNone;
+            dateCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            dateCell.textLabel.text = @"日前从";
         }
 
         
@@ -507,8 +471,26 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         placeCell.picker.dataSource = LocationPicker;
         
 
+        if(datetoCell == nil)
+        {
+            
+            datetoCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            datetoCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            datetoCell.textLabel.text = @"日前到";
+            
+            
+        }
     
-    
+        if(numberCell == nil)
+        {
+        
+            numberCell = [[LMTableTextInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableTextInputCell"];
+            numberCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        
+        }
+    [numberCell addObserver:self forKeyPath:@"numberValue" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    [amountCell addObserver:self forKeyPath:@"numberValue" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
 }
 
 
@@ -548,13 +530,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         [formatter setDateFormat:@"YYYY-MM-dd"];
         NSDate *expense_date =[formatter dateFromString:[record valueForKey:@"expense_date"]];
-        dateto.dateValue  =expense_date;
+        dateCell.dateValue  =expense_date;
         
        formatter = [[NSDateFormatter alloc] init];
         formatter.timeStyle = NSDateFormatterNoStyle;
         formatter.dateStyle = NSDateFormatterMediumStyle;
         
-        dateto.detailTextLabel.text = [formatter stringFromDate:dateto.dateValue];
+        dateCell.detailTextLabel.text = [formatter stringFromDate:dateCell.dateValue];
 
         
         //初始化描述
@@ -602,6 +584,22 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
     
 }
+#pragma key-valuedelegate
+//auto modify the total amount
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    
+    if([keyPath isEqualToString:@"numberValue"])
+    {
+        if(numberCell.numberValue !=0 && amountCell.numberValue !=0){
+            NSInteger total = numberCell.numberValue * amountCell.numberValue;
+            numberCell.totalLabel.text= [numberCell.numberFormatter stringFromNumber:[NSNumber numberWithInteger:total]];
+        }else{
+            numberCell.totalLabel.text = @"0";
+        }
+        
+    }
+}
 
 #pragma tableview datasource
 - (void)tableViewCell:(LMTableDateInputCell *)cell didEndEditingWithDate:(NSDate *)value
@@ -627,7 +625,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
         
         return amountCell;
-    }else if(indexPath.section == 1){
+    }else if(indexPath.section == 2){
 
         if (expenseTypeCell == nil)
         {
@@ -650,15 +648,15 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     }else if(indexPath.section == 4){
 
-        if (dateto == nil)
+        if (dateCell == nil)
         {
-            dateto = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            dateto.selectionStyle = UITableViewCellSelectionStyleNone;
+            dateCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
-        return dateto;
+        return dateCell;
         
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 3){
 
         if (placeCell == nil)
         {
@@ -675,9 +673,20 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     
         return placeCell;
-    }else if(indexPath.section == 4){
+    }else if(indexPath.section == 5){
         
+        if (datetoCell == nil)
+        {
+            datetoCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            datetoCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
         
+        return datetoCell;
+        
+    }else if(indexPath.section == 1){
+        
+      
+        return numberCell;
     }
     
 
@@ -692,7 +701,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 4;
+    return 6;
 }
 
 
@@ -710,13 +719,13 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             return 72;
             break;
         case 1:
-            return 50;
+            return 40;
         case 2:
-            return 50;
+            return 40;
         case 3:
-            return 50;
+            return 40;
         default:
-            return 50;
+            return 40;
             break;
     }
     
