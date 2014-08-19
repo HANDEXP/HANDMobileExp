@@ -22,9 +22,9 @@
     if (self) {
         NSArray * nibArray = [[NSBundle mainBundle] loadNibNamed:@"LMTableDateInputCell" owner:self options:nil ];
         self = [nibArray objectAtIndex:0];
-
+        
         [self initalizeInputView];
-
+        
     }
     return self;
 }
@@ -42,7 +42,7 @@
 	[datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-           //do someting for pad
+        //do someting for pad
 	} else {
 		CGRect frame = self.inputView.frame;
 		frame.size = [self.datePicker sizeThatFits:CGSizeZero];
@@ -116,8 +116,8 @@
 	} else {
 		// Nothing to do
 	}
-//	UITableView *tableView = (UITableView *)self.superview;
-//	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
+    //	UITableView *tableView = (UITableView *)self.superview;
+    //	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	return [super resignFirstResponder];
 }
 
@@ -160,9 +160,9 @@
 - (void)dateChanged:(id)sender {
 	self.dateValue = ((UIDatePicker *)sender).date;
     
-//	if (delegate && self.dateValue && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithDate:)]) {
-//		[delegate tableViewCell:self didEndEditingWithDate:self.dateValue];
-//	}
+    //	if (delegate && self.dateValue && [delegate respondsToSelector:@selector(tableViewCell:didEndEditingWithDate:)]) {
+    //		[delegate tableViewCell:self didEndEditingWithDate:self.dateValue];
+    //	}
 }
 
 

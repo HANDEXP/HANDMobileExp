@@ -172,7 +172,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(100.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(220.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
     NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"]];
-    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量审批"];
+    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量上传"];
     
     [@[expCreateButton, expToDoButton, expDoneButton] enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL *stop) {
         

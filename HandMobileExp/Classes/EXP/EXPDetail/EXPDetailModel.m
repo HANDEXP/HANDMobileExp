@@ -186,6 +186,7 @@
         detailViewController.updateFlag = YES;
         detailViewController.keyId = item.primary_id;
         detailViewController.detailList = self.DetailTvC;
+
         [self.DetailTvC.navigationController pushViewController:detailViewController animated:YES];
         
     }

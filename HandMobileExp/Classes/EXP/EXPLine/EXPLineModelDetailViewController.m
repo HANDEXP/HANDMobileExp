@@ -13,6 +13,7 @@
 #import "EXPLocationManager.h"
 #import "MMProgressHUDWindow.H"
 #import "LMTableTextInputCell.h"
+#import "LMTableDateFromToCell.h"
 
 
 @interface EXPLineModelDetailViewController (){
@@ -23,14 +24,14 @@
     EXPLineDetailHtppModel * httpmdel;
     
     //cell
-    LMTableDateInputCell *dateCell;
+    LMTableDateFromToCell *dateCell;
+    
     LMTableAmountInputCell *amountCell;
     LMTablePickerInputCell *expenseTypeCell;
     LMTablePickerInputCell *placeCell;
-    LMTableDateInputCell *datetoCell;
     LMTableTextInputCell *numberCell;
     
-
+    
     
     NSDictionary * record;
     
@@ -117,12 +118,12 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
     [self.view addSubview:div2];
 
-    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 273.0f, 20, 20)];
+    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 233.0f, 20, 20)];
     lb3.text = @"备注";
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
-    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 290, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
+    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 250, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
     self.descTx.delegate = self;
     
     self.descTx.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.843 alpha:1.000];
@@ -219,9 +220,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
     
     [self.upload.layer setCornerRadius:6.0f];
-    [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
+    [self.upload setTitle:@"再记一笔" forState:UIControlStateNormal];
+//    [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
     [self.upload setBackgroundColor:[UIColor orangeColor]];
-    [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
+//    [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
+    [self.upload addTarget:self action:@selector(readd:) forControlEvents:UIControlEventTouchDown];
     self.upload.showsTouchWhenHighlighted = YES;
     [self.view addSubview:self.upload];
     
@@ -242,6 +245,17 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 
 #pragma btn delegate
+-(void)readd:(UIButton *)parmSender{
+    
+    EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
+    detailViewController.detailList = self.detailList;
+    
+    [self.detailList.navigationController popViewControllerAnimated:NO];
+    
+    [self.detailList.navigationController pushViewController:detailViewController animated:NO];
+    
+}
+
 -(void)save:(UIButton *)paramSender{
 
 
@@ -262,8 +276,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *expense_date = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateCell.dateValue]];
-    NSString *expense_date_to = [NSString stringWithFormat:@"%@", [formatter stringFromDate:datetoCell.dateValue]];
+    NSString *expense_date = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateCell.dateFromValue]];
+    NSString *expense_date_to = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateCell.dateToValue]];
     
     NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
     
@@ -296,7 +310,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [formdata setValue:expense_amount forKey:@"expense_amount"];
     [formdata setValue:expense_number forKey:@"expense_number"];
     [formdata setValue:expense_date forKey:@"expense_date"];
-    [formdata setValue:expense_date forKey:@"expense_date_to"];
+    [formdata setValue:expense_date_to forKey:@"expense_date_to"];
     [formdata setValue:expense_place forKey:@"expense_place"];
     [formdata setValue:description forKey:@"description"];
     [formdata setValue:local_status forKey:@"local_status"];
@@ -328,61 +342,62 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 }
 
 
--(void)upload:(UIButton *)paramSender{
-    
-
-
-
-
-    if(![self checkDataVaild]){
-        return;
-    }
-    //提交之前先保存
-    [self save:nil];
-    
-    
-    NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
-    NSNumber * expense_number = [NSNumber numberWithInteger:numberCell.numberValue];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
-    
-    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
-    NSString *expense_date_to = [formatter stringFromDate:datetoCell.dateValue];
-    
-    NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
-    
-    NSString * description = self.descTx.text;
-    
-    NSNumber * expense_class_id = ExpenseTypePicker.expense_class_id;
-    
-    NSNumber * expense_type_id =  ExpenseTypePicker.expense_type_id;
-    
- 
-    NSDictionary * param = @{
-                              @"expense_amount" : expense_amount,
-                              @"expense_number" : expense_number,
-                              @"expense_place" :expense_place,
-                              @"expense_class_id" : expense_class_id,
-                              @"expense_type_id"    : expense_type_id ,
-                              @"expense_date"    : expense_date,
-                              @"expense_date_to" : expense_date_to,
-                              @"description" : description,
-                              @"local_id" : self.keyId
-                              };
-
-    
-    NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
-    
-    if(data !=nil){
-        [httpmdel upload:param fileName:@"upload.jpg" data:data];
-    }else{
-        
-        [httpmdel upload:param];
-    }
-    
-    
-}
+//
+//-(void)upload:(UIButton *)paramSender{
+//    
+//
+//
+//
+//
+//    if(![self checkDataVaild]){
+//        return;
+//    }
+//    //提交之前先保存
+//    [self save:nil];
+//    
+//    
+//    NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
+//    NSNumber * expense_number = [NSNumber numberWithInteger:numberCell.numberValue];
+//    
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"YYYY-MM-dd"];
+//    
+//    NSString *expense_date = [formatter stringFromDate:dateCell.dateValue];
+//    NSString *expense_date_to = [formatter stringFromDate:datetoCell.dateValue];
+//    
+//    NSString * expense_place = [[LocationPicker.province_desc stringByAppendingString:@">"] stringByAppendingString:LocationPicker.city_desc];
+//    
+//    NSString * description = self.descTx.text;
+//    
+//    NSNumber * expense_class_id = ExpenseTypePicker.expense_class_id;
+//    
+//    NSNumber * expense_type_id =  ExpenseTypePicker.expense_type_id;
+//    
+// 
+//    NSDictionary * param = @{
+//                              @"expense_amount" : expense_amount,
+//                              @"expense_number" : expense_number,
+//                              @"expense_place" :expense_place,
+//                              @"expense_class_id" : expense_class_id,
+//                              @"expense_type_id"    : expense_type_id ,
+//                              @"expense_date"    : expense_date,
+//                              @"expense_date_to" : expense_date_to,
+//                              @"description" : description,
+//                              @"local_id" : self.keyId
+//                              };
+//
+//    
+//    NSData *data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
+//    
+//    if(data !=nil){
+//        [httpmdel upload:param fileName:@"upload.jpg" data:data];
+//    }else{
+//        
+//        [httpmdel upload:param];
+//    }
+//    
+//    
+//}
 
 
 -(int)getArrayIndex:(int )keyId
@@ -452,9 +467,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
         if (dateCell == nil)
         {
-            dateCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            dateCell = [[LMTableDateFromToCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableDateFromToCell"];
             dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            dateCell.textLabel.text = @"日前从";
+            dateCell.parent = self;
         }
 
         
@@ -471,15 +486,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         placeCell.picker.dataSource = LocationPicker;
         
 
-        if(datetoCell == nil)
-        {
-            
-            datetoCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            datetoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            datetoCell.textLabel.text = @"日前到";
-            
-            
-        }
     
         if(numberCell == nil)
         {
@@ -529,14 +535,20 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         
         [formatter setDateFormat:@"YYYY-MM-dd"];
-        NSDate *expense_date =[formatter dateFromString:[record valueForKey:@"expense_date"]];
-        dateCell.dateValue  =expense_date;
         
-       formatter = [[NSDateFormatter alloc] init];
+        NSDate *expense_date =[formatter dateFromString:[record valueForKey:@"expense_date"]];
+        dateCell.dateFromValue  =expense_date;
+        
+        dateCell.dateToValue =[formatter dateFromString:[record valueForKey:@"expense_date_to"]];
+        
+        formatter = [[NSDateFormatter alloc] init];
         formatter.timeStyle = NSDateFormatterNoStyle;
         formatter.dateStyle = NSDateFormatterMediumStyle;
         
-        dateCell.detailTextLabel.text = [formatter stringFromDate:dateCell.dateValue];
+        dateCell.dateFrom.text = [formatter stringFromDate:dateCell.dateFromValue];
+        dateCell.dateTo.text = [formatter stringFromDate:dateCell.dateToValue];
+        
+        
 
         
         //初始化描述
@@ -553,6 +565,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     
     }else {
+        
+        
   
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:0];
         [ExpenseTypePicker pickerView:expenseTypeCell.picker didSelectRow:0 inComponent:1];
@@ -648,11 +662,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     }else if(indexPath.section == 4){
 
-        if (dateCell == nil)
-        {
-            dateCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            dateCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
         
         return dateCell;
         
@@ -673,16 +682,6 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         
     
         return placeCell;
-    }else if(indexPath.section == 5){
-        
-        if (datetoCell == nil)
-        {
-            datetoCell = [[LMTableDateInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-            datetoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        return datetoCell;
-        
     }else if(indexPath.section == 1){
         
       
@@ -701,7 +700,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 6;
+    return 5;
 }
 
 

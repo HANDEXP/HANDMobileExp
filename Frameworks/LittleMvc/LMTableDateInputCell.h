@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import   "Kal.h"
 
 @class LMTableDateInputCell;
 @protocol DateInputTableViewCellDelegate <NSObject>
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic,strong)  id<DateInputTableViewCellDelegate> delegate;
+@property (nonatomic,strong)    KalViewController *kal;
+@property (nonatomic,strong) UIViewController * parent;//调用这个cell的viewcontroller
 
 
 

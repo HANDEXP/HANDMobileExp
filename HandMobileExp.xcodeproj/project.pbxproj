@@ -11,6 +11,9 @@
 		B2064DE71988C3C100856B30 /* EXPDataSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064DE61988C3C100856B30 /* EXPDataSettingViewController.m */; };
 		B2064DE91988C95800856B30 /* SettingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */; };
 		B2064DEC1988E55700856B30 /* EXPDataSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */; };
+		B20AE99519A2E1AB006FE324 /* LMTableDateFromToCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AE99419A2E1AB006FE324 /* LMTableDateFromToCell.xib */; };
+		B20AE99B19A2E368006FE324 /* LMTableDateFromToCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AE99A19A2E368006FE324 /* LMTableDateFromToCell.m */; };
+		B20AE9EE19A34066006FE324 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B20AE9EC19A34066006FE324 /* Localizable.strings */; };
 		B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10A5196BDFA0004871F4 /* LMDataBaseModel.m */; };
 		B20D10A9196BE121004871F4 /* FMDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10A8196BE121004871F4 /* FMDataBaseModel.m */; };
 		B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10AD196BE3CE004871F4 /* EXPLineModelDetailViewController.m */; };
@@ -104,6 +107,9 @@
 		B2A508611990D365009DFF36 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5085F1990D365009DFF36 /* AFURLSessionManager.m */; };
 		B2A84A2F19946E8500A3068D /* LMTableTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A84A2E19946E8500A3068D /* LMTableTextInputCell.xib */; };
 		B2A84A3219946F2B00A3068D /* LMTableTextInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A84A3119946F2B00A3068D /* LMTableTextInputCell.m */; };
+		B2A91917199B505800FA65F8 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A91914199B504500FA65F8 /* libKal.a */; };
+		B2A91919199B5FBE00FA65F8 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2A91918199B5FBE00FA65F8 /* Kal.bundle */; };
+		B2A91920199B62C300FA65F8 /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */; };
 		B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */; };
 		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
 		B2BE44951972358600114B1B /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2BE44941972358600114B1B /* expense.plist */; };
@@ -223,6 +229,20 @@
 			remoteGlobalIDString = B26AD25E1962D2200081152F;
 			remoteInfo = HandMobileExp;
 		};
+		B2A91913199B504500FA65F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2A9190F199B504500FA65F8 /* Kal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Kal;
+		};
+		B2A91915199B505100FA65F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2A9190F199B504500FA65F8 /* Kal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Kal;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -233,6 +253,13 @@
 		B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingStoryboard.storyboard; sourceTree = "<group>"; };
 		B2064DEA1988E55700856B30 /* EXPDataSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDataSettingModel.h; sourceTree = "<group>"; };
 		B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDataSettingModel.m; sourceTree = "<group>"; };
+		B20AE99119A250BC006FE324 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B20AE99219A250BC006FE324 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B20AE99419A2E1AB006FE324 /* LMTableDateFromToCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableDateFromToCell.xib; sourceTree = "<group>"; };
+		B20AE99919A2E368006FE324 /* LMTableDateFromToCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableDateFromToCell.h; path = Frameworks/LittleMvc/LMTableDateFromToCell.h; sourceTree = "<group>"; };
+		B20AE99A19A2E368006FE324 /* LMTableDateFromToCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableDateFromToCell.m; path = Frameworks/LittleMvc/LMTableDateFromToCell.m; sourceTree = "<group>"; };
+		B20AE9EA19A34066006FE324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B20AE9EB19A34066006FE324 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B20D10A4196BDFA0004871F4 /* LMDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDataBaseModel.h; path = Frameworks/LittleMvc/LMDataBaseModel.h; sourceTree = "<group>"; };
 		B20D10A5196BDFA0004871F4 /* LMDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDataBaseModel.m; path = Frameworks/LittleMvc/LMDataBaseModel.m; sourceTree = "<group>"; };
 		B20D10A7196BE121004871F4 /* FMDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDataBaseModel.h; path = Frameworks/LittleMvc/FMDataBaseModel.h; sourceTree = "<group>"; };
@@ -398,6 +425,10 @@
 		B2A84A2E19946E8500A3068D /* LMTableTextInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMTableTextInputCell.xib; path = HandMobileExp/LMTableTextInputCell.xib; sourceTree = "<group>"; };
 		B2A84A3019946F2B00A3068D /* LMTableTextInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableTextInputCell.h; path = Frameworks/LittleMvc/LMTableTextInputCell.h; sourceTree = "<group>"; };
 		B2A84A3119946F2B00A3068D /* LMTableTextInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableTextInputCell.m; path = Frameworks/LittleMvc/LMTableTextInputCell.m; sourceTree = "<group>"; };
+		B2A9190F199B504500FA65F8 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Frameworks/kal/Kal.xcodeproj; sourceTree = "<group>"; };
+		B2A91918199B5FBE00FA65F8 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = kal/Kal.bundle; sourceTree = "<group>"; };
+		B2A9191E199B62C300FA65F8 /* EventKitDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventKitDataSource.h; path = kal/EventKitDataSource.h; sourceTree = "<group>"; };
+		B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventKitDataSource.m; path = kal/EventKitDataSource.m; sourceTree = "<group>"; };
 		B2B6A8BB196EECBD00B7005C /* EXPLineDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.h; sourceTree = "<group>"; };
 		B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.m; sourceTree = "<group>"; };
 		B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailHtppModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.h; sourceTree = "<group>"; };
@@ -547,6 +578,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A91917199B505800FA65F8 /* libKal.a in Frameworks */,
 				B26AD33A1962E6580081152F /* libsqlite3.0.dylib in Frameworks */,
 				B26AD2671962D2200081152F /* UIKit.framework in Frameworks */,
 				B26AD2651962D2200081152F /* CoreGraphics.framework in Frameworks */,
@@ -577,6 +609,15 @@
 				B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		B20AE9ED19A34066006FE324 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B20AE9EC19A34066006FE324 /* Localizable.strings */,
+			);
+			name = Resources;
+			path = Frameworks/kal;
 			sourceTree = "<group>";
 		};
 		B20D10A3196BDF54004871F4 /* dataBaseModel */ = {
@@ -683,6 +724,7 @@
 				B26AD2871962D2200081152F /* HandMobileExpTests */,
 				B26AD2611962D2200081152F /* Frameworks */,
 				B26AD2601962D2200081152F /* Products */,
+				B20AE9ED19A34066006FE324 /* Resources */,
 				B26AD2B01962D8A70081152F /* Dependencies */,
 			);
 			sourceTree = "<group>";
@@ -773,6 +815,7 @@
 		B26AD2B01962D8A70081152F /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				B2A9190E199B502D00FA65F8 /* Kal */,
 				B29D9607196649F40017A9B7 /* RESideMenu */,
 				B2A2D9551965889300B2C935 /* MMProgressHUD */,
 				B298E2961963A01100EB4850 /* AFNetWorking */,
@@ -1076,6 +1119,23 @@
 			path = Frameworks/MMProgressHUD;
 			sourceTree = "<group>";
 		};
+		B2A9190E199B502D00FA65F8 /* Kal */ = {
+			isa = PBXGroup;
+			children = (
+				B2A91918199B5FBE00FA65F8 /* Kal.bundle */,
+				B2A9190F199B504500FA65F8 /* Kal.xcodeproj */,
+			);
+			name = Kal;
+			sourceTree = "<group>";
+		};
+		B2A91910199B504500FA65F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2A91914199B504500FA65F8 /* libKal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B2C052581987C95700D9E5BF /* XmlParseTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1181,6 +1241,8 @@
 		B2F864A5196D1E770017D110 /* Static Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B2A9191E199B62C300FA65F8 /* EventKitDataSource.h */,
+				B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */,
 				B2C41C35196E7434007C62BB /* LMTableAmountInputCell.h */,
 				B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */,
 				B2C41C36196E7434007C62BB /* LMTableAmountInputCell.m */,
@@ -1193,6 +1255,9 @@
 				B2A84A2E19946E8500A3068D /* LMTableTextInputCell.xib */,
 				B2A84A3019946F2B00A3068D /* LMTableTextInputCell.h */,
 				B2A84A3119946F2B00A3068D /* LMTableTextInputCell.m */,
+				B20AE99419A2E1AB006FE324 /* LMTableDateFromToCell.xib */,
+				B20AE99919A2E368006FE324 /* LMTableDateFromToCell.h */,
+				B20AE99A19A2E368006FE324 /* LMTableDateFromToCell.m */,
 			);
 			name = "Static Cells";
 			sourceTree = "<group>";
@@ -1321,6 +1386,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B2A91916199B505100FA65F8 /* PBXTargetDependency */,
 			);
 			name = HandMobileExp;
 			productName = HandMobileExp;
@@ -1370,10 +1436,17 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B26AD2561962D2200081152F;
 			productRefGroup = B26AD2601962D2200081152F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B2A91910199B504500FA65F8 /* Products */;
+					ProjectRef = B2A9190F199B504500FA65F8 /* Kal.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B26AD25E1962D2200081152F /* HandMobileExp */,
@@ -1381,6 +1454,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B2A91914199B504500FA65F8 /* libKal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKal.a;
+			remoteRef = B2A91913199B504500FA65F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B26AD25D1962D2200081152F /* Resources */ = {
@@ -1400,6 +1483,7 @@
 				DA9F330219889160008B26C4 /* leftDate@2x.png in Resources */,
 				DA28C48E19729BBC00A29412 /* navigationBg@2x.png in Resources */,
 				DA9F030019824120002E486A /* previousButton.png in Resources */,
+				B20AE9EE19A34066006FE324 /* Localizable.strings in Resources */,
 				DA28C4A519729D5200A29412 /* settings.png in Resources */,
 				DA9F330B1988D007008B26C4 /* noDate@2x.png in Resources */,
 				DA28C49119729BBC00A29412 /* note.png in Resources */,
@@ -1468,11 +1552,13 @@
 				DA9F330E1989E8DC008B26C4 /* pin.png in Resources */,
 				DAF3C4201980A6F700EA243B /* month.png in Resources */,
 				DA9F030D198243B3002E486A /* reloadButton@2x.png in Resources */,
+				B20AE99519A2E1AB006FE324 /* LMTableDateFromToCell.xib in Resources */,
 				B26AD26D1962D2200081152F /* InfoPlist.strings in Resources */,
 				DAF3C41C1980A6EF00EA243B /* week.png in Resources */,
 				DA28C49819729BBC00A29412 /* toDoEXP@2x.png in Resources */,
 				B2861F94197F53A100C7F506 /* shadow.png in Resources */,
 				DA28C49219729BBC00A29412 /* note@2x.png in Resources */,
+				B2A91919199B5FBE00FA65F8 /* Kal.bundle in Resources */,
 				DA28C49519729BBC00A29412 /* timeSheetFill.png in Resources */,
 				DA28C45F1972995A00A29412 /* ProvincesAndCities.plist in Resources */,
 				DAEC764619813FF1009A3362 /* submit@2x.png in Resources */,
@@ -1551,8 +1637,10 @@
 				B2BFA5AA19812CC000FD51E8 /* LMBasicFunctionItemCell.m in Sources */,
 				B29D9691196695EF0017A9B7 /* EXPFunctionListViewController.m in Sources */,
 				B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */,
+				B2A91920199B62C300FA65F8 /* EventKitDataSource.m in Sources */,
 				B2A2D96E1965889300B2C935 /* MMRadialProgressView.m in Sources */,
 				DAEC76421980F58F009A3362 /* YFJLeftSwipeDeleteTableView.m in Sources */,
+				B20AE99B19A2E368006FE324 /* LMTableDateFromToCell.m in Sources */,
 				B2A508611990D365009DFF36 /* AFURLSessionManager.m in Sources */,
 				B26AD37C1962F24B0081152F /* HDCoreStorage.m in Sources */,
 				B2A2D953196585A300B2C935 /* LMModelViewController.m in Sources */,
@@ -1621,13 +1709,28 @@
 			target = B26AD25E1962D2200081152F /* HandMobileExp */;
 			targetProxy = B26AD2851962D2200081152F /* PBXContainerItemProxy */;
 		};
+		B2A91916199B505100FA65F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kal;
+			targetProxy = B2A91915199B505100FA65F8 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B20AE9EC19A34066006FE324 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B20AE9EA19A34066006FE324 /* Base */,
+				B20AE9EB19A34066006FE324 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B26AD26B1962D2200081152F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B26AD26C1962D2200081152F /* en */,
+				B20AE99119A250BC006FE324 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1636,6 +1739,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B26AD28B1962D2200081152F /* en */,
+				B20AE99219A250BC006FE324 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1646,7 +1750,7 @@
 		B26AD28F1962D2200081152F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1685,7 +1789,7 @@
 		B26AD2901962D2200081152F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1723,10 +1827,18 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HandMobileExp/HandMobileExp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					kal,
+				);
 				INFOPLIST_FILE = "HandMobileExp/HandMobileExp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ORDER_FILE = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = kal/;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1739,10 +1851,18 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HandMobileExp/HandMobileExp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					kal,
+				);
 				INFOPLIST_FILE = "HandMobileExp/HandMobileExp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ORDER_FILE = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = kal/;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -145,10 +145,12 @@
                 
                 NSDictionary * param = @{
                                          @"expense_amount" : [record valueForKey:@"expense_amount"],
+                                         @"expense_number" : [record valueForKey:@"expense_number"],
                                          @"expense_place" :[record valueForKey:@"expense_place"],
                                          @"expense_class_id" : [record valueForKey:@"expense_class_id"],
                                          @"expense_type_id"    : [record valueForKey:@"expense_type_id"] ,
                                          @"expense_date"    : [record valueForKey:@"expense_date"],
+                                         @"expense_date_to"    : [record valueForKey:@"expense_date_to"],
                                          @"description" : [record valueForKey:@"description"],
                                          @"local_id" : [record valueForKey:@"id"]
                                          };
