@@ -37,7 +37,7 @@
    
     point = self.passwordView.previousTouchPoint;
     CGContextAddLineToPoint(ctx, point.x, point.y);
-    [self.passwordView.pathColour setStroke];
+//    [self.passwordView.pathColour setStroke];
     CGContextDrawPath(ctx, kCGPathStroke);
 }
 

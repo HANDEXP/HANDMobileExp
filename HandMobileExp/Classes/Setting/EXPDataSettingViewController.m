@@ -10,6 +10,7 @@
 #import "EXPDataSettingModel.h"
 #import  "LMAlertViewTool.h"
 #import "EXPUnlockSettingViewController.h"
+#import "EXPPasswordSetting.h"
 
 @interface EXPDataSettingViewController ()
 
@@ -65,7 +66,12 @@
     
     if (indexPath.item == 7) {
         
-        [self.navigationController pushViewController:[[EXPUnlockSettingViewController alloc] initWithNibName:nil bundle:nil] animated:YES];
+
+        UIStoryboard *StoryBoard = [UIStoryboard storyboardWithName:@"SettingStoryboard" bundle:nil];
+     EXPPasswordSetting    * passSetting = [StoryBoard instantiateViewControllerWithIdentifier:@"EXPPasswordSetting"];
+        
+        [self.navigationController pushViewController:passSetting animated:YES];
+        
         
     }
     

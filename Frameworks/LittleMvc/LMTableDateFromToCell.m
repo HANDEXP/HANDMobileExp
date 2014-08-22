@@ -30,7 +30,7 @@
         self = [nibArray objectAtIndex:0];
         
         //日期组件
-        kal = [[KalViewController alloc] initWithSelectionMode:KalSelectionModeRange];
+        kal = [[KalViewController alloc] initWithSelectionMode:KalDoubleClickMode];
         kal.beginDate = [NSDate dateStartOfDay:[NSDate date]];
         kal.endDate = [NSDate dateStartOfDay:[[NSDate date] offsetDay:1]];
         kal.title = @"选择日期";

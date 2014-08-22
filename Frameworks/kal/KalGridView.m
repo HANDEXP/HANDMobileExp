@@ -31,21 +31,23 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 @implementation KalGridView
 {
     BOOL _needRemoveRanges;
+    int  flag ;
 }
 
 - (void)setBeginDate:(NSDate *)beginDate
 {
+    [self removeRanges];
     KalTileView *preTile = [frontMonthView tileForDate:_beginDate];
     preTile.state = KalTileStateNone;
     _beginDate = beginDate;
     KalTileView *currentTile = [frontMonthView tileForDate:_beginDate];
     currentTile.state = KalTileStateSelected;
-    [self removeRanges];
     self.endDate = nil;
 }
 
 - (void)setEndDate:(NSDate *)endDate
 {
+        [self removeRanges];
     KalTileView *beginTile = [frontMonthView tileForDate:self.beginDate];
     
     KalTileView *preTile = [frontMonthView tileForDate:_endDate];
@@ -57,7 +59,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     NSDate *realBeginDate;
     NSDate *realEndDate;
     
-    [self removeRanges];
+
     
     if (!_endDate || [_endDate isEqualToDate:self.beginDate]) {
         return;
@@ -125,6 +127,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
         self.selectionMode = KalSelectionModeSingle;
         _rangeTiles = [[NSMutableArray alloc] init];
         
+        //
+        flag = 0 ;
+        
         [self jumpToSelectedMonth];
     }
     return self;
@@ -144,6 +149,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     CGPoint location = [touch locationInView:self];
     UIView *hitView = [self hitTest:location withEvent:event];
     
+    
     if (!hitView)
         return;
     
@@ -153,21 +159,27 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
             return;
         
         NSDate *date = tile.date;
-        if ([date isEqualToDate:self.beginDate]) {
+        if ([date isEqualToDate:self.beginDate] && !self.selectionMode == KalDoubleClickMode) {
             date = self.beginDate;
             _beginDate = _endDate;
             _endDate = date;
-        } else if ([date isEqualToDate:self.endDate]) {
+        } else if ([date isEqualToDate:self.endDate] && !self.selectionMode == KalDoubleClickMode) {
             
-        } else {
+        } else if(flag %2 ==0) {
             self.beginDate = date;
+            flag++;
+        }else if(flag %2 == 1){
+            
+            self.endDate = date;
+            flag++;
         }
+        
     }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.selectionMode == KalSelectionModeSingle)
+    if (self.selectionMode == KalSelectionModeSingle || self.selectionMode == KalDoubleClickMode)
         return;
     
     UITouch *touch = [touches anyObject];
@@ -198,6 +210,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self];
     UIView *hitView = [self hitTest:location withEvent:event];
@@ -215,16 +229,17 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
                 [delegate showPreviousMonth];
             }
         }
-        if (self.selectionMode == KalSelectionModeRange) {
+        if (self.selectionMode == KalSelectionModeRange || self.selectionMode == KalDoubleClickMode) {
             NSDate *endDate = tile.date;
-            if ([tile.date isEqualToDate:self.beginDate]) {
+            if ([tile.date isEqualToDate:self.beginDate] && self.selectionMode == KalSelectionModeRange) {
                 if ([[endDate offsetDay:1] compare:self.maxAVailableDate] == NSOrderedDescending) {
                     endDate = [endDate offsetDay:-1];
                 } else {
                     endDate = [endDate offsetDay:1];
                 }
             }
-            self.endDate = endDate;
+            //解决双击后取消颜色的情况
+            //self.endDate = endDate;
             
             NSDate *realBeginDate = self.beginDate;
             NSDate *realEndDate = self.endDate;

@@ -8,6 +8,7 @@
 typedef enum {
     KalSelectionModeSingle = 0,
     KalSelectionModeRange,
+    KalDoubleClickMode
 } KalSelectionMode;
 
 @class KalTileView, KalMonthView, KalLogic;

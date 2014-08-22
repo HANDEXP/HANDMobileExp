@@ -110,6 +110,7 @@
 		B2A91917199B505800FA65F8 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A91914199B504500FA65F8 /* libKal.a */; };
 		B2A91919199B5FBE00FA65F8 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2A91918199B5FBE00FA65F8 /* Kal.bundle */; };
 		B2A91920199B62C300FA65F8 /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */; };
+		B2A956BB19A433160010425A /* EXPPasswordSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A956BA19A433160010425A /* EXPPasswordSetting.m */; };
 		B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */; };
 		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
 		B2BE44951972358600114B1B /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2BE44941972358600114B1B /* expense.plist */; };
@@ -429,6 +430,8 @@
 		B2A91918199B5FBE00FA65F8 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = kal/Kal.bundle; sourceTree = "<group>"; };
 		B2A9191E199B62C300FA65F8 /* EventKitDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventKitDataSource.h; path = kal/EventKitDataSource.h; sourceTree = "<group>"; };
 		B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventKitDataSource.m; path = kal/EventKitDataSource.m; sourceTree = "<group>"; };
+		B2A956B919A433160010425A /* EXPPasswordSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPPasswordSetting.h; path = HandMobileExp/Classes/Setting/EXPPasswordSetting.h; sourceTree = "<group>"; };
+		B2A956BA19A433160010425A /* EXPPasswordSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPPasswordSetting.m; path = HandMobileExp/Classes/Setting/EXPPasswordSetting.m; sourceTree = "<group>"; };
 		B2B6A8BB196EECBD00B7005C /* EXPLineDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.h; sourceTree = "<group>"; };
 		B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.m; sourceTree = "<group>"; };
 		B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailHtppModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.h; sourceTree = "<group>"; };
@@ -607,6 +610,8 @@
 				B2064DE61988C3C100856B30 /* EXPDataSettingViewController.m */,
 				B2064DEA1988E55700856B30 /* EXPDataSettingModel.h */,
 				B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */,
+				B2A956B919A433160010425A /* EXPPasswordSetting.h */,
+				B2A956BA19A433160010425A /* EXPPasswordSetting.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1656,6 +1661,7 @@
 				B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */,
 				B269E51C1972F2DB001313DD /* LMCellStypeItem.m in Sources */,
 				B25C27C5197FD1AF005E9878 /* LMSimpleProgress.m in Sources */,
+				B2A956BB19A433160010425A /* EXPPasswordSetting.m in Sources */,
 				B29D960F196649F40017A9B7 /* RESideMenu.m in Sources */,
 				B2D6D68B197CE9A400FE234C /* EXPLocationManager.m in Sources */,
 				B2D6D68A197CE9A400FE234C /* EXPLocationAPI.m in Sources */,

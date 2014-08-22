@@ -99,13 +99,14 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     self.model = [[EXPHomeModel alloc]init];
     
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {        // Load
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.914 green:0.924 blue:0.821 alpha:1.000];
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1];
     }
     else {
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.914 green:0.924 blue:0.821 alpha:1.000];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1];
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     }
-    self.view.backgroundColor = [UIColor colorWithRed:0.875 green:0.871 blue:0.757 alpha:1.000];
+//    self.view.backgroundColor = [UIColor colorWithRed:0.875 green:0.871 blue:0.757 alpha:1.000];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIImage *checkList = [UIImage imageNamed:@"menu"];
     self.navigationItem.leftBarButtonItem =
@@ -138,8 +139,10 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     [self.view addSubview:_scrollview.pagecontrol];
     
     UIButton *writeButton = [[UIButton alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height * 0.29, self.view.bounds.size.width-16.0, self.view.bounds.size.height * 0.12)];
-    writeButton.backgroundColor = [UIColor colorWithRed:0.834 green:0.054 blue:0.000 alpha:0.420];
-  //  writeButton.backgroundColor = [UIColor colorWithRed:0.026 green:0.398 blue:0.095 alpha:0.780];
+    
+
+    writeButton.backgroundColor = [UIColor colorWithRed:241.0f/255.0f green:147.0f/255.0f blue:31.0f/255.0f alpha:0.780];
+
     [writeButton setTitle:@"记一单" forState:UIControlStateNormal];
     writeButton.titleLabel.textColor = [UIColor whiteColor];
     writeButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
@@ -167,12 +170,18 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     [self.view addSubview:tableView];
     
+    UIView * backview = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.75, self.view.bounds.size.width, self.view.bounds.size.height*0.25)];
+    [backview setBackgroundColor:[UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1]];
+    [self.view addSubview: backview];
+    
     //3 Buttons
     UIButton *expCreateButton = [[UIButton alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(100.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(220.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
     NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"]];
     NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量上传"];
+    
+    
     
     [@[expCreateButton, expToDoButton, expDoneButton] enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL *stop) {
         
@@ -238,7 +247,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     
     cell.backgroundView.backgroundColor = [UIColor clearColor];
-    cell.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
+//    cell.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
     cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
     
     if (indexPath.section ==0 && indexPath.row == 0) {

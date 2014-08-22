@@ -113,6 +113,11 @@
             
             [MMProgressHUD dismissWithSuccess:nil title:@"登录成功" afterDelay:1];
             
+            [[NSUserDefaults standardUserDefaults] setValue:self.userNameTF.text forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] setValue:self.passwordTF.text forKey:@"userpassword"];
+            
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC);
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [self functionListShow];
@@ -151,9 +156,7 @@
         [self lockAnimationForView:self.passwordTF];
         return;
     }
-    [[NSUserDefaults standardUserDefaults] setValue:self.userNameTF.text forKey:@"username"];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
+
     
     NSDictionary *param = @{@"user_name" : self.userNameTF.text,
                             @"user_password" : self.passwordTF.text,

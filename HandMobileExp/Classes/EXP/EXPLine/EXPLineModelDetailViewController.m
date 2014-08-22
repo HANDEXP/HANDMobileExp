@@ -93,30 +93,30 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(back)];
     
     self.navigationItem.title = @"记一单";
-    self.tv = [[UITableView alloc] initWithFrame:CGRectMake(8.0, 8.0, self.view.bounds.size.width-16, self.view.bounds.size.height)];
+    self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.tv.dataSource = self;
     self.tv.delegate = self;
     
     self.tv.tableFooterView = [[UIView alloc]init];
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.000];
+//    self.view.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.000];
     self.tv.scrollEnabled = NO;
 
     
     
 
-    self.tv.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
+//    self.tv.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
     self.tv.backgroundView.backgroundColor = nil;
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
     [self.view addSubview:self.tv];
     
-    UIView * div2 =[UIView new];
-    div2.frame = CGRectMake(self.view.frame.size.width/2-10 , 80 ,
-                              1.0f, 40.0f);
-    div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
-    [self.view addSubview:div2];
+//    UIView * div2 =[UIView new];
+//    div2.frame = CGRectMake(self.view.frame.size.width/2-10 , 80 ,
+//                              1.0f, 40.0f);
+//    div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
+//    [self.view addSubview:div2];
 
     UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 233.0f, 20, 20)];
     lb3.text = @"备注";
@@ -125,18 +125,20 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 250, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
     self.descTx.delegate = self;
-    
-    self.descTx.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.843 alpha:1.000];
+    self.descTx.layer.borderColor =  [UIColor grayColor].CGColor;
+
+    self.descTx.layer.borderWidth = 1.0;
+//    self.descTx.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.843 alpha:1.000];
     [self.view addSubview:self.descTx];
     
     self.descTx.tag = 1;
     
     //添加按键
-    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, self.descTx.frame.origin.y+(self.view.bounds.size.height-240)*0.3, 320-16, (self.view.bounds.size.height-240)*0.15)];
+    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, self.descTx.frame.origin.y+(self.view.bounds.size.height-240)*0.4, 320-16, (self.view.bounds.size.height-240)*0.15)];
     
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
-    [self.save setBackgroundColor:[UIColor colorWithRed:0.731 green:0.751 blue:0.525 alpha:0.830]];
+    [self.save setBackgroundColor:[UIColor colorWithRed:241.0f/255.0f green:147.0f/255.0f blue:31.0f/255.0f alpha:0.780]];
     [self.save.layer setCornerRadius:6.0f];
     self.save.showsTouchWhenHighlighted = YES;
     
@@ -209,6 +211,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     self.upload = [[UIButton alloc] initWithFrame:CGRectMake((self.save.bounds.size.width/2)+10, self.save.frame.origin.y, self.save.bounds.size.width/2, self.save.bounds.size.height)];
 
     [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
+    self.save.backgroundColor  = [UIColor colorWithRed:113.0f/255 green:113.0f/255  blue:113.0f/255  alpha:0.780];
     
     [UIView beginAnimations:@"button" context:nil];
     [UIView setAnimationDuration:0.5f];
@@ -222,7 +225,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [self.upload.layer setCornerRadius:6.0f];
     [self.upload setTitle:@"再记一笔" forState:UIControlStateNormal];
 //    [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
-    [self.upload setBackgroundColor:[UIColor orangeColor]];
+    [self.upload setBackgroundColor:[UIColor colorWithRed:241.0f/255.0f green:147.0f/255.0f blue:31.0f/255.0f alpha:0.780]];
 //    [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];
     [self.upload addTarget:self action:@selector(readd:) forControlEvents:UIControlEventTouchDown];
     self.upload.showsTouchWhenHighlighted = YES;
