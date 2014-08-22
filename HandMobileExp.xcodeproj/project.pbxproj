@@ -138,6 +138,17 @@
 		B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */; };
 		B2F53A93196D5AA800525AE0 /* LMTableDateInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F53A92196D5AA800525AE0 /* LMTableDateInputCell.xib */; };
 		B2F864A8196D1EBF0017D110 /* LMTableDateInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F864A7196D1EBF0017D110 /* LMTableDateInputCell.m */; };
+		B2F98A3D19A714940064032E /* communication.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A3919A714940064032E /* communication.png */; };
+		B2F98A3E19A714940064032E /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A3A19A714940064032E /* food.png */; };
+		B2F98A3F19A714940064032E /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A3B19A714940064032E /* ticket.png */; };
+		B2F98A4019A714940064032E /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A3C19A714940064032E /* traffic.png */; };
+		B2F98A4319A71E1A0064032E /* LMDetailListTableViewCell_1.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F98A4219A71E1A0064032E /* LMDetailListTableViewCell_1.m */; };
+		B2F98A4519A71EBF0064032E /* LMDetailListTableViewCell_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A4419A71EBF0064032E /* LMDetailListTableViewCell_1.xib */; };
+		B2F98A4819A71FFB0064032E /* LMCellStypeItem_1.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F98A4719A71FFB0064032E /* LMCellStypeItem_1.m */; };
+		B2F98A5219A7287B0064032E /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A4F19A7287B0064032E /* 1@2x.png */; };
+		B2F98A5319A7287B0064032E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A5019A7287B0064032E /* 2@2x.png */; };
+		B2F98A5419A7287B0064032E /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A5119A7287B0064032E /* 3@2x.png */; };
+		B2F98A5819A732D50064032E /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F98A5719A732D50064032E /* loading.png */; };
 		DA28C45F1972995A00A29412 /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA28C45E1972995A00A29412 /* ProvincesAndCities.plist */; };
 		DA28C47E19729BBC00A29412 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C46119729BBC00A29412 /* 1.png */; };
 		DA28C47F19729BBC00A29412 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA28C46219729BBC00A29412 /* 2.png */; };
@@ -481,6 +492,19 @@
 		B2F53A92196D5AA800525AE0 /* LMTableDateInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableDateInputCell.xib; sourceTree = "<group>"; };
 		B2F864A6196D1EBF0017D110 /* LMTableDateInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableDateInputCell.h; path = Frameworks/LittleMvc/LMTableDateInputCell.h; sourceTree = "<group>"; };
 		B2F864A7196D1EBF0017D110 /* LMTableDateInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableDateInputCell.m; path = Frameworks/LittleMvc/LMTableDateInputCell.m; sourceTree = "<group>"; };
+		B2F98A3919A714940064032E /* communication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = communication.png; sourceTree = "<group>"; };
+		B2F98A3A19A714940064032E /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
+		B2F98A3B19A714940064032E /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticket.png; sourceTree = "<group>"; };
+		B2F98A3C19A714940064032E /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
+		B2F98A4119A71E1A0064032E /* LMDetailListTableViewCell_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDetailListTableViewCell_1.h; path = Frameworks/LittleMvc/LMDetailListTableViewCell_1.h; sourceTree = "<group>"; };
+		B2F98A4219A71E1A0064032E /* LMDetailListTableViewCell_1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDetailListTableViewCell_1.m; path = Frameworks/LittleMvc/LMDetailListTableViewCell_1.m; sourceTree = "<group>"; };
+		B2F98A4419A71EBF0064032E /* LMDetailListTableViewCell_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMDetailListTableViewCell_1.xib; sourceTree = "<group>"; };
+		B2F98A4619A71FFB0064032E /* LMCellStypeItem_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMCellStypeItem_1.h; path = Frameworks/LittleMvc/LMCellStypeItem_1.h; sourceTree = "<group>"; };
+		B2F98A4719A71FFB0064032E /* LMCellStypeItem_1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMCellStypeItem_1.m; path = Frameworks/LittleMvc/LMCellStypeItem_1.m; sourceTree = "<group>"; };
+		B2F98A4F19A7287B0064032E /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
+		B2F98A5019A7287B0064032E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
+		B2F98A5119A7287B0064032E /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
+		B2F98A5719A732D50064032E /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DA28C45E1972995A00A29412 /* ProvincesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProvincesAndCities.plist; sourceTree = "<group>"; };
 		DA28C46119729BBC00A29412 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		DA28C46219729BBC00A29412 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -1209,6 +1233,8 @@
 				B269E51B1972F2DB001313DD /* LMCellStypeItem.m */,
 				B2BFA5AB19812EB000FD51E8 /* LMBasicFunctionItem.h */,
 				B2BFA5AC19812EB000FD51E8 /* LMBasicFunctionItem.m */,
+				B2F98A4619A71FFB0064032E /* LMCellStypeItem_1.h */,
+				B2F98A4719A71FFB0064032E /* LMCellStypeItem_1.m */,
 			);
 			name = "Table Items";
 			sourceTree = "<group>";
@@ -1228,6 +1254,9 @@
 				B2BFA5A619812BCF00FD51E8 /* LMBasicFunctionItemCell.xib */,
 				B2BFA5A819812CC000FD51E8 /* LMBasicFunctionItemCell.h */,
 				B2BFA5A919812CC000FD51E8 /* LMBasicFunctionItemCell.m */,
+				B2F98A4419A71EBF0064032E /* LMDetailListTableViewCell_1.xib */,
+				B2F98A4119A71E1A0064032E /* LMDetailListTableViewCell_1.h */,
+				B2F98A4219A71E1A0064032E /* LMDetailListTableViewCell_1.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -1270,6 +1299,14 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				B2F98A5719A732D50064032E /* loading.png */,
+				B2F98A4F19A7287B0064032E /* 1@2x.png */,
+				B2F98A5019A7287B0064032E /* 2@2x.png */,
+				B2F98A5119A7287B0064032E /* 3@2x.png */,
+				B2F98A3919A714940064032E /* communication.png */,
+				B2F98A3A19A714940064032E /* food.png */,
+				B2F98A3B19A714940064032E /* ticket.png */,
+				B2F98A3C19A714940064032E /* traffic.png */,
 				DAE6BBB5198F17230016EA52 /* submitted.png */,
 				DAE6BBB6198F17230016EA52 /* submitted@2x.png */,
 				DA9F330C1989E8DC008B26C4 /* pin.png */,
@@ -1496,14 +1533,17 @@
 				DA28C48719729BBC00A29412 /* homeBg3@2x.png in Resources */,
 				DA28C48819729BBC00A29412 /* homeBg@2x.png in Resources */,
 				DA9F32F919874683008B26C4 /* new@2x.png in Resources */,
+				B2F98A4019A714940064032E /* traffic.png in Resources */,
 				DA28C48119729BBC00A29412 /* 4.png in Resources */,
 				DA28C4A219729D5200A29412 /* camera@2x.png in Resources */,
 				DAEC764519813FF1009A3362 /* submit.png in Resources */,
 				B26AD27B1962D2200081152F /* Images.xcassets in Resources */,
+				B2F98A3E19A714940064032E /* food.png in Resources */,
 				B269E5191972F20A001313DD /* LMCellStype.xib in Resources */,
 				DA9F32F819874683008B26C4 /* new.png in Resources */,
 				DA9F030C198243B3002E486A /* reloadButton.png in Resources */,
 				DA28C4A419729D5200A29412 /* paper@2x.png in Resources */,
+				B2F98A3D19A714940064032E /* communication.png in Resources */,
 				B2BFA5A719812BCF00FD51E8 /* LMBasicFunctionItemCell.xib in Resources */,
 				DA28C49919729BBC00A29412 /* user.png in Resources */,
 				B24068D319702D4A0062AA65 /* LMTableAmountInputCell.xib in Resources */,
@@ -1512,11 +1552,15 @@
 				DA28C48519729BBC00A29412 /* doneEXP@2x.png in Resources */,
 				DA28C48F19729BBC00A29412 /* newEXP.png in Resources */,
 				DA28C48319729BBC00A29412 /* 6.png in Resources */,
+				B2F98A5419A7287B0064032E /* 3@2x.png in Resources */,
 				DA28C48019729BBC00A29412 /* 3.png in Resources */,
 				DA9F0304198243A4002E486A /* stopButton.png in Resources */,
+				B2F98A5219A7287B0064032E /* 1@2x.png in Resources */,
 				DA28C49619729BBC00A29412 /* timeSheetFill@2x.png in Resources */,
 				B24068CF19702AFF0062AA65 /* EXPDetailViewController.xib in Resources */,
 				DA9F0309198243AB002E486A /* nextButton@2x.png in Resources */,
+				B2F98A5319A7287B0064032E /* 2@2x.png in Resources */,
+				B2F98A5819A732D50064032E /* loading.png in Resources */,
 				DA28C48D19729BBC00A29412 /* navigationBg.png in Resources */,
 				DA28C4A619729D5200A29412 /* settings@2x.png in Resources */,
 				DA9F32F41987388D008B26C4 /* stamp.png in Resources */,
@@ -1548,7 +1592,9 @@
 				DAF3C41D1980A6EF00EA243B /* week@2x.png in Resources */,
 				DA28C48219729BBC00A29412 /* 5.png in Resources */,
 				DA9F330319889160008B26C4 /* rightDate.png in Resources */,
+				B2F98A4519A71EBF0064032E /* LMDetailListTableViewCell_1.xib in Resources */,
 				B2861F5E197E75E600C7F506 /* Unselected.png in Resources */,
+				B2F98A3F19A714940064032E /* ticket.png in Resources */,
 				DA28C48B19729BBC00A29412 /* menu.png in Resources */,
 				DA28C4A319729D5200A29412 /* paper.png in Resources */,
 				DAE6BBB8198F17230016EA52 /* submitted@2x.png in Resources */,
@@ -1596,6 +1642,7 @@
 				B26AD2731962D2200081152F /* EXPAppDelegate.m in Sources */,
 				B2A2D96F1965889300B2C935 /* MMVectorImage.m in Sources */,
 				B2C5567A1968085200B14460 /* EXPFunctionListModel.m in Sources */,
+				B2F98A4319A71E1A0064032E /* LMDetailListTableViewCell_1.m in Sources */,
 				B24068BB1970248A0062AA65 /* EXPPageControl.m in Sources */,
 				B298E35D196452BA00EB4850 /* HDXMLParser.m in Sources */,
 				B2861F5A197E4F4E00C7F506 /* LMAlertViewTool.m in Sources */,
@@ -1678,6 +1725,7 @@
 				B2861F56197E2D5000C7F506 /* EXPSubmitDelegate.m in Sources */,
 				DAF3C21F197FA0D1004145B2 /* EXPDateManager.m in Sources */,
 				B24068BA1970248A0062AA65 /* EXPHomeViewController.m in Sources */,
+				B2F98A4819A71FFB0064032E /* LMCellStypeItem_1.m in Sources */,
 				B24068BC1970248A0062AA65 /* EXPScrollview.m in Sources */,
 				B28FA8EB1968F26C004E6333 /* LMTableLinkedItem.m in Sources */,
 				B2C556701967D8BC00B14460 /* LMTableViewDataSource.m in Sources */,

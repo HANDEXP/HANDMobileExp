@@ -13,6 +13,8 @@
 #import "LMBasicFunctionItem.h"
 #import "LMBasicFunctionItemCell.h"
 #import "LMDetailListTableViewCell.h"
+#import "LMCellStypeItem_1.h"
+#import "LMDetailListTableViewCell_1.h"
 
 
 @implementation LMTableViewDataSource
@@ -33,7 +35,8 @@
       }else if([object isKindOfClass:[LMBasicFunctionItem class]]){
           
           return [LMBasicFunctionItemCell class];
-      }
+      }else if([object isKindOfClass:[LMCellStypeItem_1 class]])
+          return [LMDetailListTableViewCell_1 class];
     
     }
     
@@ -88,6 +91,8 @@ willAppearAtIndexPath:(NSIndexPath*)indexPath {
           [(LMDetailListTableViewCell*)cell setObject:object];
       }else if([cell isKindOfClass:[LMBasicFunctionItemCell class]]){
           [(LMBasicFunctionItemCell *)cell setObject:object];
+      }else if([cell isKindOfClass:[LMDetailListTableViewCell_1 class]]){
+          [(LMDetailListTableViewCell_1*)cell setObject:object];
       }
     [self tableView:tableView cell:cell willAppearAtIndexPath:indexPath];
     

@@ -78,7 +78,7 @@
             return  0;
         }else if([title isEqualToString:@"DefaultHeaderHeight"]){
             
-            return 20;
+            return 40;
         }
         
         

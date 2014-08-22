@@ -101,7 +101,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    self.title = @"报销批量提交";
+    self.title = @"批量上传";
     self.view.backgroundColor = [UIColor colorWithRed:0.400 green:0.297 blue:0.199 alpha:0.840];
     
     
@@ -190,7 +190,8 @@
     _tableView = ({
        UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
         
-        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
+//        tableView.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:1.0];
+        tableView.backgroundColor = [UIColor whiteColor];
         tableView.backgroundView = nil;
         tableView.tableFooterView = [[UIView alloc]init];
         tableView.tableHeaderView = [[UIView alloc]init];

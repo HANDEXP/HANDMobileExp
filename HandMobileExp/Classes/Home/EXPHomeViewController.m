@@ -94,7 +94,12 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 {
     [super viewDidLoad];
     
+    
+
     self.title = @"首页";
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+
 
     self.model = [[EXPHomeModel alloc]init];
     
@@ -103,7 +108,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     }
     else {
         self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1];
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     }
 //    self.view.backgroundColor = [UIColor colorWithRed:0.875 green:0.871 blue:0.757 alpha:1.000];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -118,7 +123,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
     CGRect bound=CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height*0.25);
-    NSArray *ImageArr=@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"],[UIImage imageNamed:@"4"],[UIImage imageNamed:@"5"],[UIImage imageNamed:@"6"]];
+    NSArray *ImageArr=@[[UIImage imageNamed:@"1"],[UIImage imageNamed:@"2"],[UIImage imageNamed:@"3"]];
     for (int i=0; i<ImageArr.count; i++) {
         UIImageView *imageview=[[UIImageView alloc]init];
         imageview.image=[ImageArr objectAtIndex:i];
@@ -138,7 +143,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     [self.view addSubview:_scrollview.pagecontrol];
     
-    UIButton *writeButton = [[UIButton alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height * 0.29, self.view.bounds.size.width-16.0, self.view.bounds.size.height * 0.12)];
+    UIButton *writeButton = [[UIButton alloc]initWithFrame:CGRectMake(16.0, self.view.bounds.size.height * 0.29, self.view.bounds.size.width-32.0, self.view.bounds.size.height * 0.09)];
     
 
     writeButton.backgroundColor = [UIColor colorWithRed:241.0f/255.0f green:147.0f/255.0f blue:31.0f/255.0f alpha:0.780];
@@ -147,14 +152,14 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     writeButton.titleLabel.textColor = [UIColor whiteColor];
     writeButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
     writeButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-   [writeButton.layer setCornerRadius:6.0f];
+   [writeButton.layer setCornerRadius:8.0f];
     writeButton.showsTouchWhenHighlighted = YES;
     [writeButton addTarget:self action:@selector(abstractButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:writeButton];
     
     
     //TableView with 3 cells
-    tableView = [[UITableView alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height*0.45, self.view.bounds.size.width-16.0, self.view.bounds.size.height*0.3) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc]initWithFrame:CGRectMake(8.0, self.view.bounds.size.height*0.4, self.view.bounds.size.width-16.0, self.view.bounds.size.height*0.3) style:UITableViewStylePlain];
     
     tableView.backgroundColor = [UIColor whiteColor];
     tableView.backgroundView = nil;
@@ -176,8 +181,10 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     //3 Buttons
     UIButton *expCreateButton = [[UIButton alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
-    UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(100.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
+    UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(110.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
     UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(220.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
+    
+    
     NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"]];
     NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量上传"];
     
@@ -195,7 +202,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         [obj setTitle:[titleButtonArray objectAtIndex:idx] forState:UIControlStateNormal];
         obj.titleLabel.font = [UIFont systemFontOfSize:11];
         obj.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [obj setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [obj setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [obj setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         obj.titleEdgeInsets = UIEdgeInsetsMake(30, -expButtonImg.size.width, 0, 0.);
         

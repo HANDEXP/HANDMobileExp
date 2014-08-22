@@ -8,7 +8,7 @@
 
 #import "EXPSubmitDetailModel.h"
 #import "TableDisplaySection.h"
-#import "LMCellStypeItem.h"
+#import "LMCellStypeItem_1.h"
 #import "EXPLineModelDetailViewController.h"
 
 @implementation EXPSubmitDetailModel
@@ -132,7 +132,7 @@
         for(NSDictionary * record in  model.result){
             
             if([time isEqualToString:[record valueForKey:@"expense_date"]]){
-                LMCellStypeItem * cellitem = [LMCellStypeItem itemWithText:self selector:@selector(openURLForItem:)];
+                LMCellStypeItem_1 * cellitem = [LMCellStypeItem_1 itemWithText:self selector:@selector(openURLForItem:)];
                 cellitem.amount = [record valueForKey:@"expense_amount"];
                 cellitem.primary_id =  [record valueForKey:@"id"];
                 

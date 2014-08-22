@@ -51,6 +51,7 @@
     
     self.title = @"报销创建";
     
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(returnHomePage:)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addDetailPage:)];
@@ -58,15 +59,15 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.561 green:0.380 blue:0.201 alpha:1.000];
     
-    self.sumMoneyLabel = [[UILabel alloc]initWithFrame:CGRectMake(160.0, self.view.bounds.size.height * 0.05, 150.0, 50.0)];
+    self.sumMoneyLabel = [[UILabel alloc]initWithFrame:CGRectMake(160.0, self.view.bounds.size.height * 0.03, 150.0, 30.0)];
     
-    self.sumMoneyLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+    self.sumMoneyLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
     self.sumMoneyLabel.textAlignment = NSTextAlignmentRight;
     
     self.sumMoneyLabel.textColor = [UIColor whiteColor];
-    self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(30.0, self.view.bounds.size.height * 0.05, 100.0, 50.0)];
+    self.sumLabel = [[UILabel alloc]initWithFrame:CGRectMake(30.0, self.view.bounds.size.height * 0.03, 100.0, 30.0)];
     self.sumLabel.textColor = [UIColor whiteColor];
-    self.sumLabel.font = [UIFont fontWithName:@"Helvetica" size:25.0f];
+    self.sumLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
     
     
 }
@@ -98,9 +99,9 @@
     
     if(_tableView == nil){
     _tableView = ({
-       UITableView * tableView = [[YFJLeftSwipeDeleteTableView alloc]initWithFrame:CGRectMake(0.0, 100.0, self.view.bounds.size.width, self.view.bounds.size.height-100.0)];
+       UITableView * tableView = [[YFJLeftSwipeDeleteTableView alloc]initWithFrame:CGRectMake(0.0, 55.0, self.view.bounds.size.width, self.view.bounds.size.height-55.0)];
         tableView.backgroundView.backgroundColor = [UIColor whiteColor];
-        tableView.backgroundColor = [UIColor colorWithRed:0.947 green:0.940 blue:0.831 alpha:1.000];
+//        tableView.backgroundColor = [UIColor colorWithRed:0.947 green:0.940 blue:0.831 alpha:1.000];
         tableView.backgroundView = nil;
         
         tableView.tableFooterView = [[UIView alloc]init];

@@ -150,6 +150,12 @@ static NSString * loadingUrl = @"ios-backend-config-aries.xml";
 }
 
 -(void)loadGodConfig{
+    
+    UIImageView * imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    
+    [imageview setImage:[UIImage imageNamed:@"loading"]];
+    [self.view addSubview:imageview];
+    
       BOOL hasAddress = [self hasServerAddress];
     if(!hasAddress){
         
