@@ -91,6 +91,9 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     }
  //   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"报销单创建" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(back)];
+
+
+
     
     self.navigationItem.title = @"记一单";
     self.tv = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -581,7 +584,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         NSString *province = [EXPLocationAPI shareInstance].province;
         NSString *city = [EXPLocationAPI shareInstance].city;
         
-        if(![province  isEqualToString:@""] && ![city isEqualToString:@""]){
+        if(![province  isEqualToString:@""] && ![city isEqualToString:@""] && city !=nil  && province !=nil){
             
 
             LocationPicker.province_desc = province;

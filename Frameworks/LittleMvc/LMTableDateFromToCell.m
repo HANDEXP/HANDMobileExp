@@ -32,14 +32,14 @@
         //日期组件
         kal = [[KalViewController alloc] initWithSelectionMode:KalDoubleClickMode];
         kal.beginDate = [NSDate dateStartOfDay:[NSDate date]];
-        kal.endDate = [NSDate dateStartOfDay:[[NSDate date] offsetDay:1]];
+        kal.endDate = [NSDate dateStartOfDay:[NSDate date]];
         kal.title = @"选择日期";
         
         /*
          *    Kal Configuration
          *
          */
-        kal.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Today", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
+//        kal.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Today", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
         
         dataSource = [[EventKitDataSource alloc] init];
         dataSource.cell = self;
@@ -58,7 +58,7 @@
 - (void)initalizeInputView {
     
     //初始化日期
-    dateToValue = [[NSDate date] offsetDay:1];
+    dateToValue = [NSDate date];
 	dateFromValue = [NSDate date];
 	
 

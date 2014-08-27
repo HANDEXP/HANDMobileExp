@@ -47,7 +47,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)setEndDate:(NSDate *)endDate
 {
-        [self removeRanges];
+    [self removeRanges];
     KalTileView *beginTile = [frontMonthView tileForDate:self.beginDate];
     
     KalTileView *preTile = [frontMonthView tileForDate:_endDate];
@@ -55,7 +55,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     _endDate = endDate;
     
     KalTileView *currentTile = [frontMonthView tileForDate:_endDate];
-    
+    currentTile.state = KalTileStateSelected;
     NSDate *realBeginDate;
     NSDate *realEndDate;
     
@@ -166,10 +166,16 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
         } else if ([date isEqualToDate:self.endDate] && !self.selectionMode == KalDoubleClickMode) {
             
         } else if(flag %2 ==0) {
+            if([_beginDate isEqualToDate: date]){
+                return;
+            }
+            
             self.beginDate = date;
             flag++;
         }else if(flag %2 == 1){
-            
+            if([_endDate isEqualToDate: date]){
+                return;
+            }
             self.endDate = date;
             flag++;
         }
@@ -249,6 +255,10 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
             }
             if ([(id)delegate respondsToSelector:@selector(didSelectBeginDate:endDate:)]) {
                 [delegate didSelectBeginDate:realBeginDate endDate:realEndDate];
+                if(self.endDate != nil && self.beginDate !=nil){
+                    [delegate back];
+                    
+                }
             }
         } else {
             if ([(id)delegate respondsToSelector:@selector(didSelectDate:)]) {

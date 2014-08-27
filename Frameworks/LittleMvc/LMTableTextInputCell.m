@@ -10,11 +10,13 @@
 
 @implementation LMTableTextInputCell{
     BOOL valueChanged;
+    BOOL firstInput;//是否第一次输入
 }
 
 
 - (void)initalizeInputView {
 	// Initialization code
+    
 	self.keyboardType = UIKeyboardTypeNumberPad;
 	self.lowerLimit = 0;//最小为0
 	self.upperLimit = 1000000000; //最大允许9位
@@ -34,6 +36,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         NSArray * nibArray = [[NSBundle mainBundle] loadNibNamed:@"LMTableTextInputCell" owner:self options:nil ];
+
         self = [nibArray objectAtIndex:0];
         [self initalizeInputView];
         
@@ -46,6 +49,7 @@
 
     // Initialization code
     self.keyboardType = UIKeyboardTypeNumberPad;
+    firstInput = YES;
 
     
     
@@ -78,6 +82,14 @@
 	NSScanner *sc = [NSScanner scannerWithString:theText];
 	if ([sc scanInteger:NULL]) {
 		if ([sc isAtEnd]) {
+            
+            //第一次修改关闭缺省值
+            if(firstInput){
+                
+                firstInput = NO;
+                self.numberValue = 0;
+            }
+            
 			NSUInteger addedValues = [theText integerValue];
             if(  self.upperLimit <=  self.numberValue *(10*theText.length)){
                 

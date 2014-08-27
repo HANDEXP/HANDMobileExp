@@ -43,4 +43,17 @@ void showAlterView(NSString *message ,NSString * title ,id delegate)
     [alertView show];
 }
 
+void showAlterView_1(NSString *message ,NSString * title ,id delegate)
+{
+    
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:title
+                              message:message
+                              delegate:delegate
+                              cancelButtonTitle:@"确定"
+                              otherButtonTitles:nil, nil];
+    
+    [alertView show];
+}
+
 @end

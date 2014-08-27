@@ -22,6 +22,10 @@
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
     
+    if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_6_1) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[EXPLoadViewController alloc] initWithNibName:nil bundle:nil];

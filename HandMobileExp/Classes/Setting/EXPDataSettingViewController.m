@@ -28,10 +28,10 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {        // Load
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.914 green:0.924 blue:0.821 alpha:1.000];
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1];
     }
     else {
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.914 green:0.924 blue:0.821 alpha:1.000];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1];
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     }
 
@@ -141,6 +141,9 @@
         [[NSUserDefaults standardUserDefaults] setValue:arr forKey:@"expense_classes"];
     
         [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            showAlterView_1(@"数据同步成功", @"提示", nil);
+        
         }else{
             
             showAlterView(_pmodel.error.debugDescription, @"错误信息", nil);

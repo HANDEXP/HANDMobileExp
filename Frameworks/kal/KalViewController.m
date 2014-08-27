@@ -130,6 +130,12 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
+-(void)back
+{
+    [ self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (void)didSelectDate:(NSDate *)date
 {
