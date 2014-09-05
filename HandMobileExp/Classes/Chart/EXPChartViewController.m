@@ -147,7 +147,8 @@
     [self.view addSubview:self.dateSwitchView];
 
     self.title = @"报销图表";
-    self.view.backgroundColor = [UIColor colorWithRed:0.800 green:0.812 blue:0.680 alpha:1.000];
+    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor colorWithRed:0.800 green:0.812 blue:0.680 alpha:1.000];
     
 }
 

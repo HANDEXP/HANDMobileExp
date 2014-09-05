@@ -19,4 +19,5 @@
 
 void showAlterView(NSString *message ,NSString * title ,id delegate);
 
+void showAlterView_1(NSString *message ,NSString * title ,id delegate);
 @end

@@ -213,7 +213,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     self.upload = [[UIButton alloc] initWithFrame:CGRectMake((self.save.bounds.size.width/2)+10, self.save.frame.origin.y, self.save.bounds.size.width/2, self.save.bounds.size.height)];
 
-    [self.save setTitle:@"保存修改" forState: UIControlStateNormal];
+    [self.save setTitle:@"保存" forState: UIControlStateNormal];
     self.save.backgroundColor  = [UIColor colorWithRed:113.0f/255 green:113.0f/255  blue:113.0f/255  alpha:0.780];
     
     [UIView beginAnimations:@"button" context:nil];
@@ -226,7 +226,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 
     
     [self.upload.layer setCornerRadius:6.0f];
-    [self.upload setTitle:@"再记一笔" forState:UIControlStateNormal];
+    [self.upload setTitle:@" 再记一笔" forState:UIControlStateNormal];
 //    [self.upload setTitle:@"提交数据" forState:UIControlStateNormal];
     [self.upload setBackgroundColor:[UIColor colorWithRed:241.0f/255.0f green:147.0f/255.0f blue:31.0f/255.0f alpha:0.780]];
 //    [self.upload addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchDown];

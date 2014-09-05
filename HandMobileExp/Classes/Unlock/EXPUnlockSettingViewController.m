@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.500 blue:0.297 alpha:1.000];
+    self.view.backgroundColor = [UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:153.0f/255 alpha:1.000];
     
     
     self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 300, 30)];
