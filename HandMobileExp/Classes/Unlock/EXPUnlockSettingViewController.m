@@ -35,13 +35,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:153.0f/255 alpha:1.000];
+//    self.view.backgroundColor = [UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:153.0f/255 alpha:1.000];
+    UIImageView * backgroud = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gesture"]];
     
+    [self.view addSubview:backgroud];
     
     self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 300, 30)];
     [self.infoLabel setTextAlignment:NSTextAlignmentCenter];
     self.infoLabel.backgroundColor = [UIColor clearColor];
-    self.infoLabel.textColor = [UIColor colorWithRed:0.600 green:0.000 blue:0.007 alpha:1.000];
+    self.infoLabel.textColor = [UIColor whiteColor];
     
     self.infoLabel.font = [UIFont fontWithName:@"" size:24.0];
     [self.view addSubview:self.infoLabel];

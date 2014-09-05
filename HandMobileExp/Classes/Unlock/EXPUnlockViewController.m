@@ -43,19 +43,32 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor grayColor];
+//    self.view.backgroundColor = [UIColor grayColor];
+    
+    UIImageView * backgroud = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gesture"]];
+    
+    [self.view addSubview:backgroud];
     
     
-    self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 300, 30)];
+    self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/6, 300, 30)];
+    self.infoLabel.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/6);
+    self.infoLabel.textAlignment =  NSTextAlignmentCenter;
+
+    
     self.infoLabel.backgroundColor = [UIColor clearColor];
-    self.infoLabel.textColor = [UIColor redColor];
-    self.infoLabel.text = @"滑动图案已解锁";
+    self.infoLabel.textColor = [UIColor whiteColor];
+    self.infoLabel.text = @"请绘制解图案";
     [self.view addSubview:self.infoLabel];
     
     CGRect frame = CGRectMake(20, 150, kPasswordViewSideLength, kPasswordViewSideLength);
     self.passwordView = [[MJPasswordView alloc] initWithFrame:frame];
+    
     self.passwordView.delegate = self;
     [self.view addSubview:self.passwordView];
+    
+
+    
+                               
     
 }
 

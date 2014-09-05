@@ -27,6 +27,10 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+    
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {        // Load
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29.0f/255.0f green:92.0f/255.0f blue:145.0f/255 alpha:1];
     }

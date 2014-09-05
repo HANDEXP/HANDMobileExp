@@ -111,6 +111,8 @@
 		B2A91919199B5FBE00FA65F8 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2A91918199B5FBE00FA65F8 /* Kal.bundle */; };
 		B2A91920199B62C300FA65F8 /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */; };
 		B2A956BB19A433160010425A /* EXPPasswordSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A956BA19A433160010425A /* EXPPasswordSetting.m */; };
+		B2ACC26019B99A19001A9CAC /* gesture.png in Resources */ = {isa = PBXBuildFile; fileRef = B2ACC25E19B99A19001A9CAC /* gesture.png */; };
+		B2ACC26119B99A19001A9CAC /* gesture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2ACC25F19B99A19001A9CAC /* gesture@2x.png */; };
 		B2B6A8BD196EECBD00B7005C /* EXPLineDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */; };
 		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
 		B2BE44951972358600114B1B /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2BE44941972358600114B1B /* expense.plist */; };
@@ -443,6 +445,8 @@
 		B2A9191F199B62C300FA65F8 /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventKitDataSource.m; path = kal/EventKitDataSource.m; sourceTree = "<group>"; };
 		B2A956B919A433160010425A /* EXPPasswordSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPPasswordSetting.h; path = HandMobileExp/Classes/Setting/EXPPasswordSetting.h; sourceTree = "<group>"; };
 		B2A956BA19A433160010425A /* EXPPasswordSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPPasswordSetting.m; path = HandMobileExp/Classes/Setting/EXPPasswordSetting.m; sourceTree = "<group>"; };
+		B2ACC25E19B99A19001A9CAC /* gesture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gesture.png; sourceTree = "<group>"; };
+		B2ACC25F19B99A19001A9CAC /* gesture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture@2x.png"; sourceTree = "<group>"; };
 		B2B6A8BB196EECBD00B7005C /* EXPLineDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.h; sourceTree = "<group>"; };
 		B2B6A8BC196EECBD00B7005C /* EXPLineDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPLineDetailModel.m; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailModel.m; sourceTree = "<group>"; };
 		B2B6A8BE196F8A6200B7005C /* EXPLineDetailHtppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPLineDetailHtppModel.h; path = HandMobileExp/Classes/EXP/EXPLine/EXPLineDetailHtppModel.h; sourceTree = "<group>"; };
@@ -1299,6 +1303,8 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				B2ACC25E19B99A19001A9CAC /* gesture.png */,
+				B2ACC25F19B99A19001A9CAC /* gesture@2x.png */,
 				B2F98A5719A732D50064032E /* loading.png */,
 				B2F98A4F19A7287B0064032E /* 1@2x.png */,
 				B2F98A5019A7287B0064032E /* 2@2x.png */,
@@ -1563,6 +1569,7 @@
 				B2F98A5819A732D50064032E /* loading.png in Resources */,
 				DA28C48D19729BBC00A29412 /* navigationBg.png in Resources */,
 				DA28C4A619729D5200A29412 /* settings@2x.png in Resources */,
+				B2ACC26119B99A19001A9CAC /* gesture@2x.png in Resources */,
 				DA9F32F41987388D008B26C4 /* stamp.png in Resources */,
 				DA28C49019729BBC00A29412 /* newEXP@2x.png in Resources */,
 				B2BE44951972358600114B1B /* expense.plist in Resources */,
@@ -1591,6 +1598,7 @@
 				DA9F330F1989E8DC008B26C4 /* pin@2x.png in Resources */,
 				DAF3C41D1980A6EF00EA243B /* week@2x.png in Resources */,
 				DA28C48219729BBC00A29412 /* 5.png in Resources */,
+				B2ACC26019B99A19001A9CAC /* gesture.png in Resources */,
 				DA9F330319889160008B26C4 /* rightDate.png in Resources */,
 				B2F98A4519A71EBF0064032E /* LMDetailListTableViewCell_1.xib in Resources */,
 				B2861F5E197E75E600C7F506 /* Unselected.png in Resources */,
@@ -1891,7 +1899,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = kal/;
@@ -1917,7 +1925,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ORDER_FILE = "";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = kal/;
