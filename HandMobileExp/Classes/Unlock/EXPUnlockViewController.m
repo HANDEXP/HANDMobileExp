@@ -57,7 +57,7 @@
     
     self.infoLabel.backgroundColor = [UIColor clearColor];
     self.infoLabel.textColor = [UIColor whiteColor];
-    self.infoLabel.text = @"请绘制解图案";
+    self.infoLabel.text = @"请绘制解锁图案";
     [self.view addSubview:self.infoLabel];
     
     CGRect frame = CGRectMake(20, 150, kPasswordViewSideLength, kPasswordViewSideLength);

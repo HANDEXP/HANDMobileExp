@@ -11,7 +11,7 @@
 
 
 @implementation LMTableAmountInputCell{
-
+    
     
 }
 
@@ -33,10 +33,15 @@
 
 - (void)initalizeInputView {
 	// Initialization code
-	self.keyboardType = UIKeyboardTypeNumberPad;
+	self.keyboardType = UIKeyboardTypeDecimalPad;
 	self.lowerLimit = 0;//最小为0
 	self.upperLimit = 1000000000; //最大允许9位
 	
+    dotBeginFlag = NO;
+    firstInput = YES;
+    endFlag = NO;
+    dotnumber = 2;
+    
 	if (!self.numberFormatter) {
 		self.numberFormatter = [[NSNumberFormatter alloc] init];
 		self.numberFormatter.numberStyle = kCFNumberFormatterDecimalStyle;
@@ -176,7 +181,10 @@
     
     [super setSelected:selected animated:animated];
 	if (selected) {
-         
+        firstInput = YES;
+        dotBeginFlag = NO;
+        endFlag= NO;
+        dotnumber=2;
         [self becomeFirstResponder];
          
 	}
@@ -228,8 +236,39 @@
 	
 	// make sure we receioved an integer (on the iPad a user chan change the keybord style)
 	NSScanner *sc = [NSScanner scannerWithString:theText];
-	if ([sc scanInteger:NULL]) {
+	if ([sc scanDecimal:NULL]) {
 		if ([sc isAtEnd]) {
+            NSLog(@"%@",theText);
+            
+            if(firstInput){
+                firstInput = NO;
+                self.numberValue = 0.0f;
+            }
+            
+            if([theText isEqualToString:@"."] ){
+                
+                
+                dotBeginFlag = YES;
+                return;
+            }
+            //如果开始输入小数，且没有结束
+            if(dotBeginFlag && !endFlag && dotnumber !=0){
+                NSUInteger addedValues = [theText integerValue];
+               dotnumber--;
+                self.numberValue += addedValues * powf(0.1,  (2-dotnumber));
+                
+                self.amount.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithFloat:self.numberValue]];
+                if(dotnumber ==0){
+                    endFlag = YES;
+                }
+                return;
+            }
+            
+            if(endFlag ){
+                return;
+            }
+
+            
 			NSUInteger addedValues = [theText integerValue];
             if(  upperLimit <=  self.numberValue *(10*theText.length)){
                 
@@ -251,6 +290,10 @@
 }
 
 - (void)deleteBackward {
+    if(endFlag || dotBeginFlag){
+        return;
+    }
+    
 	self.numberValue = self.numberValue / 10;
 	if (self.numberValue < self.lowerLimit) {
 		self.numberValue = self.lowerLimit;

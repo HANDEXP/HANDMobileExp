@@ -96,7 +96,7 @@
     NSMutableArray *sectionSumMoeny = [[NSMutableArray alloc]init];
     NSString *sumMoney = [[NSString alloc]init];
     int count = 0;
-    NSInteger sumMoneyInt = 0;
+    float sumMoneyInt = 0;
     
     for (  NSDictionary * record in  model.result){
         
@@ -112,10 +112,12 @@
             
             if ([time isEqualToString:[record objectForKey:@"expense_date"]]) {
                 
-                sumMoneyInt = sumMoneyInt + [[record objectForKey:@"expense_amount"]intValue];
+                sumMoneyInt = sumMoneyInt + [[record objectForKey:@"expense_amount"]floatValue]
+                *[[record objectForKey:@"expense_number"] integerValue];
+                ;
             }
         }
-        sumMoney = [NSString stringWithFormat:@"%d",sumMoneyInt];
+        sumMoney = [NSString stringWithFormat:@"%.2f",sumMoneyInt];
         
         [sectionSumMoeny addObject:sumMoney];
         
@@ -133,7 +135,9 @@
             
             if([time isEqualToString:[record valueForKey:@"expense_date"]]){
                 LMCellStypeItem_1 * cellitem = [LMCellStypeItem_1 itemWithText:self selector:@selector(openURLForItem:)];
-                cellitem.amount = [record valueForKey:@"expense_amount"];
+                cellitem.amount = [[record valueForKey:@"expense_amount"] floatValue]
+                *[[record valueForKey:@"expense_number"] integerValue];
+                ;
                 cellitem.primary_id =  [record valueForKey:@"id"];
                 
                 

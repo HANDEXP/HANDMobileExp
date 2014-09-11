@@ -276,9 +276,11 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSNumber * expense_type_id =  ExpenseTypePicker.expense_type_id;
     NSString * expense_type_desc = ExpenseTypePicker.expense_type_desc;
-    
-    NSNumber * expense_amount = [NSNumber numberWithInteger:amountCell.numberValue];
+ ;
+    NSNumber * expense_amount = [NSNumber numberWithFloat:   [[NSString stringWithFormat:@"%.2f",amountCell.numberValue] floatValue]];
     NSNumber * expense_number = [NSNumber numberWithInteger:numberCell.numberValue];
+    
+    NSLog(@"expense_amount is %@",expense_amount);
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -510,10 +512,19 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     //赋值
     if(record != nil && !insertFlag && updateFlag){
         //金额
-        amountCell.amount.text = [NSString  stringWithFormat:@"%@",[record valueForKey:@"expense_amount"]];
-        NSNumber * amount = [record valueForKey:@"expense_amount"];
-        amountCell.numberValue =[amount integerValue];
+        NSNumber * expense_amount = [record valueForKey:@"expense_amount"];
         
+        amountCell.amount.text = [NSString  stringWithFormat:@"%.2f",[expense_amount floatValue]];
+        
+        NSNumber * amount = [record valueForKey:@"expense_amount"];
+        
+        amountCell.numberValue =[amount floatValue];
+        
+        //数量
+        
+         NSNumber * expense_number = [record valueForKey:@"expense_number"];
+        numberCell.numberValue = [expense_number integerValue];
+        numberCell.numberLabel.text = [NSString stringWithFormat:@"%@",expense_number];
         
         //初始化费用类型
         NSNumber * class_id = [record valueForKey:@"expense_class_id"];
@@ -612,8 +623,8 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     if([keyPath isEqualToString:@"numberValue"])
     {
         if(numberCell.numberValue !=0 && amountCell.numberValue !=0){
-            NSInteger total = numberCell.numberValue * amountCell.numberValue;
-            numberCell.totalLabel.text= [numberCell.numberFormatter stringFromNumber:[NSNumber numberWithInteger:total]];
+            float total = numberCell.numberValue * amountCell.numberValue;
+            numberCell.totalLabel.text= [numberCell.numberFormatter stringFromNumber:[NSNumber numberWithFloat:total]];
         }else{
             numberCell.totalLabel.text = @"0";
         }

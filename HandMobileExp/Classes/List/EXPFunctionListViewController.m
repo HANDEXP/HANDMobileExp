@@ -35,7 +35,7 @@
     
     
     UILabel *handLabel = [[UILabel alloc]initWithFrame:CGRectMake(20.0, self.view.bounds.size.height*0.95, 300.0, 20.0)];
-    handLabel.text = @"汉得移动商务/Better Experience";
+    handLabel.text = @"汉得移动报销/Better Experience";
     handLabel.font = [UIFont systemFontOfSize:11.0f];
     handLabel.textColor = [UIColor whiteColor];
     

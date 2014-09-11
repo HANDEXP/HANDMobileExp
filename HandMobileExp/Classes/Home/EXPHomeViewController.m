@@ -326,18 +326,22 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         
         if ([weekDate compare:[record objectForKey:@"expense_date"]] < 1) {
           //  NSLog(@"%d",[weekDate compare:[record objectForKey:@"expense_date"]]);
-            weekSumInt = weekSumInt +[[record objectForKey:@"expense_amount"]floatValue];
+            weekSumInt = weekSumInt +[[record objectForKey:@"expense_amount"]floatValue]
+            *[[record objectForKey:@"expense_number"] integerValue]
+            ;
             
             
         }
         if ([monthDate compare:[record objectForKey:@"expense_date"]] < 1) {
            // NSLog(@"%d",[monthDate compare:[record objectForKey:@"expense_date"]]);
-            monthSumInt = monthSumInt +[[record objectForKey:@"expense_amount"]floatValue];
+            monthSumInt = monthSumInt +[[record objectForKey:@"expense_amount"]floatValue]
+            *[[record objectForKey:@"expense_number"] integerValue];
             
             
         }
         if ([todayDate isEqualToString:[record objectForKey:@"expense_date"]]) {
-            todaySumInt = todaySumInt + [[record objectForKey:@"expense_amount"]floatValue];
+            todaySumInt = todaySumInt + [[record objectForKey:@"expense_amount"]floatValue]
+            *[[record objectForKey:@"expense_number"] integerValue];
         }
         
     }

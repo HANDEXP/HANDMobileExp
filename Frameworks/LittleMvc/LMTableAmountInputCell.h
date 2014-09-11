@@ -17,18 +17,21 @@
 @interface LMTableAmountInputCell : UITableViewCell<UIKeyInput, UITextInputTraits> {
 	
 	BOOL valueChanged;
-	NSUInteger lowerLimit;
-	NSUInteger numberValue;
-	NSUInteger upperLimit;
+
 	UIEdgeInsets originalContentInsets;
 	UIEdgeInsets originalScrollInsets;
 	UIToolbar *inputAccessoryView;
     
+    //标记开始输入小数
+    BOOL dotBeginFlag;
+    BOOL firstInput;
+    BOOL endFlag;
+    NSInteger  dotnumber;
     
 }
 
-@property (nonatomic, assign) NSUInteger numberValue;
-@property (nonatomic, assign) NSUInteger lowerLimit;
+@property (nonatomic, assign) float numberValue;
+@property (nonatomic, assign) float lowerLimit;
 @property (nonatomic, assign) NSUInteger upperLimit;
 @property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 @property (nonatomic,strong)  id<IntegerInputTableViewCellDelegate> delegate;

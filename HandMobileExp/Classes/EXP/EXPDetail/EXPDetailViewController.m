@@ -121,15 +121,17 @@
 -(void)modelDidFinishLoad:(FMDataBaseModel *)model{
 
      [super modelDidFinishLoad:model];
-    float sumMoneyInt = 0;
+    float sumMoneyAmount = 0;
     for (  NSDictionary * record in  model.result){
         
         
         
-        sumMoneyInt = sumMoneyInt + [[record objectForKey:@"expense_amount"]intValue];
+        sumMoneyAmount = sumMoneyAmount + [[record objectForKey:@"expense_amount"]floatValue]
+        * [[record objectForKey:@"expense_number"] integerValue]
+        ;
     }
     
-    NSString *sumMoney = [NSString stringWithFormat:@"¥%2.2f",sumMoneyInt];
+    NSString *sumMoney = [NSString stringWithFormat:@"¥%.2f",sumMoneyAmount];
     
     
     self.sumLabel.text = @"总计：";
