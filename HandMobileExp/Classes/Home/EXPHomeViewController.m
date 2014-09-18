@@ -16,6 +16,7 @@
 #import "EXPDateManager.h"
 
 #import "EXPHomeModel.h"
+#import  "EXPBuildWebView.h"
 
 
 @interface EXPHomeViewController ()
@@ -180,24 +181,26 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     [self.view addSubview: backview];
     
     //3 Buttons
-    UIButton *expCreateButton = [[UIButton alloc]initWithFrame:CGRectMake(0.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
-    UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(110.0, self.view.bounds.size.height*0.75, 120.0, self.view.bounds.size.height*0.25-55)];
-    UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(220.0, self.view.bounds.size.height*0.75, 100.0, self.view.bounds.size.height*0.25-55)];
+    UIButton *expCreateButton = [[UIButton alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height*0.75, self.view.bounds.size.width/4 *1, self.view.bounds.size.height*0.25-55)];
+    UIButton *expToDoButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width/4 *1, self.view.bounds.size.height*0.75, self.view.bounds.size.width/4 *1, self.view.bounds.size.height*0.25-55)];
+    UIButton *expDoneButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width/4 *2, self.view.bounds.size.height*0.75, self.view.bounds.size.width/4 *1, self.view.bounds.size.height*0.25-55)];
+    
+    UIButton *buildExpButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width/4 *3, self.view.bounds.size.height*0.75, self.view.bounds.size.width/4 *1, self.view.bounds.size.height*0.25-55)];
+    
+    NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"],[UIImage imageNamed:@"doneEXP"]];
+    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量上传",@"生成单据"];
     
     
-    NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"]];
-    NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量上传"];
     
-    
-    
-    [@[expCreateButton, expToDoButton, expDoneButton] enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL *stop) {
+    [@[expCreateButton, expToDoButton, expDoneButton,buildExpButton] enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL *stop) {
         
         UIImage *expButtonImg = [imgButtonArray objectAtIndex:idx];
         [obj setImage:[imgButtonArray objectAtIndex:idx] forState:UIControlStateNormal];
+ 
         if (idx == 1) {
-            obj.imageEdgeInsets = UIEdgeInsetsMake(-20.0, 45.0, 0.0, -obj.titleLabel.bounds.size.width);
+            obj.imageEdgeInsets = UIEdgeInsetsMake(-20.0, 23.0, 0.0, -obj.titleLabel.bounds.size.width);
         }else{
-        obj.imageEdgeInsets = UIEdgeInsetsMake(-20.0, 37.0, 0.0, -obj.titleLabel.bounds.size.width);
+        obj.imageEdgeInsets = UIEdgeInsetsMake(-20.0, 23.0, 0.0, -obj.titleLabel.bounds.size.width);
         }
         [obj setTitle:[titleButtonArray objectAtIndex:idx] forState:UIControlStateNormal];
         obj.titleLabel.font = [UIFont systemFontOfSize:11];
@@ -237,6 +240,15 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         EXPSubmitDetailViewController * submitController =
         [[EXPSubmitDetailViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:submitController animated:YES];
+    }
+    if (pushViewButton.tag == 3){
+        NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
+       NSString * url=  [[EXPApplicationContext shareObject] keyforUrl:@"build_exp_url" ];
+        
+        
+      EXPBuildWebView * web=  [[EXPBuildWebView alloc] initWithUrl:[address stringByAppendingString:url] title:pushViewButton.titleLabel.text];
+        [self.navigationController pushViewController:web animated:YES];
+        
     }
     
 }

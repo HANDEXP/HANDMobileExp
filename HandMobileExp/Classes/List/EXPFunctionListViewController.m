@@ -80,6 +80,8 @@
         [super modelDidFinishLoad:model];
         
         NSMutableDictionary * result = model.Json;
+        //数据储存在上下文中
+
         
         NSArray *list = [[result valueForKey:@"body"]valueForKey:@"list"];
         NSArray *items  = [list[0] valueForKey:@"items"];

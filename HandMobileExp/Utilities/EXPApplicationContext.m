@@ -11,6 +11,7 @@
 @implementation EXPApplicationContext
 static NSMutableDictionary * UrlPatterns;
 
+
 NSString* TTPathForDocumentsResource(NSString* relativePath) {
     static NSString* documentsPath = nil;
     if (nil == documentsPath) {

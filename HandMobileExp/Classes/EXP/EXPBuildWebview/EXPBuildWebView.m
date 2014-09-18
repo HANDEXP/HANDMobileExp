@@ -6,9 +6,10 @@
 //  Copyright (c) 2014年 hand. All rights reserved.
 //
 
-#import "EXPWebViewController.h"
+#import "EXPBuildWebView.h"
+#import "EXPBuild1Webview.h"
 
-@interface EXPWebViewController (){
+@interface EXPBuildWebView (){
     UIBarButtonItem *_stopButton;
 	UIBarButtonItem *_previousButton;
 	UIBarButtonItem *_nextButton;
@@ -20,7 +21,7 @@
 
 @end
 
-@implementation EXPWebViewController
+@implementation EXPBuildWebView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,22 +48,29 @@
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _webView.delegate = self;
     //暂时不给导航栏
-//     [self setToolbarItems:self.items animated:NO];
+    //     [self setToolbarItems:self.items animated:NO];
     
     
-//     [self.navigationController setToolbarHidden:NO animated:YES];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(presentLeftMenuViewController:)];
+    //     [self.navigationController setToolbarHidden:NO animated:YES];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(presentLeftMenuViewController:)];
     
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-
-   
+//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    
     self.title  = _text;
     [self.view addSubview:_webView];
     
+//    NSURL *url = [NSURL URLWithString:_url];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [_webView loadRequest:request];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
     NSURL *url = [NSURL URLWithString:_url];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:request];
-   
+     [_webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,11 +94,11 @@
         
     }
     
-   UIBarButtonItem *flexibleMargin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *flexibleMargin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     UIBarButtonItem *margin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
-
+    
     UIImage *stopImg = [UIImage imageNamed:@"stopButton"];
     UIImage *nextImg = [UIImage imageNamed:@"nextButton" ];
     UIImage *previousdImg = [UIImage imageNamed:@"previousButton"];
@@ -130,7 +138,7 @@
 - (void)stopWebView
 {
 	[_webView stopLoading];
-
+    
 }
 
 - (void)backWebView
@@ -157,7 +165,7 @@
     if(flag){
         //[MMProgressHUD showProgressWithStyle:MMProgressHUDProgressStyleLinear title:@"" status:@"loading"];
         [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleFade];
-
+        
         [MMProgressHUD  showWithStatus:@"loading"];
     }else{
         
@@ -169,23 +177,40 @@
 - (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:
 (UIWebViewNavigationType)navigationType
 {
+
+    
+        NSLog(@"%@",request.URL.absoluteString);
+        NSLog(@"%@",_url);
+    if([_url isEqualToString:request.URL.absoluteString]){
+    
     _stopButton.enabled = YES;
     _reloadButton.enabled =NO;
     [self showLoad:true];
     
     return YES;
+    }else{
+   EXPBuild1WebView  *   Build1WebView  = [[EXPBuild1WebView alloc] initWithUrl:request.URL.absoluteString
+                                                                    oldUrl: _url
+                                                                          title:@"生成单据"];
+        [self.navigationController pushViewController:Build1WebView animated:YES];
+        
+        return NO;
+        
+        
+    }
+
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webview
 {
-
+    NSLog(@"bengin log");
 	
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webview
 {
     [self showLoad:false];
-      _stopButton.enabled = NO;
+    _stopButton.enabled = NO;
     _reloadButton.enabled=YES;
 }
 

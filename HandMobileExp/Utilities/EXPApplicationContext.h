@@ -15,6 +15,10 @@
     
 }
 
+
+
++(EXPApplicationContext *)shareContext;
+
 NSString* TTPathForDocumentsResource(NSString* relativePath);
 
 -(BOOL)configWithXmlPath:(NSString *) xmlPath;

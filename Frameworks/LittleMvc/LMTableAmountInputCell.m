@@ -294,6 +294,11 @@
         return;
     }
     
+    if(firstInput){
+        firstInput = NO;
+        self.numberValue = 0.0f;
+    }
+    
 	self.numberValue = self.numberValue / 10;
 	if (self.numberValue < self.lowerLimit) {
 		self.numberValue = self.lowerLimit;
