@@ -297,6 +297,8 @@
     if(firstInput){
         firstInput = NO;
         self.numberValue = 0.0f;
+        	self.amount.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:self.numberValue]];
+        return;
     }
     
 	self.numberValue = self.numberValue / 10;

@@ -172,7 +172,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     tableView.delegate = self;
     
     tableView.scrollEnabled = NO;
-    tableView.allowsSelection = NO;
+//    tableView.allowsSelection = NO;
     
     [self.view addSubview:tableView];
     
@@ -187,7 +187,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     UIButton *buildExpButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width/4 *3, self.view.bounds.size.height*0.75, self.view.bounds.size.width/4 *1, self.view.bounds.size.height*0.25-55)];
     
-    NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"],[UIImage imageNamed:@"doneEXP"]];
+    NSArray *imgButtonArray = @[[UIImage imageNamed:@"newEXP"],[UIImage imageNamed:@"chart"],[UIImage imageNamed:@"doneEXP"],[UIImage imageNamed:@"buildExp"]];
     NSArray *titleButtonArray = @[@"报销明细",@"报销图表",@"批量上传",@"生成单据"];
     
     
@@ -269,10 +269,11 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     cell.backgroundView.backgroundColor = [UIColor clearColor];
 //    cell.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
     cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if (indexPath.section ==0 && indexPath.row == 0) {
         cell.textLabel.text = @"今天：";
-        
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
         cell.detailTextLabel.text = self.todaySum;
@@ -281,7 +282,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     if (indexPath.section ==0 && indexPath.row == 1) {
         
         
-        
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"本周：";
         
         
@@ -292,7 +293,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     if (indexPath.section == 0 && indexPath.row == 2) {
         cell.textLabel.text = @"本月：";
         
-        
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0f];
         cell.detailTextLabel.text = self.monthSum;
         [cell.imageView setImage:[UIImage imageNamed:@"month"]];
@@ -304,6 +305,16 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return (self.view.bounds.size.height+64)*0.1;
+}
+
+#pragma delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    NSLog(@" have clicked %d",indexPath.row);
+//    if()
+    
+    
 }
 
 

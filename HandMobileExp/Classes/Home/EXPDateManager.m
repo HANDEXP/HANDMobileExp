@@ -32,6 +32,8 @@
     return self;
 }
 
+
+
 - (NSString *)getToday
 {
     NSString *nowDateStr = [dateFormatter stringFromDate:nowDate];
@@ -44,7 +46,7 @@
     NSDate *beginDate = nil;
     double interval = 0;
     BOOL ok = [calendar rangeOfUnit:NSMonthCalendarUnit startDate:&beginDate interval:&interval forDate:nowDate];
-    if (ok) {
+    if (ok) {   
         NSString *nowDateStr = [dateFormatter stringFromDate:beginDate];
         return nowDateStr;
     }else

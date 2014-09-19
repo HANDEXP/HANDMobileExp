@@ -124,7 +124,17 @@ const static char * kYFJLeftSwipeDeleteTableViewCellIndexPathKey = "YFJLeftSwipe
         UITableViewCell * cell = [self cellForRowAtIndexPath:_editingIndexPath];
         [self setEditing:NO atIndexPath:_editingIndexPath cell:cell];
     }
+    
 }
+
+//gesture delegate to prevent handle the touch event
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+//    
+//    if(!_editingIndexPath) {
+//    return NO;
+//    }
+//    return YES;
+//}
 
 - (NSIndexPath *)cellIndexPathForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
     UIView * view = gestureRecognizer.view;
@@ -185,7 +195,11 @@ const static char * kYFJLeftSwipeDeleteTableViewCellIndexPathKey = "YFJLeftSwipe
     NSLog(@"%d",deleteButton.indexPath.row);
     
     [self.dataSource tableView:self commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:indexPath];
-
+    
+    //debugger 修复删除后无法点击进入的问题
+      UITableViewCell * cell = [self cellForRowAtIndexPath:_editingIndexPath];
+    [self setEditing:NO atIndexPath:_editingIndexPath cell:cell];
+    
     _editingIndexPath = nil;
 
     [UIView animateWithDuration:0.2f animations:^{
@@ -195,6 +209,7 @@ const static char * kYFJLeftSwipeDeleteTableViewCellIndexPathKey = "YFJLeftSwipe
         CGRect frame = _deleteButton.frame;
         _deleteButton.frame = (CGRect){screenWidth(), frame.origin.y, frame.size.width, kDeleteButtonHeight};
     }];
+    [self reloadData];
 }
 
 #pragma mark - UIGestureRecognizerDelegate

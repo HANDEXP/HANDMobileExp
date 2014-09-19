@@ -117,7 +117,7 @@
 		B2B6A8C0196F8A6200B7005C /* EXPLineDetailHtppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6A8BF196F8A6200B7005C /* EXPLineDetailHtppModel.m */; };
 		B2B83E4419CAB90A0098631D /* EXPBuildWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B83E4319CAB90A0098631D /* EXPBuildWebView.m */; };
 		B2B83E4719CAC37C0098631D /* EXPBuild1Webview.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B83E4619CAC37C0098631D /* EXPBuild1Webview.m */; };
-		B2B83E4C19CAD76E0098631D /* buildExp.png in Resources */ = {isa = PBXBuildFile; fileRef = B2B83E4B19CAD76E0098631D /* buildExp.png */; };
+		B2B83E4C19CAD76E0098631D /* buildExp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2B83E4B19CAD76E0098631D /* buildExp@2x.png */; };
 		B2BE44951972358600114B1B /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2BE44941972358600114B1B /* expense.plist */; };
 		B2BFA5A719812BCF00FD51E8 /* LMBasicFunctionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2BFA5A619812BCF00FD51E8 /* LMBasicFunctionItemCell.xib */; };
 		B2BFA5AA19812CC000FD51E8 /* LMBasicFunctionItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BFA5A919812CC000FD51E8 /* LMBasicFunctionItemCell.m */; };
@@ -458,7 +458,7 @@
 		B2B83E4319CAB90A0098631D /* EXPBuildWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPBuildWebView.m; path = HandMobileExp/Classes/EXP/EXPBuildWebview/EXPBuildWebView.m; sourceTree = "<group>"; };
 		B2B83E4519CAC37C0098631D /* EXPBuild1Webview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPBuild1Webview.h; path = HandMobileExp/Classes/EXP/EXPBuildWebview/EXPBuild1Webview.h; sourceTree = "<group>"; };
 		B2B83E4619CAC37C0098631D /* EXPBuild1Webview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPBuild1Webview.m; path = HandMobileExp/Classes/EXP/EXPBuildWebview/EXPBuild1Webview.m; sourceTree = "<group>"; };
-		B2B83E4B19CAD76E0098631D /* buildExp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildExp.png; sourceTree = "<group>"; };
+		B2B83E4B19CAD76E0098631D /* buildExp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buildExp@2x.png"; sourceTree = "<group>"; };
 		B2BE44941972358600114B1B /* expense.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expense.plist; sourceTree = "<group>"; };
 		B2BFA5A619812BCF00FD51E8 /* LMBasicFunctionItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMBasicFunctionItemCell.xib; sourceTree = "<group>"; };
 		B2BFA5A819812CC000FD51E8 /* LMBasicFunctionItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMBasicFunctionItemCell.h; path = Frameworks/LittleMvc/LMBasicFunctionItemCell.h; sourceTree = "<group>"; };
@@ -1323,7 +1323,7 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				B2B83E4B19CAD76E0098631D /* buildExp.png */,
+				B2B83E4B19CAD76E0098631D /* buildExp@2x.png */,
 				B2ACC25E19B99A19001A9CAC /* gesture.png */,
 				B2ACC25F19B99A19001A9CAC /* gesture@2x.png */,
 				B2F98A5719A732D50064032E /* loading.png */,
@@ -1639,7 +1639,7 @@
 				B2861F94197F53A100C7F506 /* shadow.png in Resources */,
 				DA28C49219729BBC00A29412 /* note@2x.png in Resources */,
 				B2A91919199B5FBE00FA65F8 /* Kal.bundle in Resources */,
-				B2B83E4C19CAD76E0098631D /* buildExp.png in Resources */,
+				B2B83E4C19CAD76E0098631D /* buildExp@2x.png in Resources */,
 				DA28C49519729BBC00A29412 /* timeSheetFill.png in Resources */,
 				DA28C45F1972995A00A29412 /* ProvincesAndCities.plist in Resources */,
 				DAEC764619813FF1009A3362 /* submit@2x.png in Resources */,
