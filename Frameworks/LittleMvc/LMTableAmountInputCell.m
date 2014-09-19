@@ -126,7 +126,7 @@
         
         imagePickerController.delegate = self;
         
-        imagePickerController.allowsEditing = YES;
+        imagePickerController.allowsEditing = NO;
         
         imagePickerController.sourceType = sourceType;
         
