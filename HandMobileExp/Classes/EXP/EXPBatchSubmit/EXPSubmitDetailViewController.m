@@ -32,6 +32,7 @@
     //
     BOOL httpFaild;
     
+    
 }
 
 @end
@@ -275,12 +276,21 @@
         selectRecord --;
         
         
-        if(selectRecord == 0 ){
+        if(selectRecord == 0 && !httpFaild ){
             //认为结束
             MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
+              //重置标志位
+            httpFaild = NO;
+            selectRecord = 0;
             [MMProgressHUD dismiss];
             [self reload];
-        
+        //选中标记为0，而且网络请求失败过
+        }else if(selectRecord == 0 && httpFaild){
+              //重置标志位
+            selectRecord = 0;
+            httpFaild = NO;
+            [MMProgressHUD dismiss];
+            [self reload];
         }
         
         
@@ -296,11 +306,21 @@
 -(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error{
         EXPSubmitHttpModel *__model =   model;
             //错误异常处理
-
-
+    
+            //每次返回失败后都将需要提交的数据标识减少一
+            selectRecord --;
+            httpFaild = YES;
+    
+    
+            //错误只提醒一次,当选择的标记全部返回为止
+            if(selectRecord ==0){
             [MMProgressHUD dismiss];
+                [self reload];
+                //重置标志位
+                httpFaild = NO;
+                selectRecord = 0;
             [LMAlertViewTool showAlertView:@"提示" message:@"网络出现问题，请检查网络后重新提交" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-
+            }
     
 }
 
