@@ -121,15 +121,17 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
 //    div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
 //    [self.view addSubview:div2];
 
-    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 233.0f, 20, 20)];
+    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 223.0f, 30, 30)];
     lb3.text = @"备注";
+    lb3.font =   [lb3.font fontWithSize:22];
+//    lb3.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:24];
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
-    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 250, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
+    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 253, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
     self.descTx.delegate = self;
     self.descTx.layer.borderColor =  [UIColor grayColor].CGColor;
-
+    
     self.descTx.layer.borderWidth = 1.0;
 //    self.descTx.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.843 alpha:1.000];
     [self.view addSubview:self.descTx];

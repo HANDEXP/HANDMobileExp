@@ -124,8 +124,24 @@
     if (keys != nil) {
         [where appendString:@"WHERE "];
         NSInteger i = [keys count];
+        //添加算法  通过首字母判断 拼接判断
         for (NSString * key in keys) {
-            [where appendFormat:@"%@ = :%@",key,key];
+            
+            if([key hasPrefix:@"L"]){
+                [where appendFormat:@"%@ < :%@",key,key];
+                
+            }else if([key hasPrefix:@"G"]){
+                [where appendFormat:@"%@ > :%@",key,key];
+            }else  if([key hasPrefix:@"LE"]){
+                [where appendFormat:@"%@ <= :%@",key,key];
+                
+            }else if([key hasPrefix:@"GE"]){
+                 [where appendFormat:@"%@ >= :%@",key,key];
+                
+            }else{
+                [where appendFormat:@"%@ = :%@",key,key];
+                
+            }
             if (i>1) {
                 [where appendString:@" AND "];
             }
@@ -144,6 +160,9 @@
                 
                 s++;
             }
+        }else {
+            
+            [values appendString:@"*"];
         }
         [values appendFormat:@" FROM %@ ",tableName];
         
@@ -253,6 +272,21 @@
     NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE ";// WHERE STATUS != 'WAITING'
     
     return [db executeQuery:currentSql];
+}
+
+
+
+//条件查询
+-(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db
+                                       param:(NSDictionary *)param
+{
+
+    
+  NSString *currentSql =   [self creatCRUDSqlWithTableName:@"MOBILE_EXP_REPORT_LINE" params:nil keys:[param allKeys] action:@"SELECT"];
+//    
+//    NSString *currentSql = @"SELECT * FROM MOBILE_EXP_REPORT_LINE ";// WHERE STATUS != 'WAITING'
+    
+    return [db executeQuery:currentSql withParameterDictionary:param];
 }
 
 //更新MOBILE_EXP_REPORT_LINE

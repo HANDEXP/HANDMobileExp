@@ -47,6 +47,7 @@
             <connections>
                 <outlet property="amountLabel" destination="e3s-Vk-dUS" id="h6E-4Y-rg8"/>
                 <outlet property="dateLabel" destination="LZe-x6-cJJ" id="5nC-el-tmx"/>
+                <outlet property="imgeDispaly" destination="Lnc-BC-tUN" id="cK5-k1-mUA"/>
                 <outlet property="statusImageView" destination="Ad9-4a-jpu" id="rtz-cf-LrR"/>
                 <outlet property="typeLabel" destination="b0o-Ku-CoG" id="DWN-o9-ONL"/>
             </connections>

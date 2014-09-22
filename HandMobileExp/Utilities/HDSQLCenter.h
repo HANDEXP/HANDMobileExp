@@ -31,4 +31,11 @@
 -(BOOL)SQLActionInsertRecords:(FMDatabase *)db recordList:(NSArray *) recordList;
 //将动作提交到本地(单条)
 -(BOOL)SQLActionSubmitLocal:(FMDatabase *)db recordList:(NSArray *) recordList;
+
+
+
+//条件查询MOBILE_EXP_REPORT_LINE
+-(FMResultSet *)QUERY_MOBILE_EXP_REPORT_LINE:(FMDatabase *)db
+                                       param:(NSDictionary *)param;
+
 @end

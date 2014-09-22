@@ -279,9 +279,12 @@
         if(selectRecord == 0 && !httpFaild ){
             //认为结束
             MMProgressHUD.presentationStyle =MMProgressHUDPresentationStyleNone;
+            
               //重置标志位
             httpFaild = NO;
             selectRecord = 0;
+                        [delegate.selectIndex removeAllObjects];
+            
             [MMProgressHUD dismiss];
             [self reload];
         //选中标记为0，而且网络请求失败过
@@ -289,6 +292,8 @@
               //重置标志位
             selectRecord = 0;
             httpFaild = NO;
+                        [delegate.selectIndex removeAllObjects];
+            
             [MMProgressHUD dismiss];
             [self reload];
         }
@@ -310,7 +315,7 @@
             //每次返回失败后都将需要提交的数据标识减少一
             selectRecord --;
             httpFaild = YES;
-    
+            [delegate.selectIndex removeAllObjects];
     
             //错误只提醒一次,当选择的标记全部返回为止
             if(selectRecord ==0){

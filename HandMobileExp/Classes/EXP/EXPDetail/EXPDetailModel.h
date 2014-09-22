@@ -12,7 +12,7 @@
 
 @interface EXPDetailModel : FMDataBaseModel
 
-- (void)deleteCell:(NSDictionary *)dictionary;
+- (void)deleteCell:(NSArray *)dictionary;
 @end
 
 @interface EXPDetailDataSource :LMSectioneDataSource

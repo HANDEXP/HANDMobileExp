@@ -11,9 +11,13 @@
 		B2064DE71988C3C100856B30 /* EXPDataSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064DE61988C3C100856B30 /* EXPDataSettingViewController.m */; };
 		B2064DE91988C95800856B30 /* SettingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */; };
 		B2064DEC1988E55700856B30 /* EXPDataSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */; };
+		B2067DCF19CD596A00F96CEF /* EXPQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2067DCE19CD596A00F96CEF /* EXPQueryViewController.m */; };
+		B2067DD219CD654800F96CEF /* LMNumberFromToCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2067DD119CD654800F96CEF /* LMNumberFromToCell.m */; };
+		B2067DD419CD656000F96CEF /* LMNumberFromToCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2067DD319CD656000F96CEF /* LMNumberFromToCell.xib */; };
 		B20AE99519A2E1AB006FE324 /* LMTableDateFromToCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20AE99419A2E1AB006FE324 /* LMTableDateFromToCell.xib */; };
 		B20AE99B19A2E368006FE324 /* LMTableDateFromToCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AE99A19A2E368006FE324 /* LMTableDateFromToCell.m */; };
 		B20AE9EE19A34066006FE324 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B20AE9EC19A34066006FE324 /* Localizable.strings */; };
+		B20B8E0919CFBB2100FF0A26 /* accommodation.png in Resources */ = {isa = PBXBuildFile; fileRef = B20B8E0819CFBB2100FF0A26 /* accommodation.png */; };
 		B20D10A6196BDFA0004871F4 /* LMDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10A5196BDFA0004871F4 /* LMDataBaseModel.m */; };
 		B20D10A9196BE121004871F4 /* FMDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10A8196BE121004871F4 /* FMDataBaseModel.m */; };
 		B20D10AE196BE3CE004871F4 /* EXPLineModelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20D10AD196BE3CE004871F4 /* EXPLineModelDetailViewController.m */; };
@@ -23,6 +27,8 @@
 		B24068CA197025530062AA65 /* EXPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24068C8197025530062AA65 /* EXPDetailViewController.m */; };
 		B24068CF19702AFF0062AA65 /* EXPDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */; };
 		B24068D319702D4A0062AA65 /* LMTableAmountInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */; };
+		B24B54C519CE948F00D3167D /* LMTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24B54C419CE948F00D3167D /* LMTextFieldCell.xib */; };
+		B24B54C819CE94B000D3167D /* LMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24B54C719CE94B000D3167D /* LMTextFieldCell.m */; };
 		B25C27C5197FD1AF005E9878 /* LMSimpleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = B25C27C4197FD1AF005E9878 /* LMSimpleProgress.m */; };
 		B2676E4C197DF38A00F58C07 /* EXPSubmitDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2676E48197DF38A00F58C07 /* EXPSubmitDetailModel.m */; };
 		B2676E4D197DF38A00F58C07 /* EXPSubmitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2676E4A197DF38A00F58C07 /* EXPSubmitDetailViewController.m */; };
@@ -270,6 +276,11 @@
 		B2064DE81988C95800856B30 /* SettingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingStoryboard.storyboard; sourceTree = "<group>"; };
 		B2064DEA1988E55700856B30 /* EXPDataSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDataSettingModel.h; sourceTree = "<group>"; };
 		B2064DEB1988E55700856B30 /* EXPDataSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDataSettingModel.m; sourceTree = "<group>"; };
+		B2067DCD19CD596A00F96CEF /* EXPQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPQueryViewController.h; path = HandMobileExp/Classes/EXP/EXPQueryview/EXPQueryViewController.h; sourceTree = "<group>"; };
+		B2067DCE19CD596A00F96CEF /* EXPQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPQueryViewController.m; path = HandMobileExp/Classes/EXP/EXPQueryview/EXPQueryViewController.m; sourceTree = "<group>"; };
+		B2067DD019CD654800F96CEF /* LMNumberFromToCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMNumberFromToCell.h; path = Frameworks/LittleMvc/LMNumberFromToCell.h; sourceTree = "<group>"; };
+		B2067DD119CD654800F96CEF /* LMNumberFromToCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMNumberFromToCell.m; path = Frameworks/LittleMvc/LMNumberFromToCell.m; sourceTree = "<group>"; };
+		B2067DD319CD656000F96CEF /* LMNumberFromToCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMNumberFromToCell.xib; path = Frameworks/LittleMvc/LMNumberFromToCell.xib; sourceTree = "<group>"; };
 		B20AE99119A250BC006FE324 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B20AE99219A250BC006FE324 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B20AE99419A2E1AB006FE324 /* LMTableDateFromToCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableDateFromToCell.xib; sourceTree = "<group>"; };
@@ -277,6 +288,7 @@
 		B20AE99A19A2E368006FE324 /* LMTableDateFromToCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableDateFromToCell.m; path = Frameworks/LittleMvc/LMTableDateFromToCell.m; sourceTree = "<group>"; };
 		B20AE9EA19A34066006FE324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B20AE9EB19A34066006FE324 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B20B8E0819CFBB2100FF0A26 /* accommodation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accommodation.png; sourceTree = "<group>"; };
 		B20D10A4196BDFA0004871F4 /* LMDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMDataBaseModel.h; path = Frameworks/LittleMvc/LMDataBaseModel.h; sourceTree = "<group>"; };
 		B20D10A5196BDFA0004871F4 /* LMDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMDataBaseModel.m; path = Frameworks/LittleMvc/LMDataBaseModel.m; sourceTree = "<group>"; };
 		B20D10A7196BE121004871F4 /* FMDataBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDataBaseModel.h; path = Frameworks/LittleMvc/FMDataBaseModel.h; sourceTree = "<group>"; };
@@ -293,6 +305,9 @@
 		B24068C8197025530062AA65 /* EXPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXPDetailViewController.m; sourceTree = "<group>"; };
 		B24068CE19702AFF0062AA65 /* EXPDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXPDetailViewController.xib; sourceTree = "<group>"; };
 		B24068D219702D4A0062AA65 /* LMTableAmountInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMTableAmountInputCell.xib; sourceTree = "<group>"; };
+		B24B54C419CE948F00D3167D /* LMTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMTextFieldCell.xib; path = Frameworks/LittleMvc/LMTextFieldCell.xib; sourceTree = "<group>"; };
+		B24B54C619CE94B000D3167D /* LMTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTextFieldCell.h; path = Frameworks/LittleMvc/LMTextFieldCell.h; sourceTree = "<group>"; };
+		B24B54C719CE94B000D3167D /* LMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTextFieldCell.m; path = Frameworks/LittleMvc/LMTextFieldCell.m; sourceTree = "<group>"; };
 		B25C27C3197FD1AF005E9878 /* LMSimpleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMSimpleProgress.h; path = Frameworks/LittleMvc/LMSimpleProgress.h; sourceTree = "<group>"; };
 		B25C27C4197FD1AF005E9878 /* LMSimpleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMSimpleProgress.m; path = Frameworks/LittleMvc/LMSimpleProgress.m; sourceTree = "<group>"; };
 		B2676E47197DF38A00F58C07 /* EXPSubmitDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPSubmitDetailModel.h; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDetailModel.h; sourceTree = "<group>"; };
@@ -652,6 +667,15 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		B2067DCC19CD58E800F96CEF /* EXPQueryview */ = {
+			isa = PBXGroup;
+			children = (
+				B2067DCD19CD596A00F96CEF /* EXPQueryViewController.h */,
+				B2067DCE19CD596A00F96CEF /* EXPQueryViewController.m */,
+			);
+			name = EXPQueryview;
+			sourceTree = "<group>";
+		};
 		B20AE9ED19A34066006FE324 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +699,7 @@
 		B20D10AA196BE345004871F4 /* EXP */ = {
 			isa = PBXGroup;
 			children = (
+				B2067DCC19CD58E800F96CEF /* EXPQueryview */,
 				B2B83E4119CAB8870098631D /* EXPBuildWebview */,
 				B2676E3E197DF31700F58C07 /* EXPBatchSubmit */,
 				B24068C6197025530062AA65 /* EXPDetail */,
@@ -1316,6 +1341,12 @@
 				B20AE99419A2E1AB006FE324 /* LMTableDateFromToCell.xib */,
 				B20AE99919A2E368006FE324 /* LMTableDateFromToCell.h */,
 				B20AE99A19A2E368006FE324 /* LMTableDateFromToCell.m */,
+				B2067DD019CD654800F96CEF /* LMNumberFromToCell.h */,
+				B2067DD119CD654800F96CEF /* LMNumberFromToCell.m */,
+				B2067DD319CD656000F96CEF /* LMNumberFromToCell.xib */,
+				B24B54C419CE948F00D3167D /* LMTextFieldCell.xib */,
+				B24B54C619CE94B000D3167D /* LMTextFieldCell.h */,
+				B24B54C719CE94B000D3167D /* LMTextFieldCell.m */,
 			);
 			name = "Static Cells";
 			sourceTree = "<group>";
@@ -1323,6 +1354,7 @@
 		DA28C46019729BBC00A29412 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				B20B8E0819CFBB2100FF0A26 /* accommodation.png */,
 				B2B83E4B19CAD76E0098631D /* buildExp@2x.png */,
 				B2ACC25E19B99A19001A9CAC /* gesture.png */,
 				B2ACC25F19B99A19001A9CAC /* gesture@2x.png */,
@@ -1560,6 +1592,8 @@
 				DA28C48719729BBC00A29412 /* homeBg3@2x.png in Resources */,
 				DA28C48819729BBC00A29412 /* homeBg@2x.png in Resources */,
 				DA9F32F919874683008B26C4 /* new@2x.png in Resources */,
+				B2067DD419CD656000F96CEF /* LMNumberFromToCell.xib in Resources */,
+				B24B54C519CE948F00D3167D /* LMTextFieldCell.xib in Resources */,
 				B2F98A4019A714940064032E /* traffic.png in Resources */,
 				DA28C48119729BBC00A29412 /* 4.png in Resources */,
 				DA28C4A219729D5200A29412 /* camera@2x.png in Resources */,
@@ -1612,6 +1646,7 @@
 				B2861F93197F53A100C7F506 /* select.png in Resources */,
 				DA28C4AA1972C4CD00A29412 /* photo@2x.png in Resources */,
 				B2BFA5AF198137CB00FD51E8 /* LMWebFunctionItemCell.xib in Resources */,
+				B20B8E0919CFBB2100FF0A26 /* accommodation.png in Resources */,
 				DA28C49719729BBC00A29412 /* toDoEXP.png in Resources */,
 				B2A84A2F19946E8500A3068D /* LMTableTextInputCell.xib in Resources */,
 				DA28C48919729BBC00A29412 /* loginBg.png in Resources */,
@@ -1670,6 +1705,7 @@
 				B298E2AA1963A05500EB4850 /* AFHTTPRequestOperation.m in Sources */,
 				DA9F3361198B74E8008B26C4 /* EXPUnlockViewController.m in Sources */,
 				B26AD2731962D2200081152F /* EXPAppDelegate.m in Sources */,
+				B2067DCF19CD596A00F96CEF /* EXPQueryViewController.m in Sources */,
 				B2A2D96F1965889300B2C935 /* MMVectorImage.m in Sources */,
 				B2C5567A1968085200B14460 /* EXPFunctionListModel.m in Sources */,
 				B2F98A4319A71E1A0064032E /* LMDetailListTableViewCell_1.m in Sources */,
@@ -1752,6 +1788,8 @@
 				B2A2D94A19654A7D00B2C935 /* LMRequestModel.m in Sources */,
 				B2A2D96C1965889300B2C935 /* MMProgressHUDViewController.m in Sources */,
 				B2A2D9691965889300B2C935 /* MMProgressHUD+Class.m in Sources */,
+				B24B54C819CE94B000D3167D /* LMTextFieldCell.m in Sources */,
+				B2067DD219CD654800F96CEF /* LMNumberFromToCell.m in Sources */,
 				B2C556731967F11600B14460 /* LMTableViewDelegate.m in Sources */,
 				B2861F56197E2D5000C7F506 /* EXPSubmitDelegate.m in Sources */,
 				DAF3C21F197FA0D1004145B2 /* EXPDateManager.m in Sources */,

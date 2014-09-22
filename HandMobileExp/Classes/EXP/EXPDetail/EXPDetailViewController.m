@@ -13,6 +13,7 @@
 #import "AFNetRequestModel.h"
 #import "YFJLeftSwipeDeleteTableView.h"
 #import "EXPdateSwitchView.h"
+#import "EXPQueryViewController.h"
 
 @interface EXPDetailViewController ()
 @property NSInteger amount;
@@ -54,9 +55,12 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(returnHomePage:)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addDetailPage:)];
-  
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addDetailPage:)];
+  UIBarButtonItem * adddetailpage =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addDetailPage:)];
+
+   UIBarButtonItem * queryBar =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(querypage:)];
     
+    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:adddetailpage,queryBar, nil];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.561 green:0.380 blue:0.201 alpha:1.000];
     
@@ -81,6 +85,11 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+-(void)querypage:(id *)sender
+{
+     EXPQueryViewController *queryview =  [[EXPQueryViewController alloc]initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:queryview animated:YES];
+}
 
 - (void)returnHomePage:(id *)sender
 {

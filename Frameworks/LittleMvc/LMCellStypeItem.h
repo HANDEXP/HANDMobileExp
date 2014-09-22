@@ -18,6 +18,9 @@
 @property (nonatomic,strong) NSString * line_desc;
 @property (nonatomic,strong) NSNumber *  primary_id;
 @property (nonatomic, strong) NSString *status;
+@property (nonatomic,strong)NSNumber * expense_class_id;
+@property (nonatomic,strong)NSString * imageDisplay;
+
 
 + (id)itemWithText:(id)delegate selector :(SEL)selector;
 @end

@@ -285,7 +285,9 @@
     for (NSDictionary *record in myModel.result) {
         NSArray *amountInfo = [[record valueForKey:@"expense_date"] componentsSeparatedByString:@"-"];
         self.detailAmount = nil;
-        float amount = [[record valueForKey:@"expense_amount"] floatValue];
+        float amount = [[record valueForKey:@"expense_amount"] floatValue]
+        * [[record valueForKey:@"expense_number"] floatValue];
+        ;
         self.detailAmount = [[EXPdetailAmount alloc]initWithYear:amountInfo[0] Month:amountInfo[1] SumAmount:amount Type:[record valueForKey:@"expense_class_desc"]];
         [self.detailAmountArray addObject:self.detailAmount];
         

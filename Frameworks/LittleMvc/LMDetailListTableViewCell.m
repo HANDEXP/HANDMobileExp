@@ -38,6 +38,8 @@
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.amountLabel.text = [NSString stringWithFormat:@"¥%.2f",_item.amount];
         self.typeLabel.text = _item.expense_type_desc;
+        [self.imgeDispaly setImage:[UIImage imageNamed: _item.imageDisplay]];
+        
         if (_item.line_desc.length != 0) {
             self.dateLabel.text = _item.line_desc;
         }

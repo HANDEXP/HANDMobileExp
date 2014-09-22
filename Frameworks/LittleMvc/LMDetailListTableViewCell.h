@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *imgeDispaly;
 
 
 - (void)setObject:(id)object;

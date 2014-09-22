@@ -31,13 +31,18 @@
     return self;
 }
 
+
+
+
 - (void)load:(int)cachePolicy more:(BOOL)more{
-    NSLog(@"hello");
-   [self loadMethod:@"query" param:nil excute:@selector(QUERYALL_MOBILE_EXP_REPORT_LINE:)];
+    //NSLog(@"hello");
+
+    
+    [self loadMethod:@"query" param:nil excute:@selector(QUERY_MOBILE_EXP_REPORT_LINE:param:)];
     
 }
 
-- (void)deleteCell:(NSDictionary *)dictionary
+- (void)deleteCell:(NSArray *)dictionary
 {
     [self loadMethod:@"delete" param:dictionary excute:@selector(DELETE_MOBILE_EXP_REPORT_LINE:recordList:)];
 }
@@ -101,6 +106,9 @@
     
     NSMutableArray *sectionSumMoeny = [[NSMutableArray alloc]init];
     NSString *sumMoney = [[NSString alloc]init];
+    
+    
+    NSArray * arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"expense_classes"];
     int count = 0;
     float sumMoneyInt = 0;
     
@@ -142,12 +150,26 @@
         for(NSDictionary * record in  model.result){
            
             if([time isEqualToString:[record valueForKey:@"expense_date"]]){
+                
+          
+                
+                
                 LMCellStypeItem * cellitem = [LMCellStypeItem itemWithText:self selector:@selector(openURLForItem:)];
-                cellitem.amount = [[record valueForKey:@"expense_amount"] floatValue] *
+                
+                
+                cellitem.expense_class_id = [record valueForKey:@"expense_class_id"];
+                cellitem.amount = [[record valueForKey:@"expense_amount"] floatValue]
+                * [[record valueForKey:@"expense_number"]floatValue]
+                
+                ;
                 
                 [[record valueForKey:@"expense_number"] integerValue];
                 
+          
                 cellitem.primary_id =  [record valueForKey:@"id"];
+                
+
+                
                 cellitem.status = [record valueForKey:@"local_status"];
 
                 
@@ -158,6 +180,26 @@
                 cellitem.line_desc =[record valueForKey:@"description"];
                 
                 cellitem.userInfo = @"EXPDetailLineGuider";
+               
+                
+                for(int i = 0;i<arr.count;i++){
+
+                    NSNumber * classid =    [arr[i] valueForKey:@"expense_class_id"];
+                    
+                    if([classid integerValue] == [cellitem.expense_class_id integerValue]){
+                        
+                        NSString * imgaeName = [arr[i] valueForKey:@"image_url"];
+                        cellitem.imageDisplay =imgaeName;
+                        
+                    }
+                    
+               
+                    
+                }
+                
+                
+                
+                
                 [item addObject:cellitem];
                 
                                           
