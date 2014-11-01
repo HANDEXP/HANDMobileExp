@@ -7,6 +7,10 @@
 //
 
 #import "LMTableAmountInputCell.h"
+#import "ImagePickerActionSheet.h"
+#import  "MWPhoto.h"
+
+
 
 
 
@@ -29,7 +33,7 @@
 @synthesize returnKeyType;
 @synthesize secureTextEntry;
 @synthesize spellCheckingType;
-
+@synthesize imageArray = _imageArray;
 
 - (void)initalizeInputView {
 	// Initialization code
@@ -49,6 +53,9 @@
 	}
 	
 	self.detailTextLabel.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithFloat:numberValue]];
+    
+    _imageArray = [[NSMutableArray alloc] init];
+    
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -70,109 +77,95 @@
 
 #pragma img press delegate
 -(void)buttonpress{
-    UIActionSheet *sheet;
+    //当显示照片没有的情况下，是拍照
+    if(self.img.image == nil){
+
+  
+         imagesheet = [[ImagePickerActionSheet alloc] initWithView:self.tv delegate:self];
+
     
-    // 判断是否支持相机
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        sheet  = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
-    }
-    else {
         
-        sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
-    }
-    
-    sheet.tag = 255;
-    
-    [sheet showInView:self.tv.view];
-}
+        _photowrapper = [[MWPhotoBrowserWraper alloc] initWithViewController:self.tv delegate:self];
 
 
-#pragma mark - actionsheet delegate
--(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (actionSheet.tag == 255) {
+        [imagesheet showActionSheet];
         
-        NSUInteger sourceType = 0;
+    }else {
+        //每次都进行初始化，因为该组建无法复用
+        _photowrapper = [[MWPhotoBrowserWraper alloc] initWithViewController:self.tv delegate:self];
         
-        // 判断是否支持相机
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            
-            switch (buttonIndex) {
-                case 0:
-                    [self.img setImage:nil];//当按取消的时候移除上次选择的图片
-                    return;
-                case 1:
-                    // 相机
-                    sourceType = UIImagePickerControllerSourceTypeCamera;
-                    break;
-                    
-                case 2:
-                    // 相册
-                    sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                    break;
-            }
-        }
-        else {
-            if (buttonIndex == 0) {
-                [self.img setImage:nil];//当按取消的时候移除上次选择的图片
-                return;
-            } else {
-                sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-            }
-        }
-        // 跳转到相机或相册页面
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        [_photowrapper showWithPush];
         
-        imagePickerController.delegate = self;
-        
-        imagePickerController.allowsEditing = NO;
-        
-        imagePickerController.sourceType = sourceType;
-        
-        [self.tv presentViewController:imagePickerController animated:YES completion:^{}];
         
     }
+    
+}
+
+/////////////////IPickerActionSheetDelegate///////
+-(void)image:(UIImage *)image data:(NSData *)data didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    [self.img setImage:image];
+    
+     MWPhoto *     photo = [MWPhoto photoWithImage:image];
+    photo.data = data;
+    
+    
+    [_imageArray addObject:photo];
+    
+    [_photowrapper showWithPush];
+    
 }
 
 
-#pragma mark - 保存图片至沙盒
-- (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
-{
+-(void)DidCancel{
     
-    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
-    // 获取沙盒目录
     
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
     
-    // 将图片写入文件
-    
-    [imageData writeToFile:fullPath atomically:NO];
 }
 
-#pragma mark - image picker delegte
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-	[picker dismissViewControllerAnimated:YES completion:^{}];
-    
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    [self saveImage:image withName:@"currentImage.png"];
-    
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-    
-    UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-    
-    
-        [self.img setImage:savedImage];
-    
-        self.img.tag = 100;
+
+///////////////MWPhotoBrowserDelegate/////////////////
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _imageArray.count;
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-	[self.tv dismissViewControllerAnimated:YES completion:^{}];
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _imageArray.count)
+        return [_imageArray objectAtIndex:index];
+    return nil;
 }
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+    if (index < _imageArray.count)
+        return [_imageArray objectAtIndex:index];
+    return nil;
+}
+
+-(void)addPicPhoto:(MWPhoto *)photo{
+    
+    [_imageArray addObject:photo];
+    
+}
+
+-(void)delPicPhoto:(NSUInteger )number{
+    [_imageArray removeObjectAtIndex:number];
+    
+    
+    if(_imageArray.count == 0){
+        
+        [self.img setImage:nil];
+    }else{
+        MWPhoto * img = [_imageArray objectAtIndex:0];
+        [self.img setImage:img.image];
+        
+    }
+    
+}
+
+
+
+
 
 #pragma  cell select
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

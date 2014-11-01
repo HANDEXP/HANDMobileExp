@@ -38,6 +38,8 @@ forHTTPHeaderField :(NSString *)field;
                                 param:(NSMutableDictionary * )param
                                  url :(NSString *)url;
 
+
+//一张照片的支持
 -(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
          error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error
           param:(NSMutableDictionary *)param
@@ -45,6 +47,13 @@ forHTTPHeaderField :(NSString *)field;
        filename:(NSString *)filename
        mimeType:(NSString *)mimeType
             url:(NSString *)url;
+
+///////////上传多张照片接口
+-(void)success:(void (^)(AFHTTPRequestOperation *, id))success
+         error:(void (^)(AFHTTPRequestOperation *, NSError *))error
+         param:(NSMutableDictionary *)param
+         files:(NSMutableArray *)files
+           url:(NSString *)url;
 
 -(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
          error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error

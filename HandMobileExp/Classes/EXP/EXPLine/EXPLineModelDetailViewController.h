@@ -15,6 +15,7 @@
 #import "LMAlertViewTool.h"
 
 
+
 @interface EXPLineModelDetailViewController : LMModelViewController
 <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 {

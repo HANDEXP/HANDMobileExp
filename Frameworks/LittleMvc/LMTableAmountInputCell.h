@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IPickerActionSheetDelegate.h"
+#import "ImagePickerActionSheet.h"
+#import "MWPhotoBrowserWraper.h"
+
 @class LMTableAmountInputCell;
 
 @protocol IntegerInputTableViewCellDelegate <NSObject>
@@ -14,7 +18,7 @@
 - (void)tableViewCell:(LMTableAmountInputCell *)cell didEndEditingWithInteger:(NSUInteger)value;
 @end
 
-@interface LMTableAmountInputCell : UITableViewCell<UIKeyInput, UITextInputTraits> {
+@interface LMTableAmountInputCell : UITableViewCell<UIKeyInput, UITextInputTraits,IPickerActionSheetDelegate,MWPhotoBrowserDelegate> {
 	
 	BOOL valueChanged;
 
@@ -27,6 +31,11 @@
     BOOL firstInput;
     BOOL endFlag;
     NSInteger  dotnumber;
+    
+    
+    
+    ImagePickerActionSheet * imagesheet;
+    MWPhotoBrowserWraper * _photowrapper;
     
 }
 
@@ -50,6 +59,9 @@
 
 
 @property (strong, nonatomic) UIViewController *tv;
+
+
+@property (strong,nonatomic) NSMutableArray * imageArray;
 
 
 @end

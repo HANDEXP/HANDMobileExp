@@ -40,8 +40,8 @@
         [self setModel:loginmodel];
         
 
-        [EXPLocationAPI shareInstance].city = @"";
-        [EXPLocationAPI shareInstance].province = @"";
+//        [EXPLocationAPI shareInstance].city = @"";
+//        [EXPLocationAPI shareInstance].province = @"";
        NSLog(@"%@",[EXPLocationAPI shareInstance].city);
 
     }

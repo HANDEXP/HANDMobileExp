@@ -22,6 +22,12 @@
       fileName:(NSString *)fileName
           data:(NSData *)data;
 
+/////多张照片上传
+
+- (void)upload:(NSDictionary *)param
+         files:(NSMutableArray *)files;
+
+
 -(void)upload:(NSDictionary *)param;
 @end
 

@@ -82,6 +82,28 @@
     
 }
 
+////////////批量上传图片接口//////////////
+-(void) uploadparam:(NSDictionary *)param
+              files:(NSMutableArray *)files
+        url:(NSString *)url
+{
+        [self didStartLoad];
+    
+    [self.utl success:^(AFHTTPRequestOperation *operation,id responseObject){
+        self.Json = responseObject;
+        [self requestDidFinishLoad];
+        
+    } error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        self.error = error;
+        NSLog(@"%@",error);
+        [self requestdidFailLoadWithError:error];
+    } param:param files:files url:url];
+    
+    
+}
+
+
+//////////////上传一张接口//////////////
 -(void) uploadparam:(NSDictionary *)param
 filedata:(NSData *)data
 filename:(NSString *)filename

@@ -160,6 +160,35 @@ forHTTPHeaderField :(NSString *)field
     
 }
 
+///////////上传多张照片接口
+-(void)success:(void (^)(AFHTTPRequestOperation *, id))success
+         error:(void (^)(AFHTTPRequestOperation *, NSError *))error
+         param:(NSMutableDictionary *)param
+         files:(NSMutableArray *)files
+           url:(NSString *)url
+{
+    
+    NSString * fullPath = [self.baseUrl  stringByAppendingString:url];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    
+    [manager POST:fullPath parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        for(int i = 0;i<files.count;i++){
+            NSDictionary * file = [files objectAtIndex:i];
+            NSData * data = [file valueForKey:@"filedata"];
+            NSString * filename = [file valueForKey:@"filename"];
+            NSString * mimeType = [file valueForKey:@"mimeType"];
+            
+            [formData appendPartWithFileData:data name:filename  fileName:filename mimeType:mimeType];
+        
+        }
+    } success:success
+          failure:error];
+    
+}
+
+
 //formdata中不包含数据流
 -(void) success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
          error :(void (^)(AFHTTPRequestOperation *operation, NSError *error))error

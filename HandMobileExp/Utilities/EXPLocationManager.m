@@ -76,6 +76,8 @@
         [EXPLocationAPI shareInstance].province = province;
     //[self.locationManager stopUpdatingLocation];
     }
+    [locManager stopUpdatingLocation];
+    
     
 }
 

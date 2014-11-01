@@ -31,4 +31,9 @@ forHTTPHeaderField:(NSString *)field;
 
 -(void) param:(NSDictionary *)param
           url:(NSString *)url;
+
+////////////批量上传图片接口//////////////
+-(void) uploadparam:(NSDictionary *)param
+              files:(NSMutableArray *)files
+                url:(NSString *)url;
 @end

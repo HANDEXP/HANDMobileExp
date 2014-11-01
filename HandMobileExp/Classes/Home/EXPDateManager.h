@@ -14,4 +14,6 @@
 - (NSString *)getFirstDayOfThisMonth;
 - (NSString *)getFirstDayOfThisWeek;
 
+-(NSString *)getLastDayOfThisMonth;
+-(NSString *)getLastDayOfThisWeek;
 @end

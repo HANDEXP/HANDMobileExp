@@ -162,7 +162,35 @@
                 
                 NSData * data =    [record valueForKey:@"item1"];
                 if( data.length !=0){
-                    [httpmodel upload:param fileName:@"upload.jpg" data:data];
+//                    [httpmodel upload:param fileName:@"upload.jpg" data:data];
+                    NSMutableArray * files = [[NSMutableArray alloc] init];
+                    
+                    for(int i = 0;i< 9;i++){
+                        NSString * keyItem = @"item";
+                        NSString * mimeType =  @"image/jpeg";
+                        keyItem = [keyItem stringByAppendingFormat:@"%d",i+1];
+                        NSData * data = [record valueForKey:keyItem];
+                        if(data !=nil && data.length !=0){
+                            NSString * fileName =@"upload";
+                            fileName =   [fileName stringByAppendingFormat:@"%d.jpg",i];
+                            
+                            NSDictionary * file = @{@"mimeType": mimeType,
+                                                    @"filename" :fileName,
+                                                    @"filedata" :data
+                                                    
+                                                    
+                                                    };
+                            
+                            [files addObject:file];
+                            
+                           
+                            
+                        }
+                    
+                    }
+                    
+                    [httpmodel upload:param files:files];
+                    
                     
                 }else{
                     [httpmodel upload:param];

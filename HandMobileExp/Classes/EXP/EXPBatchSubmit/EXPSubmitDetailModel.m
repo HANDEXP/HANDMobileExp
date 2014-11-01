@@ -59,6 +59,24 @@
     
 }
 
+/////多张照片上传
+
+- (void)upload:(NSDictionary *)param
+      files:(NSMutableArray *)files
+        {
+    
+    [self uploadparam:param files:files url:[[EXPApplicationContext shareObject] keyforUrl:@"hmb_expense_detail_insert" ]];
+    
+
+    
+    
+    
+    
+}
+
+
+
+
 -(void)upload:(NSDictionary *)param
 {
     [self param:param url:[[EXPApplicationContext shareObject] keyforUrl:@"hmb_expense_detail_insert"  ]];

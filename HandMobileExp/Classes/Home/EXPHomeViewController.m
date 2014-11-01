@@ -17,13 +17,15 @@
 
 #import "EXPHomeModel.h"
 #import  "EXPBuildWebView.h"
-
+#import  "UINavigationController+SafePushing.h"
 
 @interface EXPHomeViewController ()
 {
     NSMutableArray *imageArray;
     EXPScrollview *_scrollview;
     int TimeNum;
+    
+    BOOL animating;
 }
 @property (nonatomic ,strong) NSString *weekSum;
 
@@ -87,7 +89,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         EXPLineModelDetailViewController *detailViewController = [[EXPLineModelDetailViewController alloc]initWithNibName:nil bundle:nil];
     detailViewController.detailList = self;
     detailViewController.tableView = tableView;
-        [self.navigationController pushViewController:detailViewController animated:YES];
+ 
+     [self.navigationController pushViewController:detailViewController animated:YES];
 
 }
 
@@ -217,6 +220,15 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
 
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    animating = NO;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+}
 
 - (void)buttonClicked:(UIButton *)sender
 {
@@ -229,6 +241,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
         EXPDetailViewController *detailViewController = [[EXPDetailViewController alloc]initWithNibName:nil bundle:nil];
         detailViewController.homeList = self;
         detailViewController.tv = self.tableView;
+        
         [self.navigationController pushViewController:detailViewController animated:YES];
     }
     
@@ -269,7 +282,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     cell.backgroundView.backgroundColor = [UIColor clearColor];
 //    cell.backgroundColor = [UIColor colorWithRed:0.876 green:0.874 blue:0.760 alpha:0.310];
     cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if (indexPath.section ==0 && indexPath.row == 0) {
         cell.textLabel.text = @"今天：";
@@ -304,8 +317,14 @@ static NSString *tableViewCellIdentifier = @"MyCells";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     return (self.view.bounds.size.height+64)*0.1;
 }
+
+/////////////////////////解决动画切换死掉的bug
+
+
+
 
 #pragma delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -340,6 +359,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     NSString *monthDate = [NSString stringWithString:[[[EXPDateManager alloc]init] getFirstDayOfThisMonth]];
     NSString *todayDate = [NSString stringWithString:[[[EXPDateManager alloc]init] getToday]];
     
+    NSString * lastDayOfMonth =[NSString stringWithString:[[[EXPDateManager alloc]init] getLastDayOfThisMonth]];
+    NSString * lastDayOfWeek = [NSString stringWithString:[[[EXPDateManager alloc]init] getLastDayOfThisWeek]];
     
     float weekSumInt = 0;
     float monthSumInt = 0;
@@ -347,7 +368,8 @@ static NSString *tableViewCellIdentifier = @"MyCells";
     
     for (  NSDictionary * record in  model.result){
         
-        if ([weekDate compare:[record objectForKey:@"expense_date"]] < 1) {
+        if ([weekDate compare:[record objectForKey:@"expense_date"]] <= 0 && [lastDayOfWeek compare:[record objectForKey:@"expense_date"]] >=0) {
+            
           //  NSLog(@"%d",[weekDate compare:[record objectForKey:@"expense_date"]]);
             weekSumInt = weekSumInt +[[record objectForKey:@"expense_amount"]floatValue]
             *[[record objectForKey:@"expense_number"] integerValue]
@@ -355,7 +377,7 @@ static NSString *tableViewCellIdentifier = @"MyCells";
             
             
         }
-        if ([monthDate compare:[record objectForKey:@"expense_date"]] < 1) {
+        if ([monthDate compare:[record objectForKey:@"expense_date"]] <= 0 && [lastDayOfMonth compare:[record objectForKey:@"expense_date"]] >=0) {
            // NSLog(@"%d",[monthDate compare:[record objectForKey:@"expense_date"]]);
             monthSumInt = monthSumInt +[[record objectForKey:@"expense_amount"]floatValue]
             *[[record objectForKey:@"expense_number"] integerValue];

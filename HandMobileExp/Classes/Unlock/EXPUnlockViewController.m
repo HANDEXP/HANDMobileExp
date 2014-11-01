@@ -11,6 +11,7 @@
 #import "EXPHomeViewController.h"
 #import "EXPFunctionListViewController.h"
 #import "EXPLoginModel.h"
+#import "EXPLoginViewController.h"
 
 @interface EXPUnlockViewController (){
     
@@ -24,6 +25,8 @@
 @property (nonatomic,retain) UILabel* infoLabel;
 
 @property (nonatomic,retain) MJPasswordView* passwordView;
+
+@property (nonatomic,strong)UILabel * otherWayLbl;
 
 @end
 
@@ -66,7 +69,20 @@
     self.passwordView.delegate = self;
     [self.view addSubview:self.passwordView];
     
-
+    
+    self.otherWayLbl = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/6*5,300,30)];
+    self.otherWayLbl.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/6*5);
+    self.otherWayLbl.textAlignment = NSTextAlignmentCenter;
+    
+    self.otherWayLbl.backgroundColor = [UIColor clearColor];
+    self.otherWayLbl.textColor = [UIColor whiteColor];
+    self.otherWayLbl.text= @"登录其他用户";
+    [self.view addSubview:self.otherWayLbl];
+    
+    UITapGestureRecognizer * gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goLogin)];
+    self.otherWayLbl.userInteractionEnabled = YES;
+    [self.otherWayLbl addGestureRecognizer:gesture];
+    
     
                                
     
@@ -103,6 +119,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma gesture
+-(void)goLogin
+{
+    
+    EXPLoginViewController *loginViewController = [[EXPLoginViewController alloc] initWithNibName:@"EXPLoginViewController" bundle:nil];
+    [self presentModalViewController:loginViewController animated:YES];
 }
 
 #pragma private

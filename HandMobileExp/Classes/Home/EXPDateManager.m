@@ -46,12 +46,53 @@
     NSDate *beginDate = nil;
     double interval = 0;
     BOOL ok = [calendar rangeOfUnit:NSMonthCalendarUnit startDate:&beginDate interval:&interval forDate:nowDate];
-    if (ok) {   
+    
+    if (ok) {
         NSString *nowDateStr = [dateFormatter stringFromDate:beginDate];
         return nowDateStr;
     }else
         return @"";
 }
+
+-(NSString *)getLastDayOfThisMonth
+{
+    NSDate *beginDate ;
+    NSDate * lastDate;
+    double interval ;
+
+    //注意interval 是不需要初始化的，他是第一天后最后一天之间差，bengindate也会被给成第一天
+    BOOL ok = [calendar rangeOfUnit:NSMonthCalendarUnit startDate:&beginDate interval:&interval forDate:nowDate];
+    
+    if(ok){
+        lastDate = [beginDate initWithTimeInterval:interval-1 sinceDate:beginDate];
+        NSString *lastDatestr = [dateFormatter stringFromDate:lastDate];
+        
+        return lastDatestr;
+    }
+
+    
+        return @"";
+}
+
+-(NSString *)getLastDayOfThisWeek
+{
+    NSDate *beginDate ;
+    NSDate * lastDate;
+    double interval ;
+    
+    BOOL ok = [calendar rangeOfUnit:NSWeekCalendarUnit startDate:&beginDate interval:&interval forDate:nowDate];
+    
+    if(ok){
+        lastDate = [beginDate initWithTimeInterval:interval-1 sinceDate:beginDate];
+        NSString *lastDatestr = [dateFormatter stringFromDate:lastDate];
+        
+        return lastDatestr;
+    }
+    
+    
+    return @"";
+}
+
 
 - (NSString *)getFirstDayOfThisWeek
 {

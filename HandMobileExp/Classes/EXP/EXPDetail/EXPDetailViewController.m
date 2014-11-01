@@ -60,7 +60,7 @@
 
    UIBarButtonItem * queryBar =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(querypage:)];
     
-    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:adddetailpage,queryBar, nil];
+    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:adddetailpage, nil];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.561 green:0.380 blue:0.201 alpha:1.000];
     

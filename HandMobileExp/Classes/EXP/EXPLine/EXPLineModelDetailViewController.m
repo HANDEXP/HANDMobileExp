@@ -16,6 +16,7 @@
 #import "LMTableDateFromToCell.h"
 
 
+
 @interface EXPLineModelDetailViewController (){
     
 
@@ -31,7 +32,7 @@
     LMTablePickerInputCell *placeCell;
     LMTableTextInputCell *numberCell;
     
-    
+    NSMutableArray * imgArray;
     
     NSDictionary * record;
     
@@ -51,6 +52,8 @@
 @synthesize readOnlyFlag;
 
 static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
+
+static NSUInteger MAX_SIZE_JPG = 307200;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -281,8 +284,10 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
  ;
     NSNumber * expense_amount = [NSNumber numberWithFloat:   [[NSString stringWithFormat:@"%.2f",amountCell.numberValue] floatValue]];
     NSNumber * expense_number = [NSNumber numberWithInteger:numberCell.numberValue];
+    float  _total_amount = [expense_amount floatValue] * [expense_amount integerValue];
+    NSNumber * total_amount = [NSNumber numberWithFloat:_total_amount];
     
-    NSLog(@"expense_amount is %@",expense_amount);
+ 
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -298,16 +303,16 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     
     NSString * CREATED_BY = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     
-    NSData *data;
-    //判断是否有照片，没有照片则插入nil
-    if([amountCell.img image] !=nil){
-        data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
-        NSLog(@"%d",data.length);
     
-    }else{
-        
-        data = nil;
-    }
+    //判断是否有照片，没有照片则插入nil
+//    if([amountCell.img image] !=nil){
+//        data = UIImageJPEGRepresentation(  [amountCell.img image],0.1);
+//        NSLog(@"%d",data.length);
+//    
+//    }else{
+//        
+//        data = nil;
+//    }
     NSMutableDictionary * formdata = [[NSMutableDictionary alloc] init];
 
 
@@ -319,6 +324,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [formdata setValue:expense_type_desc forKey:@"expense_type_desc"];
     [formdata setValue:expense_amount forKey:@"expense_amount"];
     [formdata setValue:expense_number forKey:@"expense_number"];
+    [formdata setValue:total_amount forKey:@"total_amount"];
     [formdata setValue:expense_date forKey:@"expense_date"];
     [formdata setValue:expense_date_to forKey:@"expense_date_to"];
     [formdata setValue:expense_place forKey:@"expense_place"];
@@ -328,13 +334,41 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
     [formdata setValue:CREATED_BY forKey:@"CREATED_BY"];
     
 
-    
-    if(data != nil){
-        [formdata setValue: data forKey:@"item1"];
-    }else{
-        //不能直接存放nil，那样会报错
-        [formdata setValue: @"" forKey:@"item1"];
+    for(int i =0;i< imgArray.count;i++){
+        NSString * itemkey = @"item";
+        itemkey = [itemkey  stringByAppendingFormat:@"%d",i+1];
+        
+        MWPhoto * photo =[imgArray objectAtIndex:i];
+        
+
+        
+        if(photo !=nil){
+       
+            
+            [formdata setValue:photo.data forKey:itemkey];
+            
+        }else {
+            
+            [formdata setValue:@"" forKey:itemkey];
+        }
+        
     }
+    
+    
+    for(int i = imgArray.count;i< 9;i++){
+        
+        NSString * itemkey = @"item";
+        itemkey = [itemkey  stringByAppendingFormat:@"%d",i+1];
+        [formdata setValue:@"" forKey:itemkey];
+    }
+    
+//    if(data != nil){
+//        [formdata setValue: data forKey:@"item1"];
+//    }else{
+//        //不能直接存放nil，那样会报错
+//        [formdata setValue: @"" forKey:@"item1"];
+//    }
+    
     NSArray * recordlist =@[formdata];
 
     if(insertFlag && !updateFlag){
@@ -457,6 +491,7 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             amountCell = [[LMTableAmountInputCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMTableAmountInputCell"];
             amountCell.tv = self;
             amountCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            imgArray = amountCell.imageArray;
         }
         
 
@@ -581,6 +616,25 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
             [amountCell.img setImage:[UIImage imageWithData:[record valueForKey:@"item1"]]];
              }
         
+        
+        for(int i = 0;i< 9;i++){
+            NSString * keyItem = @"item";
+            keyItem = [keyItem stringByAppendingFormat:@"%d",i+1];
+            NSData * data = [record valueForKey:keyItem];
+            if(data !=nil){
+            
+                if(data.length !=0){
+                
+                    UIImage * image = [UIImage imageWithData:[record valueForKey:keyItem]];
+                
+                    MWPhoto *     photo = [MWPhoto photoWithImage:image];
+                    photo.data = data;
+                
+                    [amountCell.imageArray addObject:photo];
+                }
+            
+            }
+        }
         
     
     }else {
@@ -909,6 +963,15 @@ static NSString *simpleTableIdentifier = @"LMTableDateInputCell";
         y = 0;
     }
     self.view.frame =CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height);
+}
+
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
