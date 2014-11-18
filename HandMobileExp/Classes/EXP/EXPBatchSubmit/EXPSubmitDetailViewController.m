@@ -144,8 +144,14 @@
             
             if([recordId integerValue] == [key integerValue]){
                 
+               NSNumber * expense_amount=  [record valueForKey:@"expense_amount"];
+                NSString *  expenseAmount = [NSString stringWithFormat:@"%.2f",[expense_amount floatValue]];
+                NSNumber  * exchange_rate = [record valueForKey:@"exchangeRate"];
+                
+                 NSString *  exchangeRate = [NSString stringWithFormat:@"%.2f",[exchange_rate floatValue]];
+                
                 NSDictionary * param = @{
-                                         @"expense_amount" : [record valueForKey:@"expense_amount"],
+                                         @"expense_amount" : expenseAmount,
                                          @"expense_number" : [record valueForKey:@"expense_number"],
                                          @"expense_place" :[record valueForKey:@"expense_place"],
                                          @"expense_class_id" : [record valueForKey:@"expense_class_id"],
@@ -153,7 +159,11 @@
                                          @"expense_date"    : [record valueForKey:@"expense_date"],
                                          @"expense_date_to"    : [record valueForKey:@"expense_date_to"],
                                          @"description" : [record valueForKey:@"description"],
-                                         @"local_id" : [record valueForKey:@"id"]
+                                         @"local_id" : [record valueForKey:@"id"],
+                                         @"currency_code" : [record valueForKey:@"currency"],
+                                         @"exchange_rate" : exchangeRate
+                                         
+                                         
                                          };
                 
                 

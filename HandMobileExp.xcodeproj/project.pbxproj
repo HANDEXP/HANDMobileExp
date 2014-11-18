@@ -66,6 +66,8 @@
 		B26AD35B1962E7B10081152F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B26AD3561962E7B10081152F /* FMResultSet.m */; };
 		B26AD3611962EBBA0081152F /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B26AD3601962EBBA0081152F /* HDSingletonObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B26AD37C1962F24B0081152F /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B26AD37B1962F24B0081152F /* HDCoreStorage.m */; };
+		B26B03AE1A1AE15B00302CD4 /* LMRateTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26B03AD1A1AE15B00302CD4 /* LMRateTableCell.xib */; };
+		B26B03B11A1AE1D900302CD4 /* LMRateTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26B03B01A1AE1D900302CD4 /* LMRateTableCell.m */; };
 		B2861F56197E2D5000C7F506 /* EXPSubmitDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2861F55197E2D5000C7F506 /* EXPSubmitDelegate.m */; };
 		B2861F5A197E4F4E00C7F506 /* LMAlertViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B2861F59197E4F4E00C7F506 /* LMAlertViewTool.m */; };
 		B2861F5D197E75E600C7F506 /* Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B2861F5B197E75E600C7F506 /* Selected.png */; };
@@ -152,6 +154,10 @@
 		B2E3F76A1A023591000C75E3 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2E3F7691A023591000C75E3 /* Kal.bundle */; };
 		B2E3F76D1A0235AA000C75E3 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E3F7681A023588000C75E3 /* libKal.a */; };
 		B2E3F7731A02390F000C75E3 /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E3F7721A02390F000C75E3 /* EventKitDataSource.m */; };
+		B2EB39F31A1A13C2005CCEF8 /* LMRateFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2EB39F21A1A13C2005CCEF8 /* LMRateFieldCell.xib */; };
+		B2EB39F61A1A14AF005CCEF8 /* LMRateFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB39F51A1A14AF005CCEF8 /* LMRateFieldCell.m */; };
+		B2EB39FA1A1A28AA005CCEF8 /* EXPRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB39F91A1A28AA005CCEF8 /* EXPRateViewController.m */; };
+		B2EB39FD1A1A2AA5005CCEF8 /* EXPRateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB39FC1A1A2AA5005CCEF8 /* EXPRateModel.m */; };
 		B2EB414019683A8500E6085F /* LMTableImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB413F19683A8500E6085F /* LMTableImageItem.m */; };
 		B2EB414319683BA200E6085F /* LMTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB414219683BA200E6085F /* LMTableItem.m */; };
 		B2EF36221972DE5E00C80DAA /* EXPDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EF36211972DE5E00C80DAA /* EXPDetailModel.m */; };
@@ -389,6 +395,9 @@
 		B26AD3601962EBBA0081152F /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSingletonObject.m; path = Utilities/HDSingletonObject.m; sourceTree = "<group>"; usesTabs = 0; };
 		B26AD37A1962F24B0081152F /* HDCoreStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDCoreStorage.h; path = HandMobileExp/Utilities/HDCoreStorage.h; sourceTree = SOURCE_ROOT; };
 		B26AD37B1962F24B0081152F /* HDCoreStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDCoreStorage.m; path = HandMobileExp/Utilities/HDCoreStorage.m; sourceTree = SOURCE_ROOT; };
+		B26B03AD1A1AE15B00302CD4 /* LMRateTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMRateTableCell.xib; sourceTree = "<group>"; };
+		B26B03AF1A1AE1D900302CD4 /* LMRateTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMRateTableCell.h; path = Frameworks/LittleMvc/LMRateTableCell.h; sourceTree = "<group>"; };
+		B26B03B01A1AE1D900302CD4 /* LMRateTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMRateTableCell.m; path = Frameworks/LittleMvc/LMRateTableCell.m; sourceTree = "<group>"; };
 		B2861F54197E2D5000C7F506 /* EXPSubmitDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPSubmitDelegate.h; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDelegate.h; sourceTree = "<group>"; };
 		B2861F55197E2D5000C7F506 /* EXPSubmitDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPSubmitDelegate.m; path = HandMobileExp/Classes/EXP/EXPBatchSubmit/EXPSubmitDelegate.m; sourceTree = "<group>"; };
 		B2861F58197E4F4E00C7F506 /* LMAlertViewTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMAlertViewTool.h; path = Frameworks/LittleMvc/LMAlertViewTool.h; sourceTree = "<group>"; };
@@ -544,6 +553,13 @@
 		B2E3F7691A023591000C75E3 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = Frameworks/kal/Kal.bundle; sourceTree = "<group>"; };
 		B2E3F7711A02390F000C75E3 /* EventKitDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventKitDataSource.h; path = Frameworks/LittleMvc/EventKitDataSource.h; sourceTree = "<group>"; };
 		B2E3F7721A02390F000C75E3 /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventKitDataSource.m; path = Frameworks/LittleMvc/EventKitDataSource.m; sourceTree = "<group>"; };
+		B2EB39F21A1A13C2005CCEF8 /* LMRateFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LMRateFieldCell.xib; path = Frameworks/LittleMvc/LMRateFieldCell.xib; sourceTree = "<group>"; };
+		B2EB39F41A1A14AF005CCEF8 /* LMRateFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMRateFieldCell.h; path = Frameworks/LittleMvc/LMRateFieldCell.h; sourceTree = "<group>"; };
+		B2EB39F51A1A14AF005CCEF8 /* LMRateFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMRateFieldCell.m; path = Frameworks/LittleMvc/LMRateFieldCell.m; sourceTree = "<group>"; };
+		B2EB39F81A1A28AA005CCEF8 /* EXPRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPRateViewController.h; path = HandMobileExp/Classes/EXP/EXPRateView/EXPRateViewController.h; sourceTree = "<group>"; };
+		B2EB39F91A1A28AA005CCEF8 /* EXPRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPRateViewController.m; path = HandMobileExp/Classes/EXP/EXPRateView/EXPRateViewController.m; sourceTree = "<group>"; };
+		B2EB39FB1A1A2AA5005CCEF8 /* EXPRateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXPRateModel.h; path = HandMobileExp/Classes/EXP/EXPRateView/EXPRateModel.h; sourceTree = "<group>"; };
+		B2EB39FC1A1A2AA5005CCEF8 /* EXPRateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXPRateModel.m; path = HandMobileExp/Classes/EXP/EXPRateView/EXPRateModel.m; sourceTree = "<group>"; };
 		B2EB413E19683A8500E6085F /* LMTableImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableImageItem.h; path = Frameworks/LittleMvc/LMTableImageItem.h; sourceTree = "<group>"; };
 		B2EB413F19683A8500E6085F /* LMTableImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMTableImageItem.m; path = Frameworks/LittleMvc/LMTableImageItem.m; sourceTree = "<group>"; };
 		B2EB414119683BA200E6085F /* LMTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LMTableItem.h; path = Frameworks/LittleMvc/LMTableItem.h; sourceTree = "<group>"; };
@@ -738,6 +754,7 @@
 		B20D10AA196BE345004871F4 /* EXP */ = {
 			isa = PBXGroup;
 			children = (
+				B2EB39F71A1A2862005CCEF8 /* EXPRateView */,
 				B2067DCC19CD58E800F96CEF /* EXPQueryview */,
 				B2B83E4119CAB8870098631D /* EXPBuildWebview */,
 				B2676E3E197DF31700F58C07 /* EXPBatchSubmit */,
@@ -1380,6 +1397,9 @@
 				B2F98A4419A71EBF0064032E /* LMDetailListTableViewCell_1.xib */,
 				B2F98A4119A71E1A0064032E /* LMDetailListTableViewCell_1.h */,
 				B2F98A4219A71E1A0064032E /* LMDetailListTableViewCell_1.m */,
+				B26B03AD1A1AE15B00302CD4 /* LMRateTableCell.xib */,
+				B26B03AF1A1AE1D900302CD4 /* LMRateTableCell.h */,
+				B26B03B01A1AE1D900302CD4 /* LMRateTableCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -1412,6 +1432,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B2EB39F71A1A2862005CCEF8 /* EXPRateView */ = {
+			isa = PBXGroup;
+			children = (
+				B2EB39F81A1A28AA005CCEF8 /* EXPRateViewController.h */,
+				B2EB39F91A1A28AA005CCEF8 /* EXPRateViewController.m */,
+				B2EB39FB1A1A2AA5005CCEF8 /* EXPRateModel.h */,
+				B2EB39FC1A1A2AA5005CCEF8 /* EXPRateModel.m */,
+			);
+			name = EXPRateView;
+			sourceTree = "<group>";
+		};
 		B2F864A5196D1E770017D110 /* Static Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,6 +1469,9 @@
 				B24B54C419CE948F00D3167D /* LMTextFieldCell.xib */,
 				B24B54C619CE94B000D3167D /* LMTextFieldCell.h */,
 				B24B54C719CE94B000D3167D /* LMTextFieldCell.m */,
+				B2EB39F21A1A13C2005CCEF8 /* LMRateFieldCell.xib */,
+				B2EB39F41A1A14AF005CCEF8 /* LMRateFieldCell.h */,
+				B2EB39F51A1A14AF005CCEF8 /* LMRateFieldCell.m */,
 			);
 			name = "Static Cells";
 			sourceTree = "<group>";
@@ -1699,6 +1733,7 @@
 				B2067DD419CD656000F96CEF /* LMNumberFromToCell.xib in Resources */,
 				B24B54C519CE948F00D3167D /* LMTextFieldCell.xib in Resources */,
 				B2F98A4019A714940064032E /* traffic.png in Resources */,
+				B2EB39F31A1A13C2005CCEF8 /* LMRateFieldCell.xib in Resources */,
 				DA28C48119729BBC00A29412 /* 4.png in Resources */,
 				DA28C4A219729D5200A29412 /* camera@2x.png in Resources */,
 				DAEC764519813FF1009A3362 /* submit.png in Resources */,
@@ -1753,6 +1788,7 @@
 				B20B8E0919CFBB2100FF0A26 /* accommodation.png in Resources */,
 				DA28C49719729BBC00A29412 /* toDoEXP.png in Resources */,
 				B2A84A2F19946E8500A3068D /* LMTableTextInputCell.xib in Resources */,
+				B26B03AE1A1AE15B00302CD4 /* LMRateTableCell.xib in Resources */,
 				DA28C48919729BBC00A29412 /* loginBg.png in Resources */,
 				DA28C47E19729BBC00A29412 /* 1.png in Resources */,
 				DA9F330F1989E8DC008B26C4 /* pin@2x.png in Resources */,
@@ -1822,6 +1858,7 @@
 				B24068CA197025530062AA65 /* EXPDetailViewController.m in Sources */,
 				B29D9610196649F40017A9B7 /* UIViewController+RESideMenu.m in Sources */,
 				B2A508601990D365009DFF36 /* AFHTTPSessionManager.m in Sources */,
+				B2EB39FD1A1A2AA5005CCEF8 /* EXPRateModel.m in Sources */,
 				B2861F86197F538000C7F506 /* PieChartView.m in Sources */,
 				B2D6D681197CD4BC00FE234C /* EXPExpenseTypePicker.m in Sources */,
 				B2A2D96D1965889300B2C935 /* MMProgressHUDWindow.m in Sources */,
@@ -1846,6 +1883,8 @@
 				B26AD3591962E7B10081152F /* FMDatabasePool.m in Sources */,
 				B298E34C19640FAD00EB4850 /* EXPAFNetWorkingUtil.m in Sources */,
 				DA9F3359198B6495008B26C4 /* MJCircleLayer.m in Sources */,
+				B2EB39FA1A1A28AA005CCEF8 /* EXPRateViewController.m in Sources */,
+				B26B03B11A1AE1D900302CD4 /* LMRateTableCell.m in Sources */,
 				B2064DE71988C3C100856B30 /* EXPDataSettingViewController.m in Sources */,
 				B2A2D93B19652A2900B2C935 /* LMModel.m in Sources */,
 				B298E2AD1963A05500EB4850 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1910,6 +1949,7 @@
 				DA9F335E198B64D9008B26C4 /* EXPUnlockSettingViewController.m in Sources */,
 				B2C41C37196E7434007C62BB /* LMTableAmountInputCell.m in Sources */,
 				B218C5FD1A03846A003C85D7 /* UINavigationController+SafePushing.m in Sources */,
+				B2EB39F61A1A14AF005CCEF8 /* LMRateFieldCell.m in Sources */,
 				B26AD35B1962E7B10081152F /* FMResultSet.m in Sources */,
 				B2861F89197F538000C7F506 /* EXPChartModel.m in Sources */,
 				B2A2D97619658E4C00B2C935 /* EXPLoadViewController.m in Sources */,

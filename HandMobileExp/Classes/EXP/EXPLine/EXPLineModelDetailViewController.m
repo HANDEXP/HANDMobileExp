@@ -14,7 +14,7 @@
 #import "MMProgressHUDWindow.H"
 #import "LMTableTextInputCell.h"
 #import "LMTableDateFromToCell.h"
-
+#import "LMRateFieldCell.h"
 
 
 @interface EXPLineModelDetailViewController (){
@@ -31,6 +31,8 @@
     LMTablePickerInputCell *expenseTypeCell;
     LMTablePickerInputCell *placeCell;
     LMTableTextInputCell *numberCell;
+    
+    LMRateFieldCell  * rateCell;
     
     NSMutableArray * imgArray;
     
@@ -124,14 +126,14 @@ static NSUInteger MAX_SIZE_JPG = 307200;
 //    div2.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
 //    [self.view addSubview:div2];
 
-    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 223.0f, 30, 30)];
+    UILabel * lb3 = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-10, 263.0f, 30, 30)];
     lb3.text = @"备注";
     lb3.font =   [lb3.font fontWithSize:22];
 //    lb3.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:24];
     lb3.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:lb3];
     
-    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 253, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.3)];
+    self.descTx = [[UITextView alloc] initWithFrame:CGRectMake(8.0, 293, self.view.bounds.size.width-16.0, (self.view.bounds.size.height-240)*0.25)];
     self.descTx.delegate = self;
     self.descTx.layer.borderColor =  [UIColor grayColor].CGColor;
     
@@ -141,8 +143,9 @@ static NSUInteger MAX_SIZE_JPG = 307200;
     
     self.descTx.tag = 1;
     
+    
     //添加按键
-    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, self.descTx.frame.origin.y+(self.view.bounds.size.height-240)*0.4, 320-16, (self.view.bounds.size.height-240)*0.15)];
+    self.save = [[UIButton alloc] initWithFrame:CGRectMake(8, self.descTx.frame.origin.y+self.descTx.frame.size.height+15, 320-16, (self.view.bounds.size.height-240)*0.15)];
     
     [self.save setTitle:@"保存" forState: UIControlStateNormal];
     [self.save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchDown];
@@ -303,6 +306,11 @@ static NSUInteger MAX_SIZE_JPG = 307200;
     
     NSString * CREATED_BY = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     
+
+    ///汇率 币种
+    NSString * currency = rateCell.currencyLabel.text;
+    
+    NSNumber * exchangeRate =    [NSNumber numberWithFloat:   [[NSString stringWithFormat:@"%.2f",rateCell.numberValue] floatValue]];
     
     //判断是否有照片，没有照片则插入nil
 //    if([amountCell.img image] !=nil){
@@ -332,6 +340,9 @@ static NSUInteger MAX_SIZE_JPG = 307200;
     [formdata setValue:local_status forKey:@"local_status"];
     [formdata setValue:CREATION_DATE forKey:@"CREATION_DATE"];
     [formdata setValue:CREATED_BY forKey:@"CREATED_BY"];
+    
+    [formdata setValue:currency forKey:@"currency"];
+    [formdata setValue:exchangeRate forKey:@"exchangeRate"];
     
 
     for(int i =0;i< imgArray.count;i++){
@@ -542,6 +553,17 @@ static NSUInteger MAX_SIZE_JPG = 307200;
         }
     [numberCell addObserver:self forKeyPath:@"numberValue" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     [amountCell addObserver:self forKeyPath:@"numberValue" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    
+    
+        if(rateCell  == nil)
+        {
+            rateCell = [[LMRateFieldCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LMRateFieldCell"];
+            rateCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            rateCell.parent = self;
+            
+        }
+    
+    
 }
 
 
@@ -562,6 +584,14 @@ static NSUInteger MAX_SIZE_JPG = 307200;
          NSNumber * expense_number = [record valueForKey:@"expense_number"];
         numberCell.numberValue = [expense_number integerValue];
         numberCell.numberLabel.text = [NSString stringWithFormat:@"%@",expense_number];
+        
+        
+        //初始化汇率 币种
+        NSNumber * exchangeRate = [record valueForKey:@"exchangeRate"];
+        rateCell.exchangRateLabel.text = [NSString  stringWithFormat:@"%.2f",[exchangeRate floatValue]];
+        rateCell.numberValue = [exchangeRate floatValue];
+        rateCell.currencyLabel.text = [record valueForKey:@"currency"];
+        
         
         //初始化费用类型
         NSNumber * class_id = [record valueForKey:@"expense_class_id"];
@@ -668,9 +698,21 @@ static NSUInteger MAX_SIZE_JPG = 307200;
             
         }
 
-}
+    }
     
 }
+
+/**  汇率返回时候修改汇率 */
+-(void) reloadRateCell:(NSString *)currency
+          exchangeRate:(NSNumber *  )exchangRate
+{
+    //初始化汇率 币种
+    rateCell.exchangRateLabel.text = [NSString  stringWithFormat:@"%.2f",[exchangRate floatValue]];
+    rateCell.numberValue = [exchangRate floatValue];
+    rateCell.currencyLabel.text = currency;
+    
+}
+
 #pragma key-valuedelegate
 //auto modify the total amount
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -712,7 +754,7 @@ static NSUInteger MAX_SIZE_JPG = 307200;
         
         
         return amountCell;
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 3){
 
         if (expenseTypeCell == nil)
         {
@@ -733,12 +775,12 @@ static NSUInteger MAX_SIZE_JPG = 307200;
 
         return expenseTypeCell;
         
-    }else if(indexPath.section == 4){
+    }else if(indexPath.section == 5){
 
         
         return dateCell;
         
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 4){
 
         if (placeCell == nil)
         {
@@ -759,6 +801,9 @@ static NSUInteger MAX_SIZE_JPG = 307200;
         
       
         return numberCell;
+    }else if(indexPath.section == 2){
+        
+        return rateCell;
     }
     
 
@@ -773,7 +818,7 @@ static NSUInteger MAX_SIZE_JPG = 307200;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 5;
+    return 6;
 }
 
 

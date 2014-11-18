@@ -277,7 +277,7 @@
     self.valueArray = [[NSMutableArray alloc]init];
     self.colorArray = [[NSMutableArray alloc] init];
     self.classArray = [[NSMutableArray alloc] init];
-    self.sumArray = [[NSMutableArray alloc]init];
+    self.sumArray = [[NSMutableArray alloc]init]; 
     self.amountCount = nil;
     NSMutableSet *descSet = [[NSMutableSet alloc]init];
         self.detailAmountArray = [[NSMutableArray alloc]init];

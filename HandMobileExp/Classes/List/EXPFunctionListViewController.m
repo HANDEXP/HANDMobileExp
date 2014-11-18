@@ -49,8 +49,12 @@
 -(UITableView *)tableView{
     
     _tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, (self.view.frame.size.height - 54 * 7) / 1.5f, self.view.frame.size.width, 54 * 7) style:UITableViewStylePlain];
-        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height/2, self.view.frame.size.width, 50 * 5) style:UITableViewStylePlain];
+    
+        tableView.center =  CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+        
+        
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
         tableView.opaque = NO;
         tableView.backgroundColor = [UIColor clearColor];
         tableView.backgroundView = nil;

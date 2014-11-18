@@ -44,4 +44,9 @@
 
 @property (nonatomic, strong) UIView *coverView;
 
+
+/**  汇率返回时候修改汇率 */
+-(void) reloadRateCell:(NSString *)currency
+          exchangeRate:(NSNumber *  )exchangRate;
+
 @end
