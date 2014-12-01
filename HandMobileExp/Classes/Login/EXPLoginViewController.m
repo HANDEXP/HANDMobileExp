@@ -161,7 +161,7 @@
     NSDictionary *param = @{@"user_name" : self.userNameTF.text,
                             @"user_password" : self.passwordTF.text,
                             @"device_type" : @"iphone",
-                            @"push_token" : @"-1",
+                            @"push_token" : [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],
                             @"device_Id" : @"-1"
                             };
     

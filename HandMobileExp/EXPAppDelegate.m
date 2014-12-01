@@ -18,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //register notification
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+    
     //create databasetable if not create
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
@@ -67,6 +70,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+//获取token成功,格式化token,放入用户设置中
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //get the deivcetoken
+    NSLog(@"My token is: %@", deviceToken);
+    
+    //format token
+    NSString *tokenWithBlank = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString *tokenWithoutBlank = [tokenWithBlank stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    //save deviceToken to userDefaults
+    [[NSUserDefaults standardUserDefaults] setValue:tokenWithoutBlank forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] setValue:tokenWithoutBlank forKey:@"device_token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
