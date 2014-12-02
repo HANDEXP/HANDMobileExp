@@ -157,11 +157,17 @@
         return;
     }
 
+    NSString * token =  [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"];
+    
+    if(token == nil){
+        token = @"-1";
+    }
+    
     
     NSDictionary *param = @{@"user_name" : self.userNameTF.text,
                             @"user_password" : self.passwordTF.text,
                             @"device_type" : @"iphone",
-                            @"push_token" : [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],
+                            @"push_token" : token,
                             @"device_Id" : @"-1"
                             };
     
